@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>اختبار في المحيط والمساحة - الرياضيات</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 15px;
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            padding: 20px 15px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1.6rem;
+            line-height: 1.3;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            padding: 0 10px;
+        }
+        .category {
+            background: #ecf0f1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-right: 4px solid #3498db;
+            font-size: 0.95rem;
+        }
+        .category h3 {
+            margin: 0;
+            color: #2980b9;
+            font-size: 1.1rem;
+        }
+        .question {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+        .question-name {
+            color: #2c3e50;
+            font-size: 1.15rem;
+            margin-top: 0;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #eee;
+            line-height: 1.4;
+        }
+        .question-text {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            color: #2d3436;
+            line-height: 1.5;
+        }
+        .question-text p, .question-text ul {
+            margin: 8px 0;
+        }
+        .question-text ul {
+            padding-right: 20px;
+        }
+        .question-text li {
+            margin-bottom: 5px;
+        }
+        .choices {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px 0;
+        }
+        .choice {
+            padding: 14px 12px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+            transition: all 0.2s;
+            cursor: pointer;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+        }
+        .choice:hover, .choice:active {
+            background: #e9ecef;
+        }
+        .choice.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .choice.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .feedback {
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 12px;
+            display: none;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .feedback.show {
+            display: block;
+        }
+        .generalfeedback {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            color: #0d47a1;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .numerical-input {
+            padding: 12px 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 6px;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 200px;
+            text-align: center;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 8px;
+            transition: background 0.3s;
+            width: 100%;
+            max-width: 220px;
+            font-weight: 600;
+            min-height: 48px;
+        }
+        .submit-btn:hover, .submit-btn:active {
+            background-color: #2980b9;
+        }
+        .result {
+            margin-top: 12px;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 6px;
+            display: none;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .result.correct {
+            background-color: #d4edda;
+            color: #155724;
+            display: block;
+        }
+        .result.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+        .question-type {
+            display: inline-block;
+            background: #95a5a6;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        .multichoice .question-type {
+            background: #9b59b6;
+        }
+        .numerical .question-type {
+            background: #e67e22;
+        }
+        hr {
+            border: none;
+            height: 1px;
+            background: #ecf0f1;
+            margin: 25px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+        
+        /* Améliorations pour très petits écrans */
+        @media (max-width: 360px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px 10px;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+            .question {
+                padding: 12px;
+            }
+            .question-name {
+                font-size: 1.1rem;
+            }
+            .choice {
+                padding: 12px 10px;
+                font-size: 0.9rem;
+            }
+            .submit-btn {
+                padding: 12px 15px;
+                font-size: 0.95rem;
+            }
+        }
+        
+        /* Pour les écrans plus larges */
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            .container {
+                max-width: 700px;
+                padding: 25px 30px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .submit-btn {
+                width: auto;
+                min-width: 150px;
+            }
+            .numerical-input {
+                width: 150px;
+            }
+        }
+        
+        /* Pour éviter les problèmes de toucher sur mobile */
+        button, .choice {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        
+        /* Amélioration de la lisibilité sur mobile */
+        .question-text, .generalfeedback, .feedback {
+            text-align: justify;
+            hyphens: auto;
+        }
+        
+        /* Espacement pour éviter que le contenu ne touche les bords */
+        .container > *:first-child {
+            margin-top: 0;
+        }
+        .container > *:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Style pour les boutons de soumission dans les questions numériques */
+        .numerical .submit-btn {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>اختبار في المحيط والمساحة</h1>
+        <p class="subtitle">رياضيات - الهندسة - الأسئلة متعددة الخيارات والرقمية</p>
+
+        <div class="category">
+            <h3>الفئة: الرياضيات / الهندسة / المحيط والمساحة</h3>
+        </div>
+
+        <!-- Question 574: محيط المعين -->
+        <div class="question multichoice">
+            <span class="question-type">متعدد الخيارات</span>
+            <h3 class="question-name">اختيار محيط المعين - وحدات مختلفة</h3>
+            <div class="question-text">
+                <p>ما هو محيط معين طول ضلعه 55 mm؟</p>
+            </div>
+            <ul class="choices">
+                <li class="choice" data-correct="false">200 mm</li>
+                <li class="choice" data-correct="false">20 cm</li>
+                <li class="choice" data-correct="true">22 cm</li>
+                <li class="choice" data-correct="false">55 cm</li>
+            </ul>
+            <button class="submit-btn" onclick="checkMultipleChoice(this)">تحقق من الإجابة</button>
+            <div class="feedback"></div>
+            <div class="generalfeedback">
+                تحويل 55 mm إلى cm: 55 mm = 5.5 cm<br>
+                المحيط = 4 × طول الضلع = 4 × 5.5 = 22 cm
+            </div>
+        </div>
+
+        <!-- Question 601: مساحة المستطيل -->
+        <div class="question multichoice">
+            <span class="question-type">متعدد الخيارات</span>
+            <h3 class="question-name">اختيار مساحة المستطيل - فخ الوحدات</h3>
+            <div class="question-text">
+                <p>ما هي مساحة مستطيل طوله 1.2 dm وعرضه 70 mm؟</p>
+            </div>
+            <ul class="choices">
+                <li class="choice" data-correct="false">84 mm²</li>
+                <li class="choice" data-correct="false">8.4 cm²</li>
+                <li class="choice" data-correct="true">84 cm²</li>
+                <li class="choice" data-correct="false">840 cm²</li>
+            </ul>
+            <button class="submit-btn" onclick="checkMultipleChoice(this)">تحقق من الإجابة</button>
+            <div class="feedback"></div>
+            <div class="generalfeedback">
+                تحويل 1.2 dm إلى cm: 1.2 dm = 12 cm<br>
+                تحويل 70 mm إلى cm: 70 mm = 7 cm<br>
+                المساحة = الطول × العرض = 12 × 7 = 84 cm²
+            </div>
+        </div>
+
+        <!-- Question 598: مسألة عملية - أرض مثلثة -->
+        <div class="question multichoice">
+            <span class="question-type">متعدد الخيارات</span>
+            <h3 class="question-name">مسألة عملية - أرض مثلثة</h3>
+            <div class="question-text">
+                <p>قطعة أرضية على شكل مثلث قاعدتها 16 m وارتفاعها 6 m. أراد الفلاح تسييجها ثم بيع ثلثها.<br>
+                - كم يحتاج من الأمتار من السلك للتسييج إذا كان محيط المثلث 40 m؟<br>
+                - إذا كان ثمن المتر المربع هو 75 درهما، فما هو ثمن البيع؟</p>
+            </div>
+            <ul class="choices">
+                <li class="choice" data-correct="false">40 m سلك و 3600 درهم</li>
+                <li class="choice" data-correct="false">22 m سلك و 1200 درهم</li>
+                <li class="choice" data-correct="true">40 m سلك و 1200 درهم</li>
+                <li class="choice" data-correct="false">48 m سلك و 1200 درهم</li>
+            </ul>
+            <button class="submit-btn" onclick="checkMultipleChoice(this)">تحقق من الإجابة</button>
+            <div class="feedback"></div>
+            <div class="generalfeedback">
+                الحل:<br>
+                1. محيط المثلث معطى = 40 m ← يحتاج 40 m من السلك<br>
+                2. مساحة الأرض = (القاعدة × الارتفاع) ÷ 2 = (16 × 6) ÷ 2 = 48 m²<br>
+                ثلث المساحة = 48 ÷ 3 = 16 m²<br>
+                ثمن البيع = 16 × 75 = 1200 درهم
+            </div>
+        </div>
+
+        <!-- Question 568: مسألة عملية - أرض مربعة -->
+        <div class="question multichoice">
+            <span class="question-type">متعدد الخيارات</span>
+            <h3 class="question-name">مسألة عملية - أرض مربعة</h3>
+            <div class="question-text">
+                <p>قطعة أرضية على شكل مربع طول ضلعه 15 m. أراد الفلاح تسييجها ثم بيع ربعها.<br>
+                - كم يحتاج من الأمتار من السلك للتسييج؟<br>
+                - إذا كان ثمن المتر المربع هو 60 درهما، فما هو ثمن البيع؟</p>
+            </div>
+            <ul class="choices">
+                <li class="choice" data-correct="false">60 m سلك و 13500 درهم</li>
+                <li class="choice" data-correct="false">30 m سلك و 3375 درهم</li>
+                <li class="choice" data-correct="true">60 m سلك و 3375 درهم</li>
+                <li class="choice" data-correct="false">225 m سلك و 3375 درهم</li>
+            </ul>
+            <button class="submit-btn" onclick="checkMultipleChoice(this)">تحقق من الإجابة</button>
+            <div class="feedback"></div>
+            <div class="generalfeedback">
+                الحل:<br>
+                1. محيط المربع = 4 × طول الضلع = 4 × 15 = 60 m ← يحتاج 60 m من السلك<br>
+                2. مساحة الأرض = الضلع × الضلع = 15 × 15 = 225 m²<br>
+                ربع المساحة = 225 ÷ 4 = 56.25 m²<br>
+                ثمن البيع = 56.25 × 60 = 3375 درهم
+            </div>
+        </div>
+
+        <!-- Question 592: مسألة عملية - بيع الأرض المستطيلة -->
+        <div class="question multichoice">
+            <span class="question-type">متعدد الخيارات</span>
+            <h3 class="question-name">مسألة عملية - بيع الأرض المستطيلة</h3>
+            <div class="question-text">
+                <p>قطعة أرضية على شكل مستطيل طولها 12 m وعرضها 8 m. أراد الفلاح تسييجها ثم بيع نصفها.<br>
+                - كم يحتاج من الأمتار من السلك للتسييج؟<br>
+                - إذا كان ثمن المتر المربع هو 50 درهما، فما هو ثمن البيع؟</p>
+            </div>
+            <ul class="choices">
+                <li class="choice" data-correct="false">40 m سلك و 4800 درهم</li>
+                <li class="choice" data-correct="false">20 m سلك و 2400 درهم</li>
+                <li class="choice" data-correct="true">40 m سلك و 2400 درهم</li>
+                <li class="choice" data-correct="false">96 m سلك و 2400 درهم</li>
+            </ul>
+            <button class="submit-btn" onclick="checkMultipleChoice(this)">تحقق من الإجابة</button>
+            <div class="feedback"></div>
+            <div class="generalfeedback">
+                الحل:<br>
+                1. محيط المستطيل = (الطول + العرض) × 2 = (12 + 8) × 2 = 40 m ← يحتاج 40 m من السلك<br>
+                2. مساحة الأرض = الطول × العرض = 12 × 8 = 96 m²<br>
+                نصف المساحة = 96 ÷ 2 = 48 m²<br>
+                ثمن البيع = 48 × 50 = 2400 درهم
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Question 586: محيط المثلث - وحدات مختلفة -->
+        <div class="question numerical">
+            <span class="question-type">سؤال رقمي</span>
+            <h3 class="question-name">محيط المثلث - وحدات مختلفة</h3>
+            <div class="question-text">
+                <p>ما هو محيط مثلث أطوال أضلاعه :</p>
+                <ul>
+                    <li>60 mm</li>
+                    <li>1 dm</li>
+                    <li>8 cm</li>
+                </ul>
+                <p> (أعط الناتج بال cm)</p>
+            </div>
+            <input type="number" class="numerical-input" placeholder="أدخل الإجابة">
+            <button class="submit-btn" onclick="checkNumerical(this, 24)">تحقق من الإجابة</button>
+            <div class="result"></div>
+            <div class="generalfeedback">
+                تحويل 60 mm إلى cm: 60 mm = 6 cm<br>
+                تحويل 1 dm إلى cm: 1 dm = 10 cm<br>
+                المحيط = مجموع أطوال الأضلاع = 6 + 8 + 10 = 24 cm
+            </div>
+        </div>
+
+        <!-- Question 577: محيط المربع - تحويل الوحدات -->
+        <div class="question numerical">
+            <span class="question-type">سؤال رقمي</span>
+            <h3 class="question-name">محيط المربع - تحويل الوحدات</h3>
+            <div class="question-text">
+                <p>ما هو محيط مربع طول ضلعه 70 mm؟ (أعط الناتج بال cm)</p>
+            </div>
+            <input type="number" class="numerical-input" placeholder="أدخل الإجابة">
+            <button class="submit-btn" onclick="checkNumerical(this, 28)">تحقق من الإجابة</button>
+            <div class="result"></div>
+            <div class="generalfeedback">
+                تحويل 70 mm إلى cm: 70 mm = 7 cm<br>
+                المحيط = 4 × طول الضلع = 4 × 7 = 28 cm
+            </div>
+        </div>
+
+        <!-- Question 580: محيط المستطيل - وحدات مختلفة -->
+        <div class="question numerical">
+            <span class="question-type">سؤال رقمي</span>
+            <h3 class="question-name">محيط المستطيل - وحدات مختلفة</h3>
+            <div class="question-text">
+                <p>ما هو محيط مستطيل طوله 8 cm وعرضه 50 mm؟ (أعط الناتج بال cm)</p>
+            </div>
+            <input type="number" class="numerical-input" placeholder="أدخل الإجابة">
+            <button class="submit-btn" onclick="checkNumerical(this, 26)">تحقق من الإجابة</button>
+            <div class="result"></div>
+            <div class="generalfeedback">
+                تحويل 50 mm إلى cm: 50 mm = 5 cm<br>
+                المحيط = (الطول + العرض) × 2 = (8 + 5) × 2 = 26 cm
+            </div>
+        </div>
+
+        <!-- Question 559: محيط متوازي الأضلاع -->
+        <div class="question numerical">
+            <span class="question-type">سؤال رقمي</span>
+            <h3 class="question-name">محيط متوازي الأضلاع - وحدات مختلفة</h3>
+            <div class="question-text">
+                <p>ما هو محيط متوازي أضلاع طوله 90 mm وعرضه 4 cm؟ (أعط الناتج بال cm)</p>
+            </div>
+            <input type="number" class="numerical-input" placeholder="أدخل الإجابة">
+            <button class="submit-btn" onclick="checkNumerical(this, 26)">تحقق من الإجابة</button>
+            <div class="result"></div>
+            <div class="generalfeedback">
+                تحويل 90 mm إلى cm: 90 mm = 9 cm<br>
+                المحيط = (الطول + العرض) × 2 = (9 + 4) × 2 = 26 cm
+            </div>
+        </div>
+
+        <!-- Question 589: مساحة المثلث -->
+        <div class="question numerical">
+            <span class="question-type">سؤال رقمي</span>
+            <h3 class="question-name">مساحة المثلث - وحدات مختلفة</h3>
+            <div class="question-text">
+                <p>احسب مساحة مثلث قاعدته 100 mm وارتفاعه 6 cm (أعط الناتج بال cm²)</p>
+            </div>
+            <input type="number" class="numerical-input" placeholder="أدخل الإجابة">
+            <button class="submit-btn" onclick="checkNumerical(this, 30)">تحقق من الإجابة</button>
+            <div class="result"></div>
+            <div class="generalfeedback">
+                تحويل 100 mm إلى cm: 100 mm = 10 cm<br>
+                المساحة = (القاعدة × الارتفاع) ÷ 2 = (10 × 6) ÷ 2 = 30 cm²
+            </div>
+        </div>
+
+        <!-- Question 562: مساحة المعين -->
+        <div class="question numerical">
+            <span class="question-type">سؤال رقمي</span>
+            <h3 class="question-name">مساحة المعين - وحدات مختلفة</h3>
+            <div class="question-text">
+                <p>احسب مساحة معين طول قطره الأكبر 120 mm وقطره الأصغر 8 cm (أعط الناتج بال cm²)</p>
+            </div>
+            <input type="number" class="numerical-input" placeholder="أدخل الإجابة">
+            <button class="submit-btn" onclick="checkNumerical(this, 48)">تحقق من الإجابة</button>
+            <div class="result"></div>
+            <div class="generalfeedback">
+                تحويل 120 mm إلى cm: 120 mm = 12 cm<br>
+                المساحة = (القطر الأكبر × القطر الأصغر) ÷ 2 = (12 × 8) ÷ 2 = 48 cm²
+            </div>
+        </div>
+
+        <!-- Question 604: مساحة شبه المنحرف -->
+        <div class="question numerical">
+            <span class="question-type">سؤال رقمي</span>
+            <h3 class="question-name">مساحة شبه المنحرف - وحدات مختلفة</h3>
+            <div class="question-text">
+                <p>احسب مساحة شبه منحرف قاعدته الكبرى 1.5 dm، والصغرى 90 mm، وارتفاعه 5 cm (أعط الناتج بال cm²)</p>
+            </div>
+            <input type="number" class="numerical-input" placeholder="أدخل الإجابة">
+            <button class="submit-btn" onclick="checkNumerical(this, 60)">تحقق من الإجابة</button>
+            <div class="result"></div>
+            <div class="generalfeedback">
+                تحويل 1.5 dm إلى cm: 1.5 dm = 15 cm<br>
+                تحويل 90 mm إلى cm: 90 mm = 9 cm<br>
+                المساحة = (القاعدة الكبرى + القاعدة الصغرى) × الارتفاع ÷ 2 = (15 + 9) × 5 ÷ 2 = 60 cm²
+            </div>
+        </div>
+
+        <!-- Question 595: مساحة متوازي الأضلاع -->
+        <div class="question numerical">
+            <span class="question-type">سؤال رقمي</span>
+            <h3 class="question-name">مساحة متوازي الأضلاع - فخ الارتفاع</h3>
+            <div class="question-text">
+                <p>احسب مساحة متوازي أضلاع طول قاعدته 110 mm وارتفاعه 6 cm (أعط الناتج بال cm²)</p>
+            </div>
+            <input type="number" class="numerical-input" placeholder="أدخل الإجابة">
+            <button class="submit-btn" onclick="checkNumerical(this, 66)">تحقق من الإجابة</button>
+            <div class="result"></div>
+            <div class="generalfeedback">
+                تحويل 110 mm إلى cm: 110 mm = 11 cm<br>
+                المساحة = القاعدة × الارتفاع = 11 × 6 = 66 cm²
+            </div>
+        </div>
+
+        <footer>
+            <p>تم إنشاء هذا الاختبار بناءً على أسئلة Moodle في موضوع المحيط والمساحة.</p>
+            <p>جميع الأسئلة مكتوبة باللغة العربية وتتطلب فهم وحدات القياس وتحويلاتها.</p>
+        </footer>
+    </div>
+
+    <script>
+        function checkMultipleChoice(button) {
+            const question = button.parentElement;
+            const choices = question.querySelectorAll('.choice');
+            const feedback = question.querySelector('.feedback');
+            let selected = null;
+            let correct = false;
+
+            choices.forEach(choice => {
+                if (choice.classList.contains('selected')) {
+                    selected = choice;
+                    correct = choice.getAttribute('data-correct') === 'true';
+                }
+                choice.classList.remove('correct', 'incorrect', 'selected');
+            });
+
+            if (!selected) {
+                feedback.textContent = 'الرجاء اختيار إجابة أولاً.';
+                feedback.className = 'feedback show';
+                feedback.style.backgroundColor = '#fff3cd';
+                feedback.style.color = '#856404';
+                feedback.style.border = '1px solid #ffeaa7';
+                return;
+            }
+
+            if (correct) {
+                selected.classList.add('correct', 'selected');
+                feedback.textContent = 'إجابة صحيحة! أحسنت.';
+                feedback.className = 'feedback show';
+                feedback.style.backgroundColor = '#d4edda';
+                feedback.style.color = '#155724';
+                feedback.style.border = '1px solid #c3e6cb';
+            } else {
+                selected.classList.add('incorrect', 'selected');
+                feedback.textContent = 'إجابة خاطئة. حاول مرة أخرى.';
+                feedback.className = 'feedback show';
+                feedback.style.backgroundColor = '#f8d7da';
+                feedback.style.color = '#721c24';
+                feedback.style.border = '1px solid #f5c6cb';
+            }
+
+            // Show correct answer
+            choices.forEach(choice => {
+                if (choice.getAttribute('data-correct') === 'true') {
+                    choice.classList.add('correct');
+                }
+            });
+        }
+
+        function checkNumerical(button, correctAnswer) {
+            const question = button.parentElement;
+            const input = question.querySelector('.numerical-input');
+            const result = question.querySelector('.result');
+            const value = parseFloat(input.value);
+
+            if (isNaN(value)) {
+                result.textContent = 'الرجاء إدخال رقم.';
+                result.className = 'result incorrect';
+                return;
+            }
+
+            if (value === correctAnswer) {
+                result.textContent = 'إجابة صحيحة! أحسنت.';
+                result.className = 'result correct';
+            } else {
+                result.textContent = `إجابة خاطئة. الإجابة الصحيحة هي ${correctAnswer}.`;
+                result.className = 'result incorrect';
+            }
+        }
+
+        // Add click event to choices
+        document.querySelectorAll('.choice').forEach(choice => {
+            choice.addEventListener('click', function() {
+                const question = this.closest('.question');
+                question.querySelectorAll('.choice').forEach(c => {
+                    c.classList.remove('selected');
+                });
+                this.classList.add('selected');
+            });
+            
+            // Support for touch devices
+            choice.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            choice.addEventListener('touchend', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Prevent zoom on double tap for better mobile experience
+        document.addEventListener('dblclick', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        // Handle keyboard for numerical inputs on mobile
+        document.querySelectorAll('.numerical-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                // Scroll to input on focus for better mobile experience
+                setTimeout(() => {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

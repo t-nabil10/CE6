@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرض منزلي - الرياضيات للسادس ابتدائي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --success: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --border-radius: 12px;
+            --shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 15px;
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .student-info {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+        }
+        
+        .info-item i {
+            color: var(--primary);
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+            border-top: 5px solid var(--primary);
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .section-title i {
+            background-color: rgba(67, 97, 238, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+        
+        .numbers-list {
+            background: linear-gradient(to right, #e9ecef, #f8f9fa);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-align: center;
+            font-weight: bold;
+            color: var(--secondary);
+            border-right: 4px solid var(--success);
+            direction: ltr;
+        }
+        
+        .question-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-right: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+        
+        .question-card:hover {
+            background-color: #f0f5ff;
+        }
+        
+        .question-title {
+            color: var(--dark);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .question-title i {
+            color: var(--accent);
+        }
+        
+        .question-text {
+            margin-bottom: 15px;
+            color: #495057;
+            font-size: 1.05rem;
+        }
+        
+        .answer-btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            margin-top: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .answer-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(67, 97, 238, 0.3);
+        }
+        
+        .answer-btn i {
+            font-size: 1.1rem;
+        }
+        
+        .answer-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .answer-container.show {
+            max-height: 500px;
+        }
+        
+        .answer-box {
+            background-color: #e8f4fc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            border-right: 4px solid var(--success);
+        }
+        
+        .result {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--success);
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .explanation {
+            background-color: white;
+            padding: 18px;
+            border-radius: 8px;
+            border-right: 3px solid #ffc107;
+            margin-top: 15px;
+        }
+        
+        .explanation-title {
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .explanation-text {
+            color: #495057;
+            line-height: 1.7;
+        }
+        
+        .hint {
+            background-color: #fff3cd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            border-right: 3px solid #ffc107;
+            font-size: 0.95rem;
+            color: #856404;
+        }
+        
+        .hint i {
+            margin-left: 5px;
+            color: #ffc107;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            margin: 30px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .signature {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .signature-box {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .signature-line {
+            height: 1px;
+            background-color: #aaa;
+            margin: 10px 0;
+        }
+        
+        /* تصميم متجاوب للهواتف */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                padding: 18px;
+            }
+            
+            .question-card {
+                padding: 16px;
+            }
+            
+            .student-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .signature {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 1.1rem;
+            }
+            
+            .answer-btn {
+                padding: 12px 18px;
+                font-size: 0.95rem;
+            }
+            
+            .numbers-list {
+                font-size: 1rem;
+                padding: 12px;
+            }
+        }
+        
+        .math-icon {
+            color: var(--primary);
+            margin: 0 5px;
+        }
+        
+        .rule-box {
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .rule-title {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1><i class="fas fa-graduation-cap"></i> فرض منزلي في الرياضيات</h1>
+            <p class="subtitle">السادس ابتدائي</p>
+            <p class="subtitle">د. نبيل طاروس - مجموعة مدارس أم القرى</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="section-title">
+            <i class="fas fa-list-ol"></i>
+            <h2>التمرين الأول (3 نقاط)</h2>
+        </div>
+        
+        <div class="numbers-list">
+            <i class="fas fa-hashtag math-icon"></i>
+            الأعداد: 5031، 6012، 5940، 476، 530، 450، 447
+            <i class="fas fa-hashtag math-icon"></i>
+        </div>
+        
+        <div class="rule-box">
+            <div class="rule-title">قواعد القسمة:</div>
+            <div>• يقبل العدد القسمة على 2 إذا كان آحاده زوجياً (0, 2, 4, 6, 8)</div>
+            <div>• يقبل العدد القسمة على 3 إذا كان مجموع أرقامه يقبل القسمة على 3</div>
+            <div>• يقبل العدد القسمة على 5 إذا كان آحاده 0 أو 5</div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">
+                <i class="fas fa-question-circle"></i>
+                <span>1. الأعداد التي تقبل القسمة على 2 و 3 في آن واحد</span>
+            </div>
+            <button class="answer-btn" onclick="toggleAnswer('answer1')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer1" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">6012، 5940، 450</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>نبحث عن الأعداد التي تنطبق عليها شروط القسمة على 2 و 3 معاً:</p>
+                            <ul style="padding-right: 20px; margin-top: 10px;">
+                                <li><strong>6012</strong>: آحاده 2 (يقبل القسمة على 2)، مجموع أرقامه: 6+0+1+2=9 (9÷3=3، يقبل القسمة على 3)</li>
+                                <li><strong>5940</strong>: آحاده 0 (يقبل القسمة على 2)، مجموع أرقامه: 5+9+4+0=18 (18÷3=6، يقبل القسمة على 3)</li>
+                                <li><strong>450</strong>: آحاده 0 (يقبل القسمة على 2)، مجموع أرقامه: 4+5+0=9 (9÷3=3، يقبل القسمة على 3)</li>
+                            </ul>
+                            <p>باقي الأعداد لا تنطبق عليها الشروط معاً.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hint">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>تلميح:</strong> تذكر أن العدد يقبل القسمة على 2 و 3 معاً إذا كان زوجياً ومجموع أرقامه يقبل القسمة على 3.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">
+                <i class="fas fa-question-circle"></i>
+                <span>2. الأعداد التي تقبل القسمة على 2 و 5 في آن واحد</span>
+            </div>
+            <button class="answer-btn" onclick="toggleAnswer('answer2')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer2" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">5940، 530، 450</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>نبحث عن الأعداد التي تنطبق عليها شروط القسمة على 2 و 5 معاً:</p>
+                            <ul style="padding-right: 20px; margin-top: 10px;">
+                                <li><strong>5940</strong>: آحاده 0 (يقبل القسمة على 2 و 5 معاً)</li>
+                                <li><strong>530</strong>: آحاده 0 (يقبل القسمة على 2 و 5 معاً)</li>
+                                <li><strong>450</strong>: آحاده 0 (يقبل القسمة على 2 و 5 معاً)</li>
+                            </ul>
+                            <p>شرط القسمة على 2 و 5 معاً يكون عندما يكون آحاد العدد <strong>صفر</strong> فقط.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hint">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>تلميح:</strong> العدد يقبل القسمة على 2 و 5 معاً إذا كان آحاده صفراً (0).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">
+                <i class="fas fa-question-circle"></i>
+                <span>3. الأعداد التي تقبل القسمة على 2 و 3 في آن واحد وتقع بين 446 و 456</span>
+            </div>
+            <button class="answer-btn" onclick="toggleAnswer('answer3')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer3" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">450</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>الأعداد بين 446 و 456 هي: 447, 448, 449, 450, 451, 452, 453, 454, 455</p>
+                            <p>نفحص كل عدد:</p>
+                            <ul style="padding-right: 20px; margin-top: 10px;">
+                                <li><strong>447</strong>: آحاده 7 (فردي، لا يقبل القسمة على 2)</li>
+                                <li><strong>448</strong>: آحاده 8 (زوجي)، لكن مجموع أرقامه: 4+4+8=16 (16 لا تقبل القسمة على 3)</li>
+                                <li><strong>449</strong>: آحاده 9 (فردي، لا يقبل القسمة على 2)</li>
+                                <li><strong>450</strong>: آحاده 0 (زوجي)، مجموع أرقامه: 4+5+0=9 (9÷3=3، يقبل القسمة على 3)</li>
+                                <li>باقي الأعداد لا تنطبق عليها الشروط</li>
+                            </ul>
+                            <p>إذن العدد الوحيد الذي ينطبق عليه الشرط هو <strong>450</strong>.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hint">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>تلميح:</strong> عند البحث عن أعداد في مدى معين، افحص كل عدد على حدة لتتأكد من الشروط.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="container">
+        <div class="section-title">
+            <i class="fas fa-calculator"></i>
+            <h2>التمرين الثاني (7 نقاط)</h2>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">
+                <i class="fas fa-question-circle"></i>
+                <span>1. احسب ما يلي:</span>
+            </div>
+            
+            <div class="question-text">أ) 845 ÷ 2,6 = ؟</div>
+            <button class="answer-btn" onclick="toggleAnswer('answer4')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer4" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">325</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>للقسمة على عدد عشري، نضرب البسط والمقام في 10 لتخلص من الفاصلة:</p>
+                            <p>845 ÷ 2,6 = (845 × 10) ÷ (2,6 × 10) = 8450 ÷ 26</p>
+                            <p>الآن نقسم 8450 على 26:</p>
+                            <p>26 × 300 = 7800</p>
+                            <p>8450 - 7800 = 650</p>
+                            <p>26 × 25 = 650</p>
+                            <p>إذن: 300 + 25 = 325</p>
+                            <p>الجواب النهائي: 325</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-text">ب) 4013 + 125 × 3,4 - 2001 = ؟</div>
+            <button class="answer-btn" onclick="toggleAnswer('answer5')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer5" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">2437</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>نطبق أولوية العمليات: الضرب قبل الجمع والطرح</p>
+                            <p>الخطوة 1: 125 × 3,4 = 425</p>
+                            <p>الخطوة 2: 4013 + 425 = 4438</p>
+                            <p>الخطوة 3: 4438 - 2001 = 2437</p>
+                            <p>إذن: 4013 + 125 × 3,4 - 2001 = 4013 + 425 - 2001 = 2437</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hint">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>تلميح:</strong> تذكر قاعدة أولوية العمليات: الأقواس أولاً، ثم الضرب والقسمة، ثم الجمع والطرح.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-text">ج) (2735,48 + 193) - 159,4 = ؟</div>
+            <button class="answer-btn" onclick="toggleAnswer('answer6')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer6" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">2769,08</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>نحسب ما داخل الأقواس أولاً:</p>
+                            <p>2735,48 + 193 = 2928,48</p>
+                            <p>ثم نطرح 159,4 من النتيجة:</p>
+                            <p>2928,48 - 159,4 = 2769,08</p>
+                            <p>إذن: (2735,48 + 193) - 159,4 = 2928,48 - 159,4 = 2769,08</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">
+                <i class="fas fa-question-circle"></i>
+                <span>2. احسب باستعمال خاصية التوزيع: 161 × 98 = ؟</span>
+            </div>
+            <button class="answer-btn" onclick="toggleAnswer('answer7')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer7" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">15778</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>خاصية التوزيع تعني: أ × (ب - ج) = (أ × ب) - (أ × ج)</p>
+                            <p>نلاحظ أن 98 = 100 - 2</p>
+                            <p>إذن: 161 × 98 = 161 × (100 - 2)</p>
+                            <p>بتطبيق خاصية التوزيع: = (161 × 100) - (161 × 2)</p>
+                            <p>نحسب: 161 × 100 = 16100</p>
+                            <p>و: 161 × 2 = 322</p>
+                            <p>إذن: 16100 - 322 = 15778</p>
+                            <p>الجواب النهائي: 15778</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hint">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>تلميح:</strong> خاصية التوزيع تسهل عملية الضرب، خاصة عند ضرب عدد في عدد قريب من مضاعفات العشرة.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="container">
+        <div class="section-title">
+            <i class="fas fa-shapes"></i>
+            <h2>التمرين الثالث (10 نقاط)</h2>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">
+                <i class="fas fa-question-circle"></i>
+                <span>1. حساب محيط ومساحة مربع طول ضلعه 8,4 سم</span>
+            </div>
+            
+            <div class="question-text">المحيط (P) = ؟</div>
+            <button class="answer-btn" onclick="toggleAnswer('answer8')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer8" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">33,6 سم</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>محيط المربع = 4 × طول الضلع</p>
+                            <p>طول الضلع = 8,4 سم</p>
+                            <p>إذن: المحيط = 4 × 8,4 = 33,6 سم</p>
+                            <p>يمكن حسابها: 8,4 × 4 = 33,6</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-text">المساحة (A) = ؟</div>
+            <button class="answer-btn" onclick="toggleAnswer('answer9')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer9" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">70,56 سم²</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>مساحة المربع = طول الضلع × طول الضلع</p>
+                            <p>طول الضلع = 8,4 سم</p>
+                            <p>إذن: المساحة = 8,4 × 8,4</p>
+                            <p>لحساب 8,4 × 8,4: 84 × 84 = 7056</p>
+                            <p>نضيف فاصلتين عشرتين (لأن 8,4 فيه رقم واحد بعد الفاصلة، ونضربه في نفسه، فيصبح رقمين بعد الفاصلة)</p>
+                            <p>إذن: 8,4 × 8,4 = 70,56 سم²</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">
+                <i class="fas fa-question-circle"></i>
+                <span>2. مسألة السيدة فاطمة</span>
+            </div>
+            
+            <div class="question-text">أرض مستطيلة الشكل: الطول = 90 ديسيمتر = 9 أمتار، العرض = 10 أمتار</div>
+            
+            <div class="question-text">(أ) مساحة البقعة بالمتر المربع: ؟</div>
+            <button class="answer-btn" onclick="toggleAnswer('answer10')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer10" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">90 متر²</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>أولاً: نحول الديسيمتر إلى متر (1 متر = 10 ديسيمتر)</p>
+                            <p>إذن: 90 ديسيمتر = 90 ÷ 10 = 9 أمتار</p>
+                            <p>مساحة المستطيل = الطول × العرض</p>
+                            <p>الطول = 9 أمتار، العرض = 10 أمتار</p>
+                            <p>إذن: المساحة = 9 × 10 = 90 متر²</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-text">(ب) ثمن البقعة بالدرهم (سعر المتر² = 5000 درهم): ؟</div>
+            <button class="answer-btn" onclick="toggleAnswer('answer11')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer11" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">450,000 درهم</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>ثمن البقعة = المساحة × سعر المتر المربع</p>
+                            <p>المساحة = 90 متر²</p>
+                            <p>سعر المتر² = 5000 درهم</p>
+                            <p>إذن: الثمن = 90 × 5000 = 450,000 درهم</p>
+                            <p>لحساب 90 × 5000: 9 × 5 = 45 ثم نضيف الأصفار: 450,000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-text">(ج) المتر المطلوب لتسييج البقعة (المحيط): ؟</div>
+            <button class="answer-btn" onclick="toggleAnswer('answer12')">
+                <span>عرض الحل والتفسير</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="answer12" class="answer-container">
+                <div class="answer-box">
+                    <div class="result">38 متر</div>
+                    
+                    <div class="explanation">
+                        <div class="explanation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            التفسير:
+                        </div>
+                        <div class="explanation-text">
+                            <p>محيط المستطيل = 2 × (الطول + العرض)</p>
+                            <p>الطول = 9 أمتار، العرض = 10 أمتار</p>
+                            <p>إذن: المحيط = 2 × (9 + 10) = 2 × 19 = 38 متر</p>
+                            <p>هذا هو طول السياج المطلوب لتسييج البقعة من جميع الجهات.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>جميع الحقوق محفوظة © 2026 - مجموعة مدارس أم القرى</p>
+        <p>فرض منزلي في مادة الرياضيات - السادس ابتدائي</p>
+    </div>
+
+    <script>
+        function toggleAnswer(answerId) {
+            const answerContainer = document.getElementById(answerId);
+            const button = answerContainer.previousElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (answerContainer.classList.contains('show')) {
+                answerContainer.classList.remove('show');
+                button.querySelector('span').textContent = 'عرض الحل والتفسير';
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                answerContainer.classList.add('show');
+                button.querySelector('span').textContent = 'إخفاء الحل والتفسير';
+                icon.className = 'fas fa-chevron-up';
+            }
+        }
+        
+        // إغلاق جميع الإجابات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            const answerContainers = document.querySelectorAll('.answer-container');
+            answerContainers.forEach(container => {
+                container.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>

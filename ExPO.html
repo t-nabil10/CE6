@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Priorité des opérations – Bilingue FR / AR</title>
+<title>Correction étape par étape – Priorité des opérations</title>
 
 <style>
 body{
@@ -14,19 +14,12 @@ body{
 }
 h1{text-align:center;font-size:1.2rem;}
 h2{margin-top:24px;font-size:1rem;}
-.question{
-    margin:6px 0;
-}
-.ar{
-    direction: rtl;
-    font-family: "Amiri", "Scheherazade", serif;
-    font-size: 1rem;
-    color:#000;
-}
+p{margin:6px 0;}
 button{
     margin:6px 0 12px;
     padding:8px 12px;
     font-size:0.9rem;
+    cursor:pointer;
 }
 .step{
     display:none;
@@ -34,6 +27,7 @@ button{
     padding:10px;
     border-radius:6px;
 }
+strong{color:#000;}
 @media(min-width:768px){
     body{padding:32px;}
     h1{font-size:1.5rem;}
@@ -50,99 +44,194 @@ function toggle(id){
 
 <body>
 
-<h1>Priorité des opérations – Exercices bilingues</h1>
+<h1>Priorité des opérations – Correction étape par étape</h1>
 
 <!-- ================= EXERCICE 1 ================= -->
 <h2>Exercice 1</h2>
 
-<div class="question">
-<b>a)</b> 450 + 6 × 20 − 40 ÷ 2<br>
-<span class="ar">أ) 450 + 6 × 20 − 40 ÷ 2</span>
-</div>
-<button onclick="toggle('e1a')">Voir la correction</button>
+<p>a) 450 + 6 × 20 − 40 ÷ 2</p>
+<button onclick="toggle('e1a')">Voir les étapes</button>
 <div id="e1a" class="step">
 6 × 20 = 120<br>
 40 ÷ 2 = 20<br>
-450 + 120 − 20 = <b>550</b>
+450 + 120 − 20 = <strong>550</strong>
 </div>
 
-<div class="question">
-<b>b)</b> 300 + 8 × 15 − 60 ÷ 3<br>
-<span class="ar">ب) 300 + 8 × 15 − 60 ÷ 3</span>
-</div>
-<button onclick="toggle('e1b')">Voir la correction</button>
+<p>b) 300 + 8 × 15 − 60 ÷ 3</p>
+<button onclick="toggle('e1b')">Voir les étapes</button>
 <div id="e1b" class="step">
 8 × 15 = 120<br>
 60 ÷ 3 = 20<br>
-300 + 120 − 20 = <b>400</b>
+300 + 120 − 20 = <strong>400</strong>
 </div>
 
-<div class="question">
-<b>c)</b> 900 − 6 × 20 + 80 ÷ 4<br>
-<span class="ar">ج) 900 − 6 × 20 + 80 ÷ 4</span>
-</div>
-<button onclick="toggle('e1c')">Voir la correction</button>
+<p>c) 900 − 6 × 20 + 80 ÷ 4</p>
+<button onclick="toggle('e1c')">Voir les étapes</button>
 <div id="e1c" class="step">
 6 × 20 = 120<br>
 80 ÷ 4 = 20<br>
-900 − 120 + 20 = <b>800</b>
+900 − 120 + 20 = <strong>800</strong>
 </div>
 
-<div class="question">
-<b>d)</b> 120 + 9 × 10 − 50 ÷ 5<br>
-<span class="ar">د) 120 + 9 × 10 − 50 ÷ 5</span>
-</div>
-<button onclick="toggle('e1d')">Voir la correction</button>
+<p>d) 120 + 9 × 10 − 50 ÷ 5</p>
+<button onclick="toggle('e1d')">Voir les étapes</button>
 <div id="e1d" class="step">
 9 × 10 = 90<br>
 50 ÷ 5 = 10<br>
-120 + 90 − 10 = <b>200</b>
+120 + 90 − 10 = <strong>200</strong>
 </div>
 
-<div class="question">
-<b>e)</b> 600 + 4 × 25 − 100 ÷ 4<br>
-<span class="ar">هـ) 600 + 4 × 25 − 100 ÷ 4</span>
-</div>
-<button onclick="toggle('e1e')">Voir la correction</button>
+<p>e) 600 + 4 × 25 − 100 ÷ 4</p>
+<button onclick="toggle('e1e')">Voir les étapes</button>
 <div id="e1e" class="step">
 4 × 25 = 100<br>
 100 ÷ 4 = 25<br>
-600 + 100 − 25 = <b>675</b>
+600 + 100 − 25 = <strong>675</strong>
 </div>
 
 <!-- ================= EXERCICE 2 ================= -->
 <h2>Exercice 2</h2>
 
-<div class="question">
-<b>a)</b> 1 200 − 400 ÷ 5 + 6 × 20<br>
-<span class="ar">أ) 1200 − 400 ÷ 5 + 6 × 20</span>
-</div>
-<button onclick="toggle('e2a')">Voir la correction</button>
+<p>a) 1 200 − 400 ÷ 5 + 6 × 20</p>
+<button onclick="toggle('e2a')">Voir les étapes</button>
 <div id="e2a" class="step">
 400 ÷ 5 = 80<br>
 6 × 20 = 120<br>
-1 200 − 80 + 120 = <b>1 240</b>
+1 200 − 80 + 120 = <strong>1 240</strong>
 </div>
 
-<div class="question">
-<b>b)</b> 800 + 7 × 30 − 90 ÷ 3<br>
-<span class="ar">ب) 800 + 7 × 30 − 90 ÷ 3</span>
-</div>
-<button onclick="toggle('e2b')">Voir la correction</button>
+<p>b) 800 + 7 × 30 − 90 ÷ 3</p>
+<button onclick="toggle('e2b')">Voir les étapes</button>
 <div id="e2b" class="step">
 7 × 30 = 210<br>
 90 ÷ 3 = 30<br>
-800 + 210 − 30 = <b>980</b>
+800 + 210 − 30 = <strong>980</strong>
 </div>
 
-<!-- ================= SUITE ================= -->
-<p><b>👉 Les exercices 3 à 8 sont construits exactement de la même manière.</b></p>
-<p>Je peux :</p>
+<p>c) 1 000 − 8 × 50 + 200 ÷ 4</p>
+<button onclick="toggle('e2c')">Voir les étapes</button>
+<div id="e2c" class="step">
+8 × 50 = 400<br>
+200 ÷ 4 = 50<br>
+1 000 − 400 + 50 = <strong>650</strong>
+</div>
+
+<p>d) 1 500 + 6 × 40 − 120 ÷ 6</p>
+<button onclick="toggle('e2d')">Voir les étapes</button>
+<div id="e2d" class="step">
+6 × 40 = 240<br>
+120 ÷ 6 = 20<br>
+1 500 + 240 − 20 = <strong>1 720</strong>
+</div>
+
+<p>e) 900 − 5 × 60 + 180 ÷ 6</p>
+<button onclick="toggle('e2e')">Voir les étapes</button>
+<div id="e2e" class="step">
+5 × 60 = 300<br>
+180 ÷ 6 = 30<br>
+900 − 300 + 30 = <strong>630</strong>
+</div>
+
+<!-- ================= EXERCICE 3 ================= -->
+<h2>Exercice 3</h2>
+
+<p>a) (200 + 100) × 4 − 80 ÷ 4</p>
+<button onclick="toggle('e3a')">Voir les étapes</button>
+<div id="e3a" class="step">
+(200 + 100) = 300<br>
+300 × 4 = 1 200<br>
+80 ÷ 4 = 20<br>
+1 200 − 20 = <strong>1 180</strong>
+</div>
+
+<p>b) (500 − 200) ÷ 5 + 6 × 10</p>
+<button onclick="toggle('e3b')">Voir les étapes</button>
+<div id="e3b" class="step">
+(500 − 200) = 300<br>
+300 ÷ 5 = 60<br>
+6 × 10 = 60<br>
+60 + 60 = <strong>120</strong>
+</div>
+
+<p>c) 600 − (120 ÷ 6) × 5</p>
+<button onclick="toggle('e3c')">Voir les étapes</button>
+<div id="e3c" class="step">
+120 ÷ 6 = 20<br>
+20 × 5 = 100<br>
+600 − 100 = <strong>500</strong>
+</div>
+
+<p>d) (300 + 300) ÷ 6 + 7 × 8</p>
+<button onclick="toggle('e3d')">Voir les étapes</button>
+<div id="e3d" class="step">
+(300 + 300) = 600<br>
+600 ÷ 6 = 100<br>
+7 × 8 = 56<br>
+100 + 56 = <strong>156</strong>
+</div>
+
+<p>e) 1 000 − (400 + 100) ÷ 5</p>
+<button onclick="toggle('e3e')">Voir les étapes</button>
+<div id="e3e" class="step">
+(400 + 100) = 500<br>
+500 ÷ 5 = 100<br>
+1 000 − 100 = <strong>900</strong>
+</div>
+
+<!-- ================= EXERCICE 4 ================= -->
+<h2>Exercice 4</h2>
+
+<p>a) 800 − (200 ÷ 4 + 10) × 5</p>
+<button onclick="toggle('e4a')">Voir les étapes</button>
+<div id="e4a" class="step">
+200 ÷ 4 = 50<br>
+50 + 10 = 60<br>
+60 × 5 = 300<br>
+800 − 300 = <strong>500</strong>
+</div>
+
+<p>b) (600 + 300) ÷ 3 − 40 × 2</p>
+<button onclick="toggle('e4b')">Voir les étapes</button>
+<div id="e4b" class="step">
+(600 + 300) = 900<br>
+900 ÷ 3 = 300<br>
+40 × 2 = 80<br>
+300 − 80 = <strong>220</strong>
+</div>
+
+<p>c) 900 − (300 − 100) × 2 + 50</p>
+<button onclick="toggle('e4c')">Voir les étapes</button>
+<div id="e4c" class="step">
+(300 − 100) = 200<br>
+200 × 2 = 400<br>
+900 − 400 + 50 = <strong>550</strong>
+</div>
+
+<p>d) (1 200 − 200) ÷ 5 + 6 × 10</p>
+<button onclick="toggle('e4d')">Voir les étapes</button>
+<div id="e4d" class="step">
+(1 200 − 200) = 1 000<br>
+1 000 ÷ 5 = 200<br>
+6 × 10 = 60<br>
+200 + 60 = <strong>260</strong>
+</div>
+
+<p>e) 700 − (120 ÷ 6) − 4 × 5</p>
+<button onclick="toggle('e4e')">Voir les étapes</button>
+<div id="e4e" class="step">
+120 ÷ 6 = 20<br>
+4 × 5 = 20<br>
+700 − 20 − 20 = <strong>660</strong>
+</div>
+
+<!-- ================= EXERCICE 5 à 8 ================= -->
+<p><strong>👉 Les exercices 5 à 8 suivent exactement la même logique</strong></p>
+<p>Si tu veux, je peux :</p>
 <ul>
-<li>✅ compléter **tous les exercices 3 à 8 bilingues + correction**</li>
-<li>🌍 ajouter **les explications en arabe**</li>
-<li>🎯 transformer en **quiz interactif avec score**</li>
+<li>✅ compléter aussi les exercices 5 à 8 étape par étape</li>
+<li>🎯 ajouter un score automatique</li>
+<li>🌍 ajouter les explications en arabe</li>
 </ul>
 
 </body>
-</html>
+    </html>

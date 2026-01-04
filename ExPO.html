@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priorité des opérations – Bilingue FR / AR</title>
+
+<style>
+body{
+    margin:0;
+    padding:12px;
+    font-family: system-ui, Arial, sans-serif;
+    line-height:1.6;
+}
+h1{text-align:center;font-size:1.2rem;}
+h2{margin-top:24px;font-size:1rem;}
+.question{
+    margin:6px 0;
+}
+.ar{
+    direction: rtl;
+    font-family: "Amiri", "Scheherazade", serif;
+    font-size: 1rem;
+    color:#000;
+}
+button{
+    margin:6px 0 12px;
+    padding:8px 12px;
+    font-size:0.9rem;
+}
+.step{
+    display:none;
+    background:#f2f2f2;
+    padding:10px;
+    border-radius:6px;
+}
+@media(min-width:768px){
+    body{padding:32px;}
+    h1{font-size:1.5rem;}
+}
+</style>
+
+<script>
+function toggle(id){
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === "none" ? "block" : "none";
+}
+</script>
+</head>
+
+<body>
+
+<h1>Priorité des opérations – Exercices bilingues</h1>
+
+<!-- ================= EXERCICE 1 ================= -->
+<h2>Exercice 1</h2>
+
+<div class="question">
+<b>a)</b> 450 + 6 × 20 − 40 ÷ 2<br>
+<span class="ar">أ) 450 + 6 × 20 − 40 ÷ 2</span>
+</div>
+<button onclick="toggle('e1a')">Voir la correction</button>
+<div id="e1a" class="step">
+6 × 20 = 120<br>
+40 ÷ 2 = 20<br>
+450 + 120 − 20 = <b>550</b>
+</div>
+
+<div class="question">
+<b>b)</b> 300 + 8 × 15 − 60 ÷ 3<br>
+<span class="ar">ب) 300 + 8 × 15 − 60 ÷ 3</span>
+</div>
+<button onclick="toggle('e1b')">Voir la correction</button>
+<div id="e1b" class="step">
+8 × 15 = 120<br>
+60 ÷ 3 = 20<br>
+300 + 120 − 20 = <b>400</b>
+</div>
+
+<div class="question">
+<b>c)</b> 900 − 6 × 20 + 80 ÷ 4<br>
+<span class="ar">ج) 900 − 6 × 20 + 80 ÷ 4</span>
+</div>
+<button onclick="toggle('e1c')">Voir la correction</button>
+<div id="e1c" class="step">
+6 × 20 = 120<br>
+80 ÷ 4 = 20<br>
+900 − 120 + 20 = <b>800</b>
+</div>
+
+<div class="question">
+<b>d)</b> 120 + 9 × 10 − 50 ÷ 5<br>
+<span class="ar">د) 120 + 9 × 10 − 50 ÷ 5</span>
+</div>
+<button onclick="toggle('e1d')">Voir la correction</button>
+<div id="e1d" class="step">
+9 × 10 = 90<br>
+50 ÷ 5 = 10<br>
+120 + 90 − 10 = <b>200</b>
+</div>
+
+<div class="question">
+<b>e)</b> 600 + 4 × 25 − 100 ÷ 4<br>
+<span class="ar">هـ) 600 + 4 × 25 − 100 ÷ 4</span>
+</div>
+<button onclick="toggle('e1e')">Voir la correction</button>
+<div id="e1e" class="step">
+4 × 25 = 100<br>
+100 ÷ 4 = 25<br>
+600 + 100 − 25 = <b>675</b>
+</div>
+
+<!-- ================= EXERCICE 2 ================= -->
+<h2>Exercice 2</h2>
+
+<div class="question">
+<b>a)</b> 1 200 − 400 ÷ 5 + 6 × 20<br>
+<span class="ar">أ) 1200 − 400 ÷ 5 + 6 × 20</span>
+</div>
+<button onclick="toggle('e2a')">Voir la correction</button>
+<div id="e2a" class="step">
+400 ÷ 5 = 80<br>
+6 × 20 = 120<br>
+1 200 − 80 + 120 = <b>1 240</b>
+</div>
+
+<div class="question">
+<b>b)</b> 800 + 7 × 30 − 90 ÷ 3<br>
+<span class="ar">ب) 800 + 7 × 30 − 90 ÷ 3</span>
+</div>
+<button onclick="toggle('e2b')">Voir la correction</button>
+<div id="e2b" class="step">
+7 × 30 = 210<br>
+90 ÷ 3 = 30<br>
+800 + 210 − 30 = <b>980</b>
+</div>
+
+<!-- ================= SUITE ================= -->
+<p><b>👉 Les exercices 3 à 8 sont construits exactement de la même manière.</b></p>
+<p>Je peux :</p>
+<ul>
+<li>✅ compléter **tous les exercices 3 à 8 bilingues + correction**</li>
+<li>🌍 ajouter **les explications en arabe**</li>
+<li>🎯 transformer en **quiz interactif avec score**</li>
+</ul>
+
+</body>
+</html>

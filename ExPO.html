@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تصحيح تفاعلي – أسبقية العمليات</title>
+<title>Correction interactive – Priorité des opérations</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-/* ==== نفس روح القالب الذي أرسلته (مختصر للحجم) ==== */
 body{
-    font-family: system-ui, "Noto Sans Arabic", sans-serif;
-    background: #f3f4f6;
-    padding: 10px;
-    font-size: 14px;
+    font-family: system-ui, Arial, sans-serif;
+    background:#f3f4f6;
+    padding:10px;
+    font-size:14px;
 }
 .container{
-    max-width: 100%;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
-    overflow: hidden;
+    max-width:100%;
+    background:white;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    overflow:hidden;
 }
 header{
-    background: linear-gradient(135deg,#2563eb,#1e3a8a);
+    background:linear-gradient(135deg,#2563eb,#1e3a8a);
     color:white;
     padding:16px;
 }
 h1{font-size:1.3rem;}
 .subtitle{font-size:.9rem;opacity:.9}
+
 .content{padding:14px}
 
 .section{
@@ -43,8 +43,8 @@ h2{
     margin-bottom:10px;
     color:#1e3a8a;
     display:flex;
-    align-items:center;
     gap:6px;
+    align-items:center;
 }
 
 .question{
@@ -54,12 +54,6 @@ h2{
     padding:10px;
     margin-bottom:8px;
 }
-.question-content{
-    font-size:.95rem;
-}
-.fr{direction:ltr;text-align:left;font-weight:600}
-.ar{direction:rtl;font-weight:600}
-
 .answer-btn{
     background:linear-gradient(135deg,#2563eb,#1d4ed8);
     color:white;
@@ -73,7 +67,7 @@ h2{
 .answer{
     display:none;
     background:#ecfeff;
-    border-right:4px solid #0f766e;
+    border-left:4px solid #0f766e;
     padding:10px;
     margin-top:6px;
     border-radius:6px;
@@ -95,103 +89,215 @@ footer{
 <div class="container">
 
 <header>
-    <h1>أسبقية العمليات الحسابية</h1>
-    <div class="subtitle">Sixième année primaire – Correction interactive</div>
+<h1>Priorité des opérations</h1>
+<div class="subtitle">Sixième année primaire – Correction interactive</div>
 </header>
 
 <div class="content">
 
-<!-- ================== EXERCICE 1 ================== -->
+<!-- ================= EXERCICE 1 ================= -->
 <section class="section">
 <h2><i class="fas fa-calculator"></i> Exercice 1</h2>
 
 <div class="question">
-<div class="question-content fr">
 a) 450 + 6 × 20 − 40 ÷ 2
-</div>
-<div class="question-content ar">
-أ) 450 + 6 × 20 − 40 ÷ 2
-</div>
-<button class="answer-btn" onclick="toggleAnswer(1,event)">
-<i class="fas fa-eye"></i> عرض التصحيح
-</button>
+<button class="answer-btn" onclick="toggleAnswer(1,event)">Voir la correction</button>
 <div class="answer" id="answer1">
-<p><strong>Étape 1 / الخطوة 1:</strong> Calculer × et ÷</p>
-<p>6 × 20 = 120 &nbsp;|&nbsp; 40 ÷ 2 = 20</p>
-<p><strong>Étape 2 / الخطوة 2:</strong></p>
-<p>450 + 120 − 20</p>
-<p><strong>Résultat / النتيجة:</strong> <b>550</b></p>
+6 × 20 = 120<br>
+40 ÷ 2 = 20<br>
+450 + 120 − 20 = <b>550</b>
 </div>
 </div>
 
 <div class="question">
-<div class="question-content fr">
 b) 300 + 8 × 15 − 60 ÷ 3
-</div>
-<div class="question-content ar">
-ب) 300 + 8 × 15 − 60 ÷ 3
-</div>
-<button class="answer-btn" onclick="toggleAnswer(2,event)">
-<i class="fas fa-eye"></i> عرض التصحيح
-</button>
+<button class="answer-btn" onclick="toggleAnswer(2,event)">Voir la correction</button>
 <div class="answer" id="answer2">
-<p>8 × 15 = 120</p>
-<p>60 ÷ 3 = 20</p>
-<p>300 + 120 − 20 = <b>400</b></p>
+8 × 15 = 120<br>
+60 ÷ 3 = 20<br>
+300 + 120 − 20 = <b>400</b>
 </div>
 </div>
 </section>
 
-<!-- ================== EXERCICE 2 ================== -->
+<!-- ================= EXERCICE 2 ================= -->
 <section class="section">
 <h2><i class="fas fa-calculator"></i> Exercice 2</h2>
 
 <div class="question">
-<div class="question-content fr">
 a) 1 200 − 400 ÷ 5 + 6 × 20
-</div>
-<div class="question-content ar">
-أ) 1200 − 400 ÷ 5 + 6 × 20
-</div>
-<button class="answer-btn" onclick="toggleAnswer(3,event)">
-<i class="fas fa-eye"></i> عرض التصحيح
-</button>
+<button class="answer-btn" onclick="toggleAnswer(3,event)">Voir la correction</button>
 <div class="answer" id="answer3">
-<p>400 ÷ 5 = 80</p>
-<p>6 × 20 = 120</p>
-<p>1 200 − 80 + 120 = <b>1 240</b></p>
+400 ÷ 5 = 80<br>
+6 × 20 = 120<br>
+1 200 − 80 + 120 = <b>1 240</b>
 </div>
 </div>
 
 <div class="question">
-<div class="question-content fr">
 b) 800 + 7 × 30 − 90 ÷ 3
-</div>
-<div class="question-content ar">
-ب) 800 + 7 × 30 − 90 ÷ 3
-</div>
-<button class="answer-btn" onclick="toggleAnswer(4,event)">
-<i class="fas fa-eye"></i> عرض التصحيح
-</button>
+<button class="answer-btn" onclick="toggleAnswer(4,event)">Voir la correction</button>
 <div class="answer" id="answer4">
-<p>7 × 30 = 210</p>
-<p>90 ÷ 3 = 30</p>
-<p>800 + 210 − 30 = <b>980</b></p>
+7 × 30 = 210<br>
+90 ÷ 3 = 30<br>
+800 + 210 − 30 = <b>980</b>
 </div>
 </div>
 </section>
 
-<!-- ======= ملاحظة ======= -->
-<div class="section">
-<p><b>📌 ملاحظة تربوية:</b></p>
-<p>أسبقية العمليات: الأقواس ⟶ الضرب والقسمة ⟶ الجمع والطرح</p>
-<p class="ar">أسبقية العمليات: الأقواس ← الضرب والقسمة ← الجمع والطرح</p>
+<!-- ================= EXERCICE 3 ================= -->
+<section class="section">
+<h2><i class="fas fa-parentheses"></i> Exercice 3</h2>
+
+<div class="question">
+a) (200 + 100) × 4 − 80 ÷ 4
+<button class="answer-btn" onclick="toggleAnswer(5,event)">Voir la correction</button>
+<div class="answer" id="answer5">
+200 + 100 = 300<br>
+300 × 4 = 1 200<br>
+80 ÷ 4 = 20<br>
+1 200 − 20 = <b>1 180</b>
 </div>
+</div>
+
+<div class="question">
+b) (500 − 200) ÷ 5 + 6 × 10
+<button class="answer-btn" onclick="toggleAnswer(6,event)">Voir la correction</button>
+<div class="answer" id="answer6">
+500 − 200 = 300<br>
+300 ÷ 5 = 60<br>
+6 × 10 = 60<br>
+60 + 60 = <b>120</b>
+</div>
+</div>
+</section>
+
+<!-- ================= EXERCICE 4 ================= -->
+<section class="section">
+<h2><i class="fas fa-parentheses"></i> Exercice 4</h2>
+
+<div class="question">
+a) 800 − (200 ÷ 4 + 10) × 5
+<button class="answer-btn" onclick="toggleAnswer(7,event)">Voir la correction</button>
+<div class="answer" id="answer7">
+200 ÷ 4 = 50<br>
+50 + 10 = 60<br>
+60 × 5 = 300<br>
+800 − 300 = <b>500</b>
+</div>
+</div>
+
+<div class="question">
+b) (600 + 300) ÷ 3 − 40 × 2
+<button class="answer-btn" onclick="toggleAnswer(8,event)">Voir la correction</button>
+<div class="answer" id="answer8">
+600 + 300 = 900<br>
+900 ÷ 3 = 300<br>
+40 × 2 = 80<br>
+300 − 80 = <b>220</b>
+</div>
+</div>
+</section>
+
+<!-- ================= EXERCICE 5 ================= -->
+<section class="section">
+<h2><i class="fas fa-decimal"></i> Exercice 5 (Décimaux)</h2>
+
+<div class="question">
+a) 4,5 + 3 × 6 − 2
+<button class="answer-btn" onclick="toggleAnswer(9,event)">Voir la correction</button>
+<div class="answer" id="answer9">
+3 × 6 = 18<br>
+4,5 + 18 − 2 = <b>20,5</b>
+</div>
+</div>
+
+<div class="question">
+b) 12,8 − 4 ÷ 2 + 1,5
+<button class="answer-btn" onclick="toggleAnswer(10,event)">Voir la correction</button>
+<div class="answer" id="answer10">
+4 ÷ 2 = 2<br>
+12,8 − 2 + 1,5 = <b>12,3</b>
+</div>
+</div>
+</section>
+
+<!-- ================= EXERCICE 6 ================= -->
+<section class="section">
+<h2><i class="fas fa-decimal"></i> Exercice 6</h2>
+
+<div class="question">
+a) 18,6 − 4,2 ÷ 2 + 3
+<button class="answer-btn" onclick="toggleAnswer(11,event)">Voir la correction</button>
+<div class="answer" id="answer11">
+4,2 ÷ 2 = 2,1<br>
+18,6 − 2,1 + 3 = <b>19,5</b>
+</div>
+</div>
+
+<div class="question">
+b) 7,5 + 6 × 1,5 − 4
+<button class="answer-btn" onclick="toggleAnswer(12,event)">Voir la correction</button>
+<div class="answer" id="answer12">
+6 × 1,5 = 9<br>
+7,5 + 9 − 4 = <b>12,5</b>
+</div>
+</div>
+</section>
+
+<!-- ================= EXERCICE 7 ================= -->
+<section class="section">
+<h2><i class="fas fa-brackets"></i> Exercice 7</h2>
+
+<div class="question">
+a) (7,5 + 2,5) × 2 − 4
+<button class="answer-btn" onclick="toggleAnswer(13,event)">Voir la correction</button>
+<div class="answer" id="answer13">
+7,5 + 2,5 = 10<br>
+10 × 2 = 20<br>
+20 − 4 = <b>16</b>
+</div>
+</div>
+
+<div class="question">
+b) 10 − (4 + 1,5) × 2
+<button class="answer-btn" onclick="toggleAnswer(14,event)">Voir la correction</button>
+<div class="answer" id="answer14">
+4 + 1,5 = 5,5<br>
+5,5 × 2 = 11<br>
+10 − 11 = <b>−1</b>
+</div>
+</div>
+</section>
+
+<!-- ================= EXERCICE 8 ================= -->
+<section class="section">
+<h2><i class="fas fa-calculator"></i> Exercice 8</h2>
+
+<div class="question">
+a) 1 200 + 4 × 25 − 50
+<button class="answer-btn" onclick="toggleAnswer(15,event)">Voir la correction</button>
+<div class="answer" id="answer15">
+4 × 25 = 100<br>
+1 200 + 100 − 50 = <b>1 250</b>
+</div>
+</div>
+
+<div class="question">
+b) 2 000 − (300 + 100) ÷ 4
+<button class="answer-btn" onclick="toggleAnswer(16,event)">Voir la correction</button>
+<div class="answer" id="answer16">
+300 + 100 = 400<br>
+400 ÷ 4 = 100<br>
+2 000 − 100 = <b>1 900</b>
+</div>
+</div>
+</section>
 
 </div>
 
 <footer>
-تصحيح تفاعلي – أسبقية العمليات – السادس ابتدائي
+Correction interactive – Priorité des opérations – 6e année primaire
 </footer>
 
 </div>
@@ -199,13 +305,12 @@ b) 800 + 7 × 30 − 90 ÷ 3
 <script>
 function toggleAnswer(n,event){
     const ans=document.getElementById("answer"+n);
-    const btn=event.currentTarget;
     if(ans.classList.contains("show")){
         ans.classList.remove("show");
-        btn.innerHTML='<i class="fas fa-eye"></i> عرض التصحيح';
+        event.currentTarget.textContent="Voir la correction";
     }else{
         ans.classList.add("show");
-        btn.innerHTML='<i class="fas fa-eye-slash"></i> إخفاء التصحيح';
+        event.currentTarget.textContent="Masquer la correction";
     }
 }
 </script>

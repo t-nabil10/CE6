@@ -1,237 +1,214 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Correction étape par étape – Priorité des opérations</title>
+<title>تصحيح تفاعلي – أسبقية العمليات</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+/* ==== نفس روح القالب الذي أرسلته (مختصر للحجم) ==== */
 body{
-    margin:0;
+    font-family: system-ui, "Noto Sans Arabic", sans-serif;
+    background: #f3f4f6;
+    padding: 10px;
+    font-size: 14px;
+}
+.container{
+    max-width: 100%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    overflow: hidden;
+}
+header{
+    background: linear-gradient(135deg,#2563eb,#1e3a8a);
+    color:white;
+    padding:16px;
+}
+h1{font-size:1.3rem;}
+.subtitle{font-size:.9rem;opacity:.9}
+.content{padding:14px}
+
+.section{
+    background:#f8fafc;
+    border:1px solid #c7d2fe;
+    border-radius:10px;
     padding:12px;
-    font-family: system-ui, Arial, sans-serif;
-    line-height:1.6;
+    margin-bottom:14px;
 }
-h1{text-align:center;font-size:1.2rem;}
-h2{margin-top:24px;font-size:1rem;}
-p{margin:6px 0;}
-button{
-    margin:6px 0 12px;
-    padding:8px 12px;
-    font-size:0.9rem;
-    cursor:pointer;
+h2{
+    font-size:1.1rem;
+    margin-bottom:10px;
+    color:#1e3a8a;
+    display:flex;
+    align-items:center;
+    gap:6px;
 }
-.step{
-    display:none;
-    background:#f2f2f2;
+
+.question{
+    background:#eef2ff;
+    border:1px solid #c7d2fe;
+    border-radius:8px;
     padding:10px;
-    border-radius:6px;
+    margin-bottom:8px;
 }
-strong{color:#000;}
-@media(min-width:768px){
-    body{padding:32px;}
-    h1{font-size:1.5rem;}
+.question-content{
+    font-size:.95rem;
+}
+.fr{direction:ltr;text-align:left;font-weight:600}
+.ar{direction:rtl;font-weight:600}
+
+.answer-btn{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    border:none;
+    border-radius:999px;
+    padding:6px 12px;
+    font-size:.85rem;
+    cursor:pointer;
+    margin-top:6px;
+}
+.answer{
+    display:none;
+    background:#ecfeff;
+    border-right:4px solid #0f766e;
+    padding:10px;
+    margin-top:6px;
+    border-radius:6px;
+    font-size:.9rem;
+}
+.answer.show{display:block}
+
+footer{
+    background:#0f172a;
+    color:#e5e7eb;
+    text-align:center;
+    padding:10px;
+    font-size:.8rem;
 }
 </style>
-
-<script>
-function toggle(id){
-    const el = document.getElementById(id);
-    el.style.display = el.style.display === "none" ? "block" : "none";
-}
-</script>
 </head>
 
 <body>
+<div class="container">
 
-<h1>Priorité des opérations – Correction étape par étape</h1>
+<header>
+    <h1>أسبقية العمليات الحسابية</h1>
+    <div class="subtitle">Sixième année primaire – Correction interactive</div>
+</header>
 
-<!-- ================= EXERCICE 1 ================= -->
-<h2>Exercice 1</h2>
+<div class="content">
 
-<p>a) 450 + 6 × 20 − 40 ÷ 2</p>
-<button onclick="toggle('e1a')">Voir les étapes</button>
-<div id="e1a" class="step">
-6 × 20 = 120<br>
-40 ÷ 2 = 20<br>
-450 + 120 − 20 = <strong>550</strong>
+<!-- ================== EXERCICE 1 ================== -->
+<section class="section">
+<h2><i class="fas fa-calculator"></i> Exercice 1</h2>
+
+<div class="question">
+<div class="question-content fr">
+a) 450 + 6 × 20 − 40 ÷ 2
+</div>
+<div class="question-content ar">
+أ) 450 + 6 × 20 − 40 ÷ 2
+</div>
+<button class="answer-btn" onclick="toggleAnswer(1,event)">
+<i class="fas fa-eye"></i> عرض التصحيح
+</button>
+<div class="answer" id="answer1">
+<p><strong>Étape 1 / الخطوة 1:</strong> Calculer × et ÷</p>
+<p>6 × 20 = 120 &nbsp;|&nbsp; 40 ÷ 2 = 20</p>
+<p><strong>Étape 2 / الخطوة 2:</strong></p>
+<p>450 + 120 − 20</p>
+<p><strong>Résultat / النتيجة:</strong> <b>550</b></p>
+</div>
 </div>
 
-<p>b) 300 + 8 × 15 − 60 ÷ 3</p>
-<button onclick="toggle('e1b')">Voir les étapes</button>
-<div id="e1b" class="step">
-8 × 15 = 120<br>
-60 ÷ 3 = 20<br>
-300 + 120 − 20 = <strong>400</strong>
+<div class="question">
+<div class="question-content fr">
+b) 300 + 8 × 15 − 60 ÷ 3
+</div>
+<div class="question-content ar">
+ب) 300 + 8 × 15 − 60 ÷ 3
+</div>
+<button class="answer-btn" onclick="toggleAnswer(2,event)">
+<i class="fas fa-eye"></i> عرض التصحيح
+</button>
+<div class="answer" id="answer2">
+<p>8 × 15 = 120</p>
+<p>60 ÷ 3 = 20</p>
+<p>300 + 120 − 20 = <b>400</b></p>
+</div>
+</div>
+</section>
+
+<!-- ================== EXERCICE 2 ================== -->
+<section class="section">
+<h2><i class="fas fa-calculator"></i> Exercice 2</h2>
+
+<div class="question">
+<div class="question-content fr">
+a) 1 200 − 400 ÷ 5 + 6 × 20
+</div>
+<div class="question-content ar">
+أ) 1200 − 400 ÷ 5 + 6 × 20
+</div>
+<button class="answer-btn" onclick="toggleAnswer(3,event)">
+<i class="fas fa-eye"></i> عرض التصحيح
+</button>
+<div class="answer" id="answer3">
+<p>400 ÷ 5 = 80</p>
+<p>6 × 20 = 120</p>
+<p>1 200 − 80 + 120 = <b>1 240</b></p>
+</div>
 </div>
 
-<p>c) 900 − 6 × 20 + 80 ÷ 4</p>
-<button onclick="toggle('e1c')">Voir les étapes</button>
-<div id="e1c" class="step">
-6 × 20 = 120<br>
-80 ÷ 4 = 20<br>
-900 − 120 + 20 = <strong>800</strong>
+<div class="question">
+<div class="question-content fr">
+b) 800 + 7 × 30 − 90 ÷ 3
+</div>
+<div class="question-content ar">
+ب) 800 + 7 × 30 − 90 ÷ 3
+</div>
+<button class="answer-btn" onclick="toggleAnswer(4,event)">
+<i class="fas fa-eye"></i> عرض التصحيح
+</button>
+<div class="answer" id="answer4">
+<p>7 × 30 = 210</p>
+<p>90 ÷ 3 = 30</p>
+<p>800 + 210 − 30 = <b>980</b></p>
+</div>
+</div>
+</section>
+
+<!-- ======= ملاحظة ======= -->
+<div class="section">
+<p><b>📌 ملاحظة تربوية:</b></p>
+<p>أسبقية العمليات: الأقواس ⟶ الضرب والقسمة ⟶ الجمع والطرح</p>
+<p class="ar">أسبقية العمليات: الأقواس ← الضرب والقسمة ← الجمع والطرح</p>
 </div>
 
-<p>d) 120 + 9 × 10 − 50 ÷ 5</p>
-<button onclick="toggle('e1d')">Voir les étapes</button>
-<div id="e1d" class="step">
-9 × 10 = 90<br>
-50 ÷ 5 = 10<br>
-120 + 90 − 10 = <strong>200</strong>
 </div>
 
-<p>e) 600 + 4 × 25 − 100 ÷ 4</p>
-<button onclick="toggle('e1e')">Voir les étapes</button>
-<div id="e1e" class="step">
-4 × 25 = 100<br>
-100 ÷ 4 = 25<br>
-600 + 100 − 25 = <strong>675</strong>
+<footer>
+تصحيح تفاعلي – أسبقية العمليات – السادس ابتدائي
+</footer>
+
 </div>
 
-<!-- ================= EXERCICE 2 ================= -->
-<h2>Exercice 2</h2>
-
-<p>a) 1 200 − 400 ÷ 5 + 6 × 20</p>
-<button onclick="toggle('e2a')">Voir les étapes</button>
-<div id="e2a" class="step">
-400 ÷ 5 = 80<br>
-6 × 20 = 120<br>
-1 200 − 80 + 120 = <strong>1 240</strong>
-</div>
-
-<p>b) 800 + 7 × 30 − 90 ÷ 3</p>
-<button onclick="toggle('e2b')">Voir les étapes</button>
-<div id="e2b" class="step">
-7 × 30 = 210<br>
-90 ÷ 3 = 30<br>
-800 + 210 − 30 = <strong>980</strong>
-</div>
-
-<p>c) 1 000 − 8 × 50 + 200 ÷ 4</p>
-<button onclick="toggle('e2c')">Voir les étapes</button>
-<div id="e2c" class="step">
-8 × 50 = 400<br>
-200 ÷ 4 = 50<br>
-1 000 − 400 + 50 = <strong>650</strong>
-</div>
-
-<p>d) 1 500 + 6 × 40 − 120 ÷ 6</p>
-<button onclick="toggle('e2d')">Voir les étapes</button>
-<div id="e2d" class="step">
-6 × 40 = 240<br>
-120 ÷ 6 = 20<br>
-1 500 + 240 − 20 = <strong>1 720</strong>
-</div>
-
-<p>e) 900 − 5 × 60 + 180 ÷ 6</p>
-<button onclick="toggle('e2e')">Voir les étapes</button>
-<div id="e2e" class="step">
-5 × 60 = 300<br>
-180 ÷ 6 = 30<br>
-900 − 300 + 30 = <strong>630</strong>
-</div>
-
-<!-- ================= EXERCICE 3 ================= -->
-<h2>Exercice 3</h2>
-
-<p>a) (200 + 100) × 4 − 80 ÷ 4</p>
-<button onclick="toggle('e3a')">Voir les étapes</button>
-<div id="e3a" class="step">
-(200 + 100) = 300<br>
-300 × 4 = 1 200<br>
-80 ÷ 4 = 20<br>
-1 200 − 20 = <strong>1 180</strong>
-</div>
-
-<p>b) (500 − 200) ÷ 5 + 6 × 10</p>
-<button onclick="toggle('e3b')">Voir les étapes</button>
-<div id="e3b" class="step">
-(500 − 200) = 300<br>
-300 ÷ 5 = 60<br>
-6 × 10 = 60<br>
-60 + 60 = <strong>120</strong>
-</div>
-
-<p>c) 600 − (120 ÷ 6) × 5</p>
-<button onclick="toggle('e3c')">Voir les étapes</button>
-<div id="e3c" class="step">
-120 ÷ 6 = 20<br>
-20 × 5 = 100<br>
-600 − 100 = <strong>500</strong>
-</div>
-
-<p>d) (300 + 300) ÷ 6 + 7 × 8</p>
-<button onclick="toggle('e3d')">Voir les étapes</button>
-<div id="e3d" class="step">
-(300 + 300) = 600<br>
-600 ÷ 6 = 100<br>
-7 × 8 = 56<br>
-100 + 56 = <strong>156</strong>
-</div>
-
-<p>e) 1 000 − (400 + 100) ÷ 5</p>
-<button onclick="toggle('e3e')">Voir les étapes</button>
-<div id="e3e" class="step">
-(400 + 100) = 500<br>
-500 ÷ 5 = 100<br>
-1 000 − 100 = <strong>900</strong>
-</div>
-
-<!-- ================= EXERCICE 4 ================= -->
-<h2>Exercice 4</h2>
-
-<p>a) 800 − (200 ÷ 4 + 10) × 5</p>
-<button onclick="toggle('e4a')">Voir les étapes</button>
-<div id="e4a" class="step">
-200 ÷ 4 = 50<br>
-50 + 10 = 60<br>
-60 × 5 = 300<br>
-800 − 300 = <strong>500</strong>
-</div>
-
-<p>b) (600 + 300) ÷ 3 − 40 × 2</p>
-<button onclick="toggle('e4b')">Voir les étapes</button>
-<div id="e4b" class="step">
-(600 + 300) = 900<br>
-900 ÷ 3 = 300<br>
-40 × 2 = 80<br>
-300 − 80 = <strong>220</strong>
-</div>
-
-<p>c) 900 − (300 − 100) × 2 + 50</p>
-<button onclick="toggle('e4c')">Voir les étapes</button>
-<div id="e4c" class="step">
-(300 − 100) = 200<br>
-200 × 2 = 400<br>
-900 − 400 + 50 = <strong>550</strong>
-</div>
-
-<p>d) (1 200 − 200) ÷ 5 + 6 × 10</p>
-<button onclick="toggle('e4d')">Voir les étapes</button>
-<div id="e4d" class="step">
-(1 200 − 200) = 1 000<br>
-1 000 ÷ 5 = 200<br>
-6 × 10 = 60<br>
-200 + 60 = <strong>260</strong>
-</div>
-
-<p>e) 700 − (120 ÷ 6) − 4 × 5</p>
-<button onclick="toggle('e4e')">Voir les étapes</button>
-<div id="e4e" class="step">
-120 ÷ 6 = 20<br>
-4 × 5 = 20<br>
-700 − 20 − 20 = <strong>660</strong>
-</div>
-
-<!-- ================= EXERCICE 5 à 8 ================= -->
-<p><strong>👉 Les exercices 5 à 8 suivent exactement la même logique</strong></p>
-<p>Si tu veux, je peux :</p>
-<ul>
-<li>✅ compléter aussi les exercices 5 à 8 étape par étape</li>
-<li>🎯 ajouter un score automatique</li>
-<li>🌍 ajouter les explications en arabe</li>
-</ul>
+<script>
+function toggleAnswer(n,event){
+    const ans=document.getElementById("answer"+n);
+    const btn=event.currentTarget;
+    if(ans.classList.contains("show")){
+        ans.classList.remove("show");
+        btn.innerHTML='<i class="fas fa-eye"></i> عرض التصحيح';
+    }else{
+        ans.classList.add("show");
+        btn.innerHTML='<i class="fas fa-eye-slash"></i> إخفاء التصحيح';
+    }
+}
+</script>
 
 </body>
-    </html>
+</html>

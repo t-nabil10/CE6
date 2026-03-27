@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>قوة عدد | Puissance d'un nombre : cours et exercices interactifs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Noto Sans Arabic', 'Cairo', 'Tahoma', sans-serif;
+            background: linear-gradient(145deg, #f9f3e8 0%, #f0e7db 100%);
+            padding: 1.5rem;
+            color: #2d1f0c;
+        }
+
+        .main-card {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: rgba(255, 254, 248, 0.96);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+
+        /* header */
+        .hero-power {
+            background: linear-gradient(135deg, #2c1a0c, #4a2a12, #3b1f0a);
+            padding: 1.6rem 2rem;
+            color: #ffefcf;
+            border-bottom: 5px solid #fbbf24;
+        }
+
+        .hero-power h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero-power h1 i {
+            background: #f59e0b;
+            color: #2d1a07;
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge-pow {
+            background: #6b3e1a;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* 2 colonnes */
+        .power-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            padding: 1.8rem;
+        }
+
+        @media (max-width: 780px) {
+            .power-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.2rem;
+            }
+            body {
+                padding: 0.9rem;
+            }
+        }
+
+        .theory-card {
+            background: #ffffffdd;
+            border-radius: 1.5rem;
+            backdrop-filter: blur(2px);
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid #fde68a;
+        }
+
+        .card-title {
+            background: #fef3c7;
+            padding: 1rem 1.5rem;
+            border-bottom: 3px solid #f59e0b;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title i {
+            color: #d97706;
+        }
+
+        .card-inner {
+            padding: 1.5rem;
+        }
+
+        .def-box {
+            background: #fffbeb;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            border-right: 6px solid #f59e0b;
+            margin-bottom: 1.5rem;
+        }
+
+        .formula-block {
+            background: #fef9e3;
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .math-sample {
+            font-family: monospace;
+            font-size: 1.3rem;
+            background: #f5e9d3;
+            padding: 8px 16px;
+            border-radius: 28px;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .example-list {
+            background: #fff5e6;
+            border-radius: 1rem;
+            padding: 0.8rem 1.2rem;
+        }
+
+        .ex-item {
+            font-size: 1.1rem;
+            margin: 8px 0;
+        }
+
+        .interactive-card {
+            background: #fffcf5;
+            border-radius: 1.5rem;
+            border: 1px solid #fed7aa;
+            overflow: hidden;
+        }
+
+        .calc-header {
+            background: #e67e22;
+            color: white;
+            padding: 0.9rem 1.2rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .calc-body {
+            padding: 1.4rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        input, select {
+            padding: 10px 14px;
+            border-radius: 1rem;
+            border: 1px solid #e2b87a;
+            font-size: 1rem;
+            width: 100%;
+            transition: 0.2s;
+        }
+
+        input:focus {
+            border-color: #f59e0b;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(245,158,11,0.2);
+        }
+
+        .btn-calc {
+            background: linear-gradient(95deg, #e67e22, #d97316);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 12px;
+            border-radius: 2rem;
+            width: 100%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 6px;
+        }
+
+        .btn-calc:hover {
+            background: #b95f0e;
+            transform: translateY(-1px);
+        }
+
+        .result-area {
+            background: #f1f9ec;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-right: 5px solid #2b9348;
+            font-weight: 500;
+        }
+
+        .exercise-section {
+            margin: 0 1.8rem 1.8rem 1.8rem;
+            background: #fef9e3;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.6rem;
+            border: 1px solid #facc15;
+        }
+
+        .exo-question {
+            background: #ffffffc9;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            margin: 12px 0;
+        }
+
+        .btn-reveal {
+            background: #f59e0b;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.1s;
+        }
+
+        .btn-reveal:hover {
+            background: #d97706;
+        }
+
+        .answer-box {
+            display: none;
+            background: #eef2ff;
+            padding: 10px 14px;
+            border-radius: 16px;
+            margin-top: 12px;
+            border-right: 4px solid #2563eb;
+        }
+
+        .power-rules {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+            justify-content: center;
+        }
+
+        .rule-chip {
+            background: #f3e8d2;
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            background: #2c1a0c;
+            color: #fdebb3;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+        }
+        .highlight {
+            background: #fde047;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="main-card">
+    <div class="hero-power">
+        <h1>
+            <i class="fas fa-superscript"></i>
+            قوة عدد – Puissance d'un nombre
+        </h1>
+        <div class="hero-badges">
+            <span class="badge-pow"><i class="fas fa-times"></i> Aⁿ = A × A × ... (n fois)</span>
+            <span class="badge-pow"><i class="fas fa-calculator"></i> ² : مربع | ³ : مكعب</span>
+            <span class="badge-pow"><i class="fas fa-chart-line"></i> exposant · puissance · exponentiation</span>
+        </div>
+        <p style="margin-top: 12px; font-size:0.85rem;"><i class="fas fa-lightbulb"></i> تكرار ضرب العدد في نفسه يسمى <strong>قوة</strong>. الأساس هو العدد المكرر، والأس هو عدد مرات التكرار.</p>
+    </div>
+
+    <div class="power-grid">
+        <!-- القسم النظري: تعريف + أمثلة + ملاحظات -->
+        <div class="theory-card">
+            <div class="card-title">
+                <i class="fas fa-graduation-cap"></i>
+                <span>1) تعريف & أمثلة</span>
+            </div>
+            <div class="card-inner">
+                <div class="def-box">
+                    <i class="fas fa-arrow-right"></i> 
+                    <strong>حساب قوة عدد A</strong> هو تكرار ضرب هذا العدد في نفسه عدة مرات <strong class="highlight">n</strong>. نرمز له بـ: 
+                    <div style="font-size: 1.8rem; font-weight: bold; text-align: center; margin: 10px 0;">A<sup>n</sup></div>
+                    حيث <strong>A</strong> هو الأساس (base) و <strong>n</strong> هو الأس (exposant).
+                    <div style="margin-top: 8px;">أمثلة شائعة: A² (مربع العدد)، A³ (مكعب العدد).</div>
+                </div>
+
+                <div class="formula-block">
+                    <div style="font-weight:800;">📌 أمثلة أساسية:</div>
+                    <div class="math-sample">6² = 6 × 6 = 36</div>
+                    <div class="math-sample">5³ = 5 × 5 × 5 = 125</div>
+                    <div class="math-sample">2⁴ = 2×2×2×2 = 16</div>
+                    <div class="math-sample">10³ = 1000</div>
+                </div>
+
+                <div class="example-list">
+                    <i class="fas fa-comment-dots"></i> <strong>ملاحظات هامة:</strong>
+                    <ul style="margin-top: 8px; margin-right: 1.2rem;">
+                        <li>🔹 <strong>3²</strong> تقرأ: "ثلاثة أس إثنان" أو "ثلاثة مربع".</li>
+                        <li>🔹 <strong>4³</strong> تقرأ: "أربعة أس ثلاثة" أو "أربعة مكعب".</li>
+                        <li>🔹 <strong>A¹ = A</strong> (القوة الأولى تساوي العدد نفسه).</li>
+                        <li>🔹 <strong>A⁰ = 1</strong> (إذا كان A ≠ 0).</li>
+                        <li>🔹 الأس يعني عدد مرات الضرب التكراري.</li>
+                    </ul>
+                </div>
+                <div class="power-rules">
+                    <span class="rule-chip"><i class="fas fa-calculator"></i> 7² = 49</span>
+                    <span class="rule-chip"><i class="fas fa-cubes"></i> 2³ = 8</span>
+                    <span class="rule-chip"><i class="fas fa-chart-simple"></i> 1ⁿ = 1</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- حاسبة تفاعلية: حساب القوى -->
+        <div class="interactive-card">
+            <div class="calc-header">
+                <i class="fas fa-calculator"></i> آلة حاسبة: حساب القوى
+            </div>
+            <div class="calc-body">
+                <div class="input-group">
+                    <label><i class="fas fa-dice-d6"></i> العدد (الأساس) :</label>
+                    <input type="number" id="baseNumber" value="5" step="any" placeholder="مثال: 5">
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-arrow-up"></i> الأس (n) :</label>
+                    <input type="number" id="exponentNumber" value="3" step="1" placeholder="عدد صحيح">
+                </div>
+                <button class="btn-calc" id="powerCalcBtn"><i class="fas fa-play"></i> احسب القوة · Calculer</button>
+                <div id="powerResult" class="result-area" style="display: none;">
+                    <i class="fas fa-chart-line"></i> <span id="resultPowerText">---</span>
+                </div>
+                <p style="font-size: 0.7rem; margin-top: 12px; color: #7c5a2c;"><i class="fas fa-info-circle"></i> الأس عدد طبيعي (صحيح موجب). القوة تمثل الضرب المتكرر.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- تطبيق: تمرين مباشر من الدرس (د) -->
+    <div class="exercise-section">
+        <h3 style="display: flex; gap: 8px; margin-bottom: 12px;"><i class="fas fa-pen-ruler"></i> د) تطبيق : أحسب</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <!-- التمرين 1: 5² + 3³ -->
+            <div class="exo-question">
+                <p><strong>❶</strong> \( 5^2 + 3^3 \) = ?</p>
+                <button class="btn-reveal" data-ansid="ansEx1">عرض الحل <i class="fas fa-eye"></i></button>
+                <div id="ansEx1" class="answer-box">
+                    ✅ \(5^2 = 25\)   و   \(3^3 = 27\)  <br>
+                    ➜ \( 25 + 27 = \boxed{52} \)
+                </div>
+            </div>
+            <!-- التمرين 2: 7³ -->
+            <div class="exo-question">
+                <p><strong>❷</strong> \( 7^3 \) = ?</p>
+                <button class="btn-reveal" data-ansid="ansEx2">عرض الحل <i class="fas fa-eye"></i></button>
+                <div id="ansEx2" class="answer-box">
+                    ✅ \(7^3 = 7 \times 7 \times 7 = 49 \times 7 = \boxed{343}\)
+                </div>
+            </div>
+            <!-- التمرين 3: 8² -->
+            <div class="exo-question">
+                <p><strong>❸</strong> \( 8^2 \) = ?</p>
+                <button class="btn-reveal" data-ansid="ansEx3">عرض الحل <i class="fas fa-eye"></i></button>
+                <div id="ansEx3" class="answer-box">
+                    ✅ \(8^2 = 8 \times 8 = \boxed{64}\)
+                </div>
+            </div>
+            <!-- تمرين إضافي: 2⁵ + 4² -->
+            <div class="exo-question">
+                <p><strong>❹ إضافي:</strong> \( 2^5 + 4^2 \) = ?</p>
+                <button class="btn-reveal" data-ansid="ansEx4">عرض الحل <i class="fas fa-eye"></i></button>
+                <div id="ansEx4" class="answer-box">
+                    ✅ \(2^5 = 32\) ، \(4^2 = 16\) → \(32 + 16 = \boxed{48}\)
+                </div>
+            </div>
+            <!-- تمرين 10³ -->
+            <div class="exo-question">
+                <p><strong>❺</strong> \( 10^3 \) = ?</p>
+                <button class="btn-reveal" data-ansid="ansEx5">عرض الحل <i class="fas fa-eye"></i></button>
+                <div id="ansEx5" class="answer-box">
+                    ✅ \(10^3 = 10 \times 10 \times 10 = \boxed{1000}\)
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 10px; font-size:0.85rem; background:#fff0cf; padding: 6px; border-radius: 14px;"><i class="fas fa-microphone"></i> ملاحظة: 3² يقرأ "ثلاثة تربيع" أو "ثلاثة أس اثنين"، و 5³ يقرأ "خمسة تكعيب".</p>
+    </div>
+
+    <!-- Bonus : règles des puissances -->
+    <div style="padding: 0 1.8rem 1.5rem 1.8rem;">
+        <div style="background: #fef2e0; border-radius: 1.2rem; padding: 1rem 1.4rem;">
+            <h4><i class="fas fa-cog"></i> قوانين القوى (تذكير):</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-start; margin-top: 8px;">
+                <span class="rule-chip">A<sup>m</sup> × A<sup>n</sup> = A<sup>m+n</sup></span>
+                <span class="rule-chip">A<sup>m</sup> / A<sup>n</sup> = A<sup>m-n</sup></span>
+                <span class="rule-chip">(A<sup>m</sup>)<sup>n</sup> = A<sup>m×n</sup></span>
+                <span class="rule-chip">(A×B)<sup>n</sup> = A<sup>n</sup> × B<sup>n</sup></span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-superscript"></i> قوة عدد Aⁿ : A × A × ... (n مرة) | ² مربع · ³ مكعب | الأسس الصحيحة الموجبة
+    </footer>
+</div>
+
+<script>
+    // حاسبة القوى
+    const baseInput = document.getElementById('baseNumber');
+    const expInput = document.getElementById('exponentNumber');
+    const powerBtn = document.getElementById('powerCalcBtn');
+    const powerResultDiv = document.getElementById('powerResult');
+    const resultPowerSpan = document.getElementById('resultPowerText');
+
+    function computePower() {
+        let base = parseFloat(baseInput.value);
+        let exponent = parseInt(expInput.value, 10);
+        if (isNaN(base)) base = 0;
+        if (isNaN(exponent)) exponent = 0;
+        
+        if (exponent < 0) {
+            resultPowerSpan.innerHTML = `⚠️ الأس سالب (غير مدعوم في هذا الدرس الأساسي). لكن نتيجته = ${Math.pow(base, exponent).toFixed(6)}`;
+            powerResultDiv.style.display = 'block';
+            return;
+        }
+        
+        // حساب القوة بطريقة تكرار الضرب (لأغراض تعليمية)
+        let result = 1;
+        for (let i = 0; i < exponent; i++) {
+            result *= base;
+        }
+        if (exponent === 0) result = (base !== 0) ? 1 : (base === 0 ? 1 : 1); // 0^0 رياضياً غير معرف، لكننا نعطي 1 للبساطة
+        if (base === 0 && exponent === 0) result = 1; // توضيح
+        
+        let expression = `${base}${exponent === 1 ? '' : '^' + exponent}`;
+        if (exponent === 2) expression = `${base}²`;
+        if (exponent === 3) expression = `${base}³`;
+        
+        let steps = '';
+        if (exponent === 0) steps = ' (أي عدد غير صفري مرفوع للصفر يساوي 1)';
+        else if (exponent === 1) steps = ` = ${base}`;
+        else if (exponent <= 5) {
+            let terms = [];
+            for (let i=0; i<exponent; i++) terms.push(base);
+            steps = ` = ${terms.join(' × ')} = ${result}`;
+        } else steps = ` = ${result}`;
+        
+        resultPowerSpan.innerHTML = `<strong>${expression}</strong>${steps}`;
+        powerResultDiv.style.display = 'block';
+    }
+    
+    powerBtn.addEventListener('click', computePower);
+    
+    // عند تحميل الصفحة نعطي مثال أولي
+    window.addEventListener('DOMContentLoaded', () => {
+        baseInput.value = 5;
+        expInput.value = 3;
+        computePower();
+    });
+    
+    // أزرار إظهار الحلول للتمارين
+    const revealBtns = document.querySelectorAll('.btn-reveal');
+    revealBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const ansId = this.getAttribute('data-ansid');
+            const answerDiv = document.getElementById(ansId);
+            if (answerDiv.style.display === 'none' || answerDiv.style.display === '') {
+                answerDiv.style.display = 'block';
+                this.innerHTML = 'إخفاء الحل <i class="fas fa-eye-slash"></i>';
+            } else {
+                answerDiv.style.display = 'none';
+                this.innerHTML = 'عرض الحل <i class="fas fa-eye"></i>';
+            }
+        });
+    });
+    
+    // بداية كل الإجابات مخفية
+    document.querySelectorAll('.answer-box').forEach(el => el.style.display = 'none');
+    
+    // تفعيل عرض LaTeX بسيط عبر innerHTML (لا حاجة لمكتبة خارجية، لكننا نعرضها عادية)
+    // يمكن إضافة MathJax اختياري للجمال (ليس ضرورياً)
+    // إذا أردنا عرض رياضي أجمل، لكن النص عادي يعمل جيداً.
+</script>
+</body>
+</html>

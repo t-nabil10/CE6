@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>خصائص الأشكال الهندسية الاعتيادية | المستطيل · متوازي الأضلاع · المعين · المربع</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Noto Sans Arabic', 'Cairo', sans-serif;
+            background: linear-gradient(145deg, #eef2ff 0%, #e0e7ff 100%);
+            color: #0a0c1a;
+            padding: 1.2rem;
+            line-height: 1.55;
+        }
+
+        .main-card {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+        }
+
+        /* رأس الصفحة */
+        .hero {
+            background: linear-gradient(135deg, #0f2b3d, #1e3a5f, #0a2540);
+            padding: 1.5rem 1.8rem;
+            color: white;
+            border-bottom: 4px solid #facc15;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 i {
+            background: #facc15;
+            color: #0f2b3d;
+            padding: 8px;
+            border-radius: 18px;
+            font-size: 1.4rem;
+        }
+
+        .hero p {
+            margin-top: 8px;
+            opacity: 0.85;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: #2d4a6e;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* المحتوى */
+        .grid-shapes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.6rem;
+            padding: 1.8rem;
+        }
+
+        .shape-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.12);
+            border: 1px solid #e2e8f0;
+        }
+
+        .shape-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 32px -16px rgba(0, 0, 0, 0.2);
+        }
+
+        .shape-header {
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-bottom: 3px solid;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .shape-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .shape-sub {
+            font-size: 0.9rem;
+            color: #2c3e66;
+            font-weight: 500;
+        }
+
+        .shape-body {
+            padding: 1.2rem 1.5rem 1.5rem;
+        }
+
+        .properties-list {
+            list-style: none;
+            margin: 0.8rem 0;
+        }
+
+        .properties-list li {
+            margin-bottom: 10px;
+            padding-right: 24px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .properties-list li i {
+            position: absolute;
+            right: 0;
+            top: 3px;
+            color: #3b82f6;
+            width: 20px;
+        }
+
+        .extra-prop {
+            background: #f1f5f9;
+            border-radius: 1rem;
+            padding: 12px 16px;
+            margin: 12px 0 8px;
+            border-right: 5px solid #facc15;
+        }
+
+        .btn-show {
+            background: #1e3a8a;
+            border: none;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 32px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .btn-show:hover {
+            background: #2563eb;
+            transform: scale(0.97);
+        }
+
+        .detail-box {
+            display: none;
+            background: #fefce8;
+            padding: 14px;
+            margin-top: 14px;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            border: 1px solid #eab308;
+        }
+
+        .detail-box.show {
+            display: block;
+            animation: fadeSlide 0.3s ease;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .remark {
+            font-size: 0.85rem;
+            background: #e6f7ec;
+            padding: 8px 12px;
+            border-radius: 12px;
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #166534;
+        }
+
+        .divider-custom {
+            margin: 0.5rem 0 1rem;
+            height: 2px;
+            background: linear-gradient(90deg, #cbd5e1, #94a3b8, #cbd5e1);
+        }
+
+        footer {
+            background: #0f172a;
+            color: #cbd5e6;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+            border-top: 1px solid #334155;
+        }
+
+        @media (max-width: 680px) {
+            body {
+                padding: 0.8rem;
+            }
+            .shape-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+            .grid-shapes {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main-card">
+    <div class="hero">
+        <h1>
+            <i class="fas fa-shapes"></i> 
+            خصائص الأشكال الهندسية الاعتيادية
+        </h1>
+        <p>
+            <span class="badge"><i class="fas fa-draw-polygon"></i> المستطيل · متوازي الأضلاع · المعين · المربع</span>
+            <span class="badge"><i class="fas fa-language"></i> Rectangle – Parallelogramme – Losange – Carré</span>
+        </p>
+        <p style="font-size:0.85rem"><i class="fas fa-graduation-cap"></i> كل شكل له خصائصه المميزة — استكشف الخصائص بالضغط على الأزرار.</p>
+    </div>
+
+    <div class="grid-shapes">
+        
+        <!-- 1. المستطيل - RECTANGLE -->
+        <div class="shape-card">
+            <div class="shape-header" style="border-bottom-color: #3b82f6;">
+                <span class="shape-title">📐 المستطيل</span>
+                <span class="shape-sub">Rectangle</span>
+            </div>
+            <div class="shape-body">
+                <ul class="properties-list">
+                    <li><i class="fas fa-arrow-right"></i> <strong>كل ضلعين متقابلين</strong> متقايسان ومتوازيان.</li>
+                    <li><i class="fas fa-square"></i> <strong>أربع زوايا قائمة</strong> (90°).</li>
+                    <li><i class="fas fa-chalkboard-user"></i> <strong>قطران متساويان</strong> ويتقاطعان في المنتصف.</li>
+                </ul>
+                <div class="extra-prop">
+                    <i class="fas fa-ruler-combined"></i> المستطيل هو حالة خاصة من متوازي الأضلاع زواياه قائمة.
+                </div>
+                <button class="btn-show" data-target="detail-rect"><i class="fas fa-eye"></i> عرض تمثيل توضيحي</button>
+                <div id="detail-rect" class="detail-box">
+                    <i class="fas fa-image"></i> <strong>تمثيل المستطيل:</strong><br>
+                    ◻️ AB = CD , AD = BC <br>
+                    🔸 AC = BD (القطران متساويان)<br>
+                    🔹 كل ضلعين متقابلين متوازيين: (AB) // (CD) و (AD) // (BC)
+                </div>
+                <div class="remark">
+                    <i class="fas fa-lightbulb"></i> خاصية إضافية: المستطيل هو متوازي أضلاع له زاوية قائمة ↔ جميع الزوايا قائمة.
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <footer>
+        <i class="fas fa-shapes"></i>  الأشكال الهندسية الاعتيادية — المستطيل، متوازي الأضلاع، المعين، المربع  
+        <span style="margin:0 8px">|</span>  Rectangle | Parallélogramme | Losange | Carré  
+        <br>© درس تفاعلي — خصائص وتمارين
+    </footer>
+</div>
+
+<script>
+    // التحكم في إظهار/إخفاء الصناديق التفصيلية لكل شكل
+    const btns = document.querySelectorAll('.btn-show');
+    btns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('data-target');
+            const detailDiv = document.getElementById(targetId);
+            if (detailDiv) {
+                detailDiv.classList.toggle('show');
+                if (detailDiv.classList.contains('show')) {
+                    this.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء التفاصيل';
+                } else {
+                    this.innerHTML = '<i class="fas fa-eye"></i> عرض تمثيل توضيحي';
+                }
+            }
+        });
+    });
+
+    // التحكم في أزرار الأسئلة (quiz)
+    const quizBtns = document.querySelectorAll('.quiz-toggle');
+    quizBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const ansId = this.getAttribute('data-ans');
+            const answerDiv = document.getElementById(ansId);
+            if (answerDiv) {
+                if (answerDiv.style.display === 'none' || getComputedStyle(answerDiv).display === 'none') {
+                    answerDiv.style.display = 'block';
+                    this.innerHTML = '<i class="fas fa-times-circle"></i> إخفاء';
+                } else {
+                    answerDiv.style.display = 'none';
+                    this.innerHTML = '<i class="fas fa-comment-dots"></i> الإجابة';
+                }
+            }
+        });
+    });
+
+    // للتأكد من أن جميع الإجابات تبدأ مخفية (تأمين)
+    document.querySelectorAll('.quiz-answer').forEach(el => el.style.display = 'none');
+    // الصناديق التفصيلية مخفية افتراضياً
+    document.querySelectorAll('.detail-box').forEach(el => el.classList.remove('show'));
+    // تصحيح الأزرار الأولية (نصها)
+    document.querySelectorAll('.btn-show').forEach(btn => {
+        if(!btn.innerHTML.includes('إخفاء')) btn.innerHTML = '<i class="fas fa-eye"></i> عرض تمثيل توضيحي';
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>خصائص الأشكال الهندسية الاعتيادية | المستطيل · متوازي الأضلاع · المعين · المربع</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Noto Sans Arabic', 'Cairo', sans-serif;
+            background: linear-gradient(145deg, #eef2ff 0%, #e0e7ff 100%);
+            color: #0a0c1a;
+            padding: 1.2rem;
+            line-height: 1.55;
+        }
+
+        .main-card {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+        }
+
+        /* رأس الصفحة */
+        .hero {
+            background: linear-gradient(135deg, #0f2b3d, #1e3a5f, #0a2540);
+            padding: 1.5rem 1.8rem;
+            color: white;
+            border-bottom: 4px solid #facc15;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 i {
+            background: #facc15;
+            color: #0f2b3d;
+            padding: 8px;
+            border-radius: 18px;
+            font-size: 1.4rem;
+        }
+
+        .hero p {
+            margin-top: 8px;
+            opacity: 0.85;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: #2d4a6e;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* المحتوى */
+        .grid-shapes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.6rem;
+            padding: 1.8rem;
+        }
+
+        .shape-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.12);
+            border: 1px solid #e2e8f0;
+        }
+
+        .shape-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 32px -16px rgba(0, 0, 0, 0.2);
+        }
+
+        .shape-header {
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-bottom: 3px solid;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .shape-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .shape-sub {
+            font-size: 0.9rem;
+            color: #2c3e66;
+            font-weight: 500;
+        }
+
+        .shape-body {
+            padding: 1.2rem 1.5rem 1.5rem;
+        }
+
+        .properties-list {
+            list-style: none;
+            margin: 0.8rem 0;
+        }
+
+        .properties-list li {
+            margin-bottom: 10px;
+            padding-right: 24px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .properties-list li i {
+            position: absolute;
+            right: 0;
+            top: 3px;
+            color: #3b82f6;
+            width: 20px;
+        }
+
+        .extra-prop {
+            background: #f1f5f9;
+            border-radius: 1rem;
+            padding: 12px 16px;
+            margin: 12px 0 8px;
+            border-right: 5px solid #facc15;
+        }
+
+        .btn-show {
+            background: #1e3a8a;
+            border: none;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 32px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .btn-show:hover {
+            background: #2563eb;
+            transform: scale(0.97);
+        }
+
+        .detail-box {
+            display: none;
+            background: #fefce8;
+            padding: 14px;
+            margin-top: 14px;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            border: 1px solid #eab308;
+        }
+
+        .detail-box.show {
+            display: block;
+            animation: fadeSlide 0.3s ease;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .remark {
+            font-size: 0.85rem;
+            background: #e6f7ec;
+            padding: 8px 12px;
+            border-radius: 12px;
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #166534;
+        }
+
+        .divider-custom {
+            margin: 0.5rem 0 1rem;
+            height: 2px;
+            background: linear-gradient(90deg, #cbd5e1, #94a3b8, #cbd5e1);
+        }
+
+        footer {
+            background: #0f172a;
+            color: #cbd5e6;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+            border-top: 1px solid #334155;
+        }
+
+        @media (max-width: 680px) {
+            body {
+                padding: 0.8rem;
+            }
+            .shape-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+            .grid-shapes {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main-card">
+    <div class="hero">
+        <h1>
+            <i class="fas fa-shapes"></i> 
+            خصائص الأشكال الهندسية الاعتيادية
+        </h1>
+        <p>
+            <span class="badge"><i class="fas fa-draw-polygon"></i> المستطيل · متوازي الأضلاع · المعين · المربع</span>
+            <span class="badge"><i class="fas fa-language"></i> Rectangle – Parallelogramme – Losange – Carré</span>
+        </p>
+        <p style="font-size:0.85rem"><i class="fas fa-graduation-cap"></i> كل شكل له خصائصه المميزة — استكشف الخصائص بالضغط على الأزرار.</p>
+    </div>
+
+    <div class="grid-shapes">
+        
+        
+        <!-- 3. المعين - LOSANGE (Rhombus) -->
+        <div class="shape-card">
+            <div class="shape-header" style="border-bottom-color: #f59e0b;">
+                <span class="shape-title">💎 المعين</span>
+                <span class="shape-sub">Losange / Rhombus</span>
+            </div>
+            <div class="shape-body">
+                <ul class="properties-list">
+                    <li><i class="fas fa-cubes"></i> المعين هو <strong>متوازي أضلاع</strong> → له جميع خاصيات متوازي الأضلاع.</li>
+                    <li><i class="fas fa-border-all"></i> <strong>أربع أضلاع متساوية</strong> في الطول.</li>
+                    <li><i class="fas fa-crosshairs"></i> <strong>القطران متعامدان</strong> (يتقاطعان بزاوية قائمة).</li>
+                </ul>
+                <div class="extra-prop">
+                    <i class="fas fa-vector-square"></i> قطري المعين ينصفان الزوايا الداخلية.
+                </div>
+                <button class="btn-show" data-target="detail-los"><i class="fas fa-eye"></i> شرح خاصية القطرين</button>
+                <div id="detail-los" class="detail-box">
+                    📐 <strong>المعين = متوازي أضلاع + أضلاعه كلها متساوية</strong><br>
+                    🔲 القطران متعامدان: d₁ ⟂ d₂.<br>
+                    ✨ مساحة المعين = (حاصل ضرب القطرين) / 2.
+                </div>
+                <div class="remark">
+                    <i class="fas fa-gem"></i> المعين يسمى "diamond" في الإنجليزية، له تماثل انعكاسي وقطري.
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. المربع - CARRÉ -->
+        <div class="shape-card">
+            <div class="shape-header" style="border-bottom-color: #dc2626;">
+                <span class="shape-title">⬛ المربع</span>
+                <span class="shape-sub">Carré / Square</span>
+            </div>
+            <div class="shape-body">
+                <ul class="properties-list">
+                    <li><i class="fas fa-star-of-life"></i> المربع هو <strong>مستطيل ومعين</strong> في نفس الوقت.</li>
+                    <li><i class="fas fa-check-double"></i> يمتلك جميع خصائص المستطيل <strong>و</strong> جميع خصائص المعين.</li>
+                    <li><i class="fas fa-gripfire"></i> إذن: أضلاعه الأربعة متساوية، زواياه قائمة، قطراه متساويان ومتعامدان وينصف كل منهما الآخر.</li>
+                </ul>
+                <div class="extra-prop">
+                    <i class="fas fa-crown"></i> المربع هو أضبط الأشكال الرباعية المنتظمة.
+                </div>
+                <button class="btn-show" data-target="detail-sqr"><i class="fas fa-eye"></i> خاصيات مجمعة</button>
+                <div id="detail-sqr" class="detail-box">
+                    🔹 <strong>خواص المستطيل:</strong> زوايا قائمة، أقطار متساوية.<br>
+                    🔸 <strong>خواص المعين:</strong> أضلاع متساوية، أقطار متعامدة.<br>
+                    ✅ النتيجة: في المربع → الأقطار متساوية، متعامدة، وتنصف الزوايا.
+                </div>
+                <div class="remark">
+                    <i class="fas fa-brain"></i> المربع يجمع بين الكمال: متوازي أضلاع + مستطيل + معين.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم إضافي تفاعلي: جدول مقارنة سريع مع أسئلة -->
+    <div style="padding: 0 1.8rem 1.8rem 1.8rem;">
+        <div style="background: #f9fafb; border-radius: 1.8rem; padding: 1.4rem 1.6rem; border: 1px solid #cbd5e1;">
+            <h2 style="display: flex; align-items: center; gap: 12px; color: #0f172a; margin-bottom: 1rem;">
+                <i class="fas fa-question-circle" style="color:#2563eb;"></i> 
+                اختبر فهمك: أي شكل هندسي؟
+            </h2>
+            <div class="quiz-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- السؤال 1 -->
+                <div class="quiz-item" style="background: white; border-radius: 1rem; padding: 0.8rem 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <span><strong>س 1:</strong> شكل له أربع أضلاع متساوية وقطراه متعامدان، لكن زواياه ليست قائمة بالضرورة. ما هو؟</span>
+                        <button class="quiz-toggle" data-ans="ans1" style="background: #334155; border: none; color: white; padding: 5px 14px; border-radius: 30px; cursor: pointer; font-size: 0.8rem;"><i class="fas fa-comment-dots"></i> الإجابة</button>
+                    </div>
+                    <div id="ans1" class="quiz-answer" style="display: none; margin-top: 12px; background: #eef2ff; padding: 8px 12px; border-radius: 14px;">
+                        ✅ <strong>المعين (Losange).</strong> لأنه متوازي أضلاع جميع أضلاعه متساوية وأقطاره متعامدة، لكن زواياه قد تكون حادة أو منفرجة وليست بالضرورة 90°.
+                    </div>
+                </div>
+                <!-- السؤال 2 -->
+                <div class="quiz-item" style="background: white; border-radius: 1rem; padding: 0.8rem 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <span><strong>س 2:</strong> شكل قطراه متساويان، وجميع زواياه قائمة، ولكنه ليس بالضرورة متساوي الأضلاع. حدد الشكل.</span>
+                        <button class="quiz-toggle" data-ans="ans2" style="background: #334155; border: none; color: white; padding: 5px 14px; border-radius: 30px; cursor: pointer; font-size: 0.8rem;"><i class="fas fa-comment-dots"></i> الإجابة</button>
+                    </div>
+                    <div id="ans2" class="quiz-answer" style="display: none; margin-top: 12px; background: #eef2ff; padding: 8px 12px; border-radius: 14px;">
+                        ✅ <strong>المستطيل (Rectangle).</strong> يتميز بأربع زوايا قائمة وأقطار متساوية، لكن الأضلاع المتقابلة متساوية وليست كلها متساوية إلا إذا كان مربعًا.
+                    </div>
+                </div>
+                <!-- السؤال 3 -->
+                <div class="quiz-item" style="background: white; border-radius: 1rem; padding: 0.8rem 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <span><strong>س 3:</strong> أي شكل يملك جميع خصائص المستطيل وجميع خصائص المعين؟</span>
+                        <button class="quiz-toggle" data-ans="ans3" style="background: #334155; border: none; color: white; padding: 5px 14px; border-radius: 30px; cursor: pointer; font-size: 0.8rem;"><i class="fas fa-comment-dots"></i> الإجابة</button>
+                    </div>
+                    <div id="ans3" class="quiz-answer" style="display: none; margin-top: 12px; background: #eef2ff; padding: 8px 12px; border-radius: 14px;">
+                        ✅ <strong>المربع (Carré).</strong> يجمع بين خصائص المستطيل (زوايا قائمة، أقطار متساوية) وخصائص المعين (أربع أضلاع متساوية، أقطار متعامدة).
+                    </div>
+                </div>
+                <!-- السؤال 4 -->
+                <div class="quiz-item" style="background: white; border-radius: 1rem; padding: 0.8rem 1.2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                        <span><strong>س 4:</strong> في متوازي الأضلاع، القطران يتقاطعان في المنتصف. هل هذه الخاصية صحيحة للمستطيل والمعين والمربع؟</span>
+                        <button class="quiz-toggle" data-ans="ans4" style="background: #334155; border: none; color: white; padding: 5px 14px; border-radius: 30px; cursor: pointer; font-size: 0.8rem;"><i class="fas fa-comment-dots"></i> الإجابة</button>
+                    </div>
+                    <div id="ans4" class="quiz-answer" style="display: none; margin-top: 12px; background: #eef2ff; padding: 8px 12px; border-radius: 14px;">
+                        ✅ <strong>نعم، جميعها.</strong> لأن المستطيل والمعين والمربع كلها حالات خاصة من متوازي الأضلاع، وبالتالي خاصية تنصيف الأقطار تنطبق عليها.
+                    </div>
+                </div>
+            </div>
+            <div class="remark" style="margin-top: 18px; background: #e6f0ff;">
+                <i class="fas fa-chalkboard"></i> <strong>تذكير هام:</strong> المربع هو حالة خاصة من المستطيل (لأن زواياه قائمة) وحالة خاصة من المعين (لأن أضلاعه متساوية).
+            </div>
+        </div>
+    </div>
+
+    
+    </div>
+
+    <footer>
+        <i class="fas fa-shapes"></i>  الأشكال الهندسية الاعتيادية — المستطيل، متوازي الأضلاع، المعين، المربع  
+        <span style="margin:0 8px">|</span>  Rectangle | Parallélogramme | Losange | Carré  
+        <br>© درس تفاعلي — خصائص وتمارين
+    </footer>
+</div>
+
+<script>
+    // التحكم في إظهار/إخفاء الصناديق التفصيلية لكل شكل
+    const btns = document.querySelectorAll('.btn-show');
+    btns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('data-target');
+            const detailDiv = document.getElementById(targetId);
+            if (detailDiv) {
+                detailDiv.classList.toggle('show');
+                if (detailDiv.classList.contains('show')) {
+                    this.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء التفاصيل';
+                } else {
+                    this.innerHTML = '<i class="fas fa-eye"></i> عرض تمثيل توضيحي';
+                }
+            }
+        });
+    });
+
+    // التحكم في أزرار الأسئلة (quiz)
+    const quizBtns = document.querySelectorAll('.quiz-toggle');
+    quizBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const ansId = this.getAttribute('data-ans');
+            const answerDiv = document.getElementById(ansId);
+            if (answerDiv) {
+                if (answerDiv.style.display === 'none' || getComputedStyle(answerDiv).display === 'none') {
+                    answerDiv.style.display = 'block';
+                    this.innerHTML = '<i class="fas fa-times-circle"></i> إخفاء';
+                } else {
+                    answerDiv.style.display = 'none';
+                    this.innerHTML = '<i class="fas fa-comment-dots"></i> الإجابة';
+                }
+            }
+        });
+    });
+
+    // للتأكد من أن جميع الإجابات تبدأ مخفية (تأمين)
+    document.querySelectorAll('.quiz-answer').forEach(el => el.style.display = 'none');
+    // الصناديق التفصيلية مخفية افتراضياً
+    document.querySelectorAll('.detail-box').forEach(el => el.classList.remove('show'));
+    // تصحيح الأزرار الأولية (نصها)
+    document.querySelectorAll('.btn-show').forEach(btn => {
+        if(!btn.innerHTML.includes('إخفاء')) btn.innerHTML = '<i class="fas fa-eye"></i> عرض تمثيل توضيحي';
+    });
+</script>
+</body>
+</html>

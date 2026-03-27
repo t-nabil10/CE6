@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>الكتلة الحجمية | Masse Volumique : شرح، قوانين وحاسبة تفاعلية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Noto Sans Arabic', 'Cairo', 'Tahoma', sans-serif;
+            background: linear-gradient(125deg, #e0f2fe 0%, #cbdff5 100%);
+            padding: 1.5rem;
+            color: #0f172a;
+        }
+
+        .global-card {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        /* Header */
+        .hero-density {
+            background: linear-gradient(135deg, #0f3b4c, #0a2f3f, #0b2b3b);
+            padding: 1.6rem 2rem;
+            color: white;
+            border-bottom: 4px solid #facc15;
+        }
+
+        .hero-density h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-density h1 i {
+            background: #facc15;
+            color: #0f172a;
+            padding: 8px 12px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+        }
+
+        .hero-badge {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            background: #1e5a6b;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* 2 columns layout */
+        .density-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            padding: 1.8rem;
+        }
+
+        @media (max-width: 800px) {
+            .density-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.2rem;
+            }
+            body {
+                padding: 0.8rem;
+            }
+        }
+
+        .theory-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-title {
+            background: #f1f5f9;
+            padding: 1rem 1.5rem;
+            border-bottom: 3px solid #0284c7;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title i {
+            color: #0e7f9e;
+        }
+
+        .card-inner {
+            padding: 1.5rem;
+        }
+
+        .def-box {
+            background: #eef7ff;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.5rem;
+            border-right: 6px solid #0284c7;
+        }
+
+        .formula-block {
+            background: #fef9e3;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .formula-latex {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: #f1f3f8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .unit-note {
+            background: #e6f0fa;
+            padding: 10px 14px;
+            border-radius: 18px;
+            display: inline-flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+
+        .calc-card {
+            background: linear-gradient(145deg, #ffffff, #fafcff);
+            border-radius: 1.5rem;
+            border: 1px solid #cbd5e1;
+            overflow: hidden;
+        }
+
+        .calc-header {
+            background: #0f2c44;
+            color: white;
+            padding: 0.9rem 1.2rem;
+            font-weight: 700;
+        }
+
+        .calc-body {
+            padding: 1.4rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        input, select {
+            padding: 10px 14px;
+            border-radius: 1rem;
+            border: 1px solid #cbd5e1;
+            font-size: 1rem;
+            width: 100%;
+            transition: 0.2s;
+        }
+
+        input:focus {
+            border-color: #0e7f9e;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(14,127,158,0.2);
+        }
+
+        .btn-calc {
+            background: linear-gradient(95deg, #0f5b6e, #0a4b5c);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 12px;
+            border-radius: 2rem;
+            width: 100%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 6px;
+        }
+
+        .btn-calc:hover {
+            background: #0a3b48;
+            transform: translateY(-1px);
+        }
+
+        .result-area {
+            background: #e0f2e9;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-right: 5px solid #2b9348;
+            font-weight: 500;
+        }
+
+        .example-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 1rem;
+        }
+
+        .example-btn {
+            background: #eef2ff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .example-btn:hover {
+            background: #cbdff5;
+        }
+
+        .faq-section {
+            margin: 0 1.8rem 1.8rem 1.8rem;
+            background: #fefce8;
+            border-radius: 1.5rem;
+            padding: 1rem 1.5rem;
+            border: 1px solid #facc15;
+        }
+
+        .question-item {
+            margin: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        .question-toggle {
+            background: none;
+            border: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            width: 100%;
+            text-align: right;
+            padding: 6px 0;
+            font-size: 0.95rem;
+        }
+
+        .answer-text {
+            display: none;
+            padding: 8px 12px;
+            background: #f9fafb;
+            border-radius: 14px;
+            margin-top: 6px;
+            margin-right: 24px;
+        }
+
+        footer {
+            background: #0f172a;
+            color: #cbd5e6;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+        }
+
+        hr {
+            margin: 14px 0;
+        }
+        .highlight {
+            background: #fde047;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="global-card">
+    <div class="hero-density">
+        <h1>
+            <i class="fas fa-flask"></i> 
+            الكتلة الحجمية – La Masse Volumique
+        </h1>
+        <div class="hero-badge">
+            <span class="pill"><i class="fas fa-droplet"></i> ρ = m / V</span>
+            <span class="pill"><i class="fas fa-weight-hanging"></i> kg/dm³ · g/cm³ · kg/m³</span>
+            <span class="pill"><i class="fas fa-cubes"></i> مواد صلبة · سائلة · غازية</span>
+        </div>
+        <p style="margin-top: 12px; font-size:0.85rem;"><i class="fas fa-lightbulb"></i> الكتلة الحجمية = مقدار الكتلة في وحدة الحجم. خاصية مميزة لكل مادة.</p>
+    </div>
+
+    <div class="density-grid">
+        <!-- القسم النظري (تعريف و صيغ) -->
+        <div class="theory-card">
+            <div class="card-title">
+                <i class="fas fa-graduation-cap"></i> 
+                <span>أ) تعريف و قوانين أساسية</span>
+            </div>
+            <div class="card-inner">
+                <div class="def-box">
+                    <i class="fas fa-chart-line"></i> 
+                    <strong>الكتلة الحجمية</strong> لمادة (سائلة، صلبة أو غازية) تعني أن كتلة هذه المادة متناسبة مع حجمها. 
+                    <strong>معامل التناسب</strong> هو <span class="highlight">الكتلة ÷ الحجم</span>، ويُرمز له بالحرف <strong>ρ (rho)</strong>.
+                    <div style="margin-top: 8px;">وحداتها الشائعة: <code>kg/dm³</code> أو <code>g/cm³</code> أو <code>kg/m³</code>.</div>
+                </div>
+
+                <div class="formula-block">
+                    <div style="font-weight:800;">الصيغ الأساسية:</div>
+                    <div class="formula-latex" style="direction: ltr;">ρ = m / V</div>
+                    <div class="formula-latex" style="direction: ltr;">m = ρ × V</div>
+                    <div class="formula-latex" style="direction: ltr;">V = m / ρ</div>
+                    <div class="unit-note">
+                        <i class="fas fa-arrows-spin"></i> 
+                        <span>إذا كانت الكتلة بـ <strong>g</strong> والحجم بـ <strong>cm³</strong> → ρ بوحدة <strong>g/cm³</strong> <br>
+                        إذا كانت الكتلة بـ <strong>kg</strong> والحجم بـ <strong>dm³</strong> → ρ بوحدة <strong>kg/dm³</strong> (تكافئ kg/L)</span>
+                    </div>
+                </div>
+
+                <div style="background: #f1f9fe; border-radius: 1rem; padding: 12px; margin-top: 12px;">
+                    <i class="fas fa-database"></i> <strong>أمثلة على الكتل الحجمية الشائعة:</strong><br>
+                    💧 الماء: 1 g/cm³ (1000 kg/m³) <br>
+                    🌲 خشب الصنوبر: ≈ 0.5 g/cm³ <br>
+                    🧱 الألومنيوم: 2.7 g/cm³ <br>
+                    🧪 الزئبق: 13.6 g/cm³
+                </div>
+                <div class="unit-note" style="margin-top: 8px;">
+                    <i class="fas fa-info-circle"></i> ملاحظة: 1 g/cm³ = 1000 kg/m³ = 1 kg/dm³ .
+                </div>
+            </div>
+        </div>
+
+        <!-- الحاسبة التفاعلية (الكتلة، الحجم، الكتلة الحجمية) -->
+        <div class="calc-card">
+            <div class="calc-header">
+                <i class="fas fa-calculator"></i> حاسبة الكتلة الحجمية · Masse Volumique
+            </div>
+            <div class="calc-body">
+                <div class="input-group">
+                    <label><i class="fas fa-cog"></i> أحسب :</label>
+                    <select id="calcMode">
+                        <option value="rho">📊 الكتلة الحجمية (ρ = m/V)</option>
+                        <option value="mass">⚖️ الكتلة (m = ρ × V)</option>
+                        <option value="volume">🧪 الحجم (V = m / ρ)</option>
+                    </select>
+                </div>
+
+                <div id="dynamicInputs"></div>
+
+                <button class="btn-calc" id="computeBtn"><i class="fas fa-play"></i> احسب الآن · Calculer</button>
+                
+                <div id="resultDisplay" class="result-area" style="display: none;">
+                    <i class="fas fa-chart-simple"></i> <span id="resultValue">---</span>
+                </div>
+
+                <div class="example-buttons">
+                    <button class="example-btn" id="exWater">💧 مثال الماء (1g/cm³)</button>
+                    <button class="example-btn" id="exAlu">🔩 ألومنيوم (m=81g, V=30cm³)</button>
+                    <button class="example-btn" id="exOil">🛢️ زيت (كتلة 460g, حجم 500mL)</button>
+                    <button class="example-btn" id="exFindVol">⚙️ حجم عينة حديد (ρ=7.8g/cm³, m=195g)</button>
+                </div>
+                <p style="font-size: 0.7rem; margin-top: 12px; color:#4b5563;"><i class="fas fa-sync-alt"></i> الوحدات: g, cm³, g/cm³  |  kg, dm³, kg/dm³ (يتطابق 1 dm³ = 1 L). اختر ما يناسبك.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- أسئلة تفاعلية لاختبار الفهم -->
+    <div class="faq-section">
+        <h3 style="display: flex; gap: 8px;"><i class="fas fa-brain"></i> أسئلة لفهم أعمق – Quiz rapide</h3>
+        <div class="question-item">
+            <button class="question-toggle" data-ans="ans1"><i class="fas fa-plus-circle"></i> سؤال 1: ما هي الكتلة الحجمية للماء بوحدة kg/m³ ؟</button>
+            <div id="ans1" class="answer-text">✅ 1000 kg/m³ (لأن 1 g/cm³ = 1000 kg/m³). وهي قيمة مرجعية هامة.</div>
+        </div>
+        <div class="question-item">
+            <button class="question-toggle" data-ans="ans2"><i class="fas fa-plus-circle"></i> سؤال 2: إذا كانت كتلة قطعة من الحديد 156 g وحجمها 20 cm³، ما هي كتلتها الحجمية؟</button>
+            <div id="ans2" class="answer-text">✅ ρ = m/V = 156 g / 20 cm³ = 7.8 g/cm³ (الحديد النقي).</div>
+        </div>
+        <div class="question-item">
+            <button class="question-toggle" data-ans="ans3"><i class="fas fa-plus-circle"></i> سؤال 3: لماذا يستخدم غالباً وحدة g/cm³ للمواد الصلبة والسوائل؟</button>
+            <div id="ans3" class="answer-text">✅ لأنها مريحة: 1 cm³ من الماء كتلته 1 g، والأرقام تكون صغيرة وسهلة المقارنة. في النظام الدولي نستخدم kg/m³.</div>
+        </div>
+        <div class="question-item">
+            <button class="question-toggle" data-ans="ans4"><i class="fas fa-plus-circle"></i> سؤال 4: أكمل: العلاقة بين الكتلة والحجم هي علاقة ......... بثبات الكتلة الحجمية.</button>
+            <div id="ans4" class="answer-text">✅ علاقة <strong>طردية</strong> (كلما زاد الحجم زادت الكتلة بنفس النسبة طالما ρ ثابتة).</div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-chart-line"></i> الكتلة الحجمية = m / V   |   ρ = masse / volume  |  وحدات: g/cm³ , kg/dm³ , kg/m³  
+        <br> تطبيقات: تمييز المواد، حساب الكتلة أو الحجم في الفيزياء والكيمياء.
+    </footer>
+</div>
+
+<script>
+    // وظيفة إنشاء الحقول ديناميكيًا حسب وضع الحساب
+    const calcModeSelect = document.getElementById('calcMode');
+    const dynamicDiv = document.getElementById('dynamicInputs');
+    const resultDiv = document.getElementById('resultDisplay');
+    const resultSpan = document.getElementById('resultValue');
+
+    function updateDynamicFields() {
+        const mode = calcModeSelect.value;
+        let html = '';
+        if (mode === 'rho') {
+            html = `
+                <div class="input-group"><label><i class="fas fa-weight"></i> الكتلة (m) :</label><input type="number" id="massRho" step="any" placeholder="مثال: 250" value="250"></div>
+                <div class="input-group"><label><i class="fas fa-cube"></i> الحجم (V) :</label><input type="number" id="volRho" step="any" placeholder="مثال: 50" value="50"></div>
+                <div class="input-group"><label><i class="fas fa-chart-line"></i> وحدة الكتلة/الحجم:</label><select id="unitRho">
+                    <option value="g_cm3">grams & cm³ → ρ (g/cm³)</option>
+                    <option value="kg_dm3">kg & dm³ (لتر) → ρ (kg/dm³)</option>
+                </select></div>
+            `;
+        } else if (mode === 'mass') {
+            html = `
+                <div class="input-group"><label><i class="fas fa-chart-line"></i> الكتلة الحجمية (ρ) :</label><input type="number" id="rhoMass" step="any" placeholder="مثال: 2.7" value="2.7"></div>
+                <div class="input-group"><label><i class="fas fa-cube"></i> الحجم (V) :</label><input type="number" id="volMass" step="any" placeholder="مثال: 30" value="30"></div>
+                <div class="input-group"><label><i class="fas fa-chart-line"></i> نظام الوحدات :</label><select id="unitMass">
+                    <option value="g_cm3">ρ (g/cm³) & V (cm³) → m (grams)</option>
+                    <option value="kg_dm3">ρ (kg/dm³) & V (dm³) → m (kg)</option>
+                </select></div>
+            `;
+        } else { // volume
+            html = `
+                <div class="input-group"><label><i class="fas fa-chart-line"></i> الكتلة الحجمية (ρ) :</label><input type="number" id="rhoVol" step="any" placeholder="مثال: 7.8" value="7.8"></div>
+                <div class="input-group"><label><i class="fas fa-weight"></i> الكتلة (m) :</label><input type="number" id="massVol" step="any" placeholder="مثال: 195" value="195"></div>
+                <div class="input-group"><label><i class="fas fa-chart-line"></i> نظام الوحدات :</label><select id="unitVol">
+                    <option value="g_cm3">ρ (g/cm³) & m (g) → V (cm³)</option>
+                    <option value="kg_dm3">ρ (kg/dm³) & m (kg) → V (dm³)</option>
+                </select></div>
+            `;
+        }
+        dynamicDiv.innerHTML = html;
+        resultDiv.style.display = 'none';
+    }
+
+    function compute() {
+        const mode = calcModeSelect.value;
+        let result = 0;
+        let message = '';
+        try {
+            if (mode === 'rho') {
+                let mass = parseFloat(document.getElementById('massRho')?.value);
+                let vol = parseFloat(document.getElementById('volRho')?.value);
+                let unitSystem = document.getElementById('unitRho')?.value;
+                if (isNaN(mass) || isNaN(vol) || vol === 0) throw new Error('أدخل قيم صحيحة، الحجم لا يمكن أن يكون صفراً');
+                let rho = mass / vol;
+                if (unitSystem === 'g_cm3') {
+                    message = `الكتلة الحجمية ρ = ${mass} g / ${vol} cm³ = <strong>${rho.toFixed(3)} g/cm³</strong>`;
+                    if (rho.toFixed(3) == 1) message += ` (مطابق للماء تقريباً)`;
+                } else {
+                    message = `الكتلة الحجمية ρ = ${mass} kg / ${vol} dm³ = <strong>${rho.toFixed(3)} kg/dm³</strong>  (1 kg/dm³ = 1000 kg/m³)`;
+                }
+                result = rho;
+            } 
+            else if (mode === 'mass') {
+                let rho = parseFloat(document.getElementById('rhoMass')?.value);
+                let vol = parseFloat(document.getElementById('volMass')?.value);
+                let unitSys = document.getElementById('unitMass')?.value;
+                if (isNaN(rho) || isNaN(vol)) throw new Error('أدخل الكتلة الحجمية والحجم');
+                let mass = rho * vol;
+                if (unitSys === 'g_cm3') {
+                    message = `الكتلة m = ${rho} g/cm³ × ${vol} cm³ = <strong>${mass.toFixed(2)} جرام (g)</strong>`;
+                } else {
+                    message = `الكتلة m = ${rho} kg/dm³ × ${vol} dm³ = <strong>${mass.toFixed(2)} كيلوجرام (kg)</strong>`;
+                }
+                result = mass;
+            }
+            else { // volume mode
+                let rho = parseFloat(document.getElementById('rhoVol')?.value);
+                let mass = parseFloat(document.getElementById('massVol')?.value);
+                let unitSys = document.getElementById('unitVol')?.value;
+                if (isNaN(rho) || isNaN(mass) || rho === 0) throw new Error('أدخل الكتلة والكتلة الحجمية (ρ لا تساوي صفر)');
+                let volume = mass / rho;
+                if (unitSys === 'g_cm3') {
+                    message = `الحجم V = ${mass} g / ${rho} g/cm³ = <strong>${volume.toFixed(2)} cm³</strong>`;
+                } else {
+                    message = `الحجم V = ${mass} kg / ${rho} kg/dm³ = <strong>${volume.toFixed(2)} dm³ (لتر)</strong>`;
+                }
+                result = volume;
+            }
+            resultSpan.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            resultDiv.style.display = 'block';
+        } catch (err) {
+            resultSpan.innerHTML = `<i class="fas fa-exclamation-triangle"></i> خطأ: ${err.message}`;
+            resultDiv.style.display = 'block';
+        }
+    }
+
+    // أمثلة سريعة
+    function loadExample(exampleId) {
+        if (exampleId === 'water') {
+            calcModeSelect.value = 'rho';
+            updateDynamicFields();
+            document.getElementById('massRho').value = 100;
+            document.getElementById('volRho').value = 100;
+            document.getElementById('unitRho').value = 'g_cm3';
+        } else if (exampleId === 'aluminum') {
+            calcModeSelect.value = 'rho';
+            updateDynamicFields();
+            document.getElementById('massRho').value = 81;
+            document.getElementById('volRho').value = 30;
+            document.getElementById('unitRho').value = 'g_cm3';
+        } else if (exampleId === 'oil') {
+            calcModeSelect.value = 'rho';
+            updateDynamicFields();
+            document.getElementById('massRho').value = 460;
+            document.getElementById('volRho').value = 500;
+            document.getElementById('unitRho').value = 'g_cm3';
+        } else if (exampleId === 'findVol') {
+            calcModeSelect.value = 'volume';
+            updateDynamicFields();
+            document.getElementById('rhoVol').value = 7.8;
+            document.getElementById('massVol').value = 195;
+            document.getElementById('unitVol').value = 'g_cm3';
+        }
+        compute();
+    }
+
+    // Event listeners
+    calcModeSelect.addEventListener('change', () => {
+        updateDynamicFields();
+        resultDiv.style.display = 'none';
+    });
+    document.getElementById('computeBtn').addEventListener('click', compute);
+    document.getElementById('exWater').addEventListener('click', () => loadExample('water'));
+    document.getElementById('exAlu').addEventListener('click', () => loadExample('aluminum'));
+    document.getElementById('exOil').addEventListener('click', () => loadExample('oil'));
+    document.getElementById('exFindVol').addEventListener('click', () => loadExample('findVol'));
+
+    // أسئلة toggle
+    const toggles = document.querySelectorAll('.question-toggle');
+    toggles.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const ansId = btn.getAttribute('data-ans');
+            const answerDiv = document.getElementById(ansId);
+            if (answerDiv.style.display === 'none' || answerDiv.style.display === '') {
+                answerDiv.style.display = 'block';
+                btn.innerHTML = btn.innerHTML.replace('plus-circle', 'minus-circle');
+            } else {
+                answerDiv.style.display = 'none';
+                btn.innerHTML = btn.innerHTML.replace('minus-circle', 'plus-circle');
+            }
+        });
+    });
+    // initialize answers hidden
+    document.querySelectorAll('.answer-text').forEach(el => el.style.display = 'none');
+    updateDynamicFields();
+</script>
+</body>
+</html>

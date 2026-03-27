@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>سلم التصاميم | Echelle : règles et calculs interactifs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Noto Sans Arabic', 'Cairo', 'Tahoma', sans-serif;
+            background: linear-gradient(145deg, #e9f0fa 0%, #d9e2ef 100%);
+            padding: 1.5rem;
+            color: #0b2b3b;
+        }
+
+        .main-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            backdrop-filter: blur(1px);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+        }
+
+        /* header */
+        .hero-scale {
+            background: linear-gradient(135deg, #1e3a5f, #0f2c44, #0b2b3b);
+            padding: 1.5rem 2rem;
+            color: white;
+            border-bottom: 4px solid #fbbf24;
+        }
+
+        .hero-scale h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-scale h1 i {
+            background: #fbbf24;
+            color: #1e293b;
+            padding: 8px 12px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+        }
+
+        .hero-scale .sub {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+            opacity: 0.9;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-scale {
+            background: #2c5270;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* contenu principal */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            padding: 1.8rem;
+        }
+
+        @media (max-width: 780px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.2rem;
+            }
+            body {
+                padding: 1rem;
+            }
+        }
+
+        .card-theory {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .card-header i {
+            color: #2563eb;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .rule-box {
+            background: #f0f9ff;
+            padding: 1.2rem;
+            border-radius: 1rem;
+            margin-bottom: 1.2rem;
+            border-right: 6px solid #0284c7;
+        }
+
+        .formula-group {
+            background: #fef9e3;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .formula-ar {
+            font-family: system-ui;
+            font-weight: 600;
+            color: #0c4a6e;
+            margin: 8px 0;
+            font-size: 1rem;
+            direction: rtl;
+        }
+
+        .formula-ltr {
+            font-size: 1.1rem;
+            background: #e6f0fa;
+            padding: 6px 12px;
+            border-radius: 12px;
+            display: inline-block;
+            font-weight: 700;
+            color: #075985;
+        }
+
+        .divider-light {
+            height: 2px;
+            background: linear-gradient(90deg, #cbd5e1, #94a3b8, #cbd5e1);
+            margin: 16px 0;
+        }
+
+        /* calculette */
+        .calculator-area {
+            background: #fefce8;
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+        }
+
+        .calc-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #854d0e;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        input, select {
+            padding: 10px 14px;
+            border-radius: 1rem;
+            border: 1px solid #cbd5e1;
+            background: white;
+            font-size: 1rem;
+            width: 100%;
+            transition: all 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+        }
+
+        .btn-calc {
+            background: linear-gradient(95deg, #2563eb, #1d4ed8);
+            border: none;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-calc:hover {
+            background: #1e40af;
+            transform: translateY(-1px);
+        }
+
+        .result-box {
+            background: #e6f7ec;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1.2rem;
+            border-right: 4px solid #16a34a;
+            font-weight: 500;
+        }
+
+        .example-card {
+            background: #ffffffea;
+            border-radius: 1rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #facc15;
+        }
+
+        .flex-btns {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .small-btn {
+            background: #f1f5f9;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .small-btn:hover {
+            background: #cbd5e1;
+        }
+
+        footer {
+            background: #0f172a;
+            color: #cbd5e6;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+            border-top: 1px solid #334155;
+        }
+
+        .note-icon {
+            background: #e2e8f0;
+            border-radius: 28px;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .highlight {
+            background: #fef9c3;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <div class="hero-scale">
+        <h1>
+            <i class="fas fa-drafting-compass"></i> 
+            سلم التصاميم – Echelle
+        </h1>
+        <div class="sub">
+            <span class="badge-scale"><i class="fas fa-ruler"></i> المسافات على الخريطة / التصميم</span>
+            <span class="badge-scale"><i class="fas fa-chart-line"></i> معامل التناسب</span>
+            <span class="badge-scale"><i class="fas fa-map"></i> Plan · Carte · Proportionnalité</span>
+        </div>
+        <p style="margin-top: 10px; font-size: 0.85rem;"><i class="fas fa-lightbulb"></i> قاعدة أساسية: المسافات على التصميم متناسبة مع المسافات الحقيقية. السلم هو معامل التكبير أو التصغير.</p>
+    </div>
+
+    <div class="content-grid">
+        <!-- القسم النظري: القاعدة و العلاقات -->
+        <div class="card-theory">
+            <div class="card-header">
+                <i class="fas fa-gavel"></i> 
+                <span>2) قاعدة التناسب – Règle fondamentale</span>
+            </div>
+            <div class="card-body">
+                <div class="rule-box">
+                    <i class="fas fa-check-circle" style="color:#0284c7;"></i> 
+                    <strong>المسافات على تصميم أو على خريطة متناسبة مع المسافات الحقيقية والعكس صحيح.</strong>
+                    <div class="divider-light"></div>
+                    <p><strong>سلم التصميم</strong> هو معامل التناسب الذي يسمح بالمرور من المسافات الحقيقية إلى المسافات على التصميم.</p>
+                    <p style="margin-top: 8px;"><i class="fas fa-calculator"></i> نعبر عنه غالباً بالشكل: <strong class="highlight">1 : p</strong> أو <strong class="highlight">1/p</strong> (مثلاً 1/1000).</p>
+                </div>
+
+                <div style="margin: 1rem 0;">
+                    <h3 style="display: flex; gap: 6px; align-items: center;"><i class="fas fa-equals"></i> العلاقات الأساسية :</h3>
+                    <div class="formula-group">
+                        <div class="formula-ar">🔹 <strong>السلم</strong> = المسافة على التصميم (الخريطة) ÷ المسافة الحقيقية</div>
+                        <div class="formula-ltr" style="direction: ltr; text-align: left;">Echelle = distance sur plan / distance réelle</div>
+                        <div class="divider-light" style="margin: 10px 0;"></div>
+                        <div class="formula-ar">🔹 <strong>المسافة على التصميم</strong> = المسافة الحقيقية × السلم</div>
+                        <div class="formula-ltr" style="direction: ltr;">Distance (plan) = distance réelle × échelle</div>
+                        <div class="divider-light" style="margin: 10px 0;"></div>
+                        <div class="formula-ar">🔹 <strong>المسافة الحقيقية</strong> = المسافة على التصميم ÷ السلم</div>
+                        <div class="formula-ltr" style="direction: ltr;">Distance réelle = distance plan / échelle</div>
+                    </div>
+                    <div class="note-icon" style="margin-top: 8px;">
+                        <i class="fas fa-info-circle"></i> ملاحظة: السلم غالبًا ما يكون كسرًا (مثل 1/500) يعني أن 1 وحدة على الخريطة = 500 وحدة حقيقية.
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <i class="fas fa-map-marked-alt"></i> <strong>مثال توضيحي:</strong> خريطة سلمها 1/20000 ، المسافة على الخريطة بين مدينتين = 8 cm .
+                    <br>➜ المسافة الحقيقية = 8 cm ÷ (1/20000) = 8 × 20000 = 160000 cm = 1.6 km.
+                    <div class="divider-light"></div>
+                    <i class="fas fa-draw-polygon"></i> <strong>تصميم معماري:</strong> سلم 1/50 ، غرفة طولها الحقيقي 5 m → على التصميم = 5 m × (1/50) = 0.1 m = 10 cm.
+                </div>
+            </div>
+        </div>
+
+        <!-- القسم التفاعلي: آلة حاسبة للسلم -->
+        <div class="card-theory">
+            <div class="card-header">
+                <i class="fas fa-microchip"></i>
+                <span>حاسبة السلم – Calculateur Échelle</span>
+            </div>
+            <div class="card-body">
+                <div class="calculator-area">
+                    <div class="calc-title">
+                        <i class="fas fa-sliders-h"></i> 
+                        اختر ما تريد حسابه
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-cog"></i> أحسب :</label>
+                        <select id="calcType">
+                            <option value="echelle">🔢 السلم (Echelle) → من المسافات المعطاة</option>
+                            <option value="plan">📏 المسافة على التصميم (Plan) → بالاستعانة بالمسافة الحقيقية و السلم</option>
+                            <option value="reelle">🌍 المسافة الحقيقية (Réelle) → من مسافة التصميم و السلم</option>
+                        </select>
+                    </div>
+
+                    <!-- الحقول الديناميكية ستظهر وفق الاختيار -->
+                    <div id="dynamicInputs"></div>
+
+                    <button class="btn-calc" id="calculateBtn"><i class="fas fa-calculator"></i> احسب الآن</button>
+                    
+                    <div id="resultArea" class="result-box" style="display: none;">
+                        <i class="fas fa-chart-simple"></i> <span id="resultText">---</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.2rem; background: #eef2ff; border-radius: 1rem; padding: 0.8rem 1rem;">
+                    <i class="fas fa-graduation-cap"></i> <strong>نصائح:</strong>
+                    <ul style="margin-right: 1.2rem; margin-top: 6px;">
+                        <li>✔ تأكد من تطابق الوحدات (cm , m , km). الحاسبة تحول آلياً عند الضرورة بنفس الوحدة.</li>
+                        <li>✔ السلم يكتب كعدد عشري أو كسر مثل 0.02 أو 1:50 (نستخدم القيمة العددية 1/50 = 0.02).</li>
+                        <li>✔ يمكنك تجربة أمثلة جاهزة بالنقر على الأمثلة السريعة.</li>
+                    </ul>
+                </div>
+
+                <div style="display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap;">
+                    <button class="small-btn" id="example1"><i class="fas fa-map"></i> خريطة: سلم 1/25000 , مسافة حقيقية 5km → احسب مسافة الخريطة</button>
+                    <button class="small-btn" id="example2"><i class="fas fa-ruler-combined"></i> تصميم: مسافة 12cm , سلم 1/75 → مسافة حقيقية</button>
+                    <button class="small-btn" id="example3"><i class="fas fa-divide"></i> حساب السلم: مسافة حقيقية 800m , مسافة على التصميم 4cm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ملحق إضافي: جدول تطبيقات + أسئلة سريعة -->
+    <div style="padding: 0 1.8rem 1.8rem 1.8rem;">
+        <div style="background: #ffffffd9; border-radius: 1.6rem; padding: 1.2rem 1.6rem; border: 1px solid #cbd5e1;">
+            <h3 style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-brain"></i> تطبيق سريع: اختبار فهم السلم</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: flex-start;">
+                <div style="flex:1; min-width: 200px;">
+                    <p><i class="fas fa-question-circle"></i> <strong>سؤال 1:</strong> على خريطة بمقياس 1: 500 000 ، المسافة بين مدينتين هي 6 سم. ما المسافة الحقيقية بالكيلومترات؟</p>
+                    <button class="small-btn" id="revealQ1" style="background:#e2e3e8;">عرض الإجابة</button>
+                    <p id="ansQ1" style="background:#f1f5f9; margin-top: 10px; padding: 6px 12px; border-radius: 16px; display: none;"><strong>✅ الحل:</strong> المسافة الحقيقية = 6 سم ÷ (1/500000) = 6 × 500000 = 3,000,000 سم = 30 كم.</p>
+                </div>
+                <div style="flex:1; min-width: 200px;">
+                    <p><i class="fas fa-question-circle"></i> <strong>سؤال 2:</strong> في تصميم معماري سلمه 1/200 ، طول غرفة على التصميم = 7.5 cm . كم طولها الحقيقي بالأمتار؟</p>
+                    <button class="small-btn" id="revealQ2" style="background:#e2e3e8;">عرض الإجابة</button>
+                    <p id="ansQ2" style="background:#f1f5f9; margin-top: 10px; padding: 6px 12px; border-radius: 16px; display: none;"><strong>✅ الحل:</strong> الطول الحقيقي = 7.5 cm ÷ (1/200) = 7.5 × 200 = 1500 cm = 15 متر.</p>
+                </div>
+                <div style="flex:1; min-width: 200px;">
+                    <p><i class="fas fa-question-circle"></i> <strong>سؤال 3:</strong> مسافة حقيقية 2.4 km ، مسافة على التصميم 8 cm. أحسب سلم التصميم.</p>
+                    <button class="small-btn" id="revealQ3" style="background:#e2e3e8;">عرض الإجابة</button>
+                    <p id="ansQ3" style="background:#f1f5f9; margin-top: 10px; padding: 6px 12px; border-radius: 16px; display: none;"><strong>✅ الحل:</strong> توحيد الوحدات: 2.4 km = 240 000 cm . السلم = 8 cm / 240000 cm = 1/30000 . إذن السلم هو 1 : 30000.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-drafting-compass"></i>  قاعدة السلم | Echelle : تناسب المسافات — تطبيقات في الخرائط و التصاميم الهندسية  
+        <span>📐 1 : p  &nbsp;|&nbsp;  d(plan) = d(réelle) × échelle &nbsp;|&nbsp; échelle = d(plan)/d(réelle)</span>
+    </footer>
+</div>
+
+<script>
+    // إدارة الحقول الديناميكية بناءً على نوع الحساب
+    const calcTypeSelect = document.getElementById('calcType');
+    const dynamicDiv = document.getElementById('dynamicInputs');
+    const resultDiv = document.getElementById('resultArea');
+    const resultSpan = document.getElementById('resultText');
+
+    function updateFormFields() {
+        const type = calcTypeSelect.value;
+        let html = '';
+        if (type === 'echelle') {
+            html = `
+                <div class="input-group"><label><i class="fas fa-ruler"></i> المسافة على التصميم (الخريطة) :</label><input type="number" id="distPlan" placeholder="مثال: 5" step="any" value="4"></div>
+                <div class="input-group"><label><i class="fas fa-globe"></i> المسافة الحقيقية :</label><input type="number" id="distReal" placeholder="مثال: 20000" step="any" value="80000"></div>
+                <div class="input-group"><label><i class="fas fa-chart-line"></i> وحدة المسافات (متطابقة) :</label><select id="sameUnit" disabled style="background:#f3f4f6;"><option>تأكد من توحيد الوحدة (سم/سم أو م/م)</option></select></div>
+            `;
+        } else if (type === 'plan') {
+            html = `
+                <div class="input-group"><label><i class="fas fa-chart-simple"></i> السلم (كسر أو عدد عشري) :</label><input type="number" id="scaleValue" placeholder="مثال: 0.02 أو 1/200 = 0.005" step="any" value="0.002"></div>
+                <div class="input-group"><label><i class="fas fa-road"></i> المسافة الحقيقية :</label><input type="number" id="realDistance" placeholder="بالأمتار أو السنتيمتر" step="any" value="2500"></div>
+                <div class="input-group"><label><i class="fas fa-ruler"></i> وحدة المسافة الحقيقية :</label><select id="unitRealPlan"><option value="cm">سم (cm)</option><option value="m" selected>متر (m)</option><option value="km">كلم (km)</option></select></div>
+                <div class="input-group"><label><i class="fas fa-arrow-right"></i> وحدة النتيجة (على التصميم) :</label><select id="unitResultPlan"><option value="cm" selected>سم (cm)</option><option value="mm">ملم (mm)</option></select></div>
+            `;
+        } else if (type === 'reelle') {
+            html = `
+                <div class="input-group"><label><i class="fas fa-chart-simple"></i> السلم (كسر أو عدد عشري) :</label><input type="number" id="scaleRealVal" placeholder="مثال: 1/500 = 0.002" step="any" value="0.001"></div>
+                <div class="input-group"><label><i class="fas fa-map-marked"></i> المسافة على التصميم :</label><input type="number" id="planDistance" placeholder="القيمة على الخريطة" step="any" value="12"></div>
+                <div class="input-group"><label><i class="fas fa-ruler"></i> وحدة مسافة التصميم :</label><select id="unitPlanDist"><option value="cm" selected>سم (cm)</option><option value="mm">ملم (mm)</option><option value="m">متر (m)</option></select></div>
+                <div class="input-group"><label><i class="fas fa-globe"></i> وحدة النتيجة (حقيقية) :</label><select id="unitResultReal"><option value="cm">سم</option><option value="m" selected>متر (m)</option><option value="km">كلم (km)</option></select></div>
+            `;
+        }
+        dynamicDiv.innerHTML = html;
+        resultDiv.style.display = 'none';
+    }
+
+    // تحويل الوحدات إلى وحدة أساسية (سم) مؤقتاً حسب الحاجة، لكن سنتعامل مع منطق مرن
+    function convertToCm(value, unit) {
+        if (unit === 'cm') return value;
+        if (unit === 'mm') return value / 10;
+        if (unit === 'm') return value * 100;
+        if (unit === 'km') return value * 100000;
+        return value;
+    }
+    function convertFromCm(value, targetUnit) {
+        if (targetUnit === 'cm') return value;
+        if (targetUnit === 'mm') return value * 10;
+        if (targetUnit === 'm') return value / 100;
+        if (targetUnit === 'km') return value / 100000;
+        return value;
+    }
+
+    function performCalculation() {
+        const type = calcTypeSelect.value;
+        let resultValue = 0;
+        let resultMessage = '';
+
+        try {
+            if (type === 'echelle') {
+                let planDist = parseFloat(document.getElementById('distPlan')?.value);
+                let realDist = parseFloat(document.getElementById('distReal')?.value);
+                if (isNaN(planDist) || isNaN(realDist) || realDist === 0) throw new Error('أدخل مسافات صحيحة');
+                const echelle = planDist / realDist;
+                resultValue = echelle;
+                let fracDenom = 0;
+                if (echelle > 0 && echelle <= 1) {
+                    let denomApprox = Math.round(1 / echelle);
+                    if (Math.abs(1/denomApprox - echelle) < 0.0001) fracDenom = denomApprox;
+                }
+                if (fracDenom > 0) resultMessage = `السلم = ${echelle.toFixed(6)}  ≈  1 : ${fracDenom}  (أو 1/${fracDenom})`;
+                else resultMessage = `السلم = ${echelle.toFixed(6)}  (معامل التناسب)`;
+            } 
+            else if (type === 'plan') {
+                let scale = parseFloat(document.getElementById('scaleValue')?.value);
+                let realDist = parseFloat(document.getElementById('realDistance')?.value);
+                let unitReal = document.getElementById('unitRealPlan')?.value;
+                let unitResult = document.getElementById('unitResultPlan')?.value;
+                if (isNaN(scale) || isNaN(realDist)) throw new Error('أدخل السلم والمسافة الحقيقية');
+                // تحويل المسافة الحقيقية إلى سم للدقة
+                let realCm = convertToCm(realDist, unitReal);
+                let planCm = realCm * scale;
+                let finalPlan = convertFromCm(planCm, unitResult);
+                resultValue = finalPlan;
+                resultMessage = `المسافة على التصميم = ${finalPlan.toFixed(2)} ${unitResult === 'cm' ? 'سم' : (unitResult === 'mm' ? 'ملم' : 'متر')}`;
+            } 
+            else if (type === 'reelle') {
+                let scale = parseFloat(document.getElementById('scaleRealVal')?.value);
+                let planDist = parseFloat(document.getElementById('planDistance')?.value);
+                let unitPlan = document.getElementById('unitPlanDist')?.value;
+                let unitResultReal = document.getElementById('unitResultReal')?.value;
+                if (isNaN(scale) || isNaN(planDist)) throw new Error('أدخل القيم');
+                let planCm = convertToCm(planDist, unitPlan);
+                let realCm = planCm / scale;
+                let finalReal = convertFromCm(realCm, unitResultReal);
+                resultValue = finalReal;
+                let unitText = unitResultReal === 'cm' ? 'سم' : (unitResultReal === 'm' ? 'متر' : 'كلم');
+                resultMessage = `المسافة الحقيقية = ${finalReal.toFixed(2)} ${unitText}`;
+            }
+            resultSpan.innerHTML = `<i class="fas fa-check-circle"></i> ${resultMessage}`;
+            resultDiv.style.display = 'block';
+        } catch (err) {
+            resultSpan.innerHTML = `<i class="fas fa-exclamation-triangle"></i> خطأ: ${err.message}`;
+            resultDiv.style.display = 'block';
+        }
+    }
+
+    // إعداد الأمثلة المباشرة
+    function setExample(exampleId) {
+        if (exampleId === 1) {
+            calcTypeSelect.value = 'plan';
+            updateFormFields();
+            document.getElementById('scaleValue').value = 1/25000;   // 0.00004
+            document.getElementById('realDistance').value = 5;
+            document.getElementById('unitRealPlan').value = 'km';
+            document.getElementById('unitResultPlan').value = 'cm';
+        } else if (exampleId === 2) {
+            calcTypeSelect.value = 'reelle';
+            updateFormFields();
+            document.getElementById('scaleRealVal').value = 1/75;
+            document.getElementById('planDistance').value = 12;
+            document.getElementById('unitPlanDist').value = 'cm';
+            document.getElementById('unitResultReal').value = 'm';
+        } else if (exampleId === 3) {
+            calcTypeSelect.value = 'echelle';
+            updateFormFields();
+            document.getElementById('distPlan').value = 4;
+            document.getElementById('distReal').value = 800 * 100; // 800m = 80000 cm
+            // نضيف توضيح لكن الحقول موجودة
+        }
+        performCalculation();
+    }
+
+    calcTypeSelect.addEventListener('change', () => {
+        updateFormFields();
+        resultDiv.style.display = 'none';
+    });
+    document.getElementById('calculateBtn').addEventListener('click', performCalculation);
+    updateFormFields();
+
+    // ربط الأزرار السريعة
+    document.getElementById('example1').addEventListener('click', () => setExample(1));
+    document.getElementById('example2').addEventListener('click', () => setExample(2));
+    document.getElementById('example3').addEventListener('click', () => setExample(3));
+
+    // أسئلة الإظهار
+    document.getElementById('revealQ1').addEventListener('click', () => {
+        const ans = document.getElementById('ansQ1');
+        ans.style.display = ans.style.display === 'none' ? 'block' : 'none';
+    });
+    document.getElementById('revealQ2').addEventListener('click', () => {
+        const ans = document.getElementById('ansQ2');
+        ans.style.display = ans.style.display === 'none' ? 'block' : 'none';
+    });
+    document.getElementById('revealQ3').addEventListener('click', () => {
+        const ans = document.getElementById('ansQ3');
+        ans.style.display = ans.style.display === 'none' ? 'block' : 'none';
+    });
+    // إخفاء الإجابات مبدئيًا
+    document.getElementById('ansQ1').style.display = 'none';
+    document.getElementById('ansQ2').style.display = 'none';
+    document.getElementById('ansQ3').style.display = 'none';
+</script>
+</body>
+</html>

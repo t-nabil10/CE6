@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>إعلان الامتحان - الدروس المستهدفة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Cairo', 'Noto Sans Arabic', sans-serif;
+            background: linear-gradient(145deg, #f0f4f8 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            padding: 16px;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* بطاقة الإعلان */
+        .announce-card {
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        /* رأس الإعلان */
+        .header-red {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            padding: 1.2rem 1.2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .header-red h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .header-red h1 i {
+            font-size: 1.4rem;
+            background: rgba(255,255,255,0.2);
+            padding: 6px;
+            border-radius: 50%;
+        }
+
+        .exam-date {
+            background: #fef3c7;
+            color: #92400e;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-top: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* المحتوى */
+        .content {
+            padding: 1.2rem;
+        }
+
+        /* بطاقات المعلومات */
+        .info-row {
+            background: #fef9e3;
+            border-radius: 20px;
+            padding: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-right: 5px solid #f59e0b;
+        }
+
+        .info-icon {
+            width: 44px;
+            height: 44px;
+            background: #fffbeb;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #d97706;
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-text .label {
+            font-size: 0.7rem;
+            color: #78716c;
+            letter-spacing: 0.3px;
+        }
+
+        .info-text .value {
+            font-weight: 800;
+            font-size: 1rem;
+            color: #2c2b26;
+        }
+
+        /* قواعد الامتحان */
+        .rules-box {
+            background: #fff1f0;
+            border-radius: 20px;
+            padding: 14px;
+            margin-bottom: 20px;
+            border-right: 4px solid #dc2626;
+        }
+
+        .rules-title {
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            color: #991b1b;
+        }
+
+        .rules-list {
+            list-style: none;
+            padding-right: 0;
+        }
+
+        .rules-list li {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            padding-right: 22px;
+            position: relative;
+        }
+
+        .rules-list li i {
+            position: absolute;
+            right: 0;
+            top: 2px;
+            color: #dc2626;
+            font-size: 0.8rem;
+        }
+
+        /* قسم الدروس */
+        .lessons-section {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 0.8rem 0.8rem 1rem 0.8rem;
+            margin-bottom: 18px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .section-header i {
+            font-size: 1.2rem;
+            color: #2563eb;
+            background: #eef2ff;
+            padding: 6px;
+            border-radius: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        /* قائمة الدروس */
+        .lessons-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .lesson-block {
+            background: white;
+            border-radius: 18px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #eef2ff;
+        }
+
+        .lesson-emoji {
+            width: 42px;
+            height: 42px;
+            background: #eff6ff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #3b82f6;
+        }
+
+        .lesson-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #0f172a;
+            line-height: 1.3;
+        }
+
+        .lesson-detail {
+            font-size: 0.7rem;
+            color: #5b6e8c;
+            margin-top: 3px;
+        }
+
+        /* مجموعة البطاقات السريعة للدروس الثلاثة */
+        .quick-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .badge-topic {
+            background: #eef2ff;
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #1e40af;
+        }
+
+        /* تذكير الدفاتر */
+        .notebook-reminder {
+            background: #ecfdf5;
+            border-radius: 18px;
+            padding: 12px;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-right: 4px solid #10b981;
+        }
+
+        .notebook-reminder i {
+            font-size: 1.4rem;
+            color: #059669;
+        }
+
+        footer {
+            text-align: center;
+            padding: 16px 12px 12px;
+            font-size: 0.7rem;
+            color: #5b6e8c;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 8px;
+        }
+
+        /* تحسين للشاشات الصغيرة جداً */
+        @media (max-width: 450px) {
+            body {
+                padding: 12px;
+            }
+            .header-red h1 {
+                font-size: 1.4rem;
+            }
+            .lesson-block {
+                padding: 8px 10px;
+            }
+            .lesson-emoji {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+            .lesson-name {
+                font-size: 0.85rem;
+            }
+            .content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="announce-card">
+        <div class="header-red">
+            <h1>
+                <i class="fas fa-calendar-check"></i>
+                إعلان الامتحان
+            </h1>
+            <div class="exam-date">
+                <i class="fas fa-calendar-alt"></i> 2 و 3 أبريل 2026
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- معلومات سريعة -->
+            <div class="info-row">
+                <div class="info-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="info-text">
+                    <div class="label">المادة</div>
+                    <div class="value">الرياضيات</div>
+                </div>
+            </div>
+
+            <!-- قوانين الامتحان (بدون آلة حاسبة + دفاتر) -->
+            <div class="rules-box">
+                <div class="rules-title">
+                    <i class="fas fa-gavel"></i> تعليمات الامتحان
+                </div>
+                <ul class="rules-list">
+                    <li><i class="fas fa-ban"></i> <strong>غير مسموح باستعمال الآلة الحاسبة</strong> (أي نوع)</li>
+                    <li><i class="fas fa-book"></i> <strong>يجب إحضار الدفاتر لمراقبتها</strong> (دفاتر الرياضيات)</li>
+                    <li><i class="fas fa-pencil-ruler"></i> إحضار الأدوات الهندسية: مسطرة، بركار، منقلة (للدروس الهندسية)</li>
+                    <li><i class="fas fa-mobile-alt"></i> الهواتف النقالة ممنوعة تماماً داخل القاعة</li>
+                </ul>
+            </div>
+
+            <!-- الدروس المستهدفة (القائمة الكاملة) -->
+            <div class="lessons-section">
+                <div class="section-header">
+                    <i class="fas fa-book-open"></i>
+                    <h2>الدروس المستهدفة</h2>
+                </div>
+                <div class="lessons-grid">
+                    <!-- 1 -->
+                    <div class="lesson-block">
+                        <div class="lesson-emoji"><i class="fas fa-cube"></i></div>
+                        <div>
+                            <div class="lesson-name">📦 الحجم والسعة</div>
+                            <div class="lesson-detail">وحدات الحجم · التحويلات · العلاقة بين اللتر و dm³ · تمارين تطبيقية</div>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="lesson-block">
+                        <div class="lesson-emoji"><i class="fas fa-fraction"></i></div>
+                        <div>
+                            <div class="lesson-name">🔢 الأعداد الكسرية - العمليات الحسابية</div>
+                            <div class="lesson-detail">جمع، طرح، ضرب، قسمة الأعداد الكسرية · تبسيط الكسور · تمارين مركبة</div>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="lesson-block">
+                        <div class="lesson-emoji"><i class="fas fa-coins"></i></div>
+                        <div>
+                            <div class="lesson-name">💰 الرأسمال وسعر الفائدة</div>
+                            <div class="lesson-detail">تعريف الرأسمال · الفائدة البسيطة · حساب الفائدة السنوية · مسائل مالية</div>
+                        </div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="lesson-block">
+                        <div class="lesson-emoji"><i class="fas fa-angle-double-right"></i></div>
+                        <div>
+                            <div class="lesson-name">📐 الزوايا ، منصف الزاوية</div>
+                            <div class="lesson-detail">قياس الزوايا · إنشاء منصف الزاوية · خصائص المنصف · تمارين</div>
+                        </div>
+                    </div>
+                    <!-- 5 -->
+                    <div class="lesson-block">
+                        <div class="lesson-emoji"><i class="fas fa-ruler-combined"></i></div>
+                        <div>
+                            <div class="lesson-name">✏️ إنشاءات هندسية</div>
+                            <div class="lesson-detail">منصف قطعة · عمودي · موازي · إنشاء مثلثات (مسطرة وبركار)</div>
+                        </div>
+                    </div>
+                    <!-- 6 -->
+                    <div class="lesson-block">
+                        <div class="lesson-emoji"><i class="fas fa-balance-scale"></i></div>
+                        <div>
+                            <div class="lesson-name">⚖️ التناسبية : الكتلة الحجمية</div>
+                            <div class="lesson-detail">العلاقة m = ρ × V · حساب الكتلة أو الحجم أو الكثافة · وحدات g/cm³ ، kg/dm³</div>
+                        </div>
+                    </div>
+                    <!-- 7 -->
+                    <div class="lesson-block">
+                        <div class="lesson-emoji"><i class="fas fa-map"></i></div>
+                        <div>
+                            <div class="lesson-name">🗺️ سلم التصاميم</div>
+                            <div class="lesson-detail">حساب السلم · المسافة على الخريطة · المسافة الحقيقية · تطبيقات على الخرائط والتصاميم</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ملخص سريع بشكل badges -->
+                <div class="quick-badges">
+                    <span class="badge-topic">تحويلات الوحدات</span>
+                    <span class="badge-topic">عمليات على الكسور</span>
+                    <span class="badge-topic">الفائدة البسيطة</span>
+                    <span class="badge-topic">منصف زاوية</span>
+                    <span class="badge-topic">إنشاءات بالبركار</span>
+                    <span class="badge-topic">الكتلة الحجمية</span>
+                    <span class="badge-topic">سلم الخريطة</span>
+                </div>
+            </div>
+
+            <!-- تذكير إحضار الدفاتر -->
+            <div class="notebook-reminder">
+                <i class="fas fa-notebook"></i>
+                <div style="font-size: 0.85rem; line-height: 1.4;">
+                    <strong>📓 تنبيه هام:</strong> يجب إحضار <strong>دفاتر الرياضيات</strong> لمراقبتها من قبل الأستاذ. 
+                    الدفتر جزء من التنظيم ومراجعة الأعمال المنجزة.
+                </div>
+            </div>
+
+            <!-- تذكير ثانوي بدون آلة حاسبة -->
+            <div style="background: #fee2e2; border-radius: 18px; padding: 10px 14px; margin-top: 14px; display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-calculator" style="color:#b91c1c; font-size: 1.2rem;"></i>
+                <span style="font-size: 0.8rem; font-weight: 500;">❌ يمنع منعاً باتاً استعمال أي آلة حاسبة. الاعتماد على الحساب الذهني والكتابي.</span>
+            </div>
+
+            <footer>
+                <i class="fas fa-calendar-week"></i> موعد الامتحان: 2 و 3 أبريل 2026  
+                <span style="display: inline-block; margin: 4px 0;">•</span>  
+                <i class="fas fa-pen"></i> راجعوا الدروس جيداً ووفقكم الله
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

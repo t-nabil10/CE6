@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>التماثل المحوري | Symétrie Axiale : cours et exercices</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Noto Sans Arabic', 'Cairo', system-ui, sans-serif;
+            background: linear-gradient(145deg, #eef2f7 0%, #e0e6ef 100%);
+            padding: 1.5rem;
+            color: #1e2a3a;
+        }
+
+        /* conteneur principal */
+        .main-sym {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: rgba(255, 255, 250, 0.98);
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 1px solid rgba(180, 140, 100, 0.3);
+        }
+
+        /* en-tête */
+        .hero-sym {
+            background: linear-gradient(115deg, #2c3e2f, #1f4a3a, #2a5a48);
+            padding: 1.6rem 2rem;
+            color: #fff3e0;
+            border-bottom: 5px solid #e9b35f;
+        }
+
+        .hero-sym h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero-sym h1 i {
+            background: #e9b35f;
+            color: #1f3d33;
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+        }
+
+        .badge-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge-pow {
+            background: #3f6b58;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* grille 2 colonnes */
+        .grid-sym {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            padding: 1.8rem;
+        }
+
+        @media (max-width: 780px) {
+            .grid-sym {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.2rem;
+            }
+            body {
+                padding: 0.9rem;
+            }
+        }
+
+        /* cartes générales */
+        .card-sym {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2dccd;
+        }
+
+        .card-header {
+            background: #fef3e2;
+            padding: 1rem 1.5rem;
+            border-bottom: 3px solid #e9b35f;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-header i {
+            color: #c16f2e;
+        }
+
+        .card-inner {
+            padding: 1.5rem;
+        }
+
+        .def-box {
+            background: #fffaf0;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            border-right: 6px solid #e9b35f;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: #f9e0a0;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .exemple-figure {
+            background: #f4f9f5;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .prop-list {
+            list-style: none;
+            padding-right: 0;
+        }
+        .prop-list li {
+            margin-bottom: 10px;
+            padding-right: 1.2rem;
+            position: relative;
+        }
+        .prop-list li i {
+            color: #2c7a5e;
+            margin-left: 8px;
+        }
+
+        .conservation-card {
+            background: #eef5f0;
+            border-radius: 1rem;
+            padding: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* partie interactive */
+        .inter-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            border: 1px solid #d9cfb5;
+        }
+
+        .inter-header {
+            background: #3b6b58;
+            color: white;
+            padding: 0.9rem 1.2rem;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .inter-body {
+            padding: 1.4rem;
+        }
+
+        .axis-select {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            background: #f6f2e7;
+            padding: 8px 15px;
+            border-radius: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .coord-group {
+            margin-bottom: 1rem;
+        }
+
+        .coord-group label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+        }
+
+        input.coord {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 1.2rem;
+            border: 1px solid #cbc2a8;
+            background: #fffcf5;
+        }
+
+        .btn-mirror {
+            background: #c16f2e;
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 2rem;
+            width: 100%;
+            cursor: pointer;
+            margin: 8px 0;
+            transition: 0.2s;
+        }
+        .btn-mirror:hover {
+            background: #9b551f;
+        }
+
+        .result-box {
+            background: #eff3f0;
+            border-radius: 1rem;
+            padding: 12px;
+            margin-top: 1rem;
+            border-right: 5px solid #e9b35f;
+            font-family: monospace;
+        }
+
+        canvas {
+            display: block;
+            margin: 1rem auto;
+            background: #fefcf5;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #ddd0b6;
+            width: 100%;
+            height: auto;
+        }
+
+        .axis-badge {
+            background: #e7cba5;
+            color: #2c4d3e;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .exo-section {
+            margin: 0 1.8rem 1.8rem 1.8rem;
+            background: #fef7eb;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.6rem;
+            border: 1px solid #e9b35f;
+        }
+
+        .exo-question {
+            background: #fffbf2;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 12px 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+        }
+
+        .btn-reveal {
+            background: #2c7a5e;
+            border: none;
+            padding: 6px 20px;
+            border-radius: 2rem;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .answer-box {
+            display: none;
+            background: #e2f0ea;
+            padding: 12px;
+            border-radius: 1rem;
+            margin-top: 12px;
+            border-right: 4px solid #2c7a5e;
+        }
+
+        footer {
+            background: #1f3a30;
+            color: #f2e5cf;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .inline-math {
+            font-weight: bold;
+            background: #f7e5cd;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="main-sym">
+    <div class="hero-sym">
+        <h1>
+            <i class="fas fa-arrows-spin"></i>
+            التماثل المحوري – Symétrie axiale
+        </h1>
+        <div class="badge-group">
+            <span class="badge-pow"><i class="fas fa-chalkboard"></i> محور التماثل · Axe de symétrie</span>
+            <span class="badge-pow"><i class="fas fa-shapes"></i> أشكال متماثلة</span>
+            <span class="badge-pow"><i class="fas fa-ruler-combined"></i> انعكاس · Réflexion</span>
+        </div>
+        <p style="margin-top: 12px; font-size:0.85rem;"><i class="fas fa-mirror"></i> يكون شكلان متماثلان بالنسبة لمستقيم فقط إذا كانا (متشابهان) وعلى نفس المسافة من هذا المستقيم. هذا المستقيم يسمى محور التماثل.</p>
+    </div>
+
+    <div class="grid-sym">
+        <!-- القسم النظري: التعريف + الخصائص كما في الصور -->
+        <div class="card-sym">
+            <div class="card-header">
+                <i class="fas fa-graduation-cap"></i>
+                <span>1) تعريف + خصائص</span>
+            </div>
+            <div class="card-inner">
+                <div class="def-box">
+                    <i class="fas fa-arrow-right"></i> 
+                    <strong>تعريف :</strong> يكون شكلان متماثلان بالنسبة لمستقيم (<strong class="highlight">محور التماثل</strong>) إذا كان كل نقطة من الشكل الأول لها نظير في الشكل الثاني على نفس المسافة من هذا المستقيم، ويكون الشكلان متطابقين.
+                    <div style="margin-top: 8px; font-size:0.9rem;">📐 المستقيم يسمى <strong>محور التماثل</strong> (Axe de symétrie).</div>
+                </div>
+
+                <div class="exemple-figure">
+                    <i class="fas fa-diagram-project"></i> <strong>مثال توضيحي:</strong>
+                    <div style="display: flex; justify-content: center; gap: 20px; align-items: center; flex-wrap: wrap; margin-top: 8px;">
+                        <div><i class="fas fa-star-of-life fa-2x" style="color:#c16f2e;"></i><br>شكل أصلي</div>
+                        <i class="fas fa-arrow-left fa-lg"></i>
+                        <div><i class="fas fa-star-of-life fa-2x" style="color:#2c7a5e; transform: scaleX(-1); display:inline-block;"></i><br>شكل مماثل (انعكاس)</div>
+                    </div>
+                    <div class="conservation-card" style="margin-top: 8px;">
+                        <i class="fas fa-check-circle"></i> <strong>خصائص التماثل المحوري:</strong>
+                        <ul class="prop-list" style="margin-top: 8px;">
+                            <li><i class="fas fa-chalkboard"></i> مماثل مستقيم بالنسبة لمحور التماثل هو <strong>مستقيم</strong>.</li>
+                            <li><i class="fas fa-circle"></i> مماثل دائرة بالنسبة لمحور التماثل هي <strong>دائرة لها نفس الشعاع</strong>.</li>
+                            <li><i class="fas fa-sliders-h"></i> مماثل قطعة بالنسبة لمحور التماثل هي <strong>قطعة لها نفس الطول</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="conservation-card">
+                    <i class="fas fa-eye"></i> <strong>يحافظ التماثل المحوري على:</strong>
+                    <ul class="prop-list" style="margin-top: 6px;">
+                        <li><i class="fas fa-ruler"></i> <strong>الاستقامة</strong> (Alignement).</li>
+                        <li><i class="fas fa-arrows-left-right"></i> <strong>المسافة بين النقط</strong> (Distance).</li>
+                        <li><i class="fas fa-angle-right"></i> <strong>قياسات الزوايا والمحيطات والمساحات</strong>.</li>
+                    </ul>
+                    <div style="font-size:0.85rem; margin-top:6px;">⭐ التماثل المحوري هو تطابق (isométrie) يحافظ على جميع الأبعاد.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الجزء التفاعلي : إيجاد مماثل نقطة -->
+        <div class="inter-card">
+            <div class="inter-header">
+                <i class="fas fa-hand-pointer"></i>
+                <span>تطبيق تفاعلي: إيجاد مماثل نقطة</span>
+            </div>
+            <div class="inter-body">
+                <div class="axis-select">
+                    <span><i class="fas fa-grip-lines-vertical"></i> نوع المحور :</span>
+                    <label style="display: inline-flex; gap: 5px;"><input type="radio" name="axisType" value="vertical" checked> محور رأسي (x = c)</label>
+                    <label style="display: inline-flex; gap: 5px;"><input type="radio" name="axisType" value="horizontal"> محور أفقي (y = c)</label>
+                </div>
+                <div class="coord-group">
+                    <label><i class="fas fa-dot-circle"></i> إحداثي x للنقطة الأصلية :</label>
+                    <input type="number" id="pointX" class="coord" value="3" step="0.5">
+                </div>
+                <div class="coord-group">
+                    <label><i class="fas fa-location-dot"></i> إحداثي y للنقطة الأصلية :</label>
+                    <input type="number" id="pointY" class="coord" value="2" step="0.5">
+                </div>
+                <div class="coord-group">
+                    <label><i class="fas fa-chalkboard"></i> قيمة المحور (c) :</label>
+                    <input type="number" id="axisValue" class="coord" value="0" step="0.5">
+                    <small>مثال: 0 لمحور الصادات أو خط أفقي y=0</small>
+                </div>
+                <button class="btn-mirror" id="calcMirrorBtn"><i class="fas fa-code-branch"></i> احسب النقطة المتماثلة</button>
+                <div id="mirrorDisplay" class="result-box">
+                    <i class="fas fa-calculator"></i> النقطة المتماثلة: —
+                </div>
+                <!-- رسم بياني بسيط -->
+                <canvas id="mirrorCanvas" width="260" height="260" style="width:100%; max-width:260px; height:auto; background:#fefcf5; border-radius: 20px;"></canvas>
+                <p style="font-size:0.65rem; text-align:center;"><i class="fas fa-chalkboard-user"></i> ● النقطة الأصلية   ★ النقطة المتماثلة   الخط المتقطع: محور التماثل</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- تمارين تفاعلية من الدرس (حفظ الخصائص) -->
+    <div class="exo-section">
+        <h3 style="display: flex; gap: 8px; margin-bottom: 10px;"><i class="fas fa-pen-ruler"></i> د) تطبيقات وتمارين على التماثل المحوري</h3>
+        <div>
+            <!-- تمرين 1 -->
+            <div class="exo-question">
+                <p><strong>❶</strong> أكمل: "مماثل مستقيم بالنسبة لمحور التماثل هو ................"</p>
+                <button class="btn-reveal" data-ansid="ans1">عرض الحل</button>
+                <div id="ans1" class="answer-box">
+                    ✅ <strong>مستقيم</strong> (يحافظ التماثل المحوري على الاستقامة).
+                </div>
+            </div>
+            <!-- تمرين 2 -->
+            <div class="exo-question">
+                <p><strong>❷</strong> مماثل دائرة نصف قطرها 5 سم هو دائرة لها نفس ...... ؟</p>
+                <button class="btn-reveal" data-ansid="ans2">عرض الحل</button>
+                <div id="ans2" class="answer-box">
+                    ✅ <strong>نفس الشعاع</strong> (5 سم) ، لأن التماثل يحافظ على الأبعاد.
+                </div>
+            </div>
+            <!-- تمرين 3 -->
+            <div class="exo-question">
+                <p><strong>❸</strong> إذا كان طول قطعة AB يساوي 7 cm ، فكم يكون طول مماثلتها A'B' ؟</p>
+                <button class="btn-reveal" data-ansid="ans3">عرض الحل</button>
+                <div id="ans3" class="answer-box">
+                    ✅ <strong>7 cm</strong> ، لأن مماثل قطعة هو قطعة لها نفس الطول.
+                </div>
+            </div>
+            <!-- تمرين 4 -->
+            <div class="exo-question">
+                <p><strong>❹</strong> أي من الخصائص التالية يحافظ عليها التماثل المحوري؟ (الاستقامة / المسافة / الزوايا / المساحات)</p>
+                <button class="btn-reveal" data-ansid="ans4">عرض الحل</button>
+                <div id="ans4" class="answer-box">
+                    ✅ <strong>جميعها</strong> : الاستقامة، المسافة، قياسات الزوايا، المحيطات والمساحات.
+                </div>
+            </div>
+            <!-- تمرين 5 -->
+            <div class="exo-question">
+                <p><strong>❺</strong> نقطة M تبعد 4 وحدات عن محور التماثل (Δ). كم تبعد نقطتها المتماثلة M' عن (Δ) ؟</p>
+                <button class="btn-reveal" data-ansid="ans5">عرض الحل</button>
+                <div id="ans5" class="answer-box">
+                    ✅ <strong>4 وحدات</strong> أيضاً (نفس المسافة) ، شرط التماثل المحوري.
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 12px; font-size:0.8rem; background:#faeac9; border-radius: 20px; padding: 5px 12px;"><i class="fas fa-lightbulb"></i> تذكير: التماثل المحوري يُحافظ على جميع المقاييس (الأطوال، الزوايا، المساحات).</p>
+    </div>
+
+    <!-- ملخص سريع -->
+    <div style="padding: 0 1.8rem 1.5rem 1.8rem;">
+        <div style="background: #fef1e2; border-radius: 1.2rem; padding: 0.9rem 1.2rem;">
+            <h4><i class="fas fa-list-check"></i> ملخص: خواص التماثل المحوري</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px;">
+                <span class="axis-badge"><i class="fas fa-chalkboard"></i> استقامة</span>
+                <span class="axis-badge"><i class="fas fa-arrows-spin"></i> مسافات</span>
+                <span class="axis-badge"><i class="fas fa-draw-polygon"></i> زوايا</span>
+                <span class="axis-badge"><i class="fas fa-chart-pie"></i> مساحات</span>
+                <span class="axis-badge"><i class="fas fa-circle"></i> صورة دائرة = دائرة</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-mirror"></i> التماثل المحوري – الشكلان المتماثلان متطابقان ومتساويا البعد عن محور التماثل.
+    </footer>
+</div>
+
+<script>
+    // عناصر التفاعل
+    const xInput = document.getElementById('pointX');
+    const yInput = document.getElementById('pointY');
+    const axisValInput = document.getElementById('axisValue');
+    const radioVert = document.querySelector('input[value="vertical"]');
+    const radioHoriz = document.querySelector('input[value="horizontal"]');
+    const calcBtn = document.getElementById('calcMirrorBtn');
+    const mirrorSpan = document.getElementById('mirrorDisplay');
+    const canvas = document.getElementById('mirrorCanvas');
+    let ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        const container = canvas.parentElement;
+        let size = Math.min(260, container.clientWidth);
+        canvas.width = size;
+        canvas.height = size;
+        canvas.style.width = `${size}px`;
+        canvas.style.height = `${size}px`;
+    }
+
+    function computeMirror() {
+        let x = parseFloat(xInput.value);
+        let y = parseFloat(yInput.value);
+        let c = parseFloat(axisValInput.value);
+        if (isNaN(x)) x = 0;
+        if (isNaN(y)) y = 0;
+        if (isNaN(c)) c = 0;
+
+        let mirrorX, mirrorY;
+        let axisDesc = "";
+        if (radioVert.checked) {
+            mirrorX = 2 * c - x;
+            mirrorY = y;
+            axisDesc = `المحور الرأسي (x = ${c.toFixed(2)})`;
+        } else {
+            mirrorX = x;
+            mirrorY = 2 * c - y;
+            axisDesc = `المحور الأفقي (y = ${c.toFixed(2)})`;
+        }
+        mirrorSpan.innerHTML = `<i class="fas fa-sync-alt"></i> <strong>النقطة الأصلية:</strong> (${x.toFixed(2)} , ${y.toFixed(2)})<br>
+                                 <i class="fas fa-arrow-left"></i> <strong>النقطة المتماثلة:</strong> (${mirrorX.toFixed(2)} , ${mirrorY.toFixed(2)})<br>
+                                 <i class="fas fa-chalkboard"></i> ${axisDesc}<br>
+                                 <span style="font-size:0.75rem;"><i class="fas fa-check-circle"></i> المسافة إلى المحور متساوية.</span>`;
+        drawSymmetry(x, y, mirrorX, mirrorY, c, radioVert.checked);
+        return {x, y, mirrorX, mirrorY, c, isVertical: radioVert.checked};
+    }
+
+    function drawSymmetry(origX, origY, symX, symY, axisVal, isVertical) {
+        if (!ctx) return;
+        const w = canvas.width, h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+        // échelle : de -4 à 4 environ
+        const scale = Math.min(w, h) / 7.5;
+        const ox = w/2, oy = h/2;
+        function tx(x) { return ox + x * scale; }
+        function ty(y) { return oy - y * scale; }
+
+        // grille légère
+        ctx.beginPath();
+        ctx.strokeStyle = "#ddd2bc";
+        ctx.lineWidth = 0.5;
+        for (let i = -5; i <= 5; i++) {
+            ctx.beginPath();
+            ctx.moveTo(tx(i), 0);
+            ctx.lineTo(tx(i), h);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(0, ty(i));
+            ctx.lineTo(w, ty(i));
+            ctx.stroke();
+        }
+
+        // tracer l'axe de symétrie
+        ctx.beginPath();
+        ctx.lineWidth = 2.5;
+        ctx.setLineDash([8, 6]);
+        ctx.strokeStyle = "#e9b35f";
+        if (isVertical) {
+            let xAxis = tx(axisVal);
+            ctx.moveTo(xAxis, 0);
+            ctx.lineTo(xAxis, h);
+        } else {
+            let yAxis = ty(axisVal);
+            ctx.moveTo(0, yAxis);
+            ctx.lineTo(w, yAxis);
+        }
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // point original (bleu)
+        let xOrig = tx(origX), yOrig = ty(origY);
+        ctx.beginPath();
+        ctx.fillStyle = "#2874a6";
+        ctx.arc(xOrig, yOrig, 6, 0, 2*Math.PI);
+        ctx.fill();
+        ctx.fillStyle = "#1f6392";
+        ctx.font = "bold 12px 'Segoe UI'";
+        ctx.fillText("● A", xOrig+5, yOrig-4);
+
+        // point symétrique (orange)
+        let xSym = tx(symX), ySym = ty(symY);
+        ctx.beginPath();
+        ctx.fillStyle = "#c16f2e";
+        ctx.arc(xSym, ySym, 6, 0, 2*Math.PI);
+        ctx.fill();
+        ctx.fillStyle = "#9b551f";
+        ctx.fillText("★ A'", xSym+5, ySym-4);
+
+        // trait pointillé entre les deux
+        ctx.beginPath();
+        ctx.setLineDash([5, 5]);
+        ctx.strokeStyle = "#5f6c7a";
+        ctx.moveTo(xOrig, yOrig);
+        ctx.lineTo(xSym, ySym);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = "#4a5b5e";
+        ctx.font = "italic 10px sans-serif";
+        if (isVertical) ctx.fillText("محور التماثل", tx(axisVal)+5, 20);
+        else ctx.fillText("محور التماثل", 10, ty(axisVal)-8);
+    }
+
+    function updateAll() {
+        resizeCanvas();
+        computeMirror();
+    }
+
+    window.addEventListener('load', () => {
+        resizeCanvas();
+        computeMirror();
+        // événements
+        calcBtn.addEventListener('click', computeMirror);
+        xInput.addEventListener('input', computeMirror);
+        yInput.addEventListener('input', computeMirror);
+        axisValInput.addEventListener('input', computeMirror);
+        radioVert.addEventListener('change', computeMirror);
+        radioHoriz.addEventListener('change', computeMirror);
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            computeMirror();
+        });
+    });
+
+    // gestion boutons affichage solutions
+    const revealButtons = document.querySelectorAll('.btn-reveal');
+    revealButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const ansId = this.getAttribute('data-ansid');
+            const ansDiv = document.getElementById(ansId);
+            if (ansDiv.style.display === 'none' || ansDiv.style.display === '') {
+                ansDiv.style.display = 'block';
+                this.innerHTML = 'إخفاء الحل <i class="fas fa-eye-slash"></i>';
+            } else {
+                ansDiv.style.display = 'none';
+                this.innerHTML = 'عرض الحل <i class="fas fa-eye"></i>';
+            }
+        });
+    });
+    document.querySelectorAll('.answer-box').forEach(el => el.style.display = 'none');
+</script>
+</body>
+</html>

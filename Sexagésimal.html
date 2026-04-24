@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>الأعداد الستينية: جمع وطرح الساعات والدقائق والثواني</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Noto Sans Arabic', 'Cairo', system-ui, sans-serif;
+            background: linear-gradient(145deg, #f0f4f0 0%, #dfe6df 100%);
+            padding: 1.5rem;
+            color: #1e2a2f;
+        }
+
+        .time-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: #fffff8;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 1px solid #cfd8c0;
+        }
+
+        .hero-time {
+            background: linear-gradient(115deg, #2c4a3b, #1f5e4a, #226653);
+            padding: 1.6rem 2rem;
+            color: #fff3e0;
+            border-bottom: 5px solid #f5b042;
+        }
+
+        .hero-time h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero-time h1 i {
+            background: #f5b042;
+            color: #1f4a3a;
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+        }
+
+        .badge-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge-pow {
+            background: #3f6b58;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .grid-time {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            padding: 1.8rem;
+        }
+
+        @media (max-width: 780px) {
+            .grid-time {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+                padding: 1rem;
+            }
+            body {
+                padding: 0.9rem;
+            }
+        }
+
+        .card-time {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid #ddd6c5;
+        }
+
+        .card-header {
+            background: #fef3e2;
+            padding: 1rem 1.5rem;
+            border-bottom: 3px solid #f5b042;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-header i {
+            color: #c16f2e;
+        }
+
+        .card-inner {
+            padding: 1.5rem;
+        }
+
+        .reminder-box {
+            background: #fffaf0;
+            border-radius: 1rem;
+            padding: 1rem;
+            border-right: 5px solid #f5b042;
+            margin-bottom: 1.5rem;
+        }
+
+        .reminder-grid {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            justify-content: flex-start;
+            direction: rtl;
+        }
+        
+        .rem-item {
+            background: #f2e9da;
+            border-radius: 40px;
+            padding: 5px 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            direction: rtl;
+        }
+
+        .rule-box {
+            background: #eef5f0;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .example-box {
+            background: #fcf4e3;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-right: 4px solid #e9b35f;
+        }
+
+        .calc-area {
+            background: #fef8ef;
+            border-radius: 1.2rem;
+            padding: 1rem;
+        }
+
+        .time-input {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .time-field {
+            flex: 1;
+            min-width: 80px;
+            background: #fff;
+            border-radius: 1rem;
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ccc2ac;
+        }
+
+        .time-field label {
+            display: block;
+            font-weight: bold;
+            font-size: 0.7rem;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 2rem;
+            border: 1px solid #c0b28a;
+            text-align: center;
+            font-size: 1rem;
+            background: #fffcf5;
+        }
+
+        .btn-calc {
+            background: #f5b042;
+            border: none;
+            color: #2c4a3b;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 2rem;
+            width: 100%;
+            cursor: pointer;
+            margin: 12px 0;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .btn-calc:hover {
+            background: #e09d2e;
+            color: white;
+        }
+
+        .result-area {
+            background: #e7f0ea;
+            border-radius: 1rem;
+            padding: 12px;
+            margin-top: 12px;
+            border-right: 4px solid #2c7a5e;
+            font-family: monospace;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .exo-question {
+            background: #fffbf2;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 12px 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+        }
+
+        .btn-reveal {
+            background: #2c7a5e;
+            border: none;
+            padding: 6px 20px;
+            border-radius: 2rem;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .answer-box {
+            display: none;
+            background: #e2f0ea;
+            padding: 12px;
+            border-radius: 1rem;
+            margin-top: 12px;
+            border-right: 4px solid #2c7a5e;
+        }
+
+        footer {
+            background: #1f3a30;
+            color: #f2e5cf;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .highlight {
+            background: #fae2b3;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        i.fa, i.far, i.fas {
+            margin-left: 5px;
+        }
+
+        .small-note {
+            font-size: 0.75rem;
+            color: #4c5b4c;
+            margin-top: 6px;
+        }
+        
+        .rtl-text {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body>
+<div class="time-container">
+    <div class="hero-time">
+        <h1>
+            <i class="fas fa-hourglass-half"></i>
+            الأعداد الستينية: جمع وطرح | Sexagésimal
+        </h1>
+        <div class="badge-group">
+            <span class="badge-pow"><i class="fas fa-clock"></i> ساعات · دقائق · ثواني</span>
+            <span class="badge-pow"><i class="fas fa-plus-circle"></i> الجمع بالستيني</span>
+            <span class="badge-pow"><i class="fas fa-minus-circle"></i> الطرح بالاستلاف</span>
+        </div>
+        <p style="margin-top: 12px;"><i class="fas fa-chalkboard"></i> قاعدة الستيني: 60 ثانية = 1 دقيقة , 60 دقيقة = 1 ساعة , 24 ساعة = 1 يوم</p>
+    </div>
+
+    <div class="grid-time">
+        <div class="card-time">
+            <div class="card-header">
+                <i class="fas fa-book"></i>
+                <span>📖 تذكير + قاعدة الجمع والطرح</span>
+            </div>
+            <div class="card-inner">
+                <div class="reminder-box">
+                    <i class="fas fa-memory"></i> <strong>تذكير بالتحويلات الأساسية:</strong>
+                    <div class="reminder-grid">
+                        <span class="rem-item">1 ساعة = 60 دقيقة</span>
+                        <span class="rem-item">1 ساعة = 3600 ثانية</span>
+                        <span class="rem-item">½ ساعة = 30 دقيقة</span>
+                        <span class="rem-item">¼ ساعة = 15 دقيقة</span>
+                        <span class="rem-item">1 دقيقة = 60 ثانية</span>
+                        <span class="rem-item">1 سنة = 12 شهراً</span>
+                        <span class="rem-item">1 سنة = 365 يوماً</span>
+                        <span class="rem-item">1 شهر ≈ 4 أسابيع</span>
+                        <span class="rem-item">1 يوم = 24 ساعة</span>
+                    </div>
+                </div>
+
+                <div class="rule-box">
+                    <i class="fas fa-cogs"></i> <strong>قاعدة جمع و طرح الأعداد الستينية :</strong>
+                    <ol style="margin-right: 1.2rem; margin-top: 8px;">
+                        <li>نقوم بعملية الجمع أو الطرح على <strong>ثلاث مراحل</strong>:
+                            <ul style="margin-right: 1.2rem;">
+                                <li>المرحلة الأولى : الثواني فيما بينهم</li>
+                                <li>المرحلة الثانية : الدقائق فيما بينهم</li>
+                                <li>المرحلة الثالثة : الساعات فيما بينهم</li>
+                            </ul>
+                        </li>
+                        <li style="margin-top: 8px;"><i class="fas fa-exclamation-triangle"></i> <strong>ملاحظة هامة:</strong> بعد عملية الجمع، إذا حصلنا على عدد أكبر من 59 في الثواني أو الدقائق، أو أكبر من 23 في الساعات، نقوم بالتأكيد (التحويل) إلى الوحدة الأعلى. وفي حالة الطرح إذا لم نتمكن نستلف من الوحدة الكبرى.</li>
+                    </ol>
+                </div>
+
+                <div class="example-box">
+                    <i class="fas fa-chalkboard-user"></i> <strong>مثالان توضيحيان:</strong>
+                    <p>🎬 <strong>المسألة 1:</strong> مباراة تستغرق 3 ساعات و 38 دقيقة والمباراة التالية 2 ساعة و 49 دقيقة. المدة الإجمالية؟</p>
+                    <p>🎞️ <strong>المسألة 2:</strong> فيلم يبدأ 3:27 مساءً وينتهي 6:14 مساءً. كم مدته؟</p>
+                    <div class="small-note"><i class="fas fa-lightbulb"></i> حل هذه الأمثلة موجود في قسم التمارين أدناه أو باستخدام الآلة التفاعلية.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-time">
+            <div class="card-header">
+                <i class="fas fa-calculator"></i>
+                <span>🧮 تطبيق تفاعلي: جمع وطرح الزمن</span>
+            </div>
+            <div class="card-inner calc-area">
+                <div style="display: flex; gap: 10px; margin-bottom: 10px; justify-content: center;">
+                    <button id="addModeBtn" class="btn-calc" style="background: #2c7a5e; color:white; width:45%;">➕ جمع</button>
+                    <button id="subModeBtn" class="btn-calc" style="background: #b86b2c; color:white; width:45%;">➖ طرح</button>
+                </div>
+                <div id="operationLabel" style="text-align:center; font-weight:bold; margin-bottom:12px;">نمط العملية: الجمع</div>
+
+                <div class="time-input">
+                    <div class="time-field">
+                        <label><i class="fas fa-hourglass-start"></i> الساعات</label>
+                        <input type="number" id="hh1" value="3" step="1" min="0">
+                    </div>
+                    <div class="time-field">
+                        <label><i class="fas fa-minute"></i> الدقائق</label>
+                        <input type="number" id="mm1" value="38" step="1" min="0" max="59">
+                    </div>
+                    <div class="time-field">
+                        <label><i class="fas fa-second"></i> الثواني</label>
+                        <input type="number" id="ss1" value="0" step="1" min="0" max="59">
+                    </div>
+                </div>
+
+                <div style="text-align:center; font-size:1.6rem; margin:8px 0;" id="opSign">➕</div>
+
+                <div class="time-input">
+                    <div class="time-field">
+                        <label><i class="fas fa-hourglass-end"></i> الساعات</label>
+                        <input type="number" id="hh2" value="2" step="1" min="0">
+                    </div>
+                    <div class="time-field">
+                        <label>الدقائق</label>
+                        <input type="number" id="mm2" value="49" step="1" min="0" max="59">
+                    </div>
+                    <div class="time-field">
+                        <label>الثواني</label>
+                        <input type="number" id="ss2" value="0" step="1" min="0" max="59">
+                    </div>
+                </div>
+
+                <button id="calcTimeBtn" class="btn-calc"><i class="fas fa-sync-alt"></i> احسب النتيجة (ستيني)</button>
+                <div id="timeResult" class="result-area">
+                    <i class="fas fa-clock"></i> النتيجة: —
+                </div>
+                <div class="small-note" style="text-align:center;">
+                    ⚙️ ملاحظة: الطرح يتم بشكل مباشر مع الإمكانية للاستلاف التلقائي (60 ثانية/دقيقة).<br>
+                    ✅ يحترم قواعد الستيني: الثواني والدقائق من 0 إلى 59.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin: 0 1.8rem 1.8rem 1.8rem;">
+        <div class="card-time">
+            <div class="card-header">
+                <i class="fas fa-pen-ruler"></i>
+                <span>📝 تطبيقات وتمارين على جمع وطرح الأعداد الستينية</span>
+            </div>
+            <div class="card-inner">
+                <div class="exo-question">
+                    <p><strong>❶ مباراة كرة قدم:</strong> المباراة الأولى استغرقت <strong>3 ساعات و 38 دقيقة</strong> والمباراة الثانية استغرقت <strong>ساعتين و 49 دقيقة</strong>. ما هي المدة الإجمالية للمباراتين معاً؟</p>
+                    <button class="btn-reveal" data-ansid="ansEx1">عرض الحل المفصل</button>
+                    <div id="ansEx1" class="answer-box">
+                        ✅ <strong>الحل:</strong> نجمع الدقائق أولاً: 38 + 49 = 87 دقيقة → 87 = 60 + 27 → نحول 60 دقيقة إلى ساعة واحدة ويتبقى 27 دقيقة. ثم نجمع الساعات: 3 + 2 = 5 ساعات + الساعة الإضافية = 6 ساعات. إذن المدة الإجمالية = <strong>6 ساعات و 27 دقيقة</strong>.
+                    </div>
+                </div>
+                <div class="exo-question">
+                    <p><strong>❷ فيلم سينمائي:</strong> يبدأ الفيلم في الساعة <strong>3:27 مساءً</strong> وينتهي الساعة <strong>6:14 مساءً</strong>. ما هي مدة الفيلم؟</p>
+                    <button class="btn-reveal" data-ansid="ansEx2">عرض الحل</button>
+                    <div id="ansEx2" class="answer-box">
+                        ✅ <strong>الحل:</strong> 6:14 - 3:27. نطرح الدقائق: 14 - 27 لا يمكن، نستلف ساعة من 6 تصبح 5 ساعات و 60 دقيقة، تصبح 5:74. الآن 74 - 27 = 47 دقيقة. الساعات: 5 - 3 = 2 ساعات. إذن مدة الفيلم = <strong>ساعتان و 47 دقيقة</strong>.
+                    </div>
+                </div>
+                <div class="exo-question">
+                    <p><strong>❸ تدريب على الجمع:</strong> زمنان: 5 ساعات 42 دقيقة 35 ثانية و 2 ساعة 38 دقيقة 50 ثانية. أوجد مجموعهما بطريقة الستيني.</p>
+                    <button class="btn-reveal" data-ansid="ansEx3">عرض الحل</button>
+                    <div id="ansEx3" class="answer-box">
+                        ✅ نجمع الثواني: 35+50=85 ثانية → 85 = 60 + 25 → نضيف دقيقة ونبقي 25 ثانية.<br>
+                        نجمع الدقائق: 42+38=80 دقيقة + الدقيقة المستلفة = 81 دقيقة → 81 = 60 + 21 → نضيف ساعة ونبقي 21 دقيقة.<br>
+                        نجمع الساعات: 5+2=7 ساعات + الساعة المستلفة = 8 ساعات.<br>
+                        النتيجة: <strong>8 ساعات 21 دقيقة 25 ثانية</strong>.
+                    </div>
+                </div>
+                <div class="exo-question">
+                    <p><strong>❹ طرح مع استلاف:</strong> احسب الفرق: 10 ساعات 15 دقيقة 20 ثانية - 3 ساعات 47 دقيقة 50 ثانية.</p>
+                    <button class="btn-reveal" data-ansid="ansEx4">عرض الحل</button>
+                    <div id="ansEx4" class="answer-box">
+                        ✅ نبدأ بالثواني: 20 - 50 غير ممكن، نستلف دقيقة من 15 تصبح 14 دقيقة و 20+60=80 ثانية → 80-50=30 ثانية.<br>
+                        الدقائق: 14 - 47 غير ممكن، نستلف ساعة من 10 تصبح 9 ساعات و 14+60=74 دقيقة → 74-47=27 دقيقة.<br>
+                        الساعات: 9 - 3 = 6 ساعات. النتيجة: <strong>6 ساعات 27 دقيقة 30 ثانية</strong>.
+                    </div>
+                </div>
+                <div class="small-note" style="margin-top:12px;"><i class="fas fa-check-circle"></i> تذكير: أي مجموع للثواني أو الدقائق يتجاوز 59 يُحوَّل إلى الوحدة الأكبر. الطرح يتم بالاستلاف من الساعات أو الدقائق حسب الحاجة.</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-chalkboard"></i> الأعداد الستينية: قاعدة الجمع والطرح مع الاستلاف والتحويل التلقائي. ساعات / دقائق / ثواني.
+    </footer>
+</div>
+
+<script>
+    const hh1 = document.getElementById('hh1');
+    const mm1 = document.getElementById('mm1');
+    const ss1 = document.getElementById('ss1');
+    const hh2 = document.getElementById('hh2');
+    const mm2 = document.getElementById('mm2');
+    const ss2 = document.getElementById('ss2');
+    const addBtn = document.getElementById('addModeBtn');
+    const subBtn = document.getElementById('subModeBtn');
+    const calcBtn = document.getElementById('calcTimeBtn');
+    const opSignSpan = document.getElementById('opSign');
+    const operationLabel = document.getElementById('operationLabel');
+    const resultDiv = document.getElementById('timeResult');
+
+    let currentMode = 'add';
+
+    function updateModeUI() {
+        if (currentMode === 'add') {
+            opSignSpan.innerHTML = '➕';
+            operationLabel.innerHTML = 'نمط العملية: الجمع (+)';
+            operationLabel.style.color = '#2c7a5e';
+        } else {
+            opSignSpan.innerHTML = '➖';
+            operationLabel.innerHTML = 'نمط العملية: الطرح (-)';
+            operationLabel.style.color = '#b86b2c';
+        }
+    }
+
+    function normalizeTime(h, m, s) {
+        let carryM = Math.floor(s / 60);
+        s = s % 60;
+        m = m + carryM;
+        let carryH = Math.floor(m / 60);
+        m = m % 60;
+        h = h + carryH;
+        if (s < 0) { m -= 1; s += 60; }
+        if (m < 0) { h -= 1; m += 60; }
+        return { hours: h, minutes: m, seconds: s };
+    }
+
+    function computeTime() {
+        let h1 = parseInt(hh1.value) || 0;
+        let m1 = parseInt(mm1.value) || 0;
+        let s1 = parseInt(ss1.value) || 0;
+        let h2 = parseInt(hh2.value) || 0;
+        let m2 = parseInt(mm2.value) || 0;
+        let s2 = parseInt(ss2.value) || 0;
+
+        let resultHours, resultMinutes, resultSeconds;
+
+        if (currentMode === 'add') {
+            let totalSeconds = s1 + s2;
+            let totalMinutes = m1 + m2;
+            let totalHours = h1 + h2;
+            let norm = normalizeTime(totalHours, totalMinutes, totalSeconds);
+            resultHours = norm.hours;
+            resultMinutes = norm.minutes;
+            resultSeconds = norm.seconds;
+        } 
+        else {
+            let secDiff = s1 - s2;
+            let minDiff = m1 - m2;
+            let hourDiff = h1 - h2;
+            if (secDiff < 0) {
+                secDiff += 60;
+                minDiff -= 1;
+            }
+            if (minDiff < 0) {
+                minDiff += 60;
+                hourDiff -= 1;
+            }
+            if (hourDiff < 0) {
+                resultDiv.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ⚠️ النتيجة سالبة: الطرح غير ممكن (الزمن الأول أصغر من الثاني). الرجاء تغيير القيم.`;
+                return;
+            }
+            let norm = normalizeTime(hourDiff, minDiff, secDiff);
+            resultHours = norm.hours;
+            resultMinutes = norm.minutes;
+            resultSeconds = norm.seconds;
+        }
+
+        let formatted = `${resultHours} ساعة , ${resultMinutes} دقيقة , ${resultSeconds} ثانية`;
+        resultDiv.innerHTML = `<i class="fas fa-clock"></i> <strong>النتيجة (بعد تطبيق قاعدة الستيني):</strong><br>
+                                🕒 ${resultHours} : ${resultMinutes.toString().padStart(2,'0')} : ${resultSeconds.toString().padStart(2,'0')}<br>
+                                📍 ${formatted}<br>
+                                <span style="font-size:0.75rem;">✅ تم احترام أن 60 ثانية = 1 دقيقة و 60 دقيقة = 1 ساعة.</span>`;
+    }
+
+    addBtn.addEventListener('click', () => {
+        currentMode = 'add';
+        updateModeUI();
+        computeTime();
+    });
+    subBtn.addEventListener('click', () => {
+        currentMode = 'sub';
+        updateModeUI();
+        computeTime();
+    });
+    calcBtn.addEventListener('click', computeTime);
+    const inputs = [hh1, mm1, ss1, hh2, mm2, ss2];
+    inputs.forEach(inp => inp.addEventListener('input', computeTime));
+
+    const revealBtns = document.querySelectorAll('.btn-reveal');
+    revealBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const ansDivId = this.getAttribute('data-ansid');
+            const answerDiv = document.getElementById(ansDivId);
+            if (answerDiv.style.display === 'none' || answerDiv.style.display === '') {
+                answerDiv.style.display = 'block';
+                this.innerHTML = 'إخفاء الحل <i class="fas fa-eye-slash"></i>';
+            } else {
+                answerDiv.style.display = 'none';
+                this.innerHTML = 'عرض الحل <i class="fas fa-eye"></i>';
+            }
+        });
+    });
+    document.querySelectorAll('.answer-box').forEach(el => el.style.display = 'none');
+    updateModeUI();
+    computeTime();
+</script>
+</body>
+</html>

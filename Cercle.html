@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>الدائرة والقُرص | المساحة والمحيط - درس تفاعلي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Tahoma', 'Noto Sans Arabic', 'Cairo', system-ui, sans-serif;
+            background: linear-gradient(145deg, #eef2f7 0%, #e0e6ef 100%);
+            padding: 1.5rem;
+            color: #1e2a3a;
+        }
+
+        .circle-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: rgba(255, 255, 250, 0.98);
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 1px solid rgba(180, 140, 100, 0.3);
+        }
+
+        .hero-circle {
+            background: linear-gradient(115deg, #2c3e2f, #1f4a3a, #2a5a48);
+            padding: 1.6rem 2rem;
+            color: #fff3e0;
+            border-bottom: 5px solid #e9b35f;
+        }
+
+        .hero-circle h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero-circle h1 i {
+            background: #e9b35f;
+            color: #1f3d33;
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+        }
+
+        .badge-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge-pow {
+            background: #3f6b58;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .grid-circle {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            padding: 1.8rem;
+        }
+
+        @media (max-width: 780px) {
+            .grid-circle {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.2rem;
+            }
+            body {
+                padding: 0.9rem;
+            }
+        }
+
+        .card-circle {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2dccd;
+        }
+
+        .card-header {
+            background: #fef3e2;
+            padding: 1rem 1.5rem;
+            border-bottom: 3px solid #e9b35f;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-header i {
+            color: #c16f2e;
+        }
+
+        .card-inner {
+            padding: 1.5rem;
+        }
+
+        .def-box {
+            background: #fffaf0;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            border-right: 6px solid #e9b35f;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: #f9e0a0;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .example-figure {
+            background: #f4f9f5;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .formula-card {
+            background: #eef5f0;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1.2rem 0;
+            border-right: 5px solid #2c7a5e;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .formula-card p {
+            font-size: 1.3rem;
+            font-weight: bold;
+            direction: ltr;
+            text-align: center;
+            background: #e2f0e9;
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 2rem;
+            margin-top: 6px;
+        }
+
+        .inter-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            border: 1px solid #d9cfb5;
+        }
+
+        .inter-header {
+            background: #3b6b58;
+            color: white;
+            padding: 0.9rem 1.2rem;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .inter-body {
+            padding: 1.4rem;
+        }
+
+        .coord-group {
+            margin-bottom: 1rem;
+        }
+
+        .coord-group label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+        }
+
+        input.coord, select {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 1.2rem;
+            border: 1px solid #cbc2a8;
+            background: #fffcf5;
+            font-size: 1rem;
+        }
+
+        .btn-calc {
+            background: #c16f2e;
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 2rem;
+            width: 100%;
+            cursor: pointer;
+            margin: 8px 0;
+            transition: 0.2s;
+        }
+        .btn-calc:hover {
+            background: #9b551f;
+        }
+
+        .result-box {
+            background: #eff3f0;
+            border-radius: 1rem;
+            padding: 12px;
+            margin-top: 1rem;
+            border-right: 5px solid #e9b35f;
+            font-family: monospace;
+            text-align: center;
+        }
+
+        canvas {
+            display: block;
+            margin: 1rem auto;
+            background: #fefcf5;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #ddd0b6;
+            width: 100%;
+            height: auto;
+        }
+
+        .exo-section {
+            margin: 0 1.8rem 1.8rem 1.8rem;
+            background: #fef7eb;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.6rem;
+            border: 1px solid #e9b35f;
+        }
+
+        .exo-question {
+            background: #fffbf2;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 12px 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+        }
+
+        .btn-reveal {
+            background: #2c7a5e;
+            border: none;
+            padding: 6px 20px;
+            border-radius: 2rem;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .answer-box {
+            display: none;
+            background: #e2f0ea;
+            padding: 12px;
+            border-radius: 1rem;
+            margin-top: 12px;
+            border-right: 4px solid #2c7a5e;
+        }
+
+        footer {
+            background: #1f3a30;
+            color: #f2e5cf;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .inline-math {
+            font-weight: bold;
+            background: #f7e5cd;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+        .axis-badge {
+            background: #e7cba5;
+            color: #2c4d3e;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        .radius-badge {
+            display: inline-block;
+            background: #e9d6b0;
+            border-radius: 40px;
+            padding: 3px 14px;
+        }
+        .vocab-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+            justify-content: center;
+        }
+        .vocab-item {
+            background: #eae2d0;
+            border-radius: 30px;
+            padding: 4px 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .pi-note {
+            font-size: 0.8rem;
+            background: #f8eedb;
+            border-radius: 20px;
+            padding: 3px 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="circle-container">
+    <div class="hero-circle">
+        <h1>
+            <i class="fas fa-circle"></i>
+            الدائرة والقُرص – Cercle et Disque
+        </h1>
+        <div class="badge-group">
+            <span class="badge-pow"><i class="fas fa-chalkboard"></i> دائرة · Cercle</span>
+            <span class="badge-pow"><i class="fas fa-fill-drip"></i> قُرص · Disque</span>
+            <span class="badge-pow"><i class="fas fa-ruler-combined"></i> شعاع · Rayon · قطر · Diamètre</span>
+        </div>
+        <p style="margin-top: 12px; font-size:0.9rem;"><i class="fas fa-math"></i> الدائرة هي مجموعة النقاط التي تبعد مسافة ثابتة عن المركز. القرص هو السطح المحدد بالدائرة.</p>
+    </div>
+
+    <div class="grid-circle">
+        <!-- القسم النظري: تعريف، مصطلحات أساسية مع القانون المصحح -->
+        <div class="card-circle">
+            <div class="card-header">
+                <i class="fas fa-book-open"></i>
+                <span>1) تعريف + مصطلحات + قوانين المساحة والمحيط</span>
+            </div>
+            <div class="card-inner">
+                <div class="def-box">
+                    <i class="fas fa-arrow-right"></i> 
+                    <strong>تعريف :</strong> دائرة مركزها \( O \) هي مجموعة النقاط التي تبعد بنفس المسافة عن النقطة \( O \). هذه المسافة تسمى <strong class="highlight">شعاع الدائرة</strong> ونرمز له بـ \( r \).
+                    <div style="margin-top: 10px;"><i class="fas fa-circle-notch"></i> <strong>القُرص (Disque) :</strong> هو سطح محدد بدائرة (الدائرة + الداخل).</div>
+                </div>
+                <div class="example-figure">
+                    <i class="fas fa-diagram-project"></i> <strong>مصطلحات هامة:</strong>
+                    <div class="vocab-list">
+                        <span class="vocab-item"><i class="fas fa-dot-circle"></i> مركز (Centre)</span>
+                        <span class="vocab-item"><i class="fas fa-arrow-right"></i> شعاع (Rayon) r</span>
+                        <span class="vocab-item"><i class="fas fa-arrows-left-right"></i> قطر (Diamètre) D = 2r</span>
+                        <span class="vocab-item"><i class="fas fa-chart-line"></i> قوس (Arc)</span>
+                        <span class="vocab-item"><i class="fas fa-chord"></i> وتر (Corde)</span>
+                    </div>
+                    <div style="margin-top: 12px; background:#fff0db; border-radius: 1rem; padding:0.5rem;">
+                        <i class="fas fa-info-circle"></i> القطر هو أكبر وتر في الدائرة ويساوي ضعف الشعاع : \( D = 2 \times r \)
+                    </div>
+                </div>
+
+                <!-- القوانين المصححة: A = π × r × r = π r² -->
+                <div class="formula-card">
+                    <i class="fas fa-chart-pie"></i> <strong>(I) المساحة (Aire du disque) :</strong>
+                    <p>\( A = \pi \times r \times r = \pi r^2 \)</p>
+                    <div class="pi-note"><i class="fas fa-calculator"></i> \(\pi \approx 3.14\) &nbsp;&nbsp; | r : الشعاع (نصف القطر)</div>
+                    <div style="font-size:0.8rem; margin-top:5px;">✅ هذه هي الصيغة الصحيحة: مساحة القرص = \(\pi\) × مربع الشعاع.</div>
+                </div>
+
+                <div class="formula-card">
+                    <i class="fas fa-arrows-spin"></i> <strong>(B) المحيط (Périmètre du cercle) :</strong>
+                    <p>\( P = \pi \times 2 \times r = \pi \times D \)</p>
+                    <div><span class="pi-note">\(\pi \approx 3.14\) &nbsp; | D: القطر &nbsp; | r: الشعاع</span></div>
+                </div>
+
+                <div style="background:#f0efe7; border-radius: 1rem; padding:0.5rem 1rem; margin-top: 8px;">
+                    <i class="fas fa-lightbulb"></i> <strong>ملاحظة هامة :</strong> القرص (المساحة الداخلية) مساحته = \(\pi r^2\)، بينما الدائرة هي فقط المحيط (الحدود). القانون الصحيح للمساحة هو \( \pi r^2 \) أي \(\pi \times r \times r\).
+                </div>
+            </div>
+        </div>
+
+        <!-- الجزء التفاعلي : حساب المساحة والمحيط ديناميكياً مع رسم دائري -->
+        <div class="inter-card">
+            <div class="inter-header">
+                <i class="fas fa-calculator"></i>
+                <span>تطبيق تفاعلي: حساب المساحة والمحيط</span>
+            </div>
+            <div class="inter-body">
+                <div class="coord-group">
+                    <label><i class="fas fa-vector-square"></i> نصف القطر (r) :</label>
+                    <input type="number" id="radiusInput" class="coord" value="5" step="0.5" placeholder="أدخل الشعاع">
+                    <small>الشعاع R = المسافة من المركز إلى الدائرة</small>
+                </div>
+                <div class="coord-group">
+                    <label><i class="fas fa-chart-simple"></i> اختر العملية :</label>
+                    <select id="calcType" class="coord">
+                        <option value="both">حساب المساحة والمحيط معًا</option>
+                        <option value="area">المساحة فقط</option>
+                        <option value="perimeter">المحيط فقط</option>
+                    </select>
+                </div>
+                <button class="btn-calc" id="calculateCircleBtn"><i class="fas fa-sync-alt"></i> احسب الآن</button>
+                <div id="circleResult" class="result-box">
+                    <i class="fas fa-info-circle"></i> انتظر الحساب...
+                </div>
+                <!-- رسم توضيحي للدائرة -->
+                <canvas id="circleCanvas" width="240" height="240" style="width:100%; max-width:240px; height:auto; background:#fefcf5; border-radius: 50%; border: 1px solid #d4c5a5; display:block; margin:0 auto;"></canvas>
+                <p style="font-size:0.65rem; text-align:center;"><i class="fas fa-chalkboard"></i> تمثيل دائري: الشعاع يتناسب مع القيمة المدخلة (r المقابلة)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- تمارين وتطبيقات على القوانين (مع التأكيد على المساحة الصحيحة) -->
+    <div class="exo-section">
+        <h3 style="display: flex; gap: 8px; margin-bottom: 10px;"><i class="fas fa-pen-ruler"></i> تمارين وحسابات : الدائرة والقرص (قانون المساحة \(\pi r^2\))</h3>
+        <div>
+            <div class="exo-question">
+                <p><strong>❶</strong> دائرة نصف قطرها \( r = 4 \) cm. احسب مساحتها ومحيطها باستعمال \( \pi = 3.14 \).</p>
+                <button class="btn-reveal" data-ansid="ansC1">عرض الحل المفصّل</button>
+                <div id="ansC1" class="answer-box">
+                    ✅ <strong>المساحة</strong> : \( A = \pi \times r \times r = 3.14 \times 4 \times 4 = 3.14 \times 16 = 50.24 \) cm².<br>
+                    ✅ <strong>المحيط</strong> : \( P = 2\pi r = 2 \times 3.14 \times 4 = 25.12 \) cm.
+                </div>
+            </div>
+            <div class="exo-question">
+                <p><strong>❷</strong> إذا كان قطر دائرة يساوي 10 cm، فما هو نصف قطرها؟ ثم احسب محيطها ومساحتها.</p>
+                <button class="btn-reveal" data-ansid="ansC2">عرض الحل</button>
+                <div id="ansC2" class="answer-box">
+                    ✅ نصف القطر \( r = \frac{D}{2} = \frac{10}{2} = 5 \) cm.<br>
+                    ✅ المحيط \( P = \pi \times D = 3.14 \times 10 = 31.4 \) cm.<br>
+                    ✅ المساحة \( A = \pi r^2 = 3.14 \times 5^2 = 3.14 \times 25 = 78.5 \) cm².
+                </div>
+            </div>
+            <div class="exo-question">
+                <p><strong>❸</strong> حديقة دائرية مساحتها \( 78.5 \) m². احسب نصف قطرها (استعمل \( \pi \approx 3.14 \)).</p>
+                <button class="btn-reveal" data-ansid="ansC3">عرض الحل</button>
+                <div id="ansC3" class="answer-box">
+                    ✅ \( A = \pi r^2 \) ⇒ \( 78.5 = 3.14 \times r^2 \) ⇒ \( r^2 = \frac{78.5}{3.14} = 25 \) ⇒ \( r = 5 \) m.
+                </div>
+            </div>
+            <div class="exo-question">
+                <p><strong>❹</strong> ما الفرق بين الدائرة والقرص؟ ولماذا تستعمل صيغة \( \pi r^2 \) للمساحة؟</p>
+                <button class="btn-reveal" data-ansid="ansC4">عرض الجواب</button>
+                <div id="ansC4" class="answer-box">
+                    ✅ <strong>الدائرة</strong> : هي المحيط فقط (مجموعة النقاط التي تبعد r عن المركز). <strong>القرص</strong> : هو السطح الداخلي (الدائرة + المنطقة الداخلية). مساحة القرص تُعطى بالعلاقة \( \pi r^2 \) لأنها تمثل كامل المنطقة المستوية داخل الدائرة.
+                </div>
+            </div>
+            <div class="exo-question">
+                <p><strong>❺</strong> إذا زاد نصف قطر دائرة إلى الضعف، كيف يتغير محيطها ومساحتها؟ اشرح باستعمال القانون \( A = \pi r^2 \).</p>
+                <button class="btn-reveal" data-ansid="ansC5">عرض التأثير</button>
+                <div id="ansC5" class="answer-box">
+                    ✅ المحيط يتضاعف (لأن \( P = 2\pi r \))، بينما المساحة تصبح \( \pi (2r)^2 = 4\pi r^2 \) أي <strong>أربعة أضعاف</strong> المساحة الأصلية. وهذا يوضح أن المساحة تتناسب مع مربع نصف القطر.
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 12px; font-size:0.8rem; background:#faeac9; border-radius: 20px; padding: 5px 12px;">
+            <i class="fas fa-lightbulb"></i> تذكير هام: مساحة القرص (الدائرة) = \(\pi \times r \times r\) وليس \(\pi \times r\) فقط. المحيط = \(2\pi r\).
+        </p>
+    </div>
+
+    <!-- ملخص سريع مع الصيغ المصححة -->
+    <div style="padding: 0 1.8rem 1.5rem 1.8rem;">
+        <div style="background: #fef1e2; border-radius: 1.2rem; padding: 0.9rem 1.2rem;">
+            <h4><i class="fas fa-list-check"></i> خلاصة : قوانين الدائرة والقرص (الصحيحة)</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; justify-content: center;">
+                <span class="axis-badge"><i class="fas fa-chart-pie"></i> المساحة : \( A = \pi r^2 = \pi \times r \times r \)</span>
+                <span class="axis-badge"><i class="fas fa-arrows-spin"></i> المحيط : \( P = 2\pi r = \pi D \)</span>
+                <span class="axis-badge"><i class="fas fa-circle"></i> القطر : \( D = 2r \)</span>
+            </div>
+            <div style="margin-top:12px; text-align:center;">
+                <span class="radius-badge"><i class="fas fa-check-circle"></i> الدائرة: حدود فقط (محيط)</span>
+                <span class="radius-badge"><i class="fas fa-fill"></i> القرص: سطح داخلي (مساحة = \(\pi r^2\))</span>
+            </div>
+            <div style="margin-top: 10px; font-size:0.8rem; text-align:center;">
+                ⚡ قانون المساحة \( \pi r^2 \) مشتق من \(\pi \times r \times r\).
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-chalkboard-user"></i> الدائرة والقُرص – كل ما يتعلق بالشعاع، القطر، المساحة (\(\pi r^2\)) والمحيط (\(2\pi r\)). تمارين تفاعلية لفهم صحيح.
+    </footer>
+</div>
+
+<script>
+    // عناصر الحاسبة التفاعلية + الرسم
+    const radiusInput = document.getElementById('radiusInput');
+    const calcTypeSelect = document.getElementById('calcType');
+    const calcBtn = document.getElementById('calculateCircleBtn');
+    const resultDiv = document.getElementById('circleResult');
+    const canvasCirc = document.getElementById('circleCanvas');
+    let ctx = canvasCirc.getContext('2d');
+
+    function resizeCanvasCircle() {
+        const container = canvasCirc.parentElement;
+        let size = Math.min(240, container.clientWidth);
+        canvasCirc.width = size;
+        canvasCirc.height = size;
+        canvasCirc.style.width = `${size}px`;
+        canvasCirc.style.height = `${size}px`;
+    }
+
+    function drawCircle(r_val) {
+        if (!ctx) return;
+        const w = canvasCirc.width, h = canvasCirc.height;
+        ctx.clearRect(0, 0, w, h);
+        const centerX = w/2, centerY = h/2;
+        let maxPossibleRadius = Math.min(w, h) / 2 - 6;
+        let drawRadius = 5;
+        if (r_val > 0) {
+            drawRadius = Math.min(maxPossibleRadius, (r_val / 12) * maxPossibleRadius);
+            if (drawRadius < 5) drawRadius = 5;
+        } else {
+            drawRadius = 5;
+        }
+        
+        // dessiner le cercle
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, drawRadius, 0, 2 * Math.PI);
+        ctx.strokeStyle = "#c16f2e";
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+        ctx.fillStyle = "#fff4e6";
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, drawRadius, 0, 2 * Math.PI);
+        ctx.fillStyle = "#fff2df";
+        ctx.fill();
+        ctx.stroke();
+
+        // رسم شعاع توضيحي
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        let angle = -Math.PI / 4;
+        let rayX = centerX + drawRadius * Math.cos(angle);
+        let rayY = centerY + drawRadius * Math.sin(angle);
+        ctx.lineTo(rayX, rayY);
+        ctx.strokeStyle = "#2c7a5e";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillStyle = "#1e5a48";
+        ctx.font = "bold 12px 'Segoe UI'";
+        ctx.fillText("r", (centerX + rayX)/2 + 2, (centerY + rayY)/2 - 3);
+        
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, 3, 0, 2*Math.PI);
+        ctx.fillStyle = "#b35900";
+        ctx.fill();
+        ctx.fillStyle = "#4e3b28";
+        ctx.fillText("O", centerX+4, centerY+3);
+    }
+
+    function computeCircle() {
+        let r = parseFloat(radiusInput.value);
+        if (isNaN(r) || r <= 0) {
+            resultDiv.innerHTML = `<i class="fas fa-exclamation-triangle"></i> الرجاء إدخال نصف قطر موجب (r > 0)`;
+            drawCircle(1);
+            return;
+        }
+        const pi = 3.1415926535;
+        const area = pi * r * r;      // المساحة = π × r²
+        const perimeter = 2 * pi * r; // المحيط = 2πr
+        const type = calcTypeSelect.value;
+        
+        let htmlResult = `<i class="fas fa-chart-line"></i> <strong>نتائج الدائرة (r = ${r.toFixed(2)})</strong><br>`;
+        if (type === "area" || type === "both") {
+            htmlResult += `📐 <strong>المساحة (القرص)</strong> : ${area.toFixed(4)} (وحدة مربعة)<br>
+                           <span style="font-size:0.75rem;">➜ A = π × r × r = π × ${r.toFixed(2)}²</span><br>`;
+        }
+        if (type === "perimeter" || type === "both") {
+            htmlResult += `📏 <strong>المحيط (الدائرة)</strong> : ${perimeter.toFixed(4)} (وحدة طول)<br>
+                           <span style="font-size:0.75rem;">➜ P = 2πr = ${(2*pi).toFixed(4)} × ${r.toFixed(2)}</span><br>`;
+        }
+        if (type === "both") {
+            htmlResult += `🔵 القطر : ${(2*r).toFixed(2)} (وحدة)<br><i class="fas fa-info-circle"></i> π ≈ 3.1416 مستعملة`;
+        }
+        htmlResult += `<div style="margin-top:6px;"><i class="fas fa-check-circle" style="color:#2c7a5e;"></i> تذكير: المساحة = π × r × r &nbsp;&nbsp; محيط الدائرة = 2πr</div>`;
+        resultDiv.innerHTML = htmlResult;
+        
+        drawCircle(r);
+    }
+
+    window.addEventListener('load', () => {
+        resizeCanvasCircle();
+        computeCircle();
+        calcBtn.addEventListener('click', computeCircle);
+        radiusInput.addEventListener('input', computeCircle);
+        calcTypeSelect.addEventListener('change', computeCircle);
+        window.addEventListener('resize', () => {
+            resizeCanvasCircle();
+            computeCircle();
+        });
+    });
+
+    // حلول التمارين
+    const revealButtonsEx = document.querySelectorAll('.btn-reveal');
+    revealButtonsEx.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const ansId = this.getAttribute('data-ansid');
+            const ansDiv = document.getElementById(ansId);
+            if (ansDiv.style.display === 'none' || ansDiv.style.display === '') {
+                ansDiv.style.display = 'block';
+                this.innerHTML = 'إخفاء الحل <i class="fas fa-eye-slash"></i>';
+            } else {
+                ansDiv.style.display = 'none';
+                this.innerHTML = 'عرض الحل <i class="fas fa-eye"></i>';
+            }
+        });
+    });
+    document.querySelectorAll('.answer-box').forEach(el => el.style.display = 'none');
+</script>
+</body>
+</html>

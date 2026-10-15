@@ -2,66 +2,412 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>درس: الأعداد الكبيرة — السادسة ابتدائي</title>
 <style>
-  body { font-family: "Amiri", "Traditional Arabic", "Times New Roman", serif; background: #f7f7f7; color: #222; line-height: 2; margin: 0; padding: 20px; direction: rtl; }
-  .container { max-width: 950px; margin: auto; background: #fff; padding: 30px 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-  h1 { text-align: center; color: #1a4d8f; border-bottom: 3px solid #1a4d8f; padding-bottom: 10px; }
-  h2 { color: #1a4d8f; border-right: 5px solid #1a4d8f; padding-right: 10px; margin-top: 30px; background: #eef4fb; padding: 8px 12px; border-radius: 6px; }
-  .box { background: #fffbe6; border: 2px dashed #e0b400; padding: 12px 18px; border-radius: 8px; margin: 15px 0; }
-  .example { background: #eaf7ea; border-right: 5px solid #2e8b57; padding: 10px 15px; border-radius: 6px; margin: 12px 0; }
-  .exercice { background: #f0f0ff; border-right: 5px solid #6a0dad; padding: 12px 18px; border-radius: 8px; margin: 20px 0; }
-  /* الجداول تُقرأ من اليسار إلى اليمين */
-  table { border-collapse: collapse; margin: 15px auto; width: 100%; text-align: center; direction: ltr; }
-  th, td { border: 1px solid #444; padding: 10px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Amiri", "Traditional Arabic", "Times New Roman", serif;
+    background: #f0f4f8;
+    color: #222;
+    line-height: 1.9;
+    direction: rtl;
+    padding: 10px;
+  }
+
+  /* ====== الحاوية الرئيسية ====== */
+  .layout {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 20px;
+  }
+
+  /* ====== القائمة الجانبية ====== */
+  .sidebar {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 10px;
+    align-self: start;
+    max-height: calc(100vh - 20px);
+    overflow-y: auto;
+  }
+  .sidebar h3 {
+    color: #1a4d8f;
+    font-size: 1.1em;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #1a4d8f;
+    padding-bottom: 6px;
+  }
+  .sidebar a {
+    display: block;
+    padding: 8px 10px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.95em;
+    transition: all 0.2s;
+    border-right: 3px solid transparent;
+  }
+  .sidebar a:hover {
+    background: #eef4fb;
+    border-right-color: #1a4d8f;
+    color: #1a4d8f;
+  }
+
+  /* ====== المحتوى ====== */
+  .content {
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
+
+  h1 {
+    text-align: center;
+    color: #1a4d8f;
+    font-size: 1.8em;
+    border-bottom: 3px solid #1a4d8f;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #555;
+    font-size: 0.95em;
+    margin-bottom: 25px;
+  }
+
+  h2 {
+    color: #1a4d8f;
+    font-size: 1.25em;
+    border-right: 5px solid #1a4d8f;
+    padding: 8px 12px;
+    margin-top: 30px;
+    margin-bottom: 12px;
+    background: #eef4fb;
+    border-radius: 6px;
+    scroll-margin-top: 15px;
+  }
+
+  p { margin-bottom: 10px; }
+
+  /* ====== الصناديق ====== */
+  .box {
+    background: #fffbe6;
+    border: 2px dashed #e0b400;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 15px 0;
+  }
+  .example {
+    background: #eaf7ea;
+    border-right: 5px solid #2e8b57;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin: 12px 0;
+  }
+  .exercice {
+    background: #f0f0ff;
+    border-right: 5px solid #6a0dad;
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+
+  /* ====== الجداول ====== */
+  .table-wrap { overflow-x: auto; margin: 15px 0; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 400px;
+    text-align: center;
+    direction: ltr;
+  }
+  th, td {
+    border: 1px solid #444;
+    padding: 10px;
+    font-size: 0.95em;
+  }
   th { background: #1a4d8f; color: #fff; }
-  .num { font-family: "Arial", sans-serif; font-size: 1.15em; color: #b30000; font-weight: bold; direction: ltr; unicode-bidi: embed; display: inline-block; }
-  ul { padding-right: 25px; }
-  .footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 30px; border-top: 1px solid #ccc; padding-top: 10px; }
+
+  /* ====== الأرقام ====== */
+  .num {
+    font-family: "Arial", sans-serif;
+    color: #b30000;
+    font-weight: bold;
+    direction: ltr;
+    unicode-bidi: embed;
+    display: inline-block;
+  }
+
+  /* ====== القوائم ====== */
+  ul, ol { padding-right: 25px; margin-bottom: 10px; }
+
+  /* ====== الفوتر ====== */
+  .footer {
+    text-align: center;
+    color: #777;
+    font-size: 0.9em;
+    margin-top: 30px;
+    border-top: 1px solid #ccc;
+    padding-top: 12px;
+  }
+
+  /* ====== زر العودة للأعلى ====== */
+  .top-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #1a4d8f;
+    color: #fff;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 100;
+  }
+  .top-btn:hover { background: #0d3568; }
+
+  /* ====== الجوال ====== */
+  @media (max-width: 800px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+    .sidebar {
+      position: static;
+      max-height: none;
+    }
+    .content { padding: 18px; }
+    h1 { font-size: 1.4em; }
+    h2 { font-size: 1.1em; }
+    th, td { padding: 7px; font-size: 0.85em; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .sidebar, .top-btn { display: none; }
+    .content { box-shadow: none; padding: 0; }
+    .layout { display: block; }
+    h2 { page-break-after: avoid; }
+  }
 </style>
 </head>
 <body>
-<div class="container">
 
-  <h1>درس: الأعداد الكبيرة — الملايين والملايير</h1>
+<div class="layout">
 
+  <!-- ====== القائمة الجانبية ====== -->
+  <aside class="sidebar">
+    <h3>📚 فهرس الدرس</h3>
+    <a href="#s1">1. تذكير بالأعداد</a>
+    <a href="#s2">2. الفصول (الرُّتب)</a>
+    <a href="#s3">3. كتابة الأعداد</a>
+    <a href="#s4">4. التفكيك</a>
+    <a href="#s5">5. المقارنة</a>
+    <a href="#s6">6. التأطير</a>
+    <a href="#s7">7. التقريب</a>
+    <a href="#s8">8. تمارين</a>
+    <a href="#s9">9. ملخص</a>
+  </aside>
 
-  <h2>1. الفصول (الرُّتب) في الأعداد الكبيرة</h2>
-  <p>لقراءة الأعداد الكبيرة نستعمل <strong>الفصول</strong>، وكل فصل يتكون من 3 أرقام:</p>
+  <!-- ====== المحتوى ====== -->
+  <main class="content">
 
-  <table>
-    <tr>     
-      <th>فصل الملايير</th>
-      <th>فصل الملايين</th>
-      <th>فصل الآلاف</th>
-      <th>فصل الوحدات</th>
-    </tr>
-    <tr>
-      <td>و &nbsp; ع &nbsp; م</td>
-      <td>و &nbsp; ع &nbsp; م</td>
-      <td>و &nbsp; ع &nbsp; م</td>
-      <td>و &nbsp; ع &nbsp; م</td>
-    </tr>
-  </table>
+    <h1>درس: الأعداد الكبيرة — الملايين والملايير</h1>
+    <p class="subtitle">السنة السادسة ابتدائي — وفق المنهاج المغربي الرسمي</p>
 
-  <div class="box">
-    <strong>تذكير:</strong> و = وحدات، ع = عشرات، م = مئات
-  </div>
+    <!-- 1 -->
+    <h2 id="s1">1. تذكير: الأعداد التي نعرفها</h2>
+    <p>تعلّمنا في السنوات الماضية الأعداد حتى <strong>الملايين</strong>:</p>
+    <div class="example">
+      <span class="num">999 999 999</span> = تسعمائة وتسعة وتسعون مليونًا وتسعمائة وتسعة وتسعون ألفًا وتسعمائة وتسعة وتسعون.
+    </div>
+    <p>هذه السنة، سنكتشف عددًا جديدًا وهو <strong>المليار</strong>.</p>
+    <div class="box">
+      <strong>المليار</strong> هو ألف مليون. أي: <span class="num">1 000 000 000</span>
+    </div>
 
-  <p><strong>مثال:</strong> العدد <span class="num">5 265 312 000</span></p>
-  <table>
-    <tr>     
-      <th>فصل الملايير</th>
-      <th>فصل الملايين</th>
-      <th>فصل الآلاف</th>
-      <th>فصل الوحدات</th>
-    </tr>
-    <tr><td>5</td><td>265</td><td>312</td><td>000</td></tr>
-  </table>
-  <p>يُقرأ: <strong>خمسة ملايير ومائتان وخمسة وستون مليونًا وثلاثمائة واثنا عشر ألفًا</strong>.</p>
+    <!-- 2 -->
+    <h2 id="s2">2. الفصول (الرُّتب) في الأعداد الكبيرة</h2>
+    <p>لقراءة الأعداد الكبيرة نستعمل <strong>الفصول</strong>، وكل فصل يتكون من 3 أرقام:</p>
 
-  
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>فصل الوحدات</th>
+          <th>فصل الآلاف</th>
+          <th>فصل الملايين</th>
+          <th>فصل الملايير</th>
+        </tr>
+        <tr>
+          <td>م &nbsp; ع &nbsp; و</td>
+          <td>م &nbsp; ع &nbsp; و</td>
+          <td>م &nbsp; ع &nbsp; و</td>
+          <td>م &nbsp; ع &nbsp; و</td>
+        </tr>
+      </table>
+    </div>
 
+    <div class="box">
+      <strong>تذكير:</strong> و = وحدات، ع = عشرات، م = مئات
+    </div>
+
+    <p><strong>مثال:</strong> العدد <span class="num">5 265 312 000</span></p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>الوحدات</th><th>الآلاف</th><th>الملايين</th><th>الملايير</th></tr>
+        <tr><td>000</td><td>312</td><td>265</td><td>5</td></tr>
+      </table>
+    </div>
+    <p>يُقرأ: <strong>خمسة ملايير ومائتان وخمسة وستون مليونًا وثلاثمائة واثنا عشر ألفًا</strong>.</p>
+
+    <!-- 3 -->
+    <h2 id="s3">3. كتابة الأعداد الكبيرة</h2>
+    <div class="box">
+      <strong>القاعدة:</strong> نفصل بين الفصول بواسطة <strong>فراغ</strong>.
+    </div>
+    <div class="example">
+      <span class="num">5 265 312 000</span> &nbsp; وليس &nbsp;
+      <span style="text-decoration: line-through;" class="num">5,265,312,000</span>
+    </div>
+
+    <p><strong>أمثلة من الواقع المغربي:</strong></p>
+    <ul>
+      <li>عدد سكان المغرب: حوالي <span class="num">37 000 000</span> نسمة (37 مليون).</li>
+      <li>ميزانية الدولة: حوالي <span class="num">300 000 000 000</span> درهم (300 مليار).</li>
+      <li>عدد سكان العالم: حوالي <span class="num">8 000 000 000</span> نسمة (8 ملايير).</li>
+    </ul>
+
+    <!-- 4 -->
+    <h2 id="s4">4. تفكيك عدد كبير</h2>
+    <p><strong>مثال:</strong> <span class="num">5 265 312 000</span></p>
+    <div class="example">
+      <strong>تفكيك حسب المراتب:</strong><br>
+      <span class="num">
+        5 × 1 000 000 000 + 2 × 100 000 000 + 6 × 10 000 000 + 5 × 1 000 000
+        + 3 × 100 000 + 1 × 10 000 + 2 × 1 000
+      </span>
+    </div>
+    <div class="example">
+      <strong>تفكيك حسب الفصول:</strong><br>
+      <span class="num">5 265 312 000 = 5 × 1 000 000 000 + 265 × 1 000 000 + 312 × 1 000</span>
+    </div>
+
+    <!-- 5 -->
+    <h2 id="s5">5. مقارنة الأعداد الكبيرة</h2>
+    <div class="box">
+      <strong>القاعدة:</strong>
+      <ol>
+        <li>نقارن <strong>عدد الأرقام</strong>: الأكثر أرقامًا هو الأكبر.</li>
+        <li>إذا تساوى عدد الأرقام، نقارن <strong>رقمًا رقمًا</strong> من اليسار إلى اليمين.</li>
+      </ol>
+    </div>
+    <p><strong>أمثلة:</strong></p>
+    <div class="example">
+      <span class="num">999 999 999 &lt; 1 000 000 000</span><br>
+      <span class="num">5 265 312 000 &gt; 5 265 299 999</span>
+    </div>
+
+    <!-- 6 -->
+    <h2 id="s6">6. تأطير عدد كبير</h2>
+    <p><strong>تأطير</strong> عدد يعني إيجاد عددين يُحيطان به.</p>
+    <p><strong>مثال:</strong> تأطير <span class="num">5 265 312 000</span> بالملايير:</p>
+    <div class="example">
+      <span class="num">5 000 000 000 &lt; 5 265 312 000 &lt; 6 000 000 000</span>
+    </div>
+
+    <!-- 7 -->
+    <h2 id="s7">7. تقريب عدد كبير</h2>
+    <div class="box">
+      <strong>القاعدة:</strong> ننظر إلى الرقم الذي يلي المرتبة المطلوبة:
+      <ul>
+        <li>إذا كان ≥ 5 → نقرّب إلى الأعلى.</li>
+        <li>إذا كان &lt; 5 → نقرّب إلى الأسفل.</li>
+      </ul>
+    </div>
+    <p><strong>مثال:</strong> تقريب <span class="num">5 265 312 000</span> إلى المليار:</p>
+    <div class="example"><span class="num">≈ 5 000 000 000</span></div>
+
+    <!-- 8 -->
+    <h2 id="s8">8. تمارين تطبيقية</h2>
+
+    <div class="exercice">
+      <strong>التمرين 1:</strong> اكتب الأعداد التالية بالأرقام:
+      <ol>
+        <li>خمسة وأربعون مليارًا وستمائة وثلاثة وعشرون ألفًا.</li>
+        <li>سبعة ملايير ومائتان وخمسة ملايين وثلاثمائة ألف.</li>
+      </ol>
+    </div>
+
+    <div class="exercice">
+      <strong>التمرين 2:</strong> أكمل الجدول:
+      <div class="table-wrap">
+        <table>
+          <tr><th>العدد</th><th>عدد الملايين</th><th>عدد الملايير</th></tr>
+          <tr><td class="num">5 265 312 000</td><td>...</td><td>...</td></tr>
+          <tr><td class="num">8 000 000 000</td><td>...</td><td>...</td></tr>
+          <tr><td class="num">12 345 678 000</td><td>...</td><td>...</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="exercice">
+      <strong>التمرين 3:</strong> رتّب الأعداد التالية ترتيبًا تصاعديًا:
+      <div style="text-align:center; margin:10px 0;">
+        <span class="num">5 265 312 000</span> —
+        <span class="num">5 265 299 999</span> —
+        <span class="num">5 265 312 001</span> —
+        <span class="num">5 265 300 000</span>
+      </div>
+    </div>
+
+    <div class="exercice">
+      <strong>التمرين 4:</strong> فكّك العدد <span class="num">8 456 789 000</span> حسب الفصول.
+    </div>
+
+    <!-- 9 -->
+    <h2 id="s9">9. ملخّص</h2>
+    <div class="box">
+      <ul>
+        <li>نقسّم الأعداد الكبيرة إلى <strong>فصول من 3 أرقام</strong>: وحدات، آلاف، ملايين، ملايير.</li>
+        <li>نفصل بين الفصول بواسطة <strong>فراغ</strong>.</li>
+        <li>المليار = <span class="num">1 000 000 000</span> (ألف مليون).</li>
+        <li>للمقارنة: عدد الأرقام ثم رقمًا رقمًا من اليسار إلى اليمين.</li>
+        <li>التأطير = إيجاد عددين حوله.</li>
+        <li>التقريب = تعويضه بعدد قريب.</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      الأعداد الكبيرة (الملايين والملايير) — الرياضيات — السنة السادسة ابتدائي
+    </div>
+
+  </main>
 </div>
+
+<!-- زر العودة للأعلى -->
+<button class="top-btn" id="topBtn" title="العودة إلى الأعلى">↑</button>
+
+<script>
+  // ظهور الزر عند النزول
+  const topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', () => {
+    topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+  topBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
 </body>
 </html>

@@ -3,410 +3,540 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>درس: الأعداد الكبيرة — السادسة ابتدائي</title>
+<title>الأعداد الكبيرة — السادسة ابتدائي</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
   body {
-    font-family: "Amiri", "Traditional Arabic", "Times New Roman", serif;
-    background: #f0f4f8;
-    color: #222;
-    line-height: 1.9;
-    direction: rtl;
-    padding: 10px;
+    font-family: "Amiri", "Traditional Arabic", Tahoma, Arial, sans-serif;
+    line-height: 1.8; color: #222; margin: 0; padding: 12px; background: #f0f4f8;
+    word-wrap: break-word; overflow-wrap: break-word; direction: rtl;
   }
-
-  /* ====== الحاوية الرئيسية ====== */
-  .layout {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 20px;
+  .container {
+    max-width: 900px; margin: 0 auto; background: #fff;
+    padding: 22px 20px; border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   }
-
-  /* ====== القائمة الجانبية ====== */
-  .sidebar {
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    position: sticky;
-    top: 10px;
-    align-self: start;
-    max-height: calc(100vh - 20px);
-    overflow-y: auto;
-  }
-  .sidebar h3 {
-    color: #1a4d8f;
-    font-size: 1.1em;
-    margin-bottom: 12px;
-    border-bottom: 2px solid #1a4d8f;
-    padding-bottom: 6px;
-  }
-  .sidebar a {
-    display: block;
-    padding: 8px 10px;
-    color: #333;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.95em;
-    transition: all 0.2s;
-    border-right: 3px solid transparent;
-  }
-  .sidebar a:hover {
-    background: #eef4fb;
-    border-right-color: #1a4d8f;
-    color: #1a4d8f;
-  }
-
-  /* ====== المحتوى ====== */
-  .content {
-    background: #fff;
-    padding: 25px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  }
-
   h1 {
-    text-align: center;
-    color: #1a4d8f;
-    font-size: 1.8em;
-    border-bottom: 3px solid #1a4d8f;
-    padding-bottom: 12px;
-    margin-bottom: 10px;
+    color: #1a5276; text-align: center; font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+    line-height: 1.3; margin: 0 0 20px; padding-bottom: 12px;
+    border-bottom: 3px solid #1a5276;
   }
-  .subtitle {
-    text-align: center;
-    color: #555;
-    font-size: 0.95em;
-    margin-bottom: 25px;
-  }
-
   h2 {
-    color: #1a4d8f;
-    font-size: 1.25em;
-    border-right: 5px solid #1a4d8f;
-    padding: 8px 12px;
-    margin-top: 30px;
-    margin-bottom: 12px;
-    background: #eef4fb;
-    border-radius: 6px;
-    scroll-margin-top: 15px;
+    color: #1a5276; background: #eaf2f8; padding: 10px 14px;
+    border-right: 5px solid #1a5276; border-radius: 4px;
+    margin-top: 26px; font-size: clamp(1rem, 3.8vw, 1.3rem); line-height: 1.3;
   }
+  h3 { color: #2874a6; margin-top: 18px; font-size: clamp(0.95rem, 3.4vw, 1.1rem); }
+  p, li { font-size: clamp(0.9rem, 3.2vw, 1.05rem); }
+  hr { border: none; border-top: 2px dashed #bbb; margin: 22px 0; }
 
-  p { margin-bottom: 10px; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 15px 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  table { border-collapse: collapse; width: 100%; min-width: 320px; background: #fff; font-size: clamp(0.8rem, 3vw, 1rem); }
+  th, td { border: 1px solid #ccc; padding: 10px 8px; text-align: center; }
+  th { background: #1a5276; color: #fff; font-size: clamp(0.8rem, 2.9vw, 0.95rem); }
+  tr:nth-child(even) { background: #f4f8fb; }
 
-  /* ====== الصناديق ====== */
-  .box {
-    background: #fffbe6;
-    border: 2px dashed #e0b400;
-    padding: 12px 18px;
-    border-radius: 8px;
-    margin: 15px 0;
+  .formule {
+    background: #fff8e1; border-right: 4px solid #f39c12; padding: 10px 14px;
+    margin: 12px 0; font-family: "Amiri", "Times New Roman", serif;
+    font-size: clamp(0.95rem, 3.4vw, 1.15rem); text-align: center; border-radius: 4px;
   }
-  .example {
-    background: #eaf7ea;
-    border-right: 5px solid #2e8b57;
-    padding: 10px 15px;
-    border-radius: 6px;
-    margin: 12px 0;
-  }
-  .exercice {
-    background: #f0f0ff;
-    border-right: 5px solid #6a0dad;
-    padding: 12px 18px;
-    border-radius: 8px;
-    margin: 20px 0;
-  }
+  .encadre { background: #e8f8f5; border: 2px solid #16a085; border-radius: 8px; padding: 12px 16px; margin: 15px 0; }
+  .conseil { background: #fef9e7; border-right: 5px solid #f1c40f; padding: 12px 16px; margin: 20px 0; border-radius: 4px; font-style: italic; font-size: clamp(0.85rem, 3.2vw, 1rem); }
+  ul, ol { padding-right: 22px; margin: 8px 0; }
+  li { margin: 5px 0; }
+  strong { color: #1a5276; }
 
-  /* ====== الجداول ====== */
-  .table-wrap { overflow-x: auto; margin: 15px 0; }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    min-width: 400px;
-    text-align: center;
-    direction: ltr;
-  }
-  th, td {
-    border: 1px solid #444;
-    padding: 10px;
-    font-size: 0.95em;
-  }
-  th { background: #1a4d8f; color: #fff; }
-
-  /* ====== الأرقام ====== */
+  /* الأرقام */
   .num {
     font-family: "Arial", sans-serif;
-    color: #b30000;
-    font-weight: bold;
+    color: #b30000; font-weight: bold;
+    direction: ltr; unicode-bidi: embed; display: inline-block;
+  }
+
+  /* EXERCICE INTERACTIF */
+  .exo {
+    background: #f8fbfd; border: 2px solid #d6eaf8; border-radius: 10px;
+    padding: 16px 18px; margin: 18px 0;
+  }
+  .exo .enonce { font-size: clamp(0.9rem, 3.2vw, 1.05rem); margin-bottom: 12px; }
+  .exo .enonce strong { color: #1a5276; }
+  .btn-corr {
+    background: #16a085; color: #fff; border: none; border-radius: 8px;
+    padding: 10px 18px; font-size: clamp(0.85rem, 3.2vw, 1rem);
+    font-weight: bold; cursor: pointer; transition: background 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+    -webkit-appearance: none; appearance: none;
+    font-family: inherit;
+  }
+  .btn-corr:hover { background: #138d75; }
+  .btn-corr:active { transform: scale(0.97); }
+  .btn-corr .arrow { transition: transform 0.2s; display: inline-block; }
+  .btn-corr.open .arrow { transform: rotate(-90deg); }
+
+  .correction {
+    display: none; background: #eafaf1; border-right: 5px solid #27ae60;
+    border-radius: 6px; padding: 14px 16px; margin-top: 12px;
+    font-size: clamp(0.88rem, 3.2vw, 1rem); color: #145a32;
+    animation: fadeIn 0.3s ease;
+  }
+  .correction.show { display: block; }
+  .correction strong { color: #0b5345; }
+  .correction .etape { display: block; margin: 4px 0; }
+  .correction .resultat {
+    display: inline-block; background: #27ae60; color: #fff;
+    padding: 3px 10px; border-radius: 6px; font-weight: bold;
+    margin-top: 8px; font-family: "Amiri", serif;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* شبكة الأعداد الزوجية والفردية */
+  .grille {
+    display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px;
+    margin: 14px auto; max-width: 400px;
+    font-family: "Arial", monospace; font-size: clamp(0.7rem, 2.6vw, 0.9rem);
     direction: ltr;
-    unicode-bidi: embed;
-    display: inline-block;
   }
+  .grille span { padding: 6px 2px; text-align: center; border-radius: 4px; font-weight: bold; }
+  .pair { background: #d4efdf; color: #145a32; }
+  .impair { background: #fadbd8; color: #922b21; }
 
-  /* ====== القوائم ====== */
-  ul, ol { padding-right: 25px; margin-bottom: 10px; }
-
-  /* ====== الفوتر ====== */
-  .footer {
-    text-align: center;
-    color: #777;
-    font-size: 0.9em;
-    margin-top: 30px;
-    border-top: 1px solid #ccc;
-    padding-top: 12px;
-  }
-
-  /* ====== زر العودة للأعلى ====== */
-  .top-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: #1a4d8f;
-    color: #fff;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    font-size: 1.2em;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    display: none;
-    z-index: 100;
-  }
-  .top-btn:hover { background: #0d3568; }
-
-  /* ====== الجوال ====== */
-  @media (max-width: 800px) {
-    .layout {
-      grid-template-columns: 1fr;
-    }
-    .sidebar {
-      position: static;
-      max-height: none;
-    }
-    .content { padding: 18px; }
-    h1 { font-size: 1.4em; }
-    h2 { font-size: 1.1em; }
-    th, td { padding: 7px; font-size: 0.85em; }
-  }
-
-  @media print {
-    body { background: #fff; }
-    .sidebar, .top-btn { display: none; }
-    .content { box-shadow: none; padding: 0; }
-    .layout { display: block; }
-    h2 { page-break-after: avoid; }
+  @media (max-width: 480px) {
+    body { padding: 8px; }
+    .container { padding: 16px 14px; border-radius: 10px; }
+    h1 { font-size: 1.15rem; }
+    h2 { padding: 8px 12px; }
+    th, td { padding: 6px 4px; font-size: 0.78rem; }
+    .exo { padding: 12px 14px; }
+    .btn-corr { padding: 9px 14px; width: 100%; justify-content: center; }
+    .grille { gap: 2px; }
+    .grille span { padding: 4px 1px; }
   }
 </style>
 </head>
 <body>
 
-<div class="layout">
+<div class="container">
 
-  <!-- ====== القائمة الجانبية ====== -->
-  <aside class="sidebar">
-    <h3>📚 فهرس الدرس</h3>
-    <a href="#s1">1. تذكير بالأعداد</a>
-    <a href="#s2">2. الفصول (الرُّتب)</a>
-    <a href="#s3">3. كتابة الأعداد</a>
-    <a href="#s4">4. التفكيك</a>
-    <a href="#s5">5. المقارنة</a>
-    <a href="#s6">6. التأطير</a>
-    <a href="#s7">7. التقريب</a>
-    <a href="#s8">8. تمارين</a>
-    <a href="#s9">9. ملخص</a>
-  </aside>
+<h1>الأعداد الكبيرة — الملايين والملايير</h1>
+<p style="text-align:center; color:#555; font-size: 0.95em; margin-top:-10px;">السنة السادسة ابتدائي — وفق المنهاج المغربي الرسمي</p>
 
-  <!-- ====== المحتوى ====== -->
-  <main class="content">
+<!-- ============================================ -->
+<h2>1. تذكير: الأعداد التي نعرفها</h2>
 
-    <h1>درس: الأعداد الكبيرة — الملايين والملايير</h1>
-    <p class="subtitle">السنة السادسة ابتدائي — وفق المنهاج المغربي الرسمي</p>
+<p>تعلّمنا في السنوات الماضية الأعداد حتى <strong>الملايين</strong>:</p>
 
-    <!-- 1 -->
-    <h2 id="s1">1. تذكير: الأعداد التي نعرفها</h2>
-    <p>تعلّمنا في السنوات الماضية الأعداد حتى <strong>الملايين</strong>:</p>
-    <div class="example">
-      <span class="num">999 999 999</span> = تسعمائة وتسعة وتسعون مليونًا وتسعمائة وتسعة وتسعون ألفًا وتسعمائة وتسعة وتسعون.
-    </div>
-    <p>هذه السنة، سنكتشف عددًا جديدًا وهو <strong>المليار</strong>.</p>
-    <div class="box">
-      <strong>المليار</strong> هو ألف مليون. أي: <span class="num">1 000 000 000</span>
-    </div>
+<div class="formule">
+  <span class="num">999 999 999</span> = تسعمائة وتسعة وتسعون مليونًا وتسعمائة وتسعة وتسعون ألفًا وتسعمائة وتسعة وتسعون
+</div>
 
-    <!-- 2 -->
-    <h2 id="s2">2. الفصول (الرُّتب) في الأعداد الكبيرة</h2>
-    <p>لقراءة الأعداد الكبيرة نستعمل <strong>الفصول</strong>، وكل فصل يتكون من 3 أرقام:</p>
+<p>هذه السنة، سنكتشف عددًا جديدًا وهو <strong>المليار</strong>.</p>
 
-    <div class="table-wrap">
+<div class="encadre">
+<strong>المليار</strong> هو ألف مليون. أي: <span class="num">1 000 000 000</span>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>2. الفصول (الرُّتب) في الأعداد الكبيرة</h2>
+
+<p>لقراءة الأعداد الكبيرة نستعمل <strong>الفصول</strong>، وكل فصل يتكون من 3 أرقام:</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr>
+    <th>فصل الوحدات</th>
+    <th>فصل الآلاف</th>
+    <th>فصل الملايين</th>
+    <th>فصل الملايير</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>م &nbsp; ع &nbsp; و</td>
+    <td>م &nbsp; ع &nbsp; و</td>
+    <td>م &nbsp; ع &nbsp; و</td>
+    <td>م &nbsp; ع &nbsp; و</td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<div class="encadre">
+<strong>تذكير:</strong> و = وحدات، ع = عشرات، م = مئات
+</div>
+
+<h3>مثال: العدد <span class="num">5 265 312 000</span></h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr><th>الوحدات</th><th>الآلاف</th><th>الملايين</th><th>الملايير</th></tr>
+</thead>
+<tbody>
+  <tr><td class="num">000</td><td class="num">312</td><td class="num">265</td><td class="num">5</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>يُقرأ: <strong>خمسة ملايير ومائتان وخمسة وستون مليونًا وثلاثمائة واثنا عشر ألفًا</strong>.</p>
+
+<!-- تمرين 1 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>مثال:</strong> اقرأ الأعداد التالية:
+    <span class="num">45 308 126</span> و <span class="num">8 000 000 000</span>
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape"><strong>45 308 126 :</strong> خمسة وأربعون مليونًا وثلاثمائة وثمانية آلاف ومائة وستة وعشرون</span>
+    <span class="etape"><strong>8 000 000 000 :</strong> ثمانية ملايير</span>
+    <span class="resultat">الفصول: الملايين — الآلاف — الوحدات</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>3. كتابة الأعداد الكبيرة</h2>
+
+<h3>أ) القاعدة</h3>
+
+<div class="formule">نفصل بين الفصول بواسطة <strong>فراغ</strong> (وليس بفاصلة).</div>
+
+<div class="encadre">
+<strong>مثال:</strong> نكتب <span class="num">5 265 312 000</span> وليس <span class="num" style="text-decoration: line-through;">5,265,312,000</span>
+</div>
+
+<h3>ب) أمثلة من الواقع المغربي</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr><th>المثال</th><th>العدد</th></tr>
+</thead>
+<tbody>
+  <tr><td>عدد سكان المغرب</td><td>حوالي <span class="num">37 000 000</span> نسمة</td></tr>
+  <tr><td>ميزانية الدولة</td><td>حوالي <span class="num">300 000 000 000</span> درهم</td></tr>
+  <tr><td>عدد سكان العالم</td><td>حوالي <span class="num">8 000 000 000</span> نسمة</td></tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>4. تفكيك عدد كبير</h2>
+
+<p><strong>مثال:</strong> <span class="num">5 265 312 000</span></p>
+
+<h3>أ) التفكيك حسب المراتب</h3>
+<div class="formule">
+  <span class="num">5 × 1 000 000 000 + 2 × 100 000 000 + 6 × 10 000 000 + 5 × 1 000 000 + 3 × 100 000 + 1 × 10 000 + 2 × 1 000</span>
+</div>
+
+<h3>ب) التفكيك حسب الفصول</h3>
+<div class="formule">
+  <span class="num">5 265 312 000 = 5 × 1 000 000 000 + 265 × 1 000 000 + 312 × 1 000</span>
+</div>
+
+<!-- تمرين 2 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>مثال:</strong> فكّك العدد <span class="num">8 456 789 000</span> حسب الفصول.
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape">الملايير: <strong>8</strong> &nbsp;|&nbsp; الملايين: <strong>456</strong> &nbsp;|&nbsp; الآلاف: <strong>789</strong> &nbsp;|&nbsp; الوحدات: <strong>000</strong></span>
+    <span class="etape">التفكيك حسب الفصول:</span>
+    <span class="etape"><span class="num">8 456 789 000 = 8 × 1 000 000 000 + 456 × 1 000 000 + 789 × 1 000</span></span>
+    <span class="resultat">8 ملايير و456 مليونًا و789 ألفًا</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>5. مقارنة الأعداد الكبيرة</h2>
+
+<h3>أ) القاعدة</h3>
+
+<div class="encadre">
+<strong>للمقارنة بين عددين كبيرين:</strong>
+<ol>
+  <li>نقارن <strong>عدد الأرقام</strong>: العدد الأكثر أرقامًا هو الأكبر.</li>
+  <li>إذا تساوى عدد الأرقام، نقارن <strong>رقمًا رقمًا</strong> من اليسار إلى اليمين.</li>
+</ol>
+</div>
+
+<h3>ب) أمثلة</h3>
+
+<div class="formule">
+  <span class="num">999 999 999 &lt; 1 000 000 000</span><br>
+  <span class="num">5 265 312 000 &gt; 5 265 299 999</span>
+</div>
+
+<h3>ج) الرموز</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr><th>الرمز</th><th>المعنى</th><th>مثال</th></tr>
+</thead>
+<tbody>
+  <tr><td><strong>&lt;</strong></td><td>أصغر من</td><td><span class="num">15 &lt; 20</span></td></tr>
+  <tr><td><strong>&gt;</strong></td><td>أكبر من</td><td><span class="num">20 &gt; 15</span></td></tr>
+  <tr><td><strong>=</strong></td><td>يساوي</td><td><span class="num">15 = 15</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>6. تأطير عدد كبير</h2>
+
+<p><strong>تأطير</strong> عدد يعني إيجاد عددين يُحيطان به (عدد أصغر وعدد أكبر).</p>
+
+<div class="formule">
+  <strong>مثال 1:</strong> تأطير <span class="num">5 265 312 000</span> بالملايير:<br>
+  <span class="num">5 000 000 000 &lt; 5 265 312 000 &lt; 6 000 000 000</span>
+</div>
+
+<div class="formule">
+  <strong>مثال 2:</strong> تأطير <span class="num">5 265 312 000</span> بعشرات الملايين:<br>
+  <span class="num">5 260 000 000 &lt; 5 265 312 000 &lt; 5 270 000 000</span>
+</div>
+
+<!-- تمرين 3 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>مثال:</strong> أطّر العدد <span class="num">45 308 126</span> بالملايين.
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape">نبحث عن المليون الذي قبله والمليون الذي بعده.</span>
+    <span class="etape">قبله: <strong>45 000 000</strong></span>
+    <span class="etape">بعده: <strong>46 000 000</strong></span>
+    <span class="resultat"><span class="num">45 000 000 &lt; 45 308 126 &lt; 46 000 000</span></span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>7. تقريب عدد كبير</h2>
+
+<h3>أ) القاعدة</h3>
+
+<div class="encadre">
+<strong>للتقريب إلى مرتبة معينة:</strong>
+<ul>
+  <li>ننظر إلى الرقم الذي يلي المرتبة المطلوبة.</li>
+  <li>إذا كان <strong>≥ 5</strong> → نقرّب <strong>إلى الأعلى</strong>.</li>
+  <li>إذا كان <strong>&lt; 5</strong> → نقرّب <strong>إلى الأسفل</strong>.</li>
+</ul>
+</div>
+
+<h3>ب) أمثلة</h3>
+
+<div class="formule">
+  <strong>تقريب <span class="num">5 265 312 000</span> إلى المليار:</strong><br>
+  الرقم الذي يلي المليار هو <strong>2</strong> (&lt; 5) → نقرّب إلى الأسفل<br>
+  <span class="num">≈ 5 000 000 000</span>
+</div>
+
+<div class="formule">
+  <strong>تقريب <span class="num">5 765 312 000</span> إلى المليار:</strong><br>
+  الرقم الذي يلي المليار هو <strong>7</strong> (≥ 5) → نقرّب إلى الأعلى<br>
+  <span class="num">≈ 6 000 000 000</span>
+</div>
+
+<!-- تمرين 4 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>مثال:</strong> قرّب العدد <span class="num">45 308 126</span> إلى المليون.
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape">المليون في هذا العدد هو <strong>45 مليون</strong>.</span>
+    <span class="etape">الرقم الذي يلي المليون هو <strong>3</strong> (مئات الآلاف) وهو &lt; 5.</span>
+    <span class="etape">إذن نقرّب إلى الأسفل.</span>
+    <span class="resultat"><span class="num">45 308 126 ≈ 45 000 000</span></span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>8. الأعداد الكبيرة في الحياة اليومية</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr><th>المثال</th><th>العدد</th><th>القراءة</th></tr>
+</thead>
+<tbody>
+  <tr>
+    <td>عدد سكان المغرب</td>
+    <td><span class="num">37 000 000</span></td>
+    <td>سبعة وثلاثون مليونًا</td>
+  </tr>
+  <tr>
+    <td>المسافة بين الأرض والشمس</td>
+    <td><span class="num">150 000 000</span> كم</td>
+    <td>مائة وخمسون مليون كيلومتر</td>
+  </tr>
+  <tr>
+    <td>عدد النجوم في مجرّة درب التبانة</td>
+    <td><span class="num">200 000 000 000</span></td>
+    <td>مائتا مليار</td>
+  </tr>
+  <tr>
+    <td>ميزانية التعليم بالمغرب</td>
+    <td><span class="num">70 000 000 000</span> درهم</td>
+    <td>سبعون مليار درهم</td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>9. تمارين تطبيقية</h2>
+
+<div class="exo">
+  <div class="enonce">
+    <strong>التمرين 1:</strong> اكتب الأعداد التالية بالأرقام:
+    <ol>
+      <li>خمسة وأربعون مليارًا وستمائة وثلاثة وعشرون ألفًا.</li>
+      <li>سبعة ملايير ومائتان وخمسة ملايين وثلاثمائة ألف.</li>
+    </ol>
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape"><strong>1)</strong> <span class="num">45 000 623 000</span></span>
+    <span class="etape"><strong>2)</strong> <span class="num">7 205 300 000</span></span>
+    <span class="resultat">ننتبه إلى عدد الأصفار في كل فصل</span>
+  </div>
+</div>
+
+<div class="exo">
+  <div class="enonce">
+    <strong>التمرين 2:</strong> أكمل الجدول:
+    <div class="table-wrap" style="margin-top:10px;">
       <table>
-        <tr>
-          <th>فصل الوحدات</th>
-          <th>فصل الآلاف</th>
-          <th>فصل الملايين</th>
-          <th>فصل الملايير</th>
-        </tr>
-        <tr>
-          <td>م &nbsp; ع &nbsp; و</td>
-          <td>م &nbsp; ع &nbsp; و</td>
-          <td>م &nbsp; ع &nbsp; و</td>
-          <td>م &nbsp; ع &nbsp; و</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="box">
-      <strong>تذكير:</strong> و = وحدات، ع = عشرات، م = مئات
-    </div>
-
-    <p><strong>مثال:</strong> العدد <span class="num">5 265 312 000</span></p>
-    <div class="table-wrap">
-      <table>
-        <tr><th>الوحدات</th><th>الآلاف</th><th>الملايين</th><th>الملايير</th></tr>
-        <tr><td>000</td><td>312</td><td>265</td><td>5</td></tr>
-      </table>
-    </div>
-    <p>يُقرأ: <strong>خمسة ملايير ومائتان وخمسة وستون مليونًا وثلاثمائة واثنا عشر ألفًا</strong>.</p>
-
-    <!-- 3 -->
-    <h2 id="s3">3. كتابة الأعداد الكبيرة</h2>
-    <div class="box">
-      <strong>القاعدة:</strong> نفصل بين الفصول بواسطة <strong>فراغ</strong>.
-    </div>
-    <div class="example">
-      <span class="num">5 265 312 000</span> &nbsp; وليس &nbsp;
-      <span style="text-decoration: line-through;" class="num">5,265,312,000</span>
-    </div>
-
-    <p><strong>أمثلة من الواقع المغربي:</strong></p>
-    <ul>
-      <li>عدد سكان المغرب: حوالي <span class="num">37 000 000</span> نسمة (37 مليون).</li>
-      <li>ميزانية الدولة: حوالي <span class="num">300 000 000 000</span> درهم (300 مليار).</li>
-      <li>عدد سكان العالم: حوالي <span class="num">8 000 000 000</span> نسمة (8 ملايير).</li>
-    </ul>
-
-    <!-- 4 -->
-    <h2 id="s4">4. تفكيك عدد كبير</h2>
-    <p><strong>مثال:</strong> <span class="num">5 265 312 000</span></p>
-    <div class="example">
-      <strong>تفكيك حسب المراتب:</strong><br>
-      <span class="num">
-        5 × 1 000 000 000 + 2 × 100 000 000 + 6 × 10 000 000 + 5 × 1 000 000
-        + 3 × 100 000 + 1 × 10 000 + 2 × 1 000
-      </span>
-    </div>
-    <div class="example">
-      <strong>تفكيك حسب الفصول:</strong><br>
-      <span class="num">5 265 312 000 = 5 × 1 000 000 000 + 265 × 1 000 000 + 312 × 1 000</span>
-    </div>
-
-    <!-- 5 -->
-    <h2 id="s5">5. مقارنة الأعداد الكبيرة</h2>
-    <div class="box">
-      <strong>القاعدة:</strong>
-      <ol>
-        <li>نقارن <strong>عدد الأرقام</strong>: الأكثر أرقامًا هو الأكبر.</li>
-        <li>إذا تساوى عدد الأرقام، نقارن <strong>رقمًا رقمًا</strong> من اليسار إلى اليمين.</li>
-      </ol>
-    </div>
-    <p><strong>أمثلة:</strong></p>
-    <div class="example">
-      <span class="num">999 999 999 &lt; 1 000 000 000</span><br>
-      <span class="num">5 265 312 000 &gt; 5 265 299 999</span>
-    </div>
-
-    <!-- 6 -->
-    <h2 id="s6">6. تأطير عدد كبير</h2>
-    <p><strong>تأطير</strong> عدد يعني إيجاد عددين يُحيطان به.</p>
-    <p><strong>مثال:</strong> تأطير <span class="num">5 265 312 000</span> بالملايير:</p>
-    <div class="example">
-      <span class="num">5 000 000 000 &lt; 5 265 312 000 &lt; 6 000 000 000</span>
-    </div>
-
-    <!-- 7 -->
-    <h2 id="s7">7. تقريب عدد كبير</h2>
-    <div class="box">
-      <strong>القاعدة:</strong> ننظر إلى الرقم الذي يلي المرتبة المطلوبة:
-      <ul>
-        <li>إذا كان ≥ 5 → نقرّب إلى الأعلى.</li>
-        <li>إذا كان &lt; 5 → نقرّب إلى الأسفل.</li>
-      </ul>
-    </div>
-    <p><strong>مثال:</strong> تقريب <span class="num">5 265 312 000</span> إلى المليار:</p>
-    <div class="example"><span class="num">≈ 5 000 000 000</span></div>
-
-    <!-- 8 -->
-    <h2 id="s8">8. تمارين تطبيقية</h2>
-
-    <div class="exercice">
-      <strong>التمرين 1:</strong> اكتب الأعداد التالية بالأرقام:
-      <ol>
-        <li>خمسة وأربعون مليارًا وستمائة وثلاثة وعشرون ألفًا.</li>
-        <li>سبعة ملايير ومائتان وخمسة ملايين وثلاثمائة ألف.</li>
-      </ol>
-    </div>
-
-    <div class="exercice">
-      <strong>التمرين 2:</strong> أكمل الجدول:
-      <div class="table-wrap">
-        <table>
+        <thead>
           <tr><th>العدد</th><th>عدد الملايين</th><th>عدد الملايير</th></tr>
+        </thead>
+        <tbody>
           <tr><td class="num">5 265 312 000</td><td>...</td><td>...</td></tr>
           <tr><td class="num">8 000 000 000</td><td>...</td><td>...</td></tr>
           <tr><td class="num">12 345 678 000</td><td>...</td><td>...</td></tr>
-        </table>
-      </div>
+        </tbody>
+      </table>
     </div>
-
-    <div class="exercice">
-      <strong>التمرين 3:</strong> رتّب الأعداد التالية ترتيبًا تصاعديًا:
-      <div style="text-align:center; margin:10px 0;">
-        <span class="num">5 265 312 000</span> —
-        <span class="num">5 265 299 999</span> —
-        <span class="num">5 265 312 001</span> —
-        <span class="num">5 265 300 000</span>
-      </div>
-    </div>
-
-    <div class="exercice">
-      <strong>التمرين 4:</strong> فكّك العدد <span class="num">8 456 789 000</span> حسب الفصول.
-    </div>
-
-    <!-- 9 -->
-    <h2 id="s9">9. ملخّص</h2>
-    <div class="box">
-      <ul>
-        <li>نقسّم الأعداد الكبيرة إلى <strong>فصول من 3 أرقام</strong>: وحدات، آلاف، ملايين، ملايير.</li>
-        <li>نفصل بين الفصول بواسطة <strong>فراغ</strong>.</li>
-        <li>المليار = <span class="num">1 000 000 000</span> (ألف مليون).</li>
-        <li>للمقارنة: عدد الأرقام ثم رقمًا رقمًا من اليسار إلى اليمين.</li>
-        <li>التأطير = إيجاد عددين حوله.</li>
-        <li>التقريب = تعويضه بعدد قريب.</li>
-      </ul>
-    </div>
-
-    <div class="footer">
-      الأعداد الكبيرة (الملايين والملايير) — الرياضيات — السنة السادسة ابتدائي
-    </div>
-
-  </main>
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape"><strong>5 265 312 000 :</strong> 5 265 مليون — 5 ملايير</span>
+    <span class="etape"><strong>8 000 000 000 :</strong> 8 000 مليون — 8 ملايير</span>
+    <span class="etape"><strong>12 345 678 000 :</strong> 12 345 مليون — 12 مليارًا</span>
+    <span class="resultat">عدد الملايين = العدد ÷ 1 000 000</span>
+  </div>
 </div>
 
-<!-- زر العودة للأعلى -->
-<button class="top-btn" id="topBtn" title="العودة إلى الأعلى">↑</button>
+<div class="exo">
+  <div class="enonce">
+    <strong>التمرين 3:</strong> رتّب الأعداد التالية ترتيبًا تصاعديًا:
+    <div style="text-align:center; margin:10px 0;">
+      <span class="num">5 265 312 000</span> —
+      <span class="num">5 265 299 999</span> —
+      <span class="num">5 265 312 001</span> —
+      <span class="num">5 265 300 000</span>
+    </div>
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape">نقارن رقمًا رقمًا من اليسار إلى اليمين.</span>
+    <span class="etape">كل الأعداد تبدأ بـ <strong>5 265 3...</strong></span>
+    <span class="etape">نقارن بعدها: 00 000 &lt; 99 999 &lt; 12 000 &lt; 12 001</span>
+    <span class="resultat">
+      <span class="num">5 265 300 000 &lt; 5 265 299 999 &lt; 5 265 312 000 &lt; 5 265 312 001</span>
+    </span>
+  </div>
+</div>
+
+<div class="exo">
+  <div class="enonce">
+    <strong>التمرين 4:</strong> أطّر العدد <span class="num">7 862 145 320</span> بالملايير، ثم قرّبه إلى المليار.
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape"><strong>التأطير بالملايير :</strong></span>
+    <span class="etape"><span class="num">7 000 000 000 &lt; 7 862 145 320 &lt; 8 000 000 000</span></span>
+    <span class="etape"><strong>التقريب إلى المليار :</strong></span>
+    <span class="etape">الرقم الذي يلي المليار هو <strong>8</strong> (≥ 5) → نقرّب إلى الأعلى.</span>
+    <span class="resultat"><span class="num">7 862 145 320 ≈ 8 000 000 000</span></span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>10. ملخّص</h2>
+
+<ul>
+  <li>نقسّم الأعداد الكبيرة إلى <strong>فصول من 3 أرقام</strong>: وحدات، آلاف، ملايين، ملايير.</li>
+  <li>نفصل بين الفصول بواسطة <strong>فراغ</strong>.</li>
+  <li><strong>المليار</strong> = <span class="num">1 000 000 000</span> (ألف مليون).</li>
+  <li>للمقارنة: <strong>عدد الأرقام</strong> ثم <strong>رقمًا رقمًا</strong> من اليسار إلى اليمين.</li>
+  <li><strong>التأطير</strong> = إيجاد عددين حوله (أصغر وأكبر).</li>
+  <li><strong>التقريب</strong> = تعويضه بعدد قريب (≥ 5 → فوق، &lt; 5 → تحت).</li>
+</ul>
+
+<div class="conseil">
+💡 <strong>نصيحة:</strong> لتقرأ عددًا كبيرًا بسهولة، ابدأ من اليمين وقسّمه إلى فصول من 3 أرقام، ثم اقرأ كل فصل من اليسار إلى اليمين!
+</div>
+
+</div>
 
 <script>
-  // ظهور الزر عند النزول
-  const topBtn = document.getElementById('topBtn');
-  window.addEventListener('scroll', () => {
-    topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
-  });
-  topBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+function toggleCorr(btn) {
+  var corr = btn.nextElementSibling;
+  if (corr.classList.contains('show')) {
+    corr.classList.remove('show');
+    btn.classList.remove('open');
+    btn.innerHTML = '<span class="arrow">▶</span> إظهار التصحيح';
+  } else {
+    corr.classList.add('show');
+    btn.classList.add('open');
+    btn.innerHTML = '<span class="arrow">▶</span> إخفاء التصحيح';
+  }
+}
 </script>
 
 </body>

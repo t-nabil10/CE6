@@ -1,45 +1,374 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>درس: الأعداد الكبيرة — السادسة ابتدائي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Continuité — 2ème Bac Marocain</title>
 <style>
-  body { font-family: "Amiri", "Traditional Arabic", "Times New Roman", serif; background: #f7f7f7; color: #222; line-height: 2; margin: 0; padding: 20px; direction: rtl; }
-  .container { max-width: 950px; margin: auto; background: #fff; padding: 30px 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-  h1 { text-align: center; color: #1a4d8f; border-bottom: 3px solid #1a4d8f; padding-bottom: 10px; }
-  h2 { color: #1a4d8f; border-right: 5px solid #1a4d8f; padding-right: 10px; margin-top: 30px; background: #eef4fb; padding: 8px 12px; border-radius: 6px; }
-  .box { background: #fffbe6; border: 2px dashed #e0b400; padding: 12px 18px; border-radius: 8px; margin: 15px 0; }
-  .example { background: #eaf7ea; border-right: 5px solid #2e8b57; padding: 10px 15px; border-radius: 6px; margin: 12px 0; }
-  .exercice { background: #f0f0ff; border-right: 5px solid #6a0dad; padding: 12px 18px; border-radius: 8px; margin: 20px 0; }
-  /* الجداول تُقرأ من اليسار إلى اليمين */
-  table { border-collapse: collapse; margin: 15px auto; width: 100%; text-align: center; direction: ltr; }
-  th, td { border: 1px solid #444; padding: 10px; }
-  th { background: #1a4d8f; color: #fff; }
-  .num { font-family: "Arial", sans-serif; font-size: 1.15em; color: #b30000; font-weight: bold; direction: ltr; unicode-bidi: embed; display: inline-block; }
-  ul { padding-right: 25px; }
-  .footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 30px; border-top: 1px solid #ccc; padding-top: 10px; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Tahoma, Arial, sans-serif;
+    line-height: 1.6; color: #222; margin: 0; padding: 12px; background: #f0f4f8;
+    word-wrap: break-word; overflow-wrap: break-word;
+  }
+  .container {
+    max-width: 900px; margin: 0 auto; background: #fff;
+    padding: 22px 20px; border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
+  h1 {
+    color: #1a5276; text-align: center; font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+    line-height: 1.3; margin: 0 0 20px; padding-bottom: 12px;
+    border-bottom: 3px solid #1a5276;
+  }
+  h2 {
+    color: #1a5276; background: #eaf2f8; padding: 10px 14px;
+    border-left: 5px solid #1a5276; border-radius: 4px;
+    margin-top: 26px; font-size: clamp(1rem, 3.8vw, 1.3rem); line-height: 1.3;
+  }
+  h3 { color: #2874a6; margin-top: 18px; font-size: clamp(0.95rem, 3.4vw, 1.1rem); }
+  p, li { font-size: clamp(0.9rem, 3.2vw, 1.05rem); }
+  hr { border: none; border-top: 2px dashed #bbb; margin: 22px 0; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 15px 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  table { border-collapse: collapse; width: 100%; min-width: 320px; background: #fff; font-size: clamp(0.8rem, 3vw, 1rem); }
+  th, td { border: 1px solid #ccc; padding: 10px 8px; text-align: center; }
+  th { background: #1a5276; color: #fff; font-size: clamp(0.8rem, 2.9vw, 0.95rem); }
+  tr:nth-child(even) { background: #f4f8fb; }
+  .formule {
+    background: #fff8e1; border-left: 4px solid #f39c12; padding: 10px 14px;
+    margin: 12px 0; font-family: "Cambria Math", "Times New Roman", serif;
+    font-size: clamp(0.95rem, 3.4vw, 1.15rem); text-align: center; border-radius: 4px;
+  }
+  .encadre { background: #e8f8f5; border: 2px solid #16a085; border-radius: 8px; padding: 12px 16px; margin: 15px 0; }
+  .conseil { background: #fef9e7; border-left: 5px solid #f1c40f; padding: 12px 16px; margin: 20px 0; border-radius: 4px; font-style: italic; font-size: clamp(0.85rem, 3.2vw, 1rem); }
+  ul, ol { padding-left: 22px; margin: 8px 0; }
+  li { margin: 5px 0; }
+  strong { color: #1a5276; }
+  code { background: #eef; padding: 2px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 0.9em; }
+
+  /* EXERCICE INTERACTIF */
+  .exo {
+    background: #f8fbfd; border: 2px solid #d6eaf8; border-radius: 10px;
+    padding: 16px 18px; margin: 18px 0;
+  }
+  .exo .enonce { font-size: clamp(0.9rem, 3.2vw, 1.05rem); margin-bottom: 12px; }
+  .exo .enonce strong { color: #1a5276; }
+  .btn-corr {
+    background: #16a085; color: #fff; border: none; border-radius: 8px;
+    padding: 10px 18px; font-size: clamp(0.85rem, 3.2vw, 1rem);
+    font-weight: bold; cursor: pointer; transition: background 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+    -webkit-appearance: none; appearance: none;
+  }
+  .btn-corr:hover { background: #138d75; }
+  .btn-corr:active { transform: scale(0.97); }
+  .btn-corr .arrow { transition: transform 0.2s; display: inline-block; }
+  .btn-corr.open .arrow { transform: rotate(90deg); }
+
+  .correction {
+    display: none; background: #eafaf1; border-left: 5px solid #27ae60;
+    border-radius: 6px; padding: 14px 16px; margin-top: 12px;
+    font-size: clamp(0.88rem, 3.2vw, 1rem); color: #145a32;
+    animation: fadeIn 0.3s ease;
+  }
+  .correction.show { display: block; }
+  .correction strong { color: #0b5345; }
+  .correction .etape { display: block; margin: 4px 0; }
+  .correction .resultat {
+    display: inline-block; background: #27ae60; color: #fff;
+    padding: 3px 10px; border-radius: 6px; font-weight: bold;
+    margin-top: 8px; font-family: "Cambria Math", serif;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 8px; }
+    .container { padding: 16px 14px; border-radius: 10px; }
+    h1 { font-size: 1.15rem; }
+    h2 { padding: 8px 12px; }
+    th, td { padding: 6px 4px; font-size: 0.78rem; }
+    .exo { padding: 12px 14px; }
+    .btn-corr { padding: 9px 14px; width: 100%; justify-content: center; }
+  }
 </style>
 </head>
 <body>
+
 <div class="container">
 
- 
-  <!-- 5 -->
-  <h2>3. مقارنة الأعداد الكبيرة</h2>
-  <div class="box">
-    <strong>القاعدة:</strong>
-    <ol>
-      <li>نقارن <strong>عدد الأرقام</strong>: الأكثر أرقامًا هو الأكبر.</li>
-      <li>إذا تساوى عدد الأرقام، نقارن <strong>رقمًا رقمًا</strong> من اليسار إلى اليمين.</li>
-    </ol>
-  </div>
-  <p><strong>أمثلة:</strong></p>
-  <div class="example">
-    <span class="num">999 999 999 &lt; 1 000 000 000</span><br>
-    <span class="num">5 265 312 000 &gt; 5 265 299 999</span>
-  </div>
+<h1>La Continuité — 2ème Bac Marocain</h1>
 
-  
+<!-- ============================================ -->
+<h2>1. Continuité en un point</h2>
+
+<h3>a) Définition</h3>
+
+<p>Soit \(f\) une fonction définie sur un intervalle \(I\) et \(a \in I\).</p>
+
+<p>On dit que <strong>\(f\) est continue en \(a\)</strong> si :</p>
+
+<div class="formule">
+  \(\displaystyle \lim_{x \to a} f(x) = f(a)\)
 </div>
+
+<p>Cela signifie que :</p>
+<ul>
+  <li>\(f(a)\) existe (la fonction est définie en \(a\))</li>
+  <li>\(\lim_{x \to a} f(x)\) existe (finie)</li>
+  <li>\(\lim_{x \to a} f(x) = f(a)\)</li>
+</ul>
+
+<h3>b) Continuité à droite et à gauche</h3>
+
+<div class="formule">
+  \(f\) continue en \(a\) \(\iff\) \(\lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = f(a)\)
+</div>
+
+<div class="encadre">
+<strong>À retenir :</strong>
+<ul>
+  <li><strong>Continuité à gauche :</strong> \(\lim_{x \to a^-} f(x) = f(a)\)</li>
+  <li><strong>Continuité à droite :</strong> \(\lim_{x \to a^+} f(x) = f(a)\)</li>
+  <li>\(f\) continue en \(a\) \(\iff\) continue à droite ET à gauche en \(a\)</li>
+</ul>
+</div>
+
+<!-- EXO 1 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple 1 :</strong> Étudier la continuité de \(f\) en \(a = 1\) sachant que :<br>
+    \(f(x) = x^2 + 1\) pour \(x \neq 1\) et \(f(1) = 3\)
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">Calculons \(\lim_{x \to 1} f(x) = \lim_{x \to 1} (x^2 + 1) = 1 + 1 = 2\)</span>
+    <span class="etape">Or \(f(1) = 3\)</span>
+    <span class="etape">Donc \(\lim_{x \to 1} f(x) = 2 \neq f(1) = 3\)</span>
+    <span class="resultat">\(f\) n'est pas continue en 1</span>
+  </div>
+</div>
+
+<!-- EXO 2 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple 2 :</strong> Soit \(f(x) = \dfrac{x^2 - 1}{x - 1}\) pour \(x \neq 1\) et \(f(1) = 2\).<br>
+    \(f\) est-elle continue en \(1\) ?
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">\(\lim_{x \to 1} \dfrac{x^2 - 1}{x - 1} = \lim_{x \to 1} \dfrac{(x-1)(x+1)}{x-1} = \lim_{x \to 1} (x+1) = 2\)</span>
+    <span class="etape">Et \(f(1) = 2\)</span>
+    <span class="etape">Donc \(\lim_{x \to 1} f(x) = f(1) = 2\)</span>
+    <span class="resultat">\(f\) est continue en 1</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>2. Continuité sur un intervalle</h2>
+
+<h3>a) Définition</h3>
+
+<div class="encadre">
+<ul>
+  <li>\(f\) est <strong>continue sur un intervalle ouvert</strong> \(]a, b[\) si elle est continue en tout point de \(]a, b[\).</li>
+  <li>\(f\) est <strong>continue sur \([a, b]\)</strong> si elle est continue sur \(]a, b[\), continue à droite en \(a\) et continue à gauche en \(b\).</li>
+</ul>
+</div>
+
+<h3>b) Continuité des fonctions usuelles</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr><th>Fonction</th><th>Domaine de continuité</th></tr>
+</thead>
+<tbody>
+  <tr><td>Polynômes</td><td>\(\mathbb{R}\) (continue partout)</td></tr>
+  <tr><td>Fonctions rationnelles</td><td>Sur leur domaine de définition</td></tr>
+  <tr><td>\(\sqrt{x}\)</td><td>\([0, +\infty[\)</td></tr>
+  <tr><td>\(\sin x,\ \cos x\)</td><td>\(\mathbb{R}\)</td></tr>
+  <tr><td>\(\tan x\)</td><td>\(\mathbb{R} \setminus \{\frac{\pi}{2} + k\pi\}\)</td></tr>
+  <tr><td>\(\ln x\)</td><td>\(]0, +\infty[\)</td></tr>
+  <tr><td>\(e^x\)</td><td>\(\mathbb{R}\)</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- EXO 3 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple :</strong> Étudier la continuité de \(f(x) = \dfrac{2x + 1}{x - 3}\) sur son domaine.
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">\(D_f = \mathbb{R} \setminus \{3\}\)</span>
+    <span class="etape">\(f\) est une fonction rationnelle, donc continue sur tout intervalle où elle est définie.</span>
+    <span class="resultat">\(f\) est continue sur \(]-\infty, 3[\) et sur \(]3, +\infty[\)</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>3. Prolongement par continuité</h2>
+
+<h3>a) Définition</h3>
+
+<p>Soit \(f\) une fonction définie sur \(I \setminus \{a\}\). Si \(\lim_{x \to a} f(x) = L\) (finie), alors on peut <strong>prolonger</strong> \(f\) par continuité en \(a\) en posant :</p>
+
+<div class="formule">
+  \(g(x) = f(x)\) si \(x \neq a\) &nbsp;&nbsp; et &nbsp;&nbsp; \(g(a) = L\)
+</div>
+
+<p>La fonction \(g\) ainsi définie est <strong>continue en \(a\)</strong>.</p>
+
+<!-- EXO 4 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple :</strong> Soit \(f(x) = \dfrac{\sin x}{x}\) pour \(x \neq 0\).<br>
+    Peut-on prolonger \(f\) par continuité en 0 ?
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">On sait que \(\lim_{x \to 0} \dfrac{\sin x}{x} = 1\)</span>
+    <span class="etape">On pose \(g(0) = 1\) et \(g(x) = \dfrac{\sin x}{x}\) pour \(x \neq 0\)</span>
+    <span class="resultat">\(g\) est le prolongement par continuité de \(f\) en 0</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>4. Théorème des valeurs intermédiaires (TVI)</h2>
+
+<h3>a) Énoncé</h3>
+
+<div class="encadre">
+<strong>Théorème :</strong> Si \(f\) est <strong>continue sur \([a, b]\)</strong>, alors pour tout réel \(k\) compris entre \(f(a)\) et \(f(b)\), il existe <strong>au moins un</strong> \(c \in [a, b]\) tel que \(f(c) = k\).
+</div>
+
+<div class="formule">
+  \(f\) continue sur \([a, b]\) \(\Rightarrow\) \(f([a,b])\) contient tout intervalle entre \(f(a)\) et \(f(b)\)
+</div>
+
+<h3>b) Cas particulier : Théorème de la bijection</h3>
+
+<div class="encadre">
+<strong>Corollaire :</strong> Si \(f\) est <strong>continue et strictement monotone</strong> sur \([a, b]\), alors pour tout \(k\) entre \(f(a)\) et \(f(b)\), l'équation \(f(x) = k\) admet une <strong>unique solution</strong> dans \([a, b]\).
+</div>
+
+<!-- EXO 5 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple 1 :</strong> Montrer que l'équation \(x^3 + x - 1 = 0\) admet une solution dans \([0, 1]\).
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">Soit \(f(x) = x^3 + x - 1\), continue sur \([0, 1]\) (polynôme)</span>
+    <span class="etape">\(f(0) = -1\) et \(f(1) = 1\)</span>
+    <span class="etape">\(0\) est compris entre \(-1\) et \(1\)</span>
+    <span class="etape">D'après le TVI, il existe \(c \in [0,1]\) tel que \(f(c) = 0\)</span>
+    <span class="etape">De plus \(f'(x) = 3x^2 + 1 > 0\), donc \(f\) est strictement croissante → unicité</span>
+    <span class="resultat">L'équation admet une unique solution dans \([0, 1]\)</span>
+  </div>
+</div>
+
+<!-- EXO 6 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple 2 :</strong> Montrer que l'équation \(\cos x = x\) admet une solution dans \([0, 1]\).
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">Soit \(f(x) = \cos x - x\), continue sur \([0, 1]\)</span>
+    <span class="etape">\(f(0) = 1 > 0\) et \(f(1) = \cos 1 - 1 \approx -0{,}46 < 0\)</span>
+    <span class="etape">\(0\) est compris entre \(f(0)\) et \(f(1)\)</span>
+    <span class="etape">D'après le TVI, il existe \(c \in [0,1]\) tel que \(f(c) = 0\), soit \(\cos c = c\)</span>
+    <span class="resultat">L'équation \(\cos x = x\) admet une solution dans \([0, 1]\)</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>5. Image d'un intervalle par une fonction continue</h2>
+
+<div class="encadre">
+<strong>Théorème :</strong> L'image d'un intervalle par une fonction continue est un <strong>intervalle</strong>.
+<ul>
+  <li>Si \(f\) continue sur \([a, b]\), alors \(f([a, b]) = [m, M]\) où \(m = \min f\) et \(M = \max f\).</li>
+  <li>Si \(f\) continue et strictement monotone sur \([a, b]\), alors \(f([a,b]) = [f(a), f(b)]\) (ou \([f(b), f(a)]\)).</li>
+</ul>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>6. Fonction réciproque d'une fonction continue</h2>
+
+<div class="encadre">
+<strong>Théorème :</strong> Si \(f\) est <strong>continue et strictement monotone</strong> sur un intervalle \(I\), alors :
+<ul>
+  <li>\(f\) réalise une bijection de \(I\) vers \(J = f(I)\)</li>
+  <li>La fonction réciproque \(f^{-1} : J \to I\) est <strong>continue</strong> sur \(J\)</li>
+  <li>\(f^{-1}\) a le <strong>même sens de variation</strong> que \(f\)</li>
+</ul>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>7. Résumé général</h2>
+
+<ul>
+  <li><strong>Continuité en \(a\) :</strong> \(\lim_{x \to a} f(x) = f(a)\)</li>
+  <li><strong>Continuité à gauche / droite :</strong> limites égales à \(f(a)\)</li>
+  <li><strong>Continuité sur intervalle :</strong> continue en tout point</li>
+  <li><strong>Fonctions usuelles :</strong> polynômes, rationnelles, \(\sin\), \(\cos\), \(\ln\), \(e^x\) sont continues sur leur domaine</li>
+  <li><strong>Prolongement :</strong> si \(\lim_{x \to a} f(x) = L\), on pose \(f(a) = L\)</li>
+  <li><strong>TVI :</strong> \(f\) continue sur \([a,b]\) → prend toutes les valeurs entre \(f(a)\) et \(f(b)\)</li>
+  <li><strong>Bijection :</strong> \(f\) continue + strictement monotone → \(f(x) = k\) admet une unique solution</li>
+  <li><strong>Réciproque :</strong> continue et même sens de variation</li>
+</ul>
+
+<div class="conseil">
+💡 <strong>Conseil :</strong> Pour montrer qu'une équation \(f(x) = k\) admet une solution unique, utilise le <strong>TVI</strong> (existence) puis la <strong>stricte monotonie</strong> (unicité). Vérifie toujours que \(f\) est continue sur l'intervalle avant d'appliquer le théorème !
+</div>
+
+</div>
+
+<script>
+function toggleCorr(btn) {
+  var corr = btn.nextElementSibling;
+  if (corr.classList.contains('show')) {
+    corr.classList.remove('show');
+    btn.classList.remove('open');
+    btn.innerHTML = '<span class="arrow">▶</span> Afficher la correction';
+  } else {
+    corr.classList.add('show');
+    btn.classList.add('open');
+    btn.innerHTML = '<span class="arrow">▶</span> Masquer la correction';
+  }
+}
+</script>
+
 </body>
 </html>

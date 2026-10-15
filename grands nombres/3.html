@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Continuité — 2ème Bac Marocain</title>
+
+<!-- ✅ AJOUT DE MATHJAX POUR AFFICHER LES FORMULES -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']]
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html { font-size: 16px; -webkit-text-size-adjust: 100%; }
@@ -37,17 +52,15 @@
   tr:nth-child(even) { background: #f4f8fb; }
   .formule {
     background: #fff8e1; border-left: 4px solid #f39c12; padding: 10px 14px;
-    margin: 12px 0; font-family: "Cambria Math", "Times New Roman", serif;
-    font-size: clamp(0.95rem, 3.4vw, 1.15rem); text-align: center; border-radius: 4px;
+    margin: 12px 0; font-size: clamp(0.95rem, 3.4vw, 1.15rem);
+    text-align: center; border-radius: 4px; overflow-x: auto;
   }
   .encadre { background: #e8f8f5; border: 2px solid #16a085; border-radius: 8px; padding: 12px 16px; margin: 15px 0; }
   .conseil { background: #fef9e7; border-left: 5px solid #f1c40f; padding: 12px 16px; margin: 20px 0; border-radius: 4px; font-style: italic; font-size: clamp(0.85rem, 3.2vw, 1rem); }
   ul, ol { padding-left: 22px; margin: 8px 0; }
   li { margin: 5px 0; }
   strong { color: #1a5276; }
-  code { background: #eef; padding: 2px 6px; border-radius: 3px; font-family: Consolas, monospace; font-size: 0.9em; }
 
-  /* EXERCICE INTERACTIF */
   .exo {
     background: #f8fbfd; border: 2px solid #d6eaf8; border-radius: 10px;
     padding: 16px 18px; margin: 18px 0;
@@ -78,7 +91,7 @@
   .correction .resultat {
     display: inline-block; background: #27ae60; color: #fff;
     padding: 3px 10px; border-radius: 6px; font-weight: bold;
-    margin-top: 8px; font-family: "Cambria Math", serif;
+    margin-top: 8px;
   }
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-6px); }
@@ -112,27 +125,27 @@
 <p>On dit que <strong>\(f\) est continue en \(a\)</strong> si :</p>
 
 <div class="formule">
-  \(\displaystyle \lim_{x \to a} f(x) = f(a)\)
+  \[\lim_{x \to a} f(x) = f(a)\]
 </div>
 
 <p>Cela signifie que :</p>
 <ul>
   <li>\(f(a)\) existe (la fonction est définie en \(a\))</li>
-  <li>\(\lim_{x \to a} f(x)\) existe (finie)</li>
-  <li>\(\lim_{x \to a} f(x) = f(a)\)</li>
+  <li>\(\lim\limits_{x \to a} f(x)\) existe (finie)</li>
+  <li>\(\lim\limits_{x \to a} f(x) = f(a)\)</li>
 </ul>
 
 <h3>b) Continuité à droite et à gauche</h3>
 
 <div class="formule">
-  \(f\) continue en \(a\) \(\iff\) \(\lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = f(a)\)
+  \(f\) continue en \(a\) \(\iff\) \(\lim\limits_{x \to a^-} f(x) = \lim\limits_{x \to a^+} f(x) = f(a)\)
 </div>
 
 <div class="encadre">
 <strong>À retenir :</strong>
 <ul>
-  <li><strong>Continuité à gauche :</strong> \(\lim_{x \to a^-} f(x) = f(a)\)</li>
-  <li><strong>Continuité à droite :</strong> \(\lim_{x \to a^+} f(x) = f(a)\)</li>
+  <li><strong>Continuité à gauche :</strong> \(\lim\limits_{x \to a^-} f(x) = f(a)\)</li>
+  <li><strong>Continuité à droite :</strong> \(\lim\limits_{x \to a^+} f(x) = f(a)\)</li>
   <li>\(f\) continue en \(a\) \(\iff\) continue à droite ET à gauche en \(a\)</li>
 </ul>
 </div>
@@ -147,9 +160,9 @@
     <span class="arrow">▶</span> Afficher la correction
   </button>
   <div class="correction">
-    <span class="etape">Calculons \(\lim_{x \to 1} f(x) = \lim_{x \to 1} (x^2 + 1) = 1 + 1 = 2\)</span>
+    <span class="etape">Calculons \(\lim\limits_{x \to 1} f(x) = \lim\limits_{x \to 1} (x^2 + 1) = 1 + 1 = 2\)</span>
     <span class="etape">Or \(f(1) = 3\)</span>
-    <span class="etape">Donc \(\lim_{x \to 1} f(x) = 2 \neq f(1) = 3\)</span>
+    <span class="etape">Donc \(\lim\limits_{x \to 1} f(x) = 2 \neq f(1) = 3\)</span>
     <span class="resultat">\(f\) n'est pas continue en 1</span>
   </div>
 </div>
@@ -164,9 +177,9 @@
     <span class="arrow">▶</span> Afficher la correction
   </button>
   <div class="correction">
-    <span class="etape">\(\lim_{x \to 1} \dfrac{x^2 - 1}{x - 1} = \lim_{x \to 1} \dfrac{(x-1)(x+1)}{x-1} = \lim_{x \to 1} (x+1) = 2\)</span>
+    <span class="etape">\(\lim\limits_{x \to 1} \dfrac{x^2 - 1}{x - 1} = \lim\limits_{x \to 1} \dfrac{(x-1)(x+1)}{x-1} = \lim\limits_{x \to 1} (x+1) = 2\)</span>
     <span class="etape">Et \(f(1) = 2\)</span>
-    <span class="etape">Donc \(\lim_{x \to 1} f(x) = f(1) = 2\)</span>
+    <span class="etape">Donc \(\lim\limits_{x \to 1} f(x) = f(1) = 2\)</span>
     <span class="resultat">\(f\) est continue en 1</span>
   </div>
 </div>
@@ -197,7 +210,7 @@
   <tr><td>Fonctions rationnelles</td><td>Sur leur domaine de définition</td></tr>
   <tr><td>\(\sqrt{x}\)</td><td>\([0, +\infty[\)</td></tr>
   <tr><td>\(\sin x,\ \cos x\)</td><td>\(\mathbb{R}\)</td></tr>
-  <tr><td>\(\tan x\)</td><td>\(\mathbb{R} \setminus \{\frac{\pi}{2} + k\pi\}\)</td></tr>
+  <tr><td>\(\tan x\)</td><td>\(\mathbb{R} \setminus \left\{\frac{\pi}{2} + k\pi\right\}\)</td></tr>
   <tr><td>\(\ln x\)</td><td>\(]0, +\infty[\)</td></tr>
   <tr><td>\(e^x\)</td><td>\(\mathbb{R}\)</td></tr>
 </tbody>
@@ -226,7 +239,7 @@
 
 <h3>a) Définition</h3>
 
-<p>Soit \(f\) une fonction définie sur \(I \setminus \{a\}\). Si \(\lim_{x \to a} f(x) = L\) (finie), alors on peut <strong>prolonger</strong> \(f\) par continuité en \(a\) en posant :</p>
+<p>Soit \(f\) une fonction définie sur \(I \setminus \{a\}\). Si \(\lim\limits_{x \to a} f(x) = L\) (finie), alors on peut <strong>prolonger</strong> \(f\) par continuité en \(a\) en posant :</p>
 
 <div class="formule">
   \(g(x) = f(x)\) si \(x \neq a\) &nbsp;&nbsp; et &nbsp;&nbsp; \(g(a) = L\)
@@ -244,7 +257,7 @@
     <span class="arrow">▶</span> Afficher la correction
   </button>
   <div class="correction">
-    <span class="etape">On sait que \(\lim_{x \to 0} \dfrac{\sin x}{x} = 1\)</span>
+    <span class="etape">On sait que \(\lim\limits_{x \to 0} \dfrac{\sin x}{x} = 1\)</span>
     <span class="etape">On pose \(g(0) = 1\) et \(g(x) = \dfrac{\sin x}{x}\) pour \(x \neq 0\)</span>
     <span class="resultat">\(g\) est le prolongement par continuité de \(f\) en 0</span>
   </div>
@@ -339,11 +352,11 @@
 <h2>7. Résumé général</h2>
 
 <ul>
-  <li><strong>Continuité en \(a\) :</strong> \(\lim_{x \to a} f(x) = f(a)\)</li>
+  <li><strong>Continuité en \(a\) :</strong> \(\lim\limits_{x \to a} f(x) = f(a)\)</li>
   <li><strong>Continuité à gauche / droite :</strong> limites égales à \(f(a)\)</li>
   <li><strong>Continuité sur intervalle :</strong> continue en tout point</li>
   <li><strong>Fonctions usuelles :</strong> polynômes, rationnelles, \(\sin\), \(\cos\), \(\ln\), \(e^x\) sont continues sur leur domaine</li>
-  <li><strong>Prolongement :</strong> si \(\lim_{x \to a} f(x) = L\), on pose \(f(a) = L\)</li>
+  <li><strong>Prolongement :</strong> si \(\lim\limits_{x \to a} f(x) = L\), on pose \(f(a) = L\)</li>
   <li><strong>TVI :</strong> \(f\) continue sur \([a,b]\) → prend toutes les valeurs entre \(f(a)\) et \(f(b)\)</li>
   <li><strong>Bijection :</strong> \(f\) continue + strictement monotone → \(f(x) = k\) admet une unique solution</li>
   <li><strong>Réciproque :</strong> continue et même sens de variation</li>

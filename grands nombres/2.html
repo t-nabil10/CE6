@@ -2,60 +2,480 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>درس: الأعداد الكبيرة — السادسة ابتدائي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التوازي والتعامد — السادسة ابتدائي</title>
 <style>
-  body { font-family: "Amiri", "Traditional Arabic", "Times New Roman", serif; background: #f7f7f7; color: #222; line-height: 2; margin: 0; padding: 20px; direction: rtl; }
-  .container { max-width: 950px; margin: auto; background: #fff; padding: 30px 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-  h1 { text-align: center; color: #1a4d8f; border-bottom: 3px solid #1a4d8f; padding-bottom: 10px; }
-  h2 { color: #1a4d8f; border-right: 5px solid #1a4d8f; padding-right: 10px; margin-top: 30px; background: #eef4fb; padding: 8px 12px; border-radius: 6px; }
-  .box { background: #fffbe6; border: 2px dashed #e0b400; padding: 12px 18px; border-radius: 8px; margin: 15px 0; }
-  .example { background: #eaf7ea; border-right: 5px solid #2e8b57; padding: 10px 15px; border-radius: 6px; margin: 12px 0; }
-  .exercice { background: #f0f0ff; border-right: 5px solid #6a0dad; padding: 12px 18px; border-radius: 8px; margin: 20px 0; }
-  /* الجداول تُقرأ من اليسار إلى اليمين */
-  table { border-collapse: collapse; margin: 15px auto; width: 100%; text-align: center; direction: ltr; }
-  th, td { border: 1px solid #444; padding: 10px; }
-  th { background: #1a4d8f; color: #fff; }
-  .num { font-family: "Arial", sans-serif; font-size: 1.15em; color: #b30000; font-weight: bold; direction: ltr; unicode-bidi: embed; display: inline-block; }
-  ul { padding-right: 25px; }
-  .footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 30px; border-top: 1px solid #ccc; padding-top: 10px; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: "Amiri", "Traditional Arabic", Tahoma, Arial, sans-serif;
+    line-height: 1.8; color: #222; margin: 0; padding: 12px; background: #f0f4f8;
+    word-wrap: break-word; overflow-wrap: break-word; direction: rtl;
+  }
+  .container {
+    max-width: 900px; margin: 0 auto; background: #fff;
+    padding: 22px 20px; border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  }
+  h1 {
+    color: #1a5276; text-align: center; font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+    line-height: 1.3; margin: 0 0 20px; padding-bottom: 12px;
+    border-bottom: 3px solid #1a5276;
+  }
+  h2 {
+    color: #1a5276; background: #eaf2f8; padding: 10px 14px;
+    border-right: 5px solid #1a5276; border-radius: 4px;
+    margin-top: 26px; font-size: clamp(1rem, 3.8vw, 1.3rem); line-height: 1.3;
+  }
+  h3 { color: #2874a6; margin-top: 18px; font-size: clamp(0.95rem, 3.4vw, 1.1rem); }
+  p, li { font-size: clamp(0.9rem, 3.2vw, 1.05rem); }
+  hr { border: none; border-top: 2px dashed #bbb; margin: 22px 0; }
+
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 15px 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  table { border-collapse: collapse; width: 100%; min-width: 320px; background: #fff; font-size: clamp(0.8rem, 3vw, 1rem); }
+  th, td { border: 1px solid #ccc; padding: 10px 8px; text-align: center; }
+  th { background: #1a5276; color: #fff; font-size: clamp(0.8rem, 2.9vw, 0.95rem); }
+  tr:nth-child(even) { background: #f4f8fb; }
+
+  .formule {
+    background: #fff8e1; border-right: 4px solid #f39c12; padding: 10px 14px;
+    margin: 12px 0; font-family: "Amiri", "Times New Roman", serif;
+    font-size: clamp(0.95rem, 3.4vw, 1.15rem); text-align: center; border-radius: 4px;
+  }
+  .encadre { background: #e8f8f5; border: 2px solid #16a085; border-radius: 8px; padding: 12px 16px; margin: 15px 0; }
+  .conseil { background: #fef9e7; border-right: 5px solid #f1c40f; padding: 12px 16px; margin: 20px 0; border-radius: 4px; font-style: italic; font-size: clamp(0.85rem, 3.2vw, 1rem); }
+  ul, ol { padding-right: 22px; margin: 8px 0; }
+  li { margin: 5px 0; }
+  strong { color: #1a5276; }
+
+  /* الرموز الرياضية */
+  .sym {
+    font-family: "Arial", sans-serif;
+    color: #b30000; font-weight: bold;
+    direction: ltr; unicode-bidi: embed; display: inline-block;
+    font-size: 1.15em;
+  }
+  .num {
+    font-family: "Arial", sans-serif;
+    color: #b30000; font-weight: bold;
+    direction: ltr; unicode-bidi: embed; display: inline-block;
+  }
+
+  /* صندوق الأشكال الهندسية */
+  .svg-box {
+    text-align: center; margin: 15px 0;
+    background: #fafafa; border: 1px solid #ccc;
+    border-radius: 8px; padding: 12px;
+    overflow-x: auto;
+  }
+  .svg-box svg { max-width: 100%; height: auto; }
+  .svg-box .caption {
+    display: block; margin-top: 8px;
+    color: #555; font-size: 0.9em;
+  }
+
+  /* EXERCICE INTERACTIF */
+  .exo {
+    background: #f8fbfd; border: 2px solid #d6eaf8; border-radius: 10px;
+    padding: 16px 18px; margin: 18px 0;
+  }
+  .exo .enonce { font-size: clamp(0.9rem, 3.2vw, 1.05rem); margin-bottom: 12px; }
+  .exo .enonce strong { color: #1a5276; }
+  .btn-corr {
+    background: #16a085; color: #fff; border: none; border-radius: 8px;
+    padding: 10px 18px; font-size: clamp(0.85rem, 3.2vw, 1rem);
+    font-weight: bold; cursor: pointer; transition: background 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+    -webkit-appearance: none; appearance: none;
+    font-family: inherit;
+  }
+  .btn-corr:hover { background: #138d75; }
+  .btn-corr:active { transform: scale(0.97); }
+  .btn-corr .arrow { transition: transform 0.2s; display: inline-block; }
+  .btn-corr.open .arrow { transform: rotate(-90deg); }
+
+  .correction {
+    display: none; background: #eafaf1; border-right: 5px solid #27ae60;
+    border-radius: 6px; padding: 14px 16px; margin-top: 12px;
+    font-size: clamp(0.88rem, 3.2vw, 1rem); color: #145a32;
+    animation: fadeIn 0.3s ease;
+  }
+  .correction.show { display: block; }
+  .correction strong { color: #0b5345; }
+  .correction .etape { display: block; margin: 4px 0; }
+  .correction .resultat {
+    display: inline-block; background: #27ae60; color: #fff;
+    padding: 3px 10px; border-radius: 6px; font-weight: bold;
+    margin-top: 8px; font-family: "Amiri", serif;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 8px; }
+    .container { padding: 16px 14px; border-radius: 10px; }
+    h1 { font-size: 1.15rem; }
+    h2 { padding: 8px 12px; }
+    th, td { padding: 6px 4px; font-size: 0.78rem; }
+    .exo { padding: 12px 14px; }
+    .btn-corr { padding: 9px 14px; width: 100%; justify-content: center; }
+  }
 </style>
 </head>
 <body>
+
 <div class="container">
 
-  
-  <h2>2. كتابة الأعداد الكبيرة</h2>
-  <div class="box">
-    <strong>القاعدة:</strong> نفصل بين الفصول بواسطة <strong>فراغ</strong>.
-  </div>
-  <div class="example">
-    <span class="num">5 265 312 000</span> &nbsp; وليس &nbsp; <span style="text-decoration: line-through;" class="num">5,265,312,000</span>
-  </div>
+<h1>التوازي والتعامد</h1>
+<p style="text-align:center; color:#555; font-size: 0.95em; margin-top:-10px;">السنة السادسة ابتدائي — وفق المنهاج المغربي الرسمي</p>
 
-  <p><strong>أمثلة من الواقع المغربي:</strong></p>
-  <ul>
-    <li>عدد سكان المغرب: حوالي <span class="num">37 000 000</span> نسمة (37 مليون).</li>
-    <li>ميزانية الدولة: حوالي <span class="num">300 000 000 000</span> درهم (300 مليار).</li>
-    <li>عدد سكان العالم: حوالي <span class="num">8 000 000 000</span> نسمة (8 ملايير).</li>
-  </ul>
+<!-- ============================================ -->
+<h2>1. تذكير: المستقيم</h2>
 
-  <!-- 4 -->
-  <h2>3. تفكيك عدد كبير</h2>
-  <p><strong>مثال:</strong> <span class="num">5 265 312 000</span></p>
-  <div class="example">
-    <strong>تفكيك حسب المراتب:</strong><br>
-    <span class="num">
-      5 × 1 000 000 000 + 2 × 100 000 000 + 6 × 10 000 000 + 5 × 1 000 000
-      + 3 × 100 000 + 1 × 10 000 + 2 × 1 000
-    </span>
-  </div>
-  <div class="example">
-    <strong>تفكيك حسب الفصول:</strong><br>
-    <span class="num">5 265 312 000 = 5 × 1 000 000 000 + 265 × 1 000 000 + 312 × 1 000</span>
-  </div>
+<p><strong>المستقيم</strong> خطّ مستقيم غير محدود من الطرفين، نمثّله بحرف مثل: (d) أو (D<sub>1</sub>) أو (D<sub>2</sub>).</p>
 
-  
+<p>في المستوى، يمكن أن يكون المستقيمان:</p>
+
+<ul>
+  <li><strong>متقاطعين</strong>: لهما نقطة مشتركة واحدة.</li>
+  <li><strong>متوازيين</strong>: ليس لهما أي نقطة مشتركة.</li>
+  <li><strong>متعامدين</strong>: متقاطعان ويكوّنان زاوية قائمة.</li>
+</ul>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>2. التعامد (المستقيمات المتعامدة)</h2>
+
+<h3>أ) التعريف</h3>
+
+<div class="encadre">
+يكون مستقيمان <strong>متعامدين</strong> إذا تقاطعا مكوّنين <strong>زاوية قائمة (90°)</strong>.
+</div>
+
+<div class="formule">
+  <strong>الرمز:</strong> <span class="sym">(d₁) ⊥ (d₂)</span> وتُقرأ: «(d₁) عمودي على (d₂)»
+</div>
+
+<h3>ب) الشكل</h3>
+
+<div class="svg-box">
+  <svg width="280" height="200" viewBox="0 0 280 200">
+    <line x1="20" y1="100" x2="260" y2="100" stroke="#1a5276" stroke-width="2.5"/>
+    <line x1="140" y1="20" x2="140" y2="180" stroke="#b30000" stroke-width="2.5"/>
+    <rect x="140" y="80" width="22" height="22" fill="none" stroke="#16a085" stroke-width="2"/>
+    <text x="167" y="76" font-size="14" fill="#16a085" font-weight="bold">90°</text>
+    <text x="265" y="105" font-size="14" fill="#1a5276" font-weight="bold">(d₁)</text>
+    <text x="120" y="15" font-size="14" fill="#b30000" font-weight="bold">(d₂)</text>
+  </svg>
+  <span class="caption">(d₁) ⊥ (d₂) : تقاطع بزاوية قائمة</span>
+</div>
+
+<h3>ج) أمثلة من الواقع</h3>
+
+<ul>
+  <li>ضلعا السبورة المتجاوران.</li>
+  <li>ضلعا الكتاب المتجاوران.</li>
+  <li>تقاطع شارعين عموديين.</li>
+  <li>عقربا الساعة عند الساعة <span class="num">3:00</span>.</li>
+</ul>
+
+<!-- تمرين 1 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>مثال:</strong> هل المستقيمان في الشكل التالي متعامدان؟ (يُعطى الشكل على السبورة)
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape">لنتحقق من الزاوية باستعمال <strong>المثلث القائم</strong>.</span>
+    <span class="etape">إذا انطبق ضلع الزاوية القائمة على المستقيمين → متعامدان.</span>
+    <span class="resultat">(d₁) ⊥ (d₂)</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>3. التوازي (المستقيمات المتوازية)</h2>
+
+<h3>أ) التعريف</h3>
+
+<div class="encadre">
+يكون مستقيمان <strong>متوازيين</strong> إذا لم يكن بينهما أي نقطة مشتركة، مهما امتدّا.
+</div>
+
+<div class="formule">
+  <strong>الرمز:</strong> <span class="sym">(d₁) // (d₂)</span> وتُقرأ: «(d₁) موازٍ لـ (d₂)»
+</div>
+
+<h3>ب) الشكل</h3>
+
+<div class="svg-box">
+  <svg width="300" height="180" viewBox="0 0 300 180">
+    <line x1="20" y1="60" x2="280" y2="60" stroke="#1a5276" stroke-width="2.5"/>
+    <line x1="20" y1="120" x2="280" y2="120" stroke="#b30000" stroke-width="2.5"/>
+    <text x="285" y="65" font-size="14" fill="#1a5276" font-weight="bold">(d₁)</text>
+    <text x="285" y="125" font-size="14" fill="#b30000" font-weight="bold">(d₂)</text>
+  </svg>
+  <span class="caption">(d₁) // (d₂) : لا يتقاطعان أبدًا</span>
+</div>
+
+<h3>ج) أمثلة من الواقع</h3>
+
+<ul>
+  <li>سكّتا السكة الحديدية.</li>
+  <li>أسطر دفتر.</li>
+  <li>حافتا طريق مستقيم.</li>
+</ul>
+
+<!-- تمرين 2 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>مثال:</strong> هل المستقيمان (D₁) و (D₂) متوازيان إذا كانا عموديين على نفس المستقيم (D₃)؟
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape">نستعمل <strong>خاصية 1</strong>: إذا كان مستقيمان عموديين على مستقيم واحد، فإنهما متوازيان.</span>
+    <span class="etape">بما أن (D₁) ⊥ (D₃) و (D₂) ⊥ (D₃)</span>
+    <span class="resultat">إذن (D₁) // (D₂)</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>4. خصائص مهمة</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr>
+    <th>الخاصية</th>
+    <th>الصياغة</th>
+    <th>الرمز</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><strong>الخاصية 1</strong></td>
+    <td>إذا كان مستقيمان عموديين على مستقيم واحد، فإنهما <strong>متوازيان</strong>.</td>
+    <td><span class="sym">(D₁) ⊥ (D₃) و (D₂) ⊥ (D₃) ⟹ (D₁) // (D₂)</span></td>
+  </tr>
+  <tr>
+    <td><strong>الخاصية 2</strong></td>
+    <td>إذا كان مستقيمان متوازيين، فإن كل مستقيم عمودي على أحدهما يكون <strong>عموديًا على الآخر</strong>.</td>
+    <td><span class="sym">(D₁) // (D₂) و (D₃) ⊥ (D₁) ⟹ (D₃) ⊥ (D₂)</span></td>
+  </tr>
+  <tr>
+    <td><strong>الخاصية 3</strong></td>
+    <td>إذا كان مستقيمان متوازيين مع مستقيم ثالث، فإنهما <strong>متوازيان</strong>.</td>
+    <td><span class="sym">(D₁) // (D₃) و (D₂) // (D₃) ⟹ (D₁) // (D₂)</span></td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>5. طريقة الرسم</h2>
+
+<h3>أ) رسم مستقيم عمودي على مستقيم معطى</h3>
+
+<div class="encadre">
+<ol>
+  <li>نضع ضلع الزاوية القائمة للمثلث القائم على المستقيم المعطى.</li>
+  <li>نضع المسطرة على الضلع الآخر للمثلث.</li>
+  <li>نرسم خطًا على طول ضلع المثلث القائم.</li>
+</ol>
+</div>
+
+<h3>ب) رسم مستقيم موازٍ لمستقيم معطى</h3>
+
+<div class="encadre">
+<ol>
+  <li>نضع أحد ضلعي المثلث على المستقيم المعطى.</li>
+  <li>نضع المسطرة على الضلع الآخر للمثلث.</li>
+  <li>نزلق المثلث على المسطرة حتى النقطة المطلوبة.</li>
+  <li>نرسم المستقيم الجديد.</li>
+</ol>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>6. المُوَسِّط (الوسيط)</h2>
+
+<h3>أ) التعريف</h3>
+
+<div class="encadre">
+مُوَسِّط قطعة [AB] هو المستقيم الذي:
+<ul>
+  <li>يمرّ من منتصف [AB].</li>
+  <li>يكون عموديًا على [AB].</li>
+</ul>
+</div>
+
+<h3>ب) الشكل</h3>
+
+<div class="svg-box">
+  <svg width="300" height="220" viewBox="0 0 300 220">
+    <line x1="60" y1="180" x2="240" y2="40" stroke="#1a5276" stroke-width="2.5"/>
+    <line x1="70" y1="30" x2="230" y2="190" stroke="#b30000" stroke-width="2.5"/>
+    <circle cx="150" cy="110" r="5" fill="#16a085"/>
+    <rect x="150" y="90" width="20" height="20" fill="none" stroke="#16a085" stroke-width="2" transform="rotate(-34 150 90)"/>
+    <text x="40" y="195" font-size="14" fill="#1a5276" font-weight="bold">A</text>
+    <text x="245" y="40" font-size="14" fill="#1a5276" font-weight="bold">B</text>
+    <text x="155" y="105" font-size="14" fill="#16a085" font-weight="bold">I</text>
+    <text x="235" y="195" font-size="14" fill="#b30000" font-weight="bold">(d)</text>
+  </svg>
+  <span class="caption">(d) هو مُوَسِّط [AB]</span>
+</div>
+
+<h3>ج) خاصية المُوَسِّط</h3>
+
+<div class="formule">
+  كل نقطة M تنتمي إلى مُوَسِّط [AB] تكون <strong>على نفس المسافة</strong> من A ومن B، أي: <span class="sym">MA = MB</span>.
+</div>
+
+<!-- تمرين 3 -->
+<div class="exo">
+  <div class="enonce">
+    <strong>مثال:</strong> M نقطة على مُوَسِّط القطعة [AB]. إذا كان MA = 7 cm، فما هو MB؟
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape">حسب خاصية المُوَسِّط، كل نقطة عليه تكون على نفس المسافة من طرفي القطعة.</span>
+    <span class="etape">إذن: <span class="sym">MA = MB</span></span>
+    <span class="resultat">MB = 7 cm</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>7. تمارين تطبيقية</h2>
+
+<div class="exo">
+  <div class="enonce">
+    <strong>التمرين 1:</strong> أكمل باستعمال الرمز المناسب (⊥ أو //):
+    <ol>
+      <li>إذا كان (D₁) ⊥ (D₃) و (D₂) ⊥ (D₃) فإن (D₁) ... (D₂).</li>
+      <li>إذا كان (D₁) // (D₂) و (D₃) ⊥ (D₁) فإن (D₃) ... (D₂).</li>
+      <li>إذا كان (D₁) // (D₃) و (D₂) // (D₃) فإن (D₁) ... (D₂).</li>
+    </ol>
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape"><strong>1)</strong> (D₁) <strong>//</strong> (D₂) → لأن كليهما عموديان على (D₃)</span>
+    <span class="etape"><strong>2)</strong> (D₃) <strong>⊥</strong> (D₂) → لأن العمودي على أحد المتوازيين عمودي على الآخر</span>
+    <span class="etape"><strong>3)</strong> (D₁) <strong>//</strong> (D₂) → لأن كليهما موازيان لـ (D₃)</span>
+    <span class="resultat">نستعمل الخصائص الثلاث</span>
+  </div>
+</div>
+
+<div class="exo">
+  <div class="enonce">
+    <strong>التمرين 2:</strong> ارسم مستقيمًا (d) ثم:
+    <ol>
+      <li>عيّن نقطة A لا تنتمي إلى (d).</li>
+      <li>ارسم من A مستقيمًا (d₁) عموديًا على (d).</li>
+      <li>ارسم من A مستقيمًا (d₂) موازيًا لـ (d).</li>
+      <li>ما هي العلاقة بين (d₁) و (d₂)؟ علّل جوابك.</li>
+    </ol>
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape"><strong>الرسم:</strong> (d₁) ⊥ (d) و (d₂) // (d) وكلاهما يمرّ من A.</span>
+    <span class="etape"><strong>العلاقة:</strong> (d₁) ⊥ (d₂).</span>
+    <span class="etape"><strong>التعليل:</strong> بما أن (d₂) // (d)، فإن العمودي على (d) يكون عموديًا على (d₂) (خاصية 2).</span>
+    <span class="resultat">(d₁) ⊥ (d₂)</span>
+  </div>
+</div>
+
+<div class="exo">
+  <div class="enonce">
+    <strong>التمرين 3:</strong> ارسم قطعة [AB] طولها 8 cm.
+    <ol>
+      <li>ارسم مُوَسِّط القطعة [AB] وسمّه (d).</li>
+      <li>عيّن نقطة M على (d) بحيث MA = 5 cm.</li>
+      <li>تحقّق أن MB = 5 cm. لماذا؟</li>
+    </ol>
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape"><strong>1)</strong> نرسم منتصف [AB] ثم نرسم مستقيمًا عموديًا عليه، هذا هو (d).</span>
+    <span class="etape"><strong>2)</strong> نعيّن M على (d) بحيث MA = 5 cm.</span>
+    <span class="etape"><strong>3)</strong> حسب خاصية المُوَسِّط: كل نقطة على (d) تكون على نفس المسافة من A ومن B.</span>
+    <span class="resultat">MB = 5 cm</span>
+  </div>
+</div>
+
+<div class="exo">
+  <div class="enonce">
+    <strong>التمرين 4:</strong> في الشكل التالي: (D₁) ⊥ (D₂) و (D₂) ⊥ (D₃).
+    <br>ماذا تستنتج بالنسبة لـ (D₁) و (D₃)؟
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> إظهار التصحيح
+  </button>
+  <div class="correction">
+    <span class="etape">لدينا (D₁) ⊥ (D₂) و (D₃) ⊥ (D₂).</span>
+    <span class="etape">هذا يعني: مستقيمان عموديان على نفس المستقيم (D₂).</span>
+    <span class="etape">حسب <strong>الخاصية 1</strong>: إذا كان مستقيمان عموديين على مستقيم واحد، فإنهما متوازيان.</span>
+    <span class="resultat">(D₁) // (D₃)</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>8. ملخّص</h2>
+
+<ul>
+  <li><strong>التعامد:</strong> مستقيمان يتقاطعان ويكوّنان زاوية قائمة. الرمز: <span class="sym">⊥</span>.</li>
+  <li><strong>التوازي:</strong> مستقيمان لا يتقاطعان أبدًا. الرمز: <span class="sym">//</span>.</li>
+  <li><strong>خاصية 1:</strong> عموديان على نفس المستقيم ⟹ متوازيان.</li>
+  <li><strong>خاصية 2:</strong> العمودي على أحد المتوازيين ⟹ عمودي على الآخر.</li>
+  <li><strong>خاصية 3:</strong> موازيان لمستقيم ثالث ⟹ متوازيان.</li>
+  <li><strong>المُوَسِّط:</strong> مستقيم عمودي على قطعة ويمرّ من منتصفها.</li>
+  <li><strong>خاصية المُوَسِّط:</strong> كل نقطة عليه تكون على نفس المسافة من طرفي القطعة.</li>
+</ul>
+
+<div class="conseil">
+💡 <strong>نصيحة:</strong> لترسم بشكل صحيح، استعمل دائمًا <strong>المسطرة + المثلث القائم</strong>، وتأكّد من الزاوية القائمة باستعمال ضلع الزاوية في المثلث!
+</div>
 
 </div>
+
+<script>
+function toggleCorr(btn) {
+  var corr = btn.nextElementSibling;
+  if (corr.classList.contains('show')) {
+    corr.classList.remove('show');
+    btn.classList.remove('open');
+    btn.innerHTML = '<span class="arrow">▶</span> إظهار التصحيح';
+  } else {
+    corr.classList.add('show');
+    btn.classList.add('open');
+    btn.innerHTML = '<span class="arrow">▶</span> إخفاء التصحيح';
+  }
+}
+</script>
+
 </body>
 </html>

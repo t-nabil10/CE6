@@ -108,8 +108,6 @@
 <!-- ============================================ -->
 <h2>1. Rappel : Les immobilisations</h2>
 
-<p>Une <strong>immobilisation</strong> est un bien durable acquis par l'entreprise et destiné à être utilisé pendant plus d'un exercice comptable.</p>
-
 <div class="encadre">
 <strong>Classification :</strong>
 <ul>
@@ -134,29 +132,27 @@
 <div class="table-wrap">
 <table>
 <thead>
-  <tr><th>Type</th><th>Exemples</th><th>Compte</th></tr>
+  <tr><th>Type</th><th>Exemples</th><th>Compte</th><th>Amort. cumulé</th></tr>
 </thead>
 <tbody>
-  <tr><td>Frais préliminaires</td><td>Frais de constitution, prospection, publicité de démarrage</td><td>2111</td></tr>
-  <tr><td>Charges à répartir</td><td>Frais d'émission d'emprunt, frais d'acquisition</td><td>2121</td></tr>
-  <tr><td>Primes de remboursement</td><td>Primes de remboursement des obligations</td><td>2131</td></tr>
+  <tr><td>Frais préliminaires</td><td>Frais de constitution, prospection</td><td>2111</td><td>2811</td></tr>
+  <tr><td>Charges à répartir</td><td>Frais d'émission d'emprunt</td><td>2121</td><td>2812</td></tr>
+  <tr><td>Primes de remboursement</td><td>Primes sur obligations</td><td>2131</td><td>2813</td></tr>
 </tbody>
 </table>
 </div>
 
-<h3>c) Amortissement (Règle au Maroc)</h3>
+<h3>c) Amortissement</h3>
 
 <div class="formule">
-  Amortissement sur une durée <strong>maximale de 5 ans</strong> → taux minimum <strong>20 %</strong> par an (mode linéaire) [citation:24]
+  Durée <strong>maximale de 5 ans</strong> → taux minimum <strong>20 %</strong> par an (linéaire)
 </div>
 
-<h3>d) Écriture comptable (Dotation)</h3>
+<h3>d) Écriture de Dotation</h3>
 
 <div class="ecriture">
 <table>
-  <thead>
-    <tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr>
-  </thead>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
   <tbody>
     <tr><td>61911</td><td>DEA des immobilisations en non-valeurs</td><td>X</td><td>—</td></tr>
     <tr><td>2811</td><td>Amortissements des frais préliminaires</td><td>—</td><td>X</td></tr>
@@ -169,11 +165,7 @@
 <!-- ============================================ -->
 <h2>3. Les Immobilisations Incorporelles</h2>
 
-<h3>a) Définition</h3>
-
-<p>Actifs <strong>non monétaires</strong>, <strong>identifiables</strong> et <strong>sans substance physique</strong>.</p>
-
-<h3>b) Exemples et comptes</h3>
+<h3>a) Exemples et comptes</h3>
 
 <div class="table-wrap">
 <table>
@@ -188,13 +180,11 @@
 </table>
 </div>
 
-<h3>c) Écriture comptable (Dotation)</h3>
+<h3>b) Écriture de Dotation</h3>
 
 <div class="ecriture">
 <table>
-  <thead>
-    <tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr>
-  </thead>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
   <tbody>
     <tr><td>6192</td><td>DEA des immobilisations incorporelles</td><td>X</td><td>—</td></tr>
     <tr><td>2823</td><td>Amortissements des brevets, marques, droits</td><td>—</td><td>X</td></tr>
@@ -206,8 +196,6 @@
 
 <!-- ============================================ -->
 <h2>4. Les Immobilisations Corporelles</h2>
-
-<h3>a) Exemples et comptes</h3>
 
 <div class="table-wrap">
 <table>
@@ -224,20 +212,6 @@
 </table>
 </div>
 
-<h3>b) Écriture comptable (Dotation)</h3>
-
-<div class="ecriture">
-<table>
-  <thead>
-    <tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>6193</td><td>DEA des immobilisations corporelles</td><td>X</td><td>—</td></tr>
-    <tr><td>2834</td><td>Amortissements du matériel de transport</td><td>—</td><td>X</td></tr>
-  </tbody>
-</table>
-</div>
-
 <hr>
 
 <!-- ============================================ -->
@@ -245,16 +219,12 @@
 
 <div class="formule">
   \[ \text{Annuité} = \text{VE} \times \frac{100}{N} \]
-  <br>
-  <em>VE</em> = Valeur d'entrée HT · <em>N</em> = durée de vie
 </div>
 
-<p>L'amortissement commence le <strong>1er jour du mois d'acquisition</strong> [citation:24]. La 1ère annuité est calculée au prorata des mois restants.</p>
+<p>L'amortissement commence le <strong>1er jour du mois d'acquisition</strong>. Prorata temporis :</p>
 
 <div class="formule">
   \[ a_1 = \text{Annuité annuelle} \times \frac{M}{12} \]
-  <br>
-  <em>M</em> = nombre de mois depuis l'acquisition jusqu'au 31/12
 </div>
 
 <hr>
@@ -262,13 +232,9 @@
 <!-- ============================================ -->
 <h2>6. Amortissement Dégressif</h2>
 
-<h3>a) Coefficients (Maroc)</h3>
-
 <div class="table-wrap">
 <table>
-<thead>
-  <tr><th>Durée de vie</th><th>Coefficient</th></tr>
-</thead>
+<thead><tr><th>Durée de vie</th><th>Coefficient</th></tr></thead>
 <tbody>
   <tr><td>3 à 4 ans</td><td>1,5</td></tr>
   <tr><td>5 à 6 ans</td><td>2</td></tr>
@@ -281,10 +247,8 @@
   \[ \text{Taux dégressif} = \text{Taux linéaire} \times \text{Coefficient} \]
 </div>
 
-<h3>b) Règle de basculement</h3>
-
 <div class="encadre">
-Dès que l'annuité dégressive devient <strong>inférieure</strong> à l'annuité linéaire calculée sur la durée restante, on <strong>bascule en linéaire</strong>.
+<strong>Basculement :</strong> Dès que l'annuité dégressive devient <strong>inférieure</strong> à l'annuité linéaire sur la durée restante → bascule en linéaire.
 </div>
 
 <hr>
@@ -294,9 +258,7 @@ Dès que l'annuité dégressive devient <strong>inférieure</strong> à l'annuit
 
 <div class="ecriture">
 <table>
-  <thead>
-    <tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr>
-  </thead>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
   <tbody>
     <tr><td>6193</td><td>DEA des immobilisations corporelles</td><td>X</td><td>—</td></tr>
     <tr><td>2834</td><td>Amortissements du matériel de transport</td><td>—</td><td>X</td></tr>
@@ -304,44 +266,17 @@ Dès que l'annuité dégressive devient <strong>inférieure</strong> à l'annuit
 </table>
 </div>
 
-<!-- EXO : DOTATION -->
-<div class="exo">
-  <div class="enonce">
-    <strong>Exemple :</strong> Matériel acquis le 01/04/2022 pour 50 000 DH HT, durée 5 ans. Enregistrer la dotation 2022.
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> Afficher la correction
-  </button>
-  <div class="correction">
-    <span class="etape">Annuité annuelle = 50 000 / 5 = 10 000 DH</span>
-    <span class="etape">Dotation 2022 (9 mois) = 10 000 × 9/12 = <strong>7 500 DH</strong></span>
-    <div class="ecriture" style="margin-top:10px;">
-    <table>
-      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
-      <tbody>
-        <tr><td>6193</td><td>DEA des immobilisations corporelles</td><td>7 500</td><td>—</td></tr>
-        <tr><td>2834</td><td>Amortissements du matériel de transport</td><td>—</td><td>7 500</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-</div>
-
 <hr>
 
 <!-- ============================================ -->
 <h2>8. Écriture de Cession d'Immobilisation</h2>
 
-<h3>a) Principe</h3>
-
-<p>La cession d'une immobilisation se décompose en <strong>trois étapes</strong> [citation:34] :</p>
+<h3>3 étapes obligatoires :</h3>
 <ol>
-  <li><strong>Complément d'amortissement</strong> jusqu'à la date de cession (prorata temporis)</li>
-  <li><strong>Sortie de l'immobilisation</strong> : constatation de la VNC en charge</li>
+  <li><strong>Complément d'amortissement</strong> jusqu'à la date de cession</li>
+  <li><strong>Sortie de l'immobilisation</strong> (VNC en charge)</li>
   <li><strong>Constatation du prix de cession</strong> en produit</li>
 </ol>
-
-<h3>b) Écritures comptables</h3>
 
 <p><strong>Étape 1 : Complément d'amortissement</strong></p>
 <div class="ecriture">
@@ -366,36 +301,35 @@ Dès que l'annuité dégressive devient <strong>inférieure</strong> à l'annuit
 </table>
 </div>
 
-<p><strong>Étape 3 : Constatation du prix de cession</strong></p>
+<p><strong>Étape 3 : Prix de cession</strong></p>
 <div class="ecriture">
 <table>
   <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
   <tbody>
-    <tr><td>3481 / 5141</td><td>Créances sur cessions / Banque</td><td>Prix TTC</td><td>—</td></tr>
+    <tr><td>5141 / 3481</td><td>Banque / Créances sur cessions</td><td>Prix TTC</td><td>—</td></tr>
     <tr><td>7513</td><td>Produits des cessions</td><td>—</td><td>Prix HT</td></tr>
     <tr><td>4455</td><td>État — TVA facturée</td><td>—</td><td>TVA</td></tr>
   </tbody>
 </table>
 </div>
 
-<!-- EXO : CESSION -->
+<!-- EXO CESSION -->
 <div class="exo">
   <div class="enonce">
-    <strong>Exemple complet :</strong> Un véhicule acquis le <strong>01/01/N-3</strong> pour <strong>300 000 DH HT</strong>, amorti linéairement sur <strong>5 ans</strong> (taux 20 %).<br>
-    Cédé le <strong>01/07/N</strong> pour <strong>100 000 DH HT</strong> (TVA 20 %).<br>
-    Passer les écritures de cession.
+    <strong>Exemple :</strong> Véhicule acquis le 01/01/N-3 pour 300 000 DH HT, amorti sur 5 ans (20 %).<br>
+    Cédé le 01/07/N pour 100 000 DH HT (TVA 20 %).
   </div>
   <button class="btn-corr" onclick="toggleCorr(this)">
     <span class="arrow">▶</span> Afficher la correction
   </button>
   <div class="correction">
-    <span class="etape"><strong>1. Amortissements cumulés au 31/12/N-1 :</strong> 60 000 × 3 = 180 000 DH</span>
-    <span class="etape"><strong>2. Complément N (6 mois) :</strong> 60 000 × 6/12 = 30 000 DH</span>
-    <span class="etape"><strong>3. Amortissements totaux :</strong> 180 000 + 30 000 = 210 000 DH</span>
-    <span class="etape"><strong>4. VNC :</strong> 300 000 − 210 000 = 90 000 DH</span>
-    <span class="etape"><strong>5. Résultat :</strong> 100 000 − 90 000 = <strong>+10 000 DH (plus-value)</strong></span>
+    <span class="etape">Amort. cumulés fin N-1 = 60 000 × 3 = 180 000 DH</span>
+    <span class="etape">Complément N (6 mois) = 60 000 × 6/12 = 30 000 DH</span>
+    <span class="etape">Amort. totaux = 210 000 DH → VNC = 90 000 DH</span>
+    <span class="etape">Résultat = 100 000 − 90 000 = <strong>+10 000 DH (plus-value)</strong></span>
+    <span class="resultat">Voir les 3 écritures ci-dessous</span>
 
-    <p style="margin-top:14px;"><strong>Étape 1 : Complément d'amortissement</strong></p>
+    <p style="margin-top:14px;"><strong>Étape 1 : Complément</strong></p>
     <div class="ecriture">
     <table>
       <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
@@ -406,7 +340,7 @@ Dès que l'annuité dégressive devient <strong>inférieure</strong> à l'annuit
     </table>
     </div>
 
-    <p><strong>Étape 2 : Sortie de l'immobilisation</strong></p>
+    <p><strong>Étape 2 : Sortie</strong></p>
     <div class="ecriture">
     <table>
       <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
@@ -424,7 +358,7 @@ Dès que l'annuité dégressive devient <strong>inférieure</strong> à l'annuit
       <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
       <tbody>
         <tr><td>5141</td><td>Banque</td><td>120 000</td><td>—</td></tr>
-        <tr><td>7513</td><td>Produits des cessions d'immobilisations</td><td>—</td><td>100 000</td></tr>
+        <tr><td>7513</td><td>Produits des cessions</td><td>—</td><td>100 000</td></tr>
         <tr><td>4455</td><td>État — TVA facturée</td><td>—</td><td>20 000</td></tr>
       </tbody>
     </table>
@@ -435,88 +369,7 @@ Dès que l'annuité dégressive devient <strong>inférieure</strong> à l'annuit
 <hr>
 
 <!-- ============================================ -->
-<h2>9. Écriture de Sortie (Mise au rebut)</h2>
-
-<h3>a) Principe</h3>
-
-<p>La <strong>mise au rebut</strong> intervient lorsqu'une immobilisation est retirée de l'actif <strong>sans contrepartie financière</strong> (bien hors d'usage, obsolète, détruit) [citation:34].</p>
-
-<ul>
-  <li>Si l'immobilisation est <strong>totalement amortie</strong> : simple sortie sans impact sur le résultat</li>
-  <li>Si l'immobilisation <strong>n'est pas totalement amortie</strong> : la VNC résiduelle constitue une <strong>charge exceptionnelle</strong></li>
-</ul>
-
-<h3>b) Écriture comptable</h3>
-
-<div class="ecriture">
-<table>
-  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
-  <tbody>
-    <tr><td>28xx</td><td>Amortissements cumulés</td><td>Cumul</td><td>—</td></tr>
-    <tr><td>6513</td><td>VNC des immobilisations corporelles cédées</td><td>VNC</td><td>—</td></tr>
-    <tr><td>23xx</td><td>Immobilisations corporelles</td><td>—</td><td>Valeur brute</td></tr>
-  </tbody>
-</table>
-</div>
-
-<!-- EXO : MISE AU REBUT -->
-<div class="exo">
-  <div class="enonce">
-    <strong>Exemple 1 :</strong> Un matériel entièrement amorti (valeur brute 30 000 DH, amortissements cumulés 30 000 DH) est mis au rebut.
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> Afficher la correction
-  </button>
-  <div class="correction">
-    <span class="etape">L'immobilisation est totalement amortie → VNC = 0 → simple sortie</span>
-    <div class="ecriture" style="margin-top:10px;">
-    <table>
-      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
-      <tbody>
-        <tr><td>2834</td><td>Amortissements du matériel</td><td>30 000</td><td>—</td></tr>
-        <tr><td>2340</td><td>Matériel</td><td>—</td><td>30 000</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-</div>
-
-<div class="exo">
-  <div class="enonce">
-    <strong>Exemple 2 :</strong> Un matériel (valeur brute 40 000 DH, amortissements cumulés 25 000 DH) est mis au rebut.
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> Afficher la correction
-  </button>
-  <div class="correction">
-    <span class="etape">VNC = 40 000 − 25 000 = <strong>15 000 DH</strong> (charge exceptionnelle)</span>
-    <div class="ecriture" style="margin-top:10px;">
-    <table>
-      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
-      <tbody>
-        <tr><td>2834</td><td>Amortissements du matériel</td><td>25 000</td><td>—</td></tr>
-        <tr><td>6513</td><td>VNC des immobilisations corporelles cédées</td><td>15 000</td><td>—</td></tr>
-        <tr><td>2340</td><td>Matériel</td><td>—</td><td>40 000</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-</div>
-
-<hr>
-
-<!-- ============================================ -->
-<h2>10. Écriture de Retrait d'Actif</h2>
-
-<h3>a) Principe</h3>
-
-<p>Le <strong>retrait</strong> est similaire à la cession, mais sans prix de vente. C'est une sortie d'actif pour <strong>mise hors service</strong>, destruction, ou don.</p>
-
-<div class="encadre">
-<strong>Différence avec la mise au rebut :</strong> Le retrait peut être <strong>volontaire</strong> (transfert, don), alors que la mise au rebut est liée à l'<strong>obsolescence ou détérioration</strong>.
-</div>
-
-<h3>b) Écriture comptable</h3>
+<h2>9. Sortie / Mise au rebut (corporelles)</h2>
 
 <div class="ecriture">
 <table>
@@ -532,52 +385,310 @@ Dès que l'annuité dégressive devient <strong>inférieure</strong> à l'annuit
 <hr>
 
 <!-- ============================================ -->
-<h2>11. Régularisation TVA (cession avant 5 ans)</h2>
+<h2>10. Retrait des Immobilisations en Non-Valeurs</h2>
+
+<h3>a) Définition</h3>
+
+<p>Le <strong>retrait</strong> d'une immobilisation en non-valeurs consiste à <strong>sortir du bilan</strong> un actif fictif devenu inutile ou dont l'étalement n'est plus justifié. Cela peut survenir :</p>
+
+<ul>
+  <li>À la fin de la période d'amortissement (5 ans) — le compte est <strong>totalement soldé</strong></li>
+  <li>En cas de <strong>cessation d'activité</strong> ou de <strong>restructuration</strong></li>
+  <li>En cas de <strong>radiation</strong> sur décision de gestion</li>
+</ul>
 
 <div class="encadre">
-<strong>Règle :</strong> La TVA sur immobilisation n'est définitivement récupérable qu'après <strong>5 années fiscales</strong> .
-<ul>
-  <li>En cas de cession avant la fin des 5 ans, il faut <strong>reverser 1/5 de la TVA</strong> par année restante</li>
-</ul>
+<strong>Rappel important :</strong> Les immobilisations en non-valeurs <strong>n'ont pas de valeur de revente</strong> (actifs fictifs). Le retrait se fait donc <strong>sans prix de cession</strong>, uniquement par sortie comptable.
 </div>
+
+<h3>b) Cas 1 : Retrait après amortissement complet</h3>
+
+<p>Le compte 2111 est soldé par le compte d'amortissement 2811. <strong>Aucun impact sur le résultat.</strong></p>
+
+<div class="ecriture">
+<table>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>2811</td><td>Amortissements des frais préliminaires</td><td>Total</td><td>—</td></tr>
+    <tr><td>2111</td><td>Frais préliminaires</td><td>—</td><td>Total</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- EXO -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple 1 :</strong> Frais de constitution de 60 000 DH, totalement amortis sur 5 ans.<br>
+    Retrait à la fin de la 5ème année.
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">Amortissements cumulés = 60 000 DH (100 %)</span>
+    <span class="etape">VNC = 60 000 − 60 000 = 0 DH</span>
+    <span class="etape">Simple sortie : aucun impact sur le résultat</span>
+    <div class="ecriture" style="margin-top:10px;">
+    <table>
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+      <tbody>
+        <tr><td>2811</td><td>Amortissements des frais préliminaires</td><td>60 000</td><td>—</td></tr>
+        <tr><td>2111</td><td>Frais préliminaires</td><td>—</td><td>60 000</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<h3>c) Cas 2 : Retrait avant amortissement complet</h3>
+
+<p>La <strong>VNC résiduelle</strong> est enregistrée en <strong>charge exceptionnelle</strong> (compte 6511).</p>
+
+<div class="ecriture">
+<table>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>2811</td><td>Amortissements des frais préliminaires</td><td>Cumul</td><td>—</td></tr>
+    <tr><td>6511</td><td>VNC des immobilisations en non-valeurs cédées</td><td>VNC</td><td>—</td></tr>
+    <tr><td>2111</td><td>Frais préliminaires</td><td>—</td><td>Valeur brute</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- EXO -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple 2 :</strong> Frais de prospection = 40 000 DH, amortis sur 5 ans (20 %).<br>
+    Au bout de 2 ans, l'entreprise décide de radier ces frais.
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">Amortissements cumulés (2 ans) = 40 000 × 20 % × 2 = 16 000 DH</span>
+    <span class="etape">VNC = 40 000 − 16 000 = <strong>24 000 DH</strong></span>
+    <span class="etape">Charge exceptionnelle = 24 000 DH</span>
+    <div class="ecriture" style="margin-top:10px;">
+    <table>
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+      <tbody>
+        <tr><td>2811</td><td>Amortissements des frais préliminaires</td><td>16 000</td><td>—</td></tr>
+        <tr><td>6511</td><td>VNC des immobilisations en non-valeurs cédées</td><td>24 000</td><td>—</td></tr>
+        <tr><td>2111</td><td>Frais préliminaires</td><td>—</td><td>40 000</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<h3>d) Cas 3 : Retrait des charges à répartir et primes de remboursement</h3>
+
+<p><strong>Même principe :</strong> le compte 2121 (charges à répartir) ou 2131 (primes de remboursement) est soldé par son amortissement cumulé (2812 / 2813).</p>
+
+<div class="ecriture">
+<table>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>2812 / 2813</td><td>Amortissements cumulés</td><td>Cumul</td><td>—</td></tr>
+    <tr><td>6511</td><td>VNC des immob. en non-valeurs (si VNC > 0)</td><td>VNC</td><td>—</td></tr>
+    <tr><td>2121 / 2131</td><td>Charges à répartir / Primes de remb.</td><td>—</td><td>Valeur brute</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>11. Retrait des Immobilisations Incorporelles</h2>
+
+<h3>a) Définition</h3>
+
+<p>Le <strong>retrait</strong> d'une immobilisation incorporelle est la sortie de l'actif d'un élément tel qu'un brevet, une licence, un logiciel ou une marque. Cela peut se produire :</p>
+
+<ul>
+  <li>À l'<strong>expiration</strong> du brevet ou de la licence</li>
+  <li>En cas d'<strong>obsolescence</strong> du logiciel (remplacement, nouvelle version)</li>
+  <li>En cas de <strong>radiation</strong> pour non-utilisation</li>
+  <li>En cas de <strong>don ou abandon</strong> sans contrepartie</li>
+</ul>
+
+<div class="encadre">
+<strong>Particularité :</strong> Une immobilisation incorporelle peut faire l'objet d'une <strong>cession</strong> (avec prix de vente) ou d'un <strong>retrait pur et simple</strong> (sans contrepartie).
+</div>
+
+<h3>b) Cas 1 : Retrait après amortissement complet</h3>
+
+<p>Aucun impact sur le résultat. Simple sortie comptable.</p>
+
+<div class="ecriture">
+<table>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>2823</td><td>Amortissements des brevets, marques, droits</td><td>Total</td><td>—</td></tr>
+    <tr><td>2230</td><td>Brevets, marques, droits</td><td>—</td><td>Total</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- EXO -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple 1 :</strong> Un brevet acquis 50 000 DH, totalement amorti sur 5 ans.<br>
+    Retrait à l'expiration du brevet.
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">Amortissements cumulés = 50 000 DH</span>
+    <span class="etape">VNC = 0 DH → simple sortie</span>
+    <div class="ecriture" style="margin-top:10px;">
+    <table>
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+      <tbody>
+        <tr><td>2823</td><td>Amortissements des brevets</td><td>50 000</td><td>—</td></tr>
+        <tr><td>2230</td><td>Brevets, marques, droits</td><td>—</td><td>50 000</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<h3>c) Cas 2 : Retrait avant amortissement complet</h3>
+
+<p>La VNC résiduelle est enregistrée en <strong>charge exceptionnelle</strong> (compte 6512).</p>
+
+<div class="ecriture">
+<table>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>2823 / 2825</td><td>Amortissements cumulés</td><td>Cumul</td><td>—</td></tr>
+    <tr><td>6512</td><td>VNC des immobilisations incorporelles cédées</td><td>VNC</td><td>—</td></tr>
+    <tr><td>2230 / 2235</td><td>Immobilisations incorporelles</td><td>—</td><td>Valeur brute</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- EXO -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple 2 :</strong> Logiciel acquis 24 000 DH, amorti sur 4 ans (25 %).<br>
+    Après 2 ans, l'entreprise le retire (obsolescence).
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">Amortissements cumulés (2 ans) = 24 000 × 25 % × 2 = 12 000 DH</span>
+    <span class="etape">VNC = 24 000 − 12 000 = <strong>12 000 DH</strong></span>
+    <div class="ecriture" style="margin-top:10px;">
+    <table>
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+      <tbody>
+        <tr><td>2825</td><td>Amortissements des logiciels</td><td>12 000</td><td>—</td></tr>
+        <tr><td>6512</td><td>VNC des immobilisations incorporelles cédées</td><td>12 000</td><td>—</td></tr>
+        <tr><td>2235</td><td>Logiciels et sites internet</td><td>—</td><td>24 000</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<h3>d) Cas 3 : Cession d'une immobilisation incorporelle</h3>
+
+<p>Même principe que pour les corporelles, avec les comptes adaptés :</p>
+
+<p><strong>Étape 1 : Complément d'amortissement</strong></p>
+<div class="ecriture">
+<table>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>6192</td><td>DEA des immobilisations incorporelles</td><td>X</td><td>—</td></tr>
+    <tr><td>2823 / 2825</td><td>Amortissements cumulés</td><td>—</td><td>X</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>Étape 2 : Sortie</strong></p>
+<div class="ecriture">
+<table>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>2823 / 2825</td><td>Amortissements cumulés</td><td>Cumul</td><td>—</td></tr>
+    <tr><td>6512</td><td>VNC des immobilisations incorporelles cédées</td><td>VNC</td><td>—</td></tr>
+    <tr><td>2230 / 2235</td><td>Immobilisations incorporelles</td><td>—</td><td>Valeur brute</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>Étape 3 : Prix de cession</strong></p>
+<div class="ecriture">
+<table>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>5141 / 3481</td><td>Banque / Créances</td><td>Prix TTC</td><td>—</td></tr>
+    <tr><td>7512</td><td>Produits des cessions d'immobilisations incorporelles</td><td>—</td><td>Prix HT</td></tr>
+    <tr><td>4455</td><td>État — TVA facturée</td><td>—</td><td>TVA</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- EXO -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple 3 :</strong> Un brevet acquis 100 000 DH, amorti sur 10 ans.<br>
+    Cédé après 6 ans pour 40 000 DH HT (TVA 20 %).
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">Annuité = 100 000 / 10 = 10 000 DH</span>
+    <span class="etape">Amort. cumulés (6 ans) = 60 000 DH</span>
+    <span class="etape">VNC = 100 000 − 60 000 = 40 000 DH</span>
+    <span class="etape">Résultat = 40 000 − 40 000 = <strong>0 DH (ni plus-value ni moins-value)</strong></span>
+    <div class="ecriture" style="margin-top:10px;">
+    <table>
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+      <tbody>
+        <tr><td>2823</td><td>Amortissements des brevets</td><td>60 000</td><td>—</td></tr>
+        <tr><td>6512</td><td>VNC des immob. incorporelles cédées</td><td>40 000</td><td>—</td></tr>
+        <tr><td>2230</td><td>Brevets, marques, droits</td><td>—</td><td>100 000</td></tr>
+        <tr><td>5141</td><td>Banque</td><td>48 000</td><td>—</td></tr>
+        <tr><td>7512</td><td>Produits des cessions incorporelles</td><td>—</td><td>40 000</td></tr>
+        <tr><td>4455</td><td>État — TVA facturée</td><td>—</td><td>8 000</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>12. Régularisation TVA (cession avant 5 ans)</h2>
 
 <div class="formule">
   \[ \text{TVA à reverser} = \text{TVA initiale} \times \frac{\text{années restantes}}{5} \]
 </div>
 
-<!-- EXO : RÉGULARISATION TVA -->
-<div class="exo">
-  <div class="enonce">
-    <strong>Exemple :</strong> Matériel acheté 200 000 DH HT (TVA 20 % = 40 000 DH), cédé après 2 ans et 6 mois.
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> Afficher la correction
-  </button>
-  <div class="correction">
-    <span class="etape">TVA initiale = 40 000 DH</span>
-    <span class="etape">Durée écoulée = 2 ans et 6 mois → années restantes = 2,5</span>
-    <span class="etape">TVA à reverser = 40 000 × 2,5/5 = <strong>20 000 DH</strong></span>
-    <span class="resultat">Compte 4456 (État, TVA due) au débit lors de la cession</span>
-  </div>
-</div>
-
 <hr>
 
 <!-- ============================================ -->
-<h2>12. Résumé des Écritures</h2>
+<h2>13. Résumé des Écritures (Retraits)</h2>
 
 <div class="table-wrap">
 <table>
 <thead>
-  <tr><th>Opération</th><th>Débit</th><th>Crédit</th></tr>
+  <tr><th>Type de retrait</th><th>Débit</th><th>Crédit</th></tr>
 </thead>
 <tbody>
-  <tr><td><strong>Dotation</strong></td><td>619x (DEA)</td><td>28xx (Amort. cumulé)</td></tr>
-  <tr><td><strong>Sortie (VNC)</strong></td><td>28xx (Amort. cumulé) + 6513 (VNC)</td><td>23xx (Immobilisation)</td></tr>
-  <tr><td><strong>Cession (prix)</strong></td><td>5141 (Banque) / 3481</td><td>7513 (Produit) + 4455 (TVA)</td></tr>
-  <tr><td><strong>Mise au rebut</strong></td><td>28xx + 6513 (si VNC > 0)</td><td>23xx</td></tr>
-  <tr><td><strong>Retrait</strong></td><td>28xx + 6513 (si VNC > 0)</td><td>23xx</td></tr>
-  <tr><td><strong>Régul. TVA</strong></td><td>4456 (TVA due)</td><td>4455 (TVA facturée) / 34551</td></tr>
+  <tr><td><strong>Non-valeurs (amorti)</strong></td><td>281x (Amort. cumulé)</td><td>211x / 212x / 213x</td></tr>
+  <tr><td><strong>Non-valeurs (non amorti)</strong></td><td>281x + 6511 (VNC)</td><td>211x / 212x / 213x</td></tr>
+  <tr><td><strong>Incorporelles (amorti)</strong></td><td>282x (Amort. cumulé)</td><td>223x</td></tr>
+  <tr><td><strong>Incorporelles (non amorti)</strong></td><td>282x + 6512 (VNC)</td><td>223x</td></tr>
+  <tr><td><strong>Cession incorporelle</strong></td><td>282x + 6512 + 5141</td><td>223x + 7512 + 4455</td></tr>
+  <tr><td><strong>Cession corporelle</strong></td><td>28xx + 6513 + 5141</td><td>23xx + 7513 + 4455</td></tr>
 </tbody>
 </table>
 </div>
@@ -585,9 +696,10 @@ Dès que l'annuité dégressive devient <strong>inférieure</strong> à l'annuit
 <div class="conseil">
 💡 <strong>Conseils :</strong>
 <ul>
-  <li>Vérifie toujours si la TVA est récupérable (HT) ou non (TTC, ex : voitures de tourisme).</li>
-  <li>Prorata temporis : compte les mois depuis le <strong>1er jour du mois d'acquisition</strong> jusqu'au 31/12.</li>
-  <li>Pour la cession : <strong>3 étapes obligatoires</strong> (complément d'amortissement → sortie → prix).</li>
+  <li><strong>Non-valeurs et incorporelles :</strong> le compte de VNC est <strong>6511</strong> (non-valeurs) ou <strong>6512</strong> (incorporelles).</li>
+  <li><strong>Corporelles :</strong> compte de VNC = <strong>6513</strong>, produit de cession = <strong>7513</strong>.</li>
+  <li><strong>Incorporelles :</strong> produit de cession = <strong>7512</strong>.</li>
+  <li>En cas de retrait sans prix de vente, il n'y a <strong>pas d'écriture de produit</strong>.</li>
   <li>Régularisation TVA si cession < 5 ans : reverser 1/5 par année restante.</li>
 </ul>
 </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>التوازي والتعامد — السادسة ابتدائي</title>
+<title>الأعداد الكبيرة — السادسة ابتدائي</title>
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html { font-size: 16px; -webkit-text-size-adjust: 100%; }
@@ -48,30 +48,11 @@
   li { margin: 5px 0; }
   strong { color: #1a5276; }
 
-  /* الرموز الرياضية */
-  .sym {
-    font-family: "Arial", sans-serif;
-    color: #b30000; font-weight: bold;
-    direction: ltr; unicode-bidi: embed; display: inline-block;
-    font-size: 1.15em;
-  }
+  /* الأرقام */
   .num {
     font-family: "Arial", sans-serif;
     color: #b30000; font-weight: bold;
     direction: ltr; unicode-bidi: embed; display: inline-block;
-  }
-
-  /* صندوق الأشكال الهندسية */
-  .svg-box {
-    text-align: center; margin: 15px 0;
-    background: #fafafa; border: 1px solid #ccc;
-    border-radius: 8px; padding: 12px;
-    overflow-x: auto;
-  }
-  .svg-box svg { max-width: 100%; height: auto; }
-  .svg-box .caption {
-    display: block; margin-top: 8px;
-    color: #555; font-size: 0.9em;
   }
 
   /* EXERCICE INTERACTIF */
@@ -113,6 +94,17 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* شبكة الأعداد الزوجية والفردية */
+  .grille {
+    display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px;
+    margin: 14px auto; max-width: 400px;
+    font-family: "Arial", monospace; font-size: clamp(0.7rem, 2.6vw, 0.9rem);
+    direction: ltr;
+  }
+  .grille span { padding: 6px 2px; text-align: center; border-radius: 4px; font-weight: bold; }
+  .pair { background: #d4efdf; color: #145a32; }
+  .impair { background: #fadbd8; color: #922b21; }
+
   @media (max-width: 480px) {
     body { padding: 8px; }
     .container { padding: 16px 14px; border-radius: 10px; }
@@ -121,6 +113,8 @@
     th, td { padding: 6px 4px; font-size: 0.78rem; }
     .exo { padding: 12px 14px; }
     .btn-corr { padding: 9px 14px; width: 100%; justify-content: center; }
+    .grille { gap: 2px; }
+    .grille span { padding: 4px 1px; }
   }
 </style>
 </head>
@@ -128,337 +122,54 @@
 
 <div class="container">
 
-<h1>التوازي والتعامد</h1>
-<p style="text-align:center; color:#555; font-size: 0.95em; margin-top:-10px;">السنة السادسة ابتدائي — وفق المنهاج المغربي الرسمي</p>
-
 <!-- ============================================ -->
-<h2>1. تذكير: المستقيم</h2>
+<h2>3. كتابة الأعداد الكبيرة</h2>
 
-<p><strong>المستقيم</strong> خطّ مستقيم غير محدود من الطرفين، نمثّله بحرف مثل: (d) أو (D<sub>1</sub>) أو (D<sub>2</sub>).</p>
+<h3>أ) القاعدة</h3>
 
-<p>في المستوى، يمكن أن يكون المستقيمان:</p>
+<div class="formule">نفصل بين الفصول بواسطة <strong>فراغ</strong> (وليس بفاصلة).</div>
 
-<ul>
-  <li><strong>متقاطعين</strong>: لهما نقطة مشتركة واحدة.</li>
-  <li><strong>متوازيين</strong>: ليس لهما أي نقطة مشتركة.</li>
-  <li><strong>متعامدين</strong>: متقاطعان ويكوّنان زاوية قائمة.</li>
-</ul>
+<div class="encadre">
+<strong>مثال:</strong> نكتب <span class="num">5 265 312 000</span> وليس <span class="num" style="text-decoration: line-through;">5,265,312,000</span>
+</div>
+
 
 <hr>
 
 <!-- ============================================ -->
-<h2>2. التعامد (المستقيمات المتعامدة)</h2>
+<h2>4. تفكيك عدد كبير</h2>
 
-<h3>أ) التعريف</h3>
+<p><strong>مثال:</strong> <span class="num">5 265 312 000</span></p>
 
-<div class="encadre">
-يكون مستقيمان <strong>متعامدين</strong> إذا تقاطعا مكوّنين <strong>زاوية قائمة (90°)</strong>.
-</div>
-
+<h3>أ) التفكيك حسب المراتب</h3>
 <div class="formule">
-  <strong>الرمز:</strong> <span class="sym">(d₁) ⊥ (d₂)</span> وتُقرأ: «(d₁) عمودي على (d₂)»
+  <span class="num">5 × 1 000 000 000 + 2 × 100 000 000 + 6 × 10 000 000 + 5 × 1 000 000 + 3 × 100 000 + 1 × 10 000 + 2 × 1 000</span>
 </div>
 
-<h3>ب) الشكل</h3>
-
-<div class="svg-box">
-  <svg width="280" height="200" viewBox="0 0 280 200">
-    <line x1="20" y1="100" x2="260" y2="100" stroke="#1a5276" stroke-width="2.5"/>
-    <line x1="140" y1="20" x2="140" y2="180" stroke="#b30000" stroke-width="2.5"/>
-    <rect x="140" y="80" width="22" height="22" fill="none" stroke="#16a085" stroke-width="2"/>
-    <text x="167" y="76" font-size="14" fill="#16a085" font-weight="bold">90°</text>
-    <text x="265" y="105" font-size="14" fill="#1a5276" font-weight="bold">(d₁)</text>
-    <text x="120" y="15" font-size="14" fill="#b30000" font-weight="bold">(d₂)</text>
-  </svg>
-  <span class="caption">(d₁) ⊥ (d₂) : تقاطع بزاوية قائمة</span>
-</div>
-
-<h3>ج) أمثلة من الواقع</h3>
-
-<ul>
-  <li>ضلعا السبورة المتجاوران.</li>
-  <li>ضلعا الكتاب المتجاوران.</li>
-  <li>تقاطع شارعين عموديين.</li>
-  <li>عقربا الساعة عند الساعة <span class="num">3:00</span>.</li>
-</ul>
-
-<!-- تمرين 1 -->
-<div class="exo">
-  <div class="enonce">
-    <strong>مثال:</strong> هل المستقيمان في الشكل التالي متعامدان؟ (يُعطى الشكل على السبورة)
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape">لنتحقق من الزاوية باستعمال <strong>المثلث القائم</strong>.</span>
-    <span class="etape">إذا انطبق ضلع الزاوية القائمة على المستقيمين → متعامدان.</span>
-    <span class="resultat">(d₁) ⊥ (d₂)</span>
-  </div>
-</div>
-
-<hr>
-
-<!-- ============================================ -->
-<h2>3. التوازي (المستقيمات المتوازية)</h2>
-
-<h3>أ) التعريف</h3>
-
-<div class="encadre">
-يكون مستقيمان <strong>متوازيين</strong> إذا لم يكن بينهما أي نقطة مشتركة، مهما امتدّا.
-</div>
-
+<h3>ب) التفكيك حسب الفصول</h3>
 <div class="formule">
-  <strong>الرمز:</strong> <span class="sym">(d₁) // (d₂)</span> وتُقرأ: «(d₁) موازٍ لـ (d₂)»
+  <span class="num">5 265 312 000 = 5 × 1 000 000 000 + 265 × 1 000 000 + 312 × 1 000</span>
 </div>
-
-<h3>ب) الشكل</h3>
-
-<div class="svg-box">
-  <svg width="300" height="180" viewBox="0 0 300 180">
-    <line x1="20" y1="60" x2="280" y2="60" stroke="#1a5276" stroke-width="2.5"/>
-    <line x1="20" y1="120" x2="280" y2="120" stroke="#b30000" stroke-width="2.5"/>
-    <text x="285" y="65" font-size="14" fill="#1a5276" font-weight="bold">(d₁)</text>
-    <text x="285" y="125" font-size="14" fill="#b30000" font-weight="bold">(d₂)</text>
-  </svg>
-  <span class="caption">(d₁) // (d₂) : لا يتقاطعان أبدًا</span>
-</div>
-
-<h3>ج) أمثلة من الواقع</h3>
-
-<ul>
-  <li>سكّتا السكة الحديدية.</li>
-  <li>أسطر دفتر.</li>
-  <li>حافتا طريق مستقيم.</li>
-</ul>
 
 <!-- تمرين 2 -->
 <div class="exo">
   <div class="enonce">
-    <strong>مثال:</strong> هل المستقيمان (D₁) و (D₂) متوازيان إذا كانا عموديين على نفس المستقيم (D₃)؟
+    <strong>مثال:</strong> فكّك العدد <span class="num">8 456 789 000</span> حسب الفصول.
   </div>
   <button class="btn-corr" onclick="toggleCorr(this)">
     <span class="arrow">▶</span> إظهار التصحيح
   </button>
   <div class="correction">
-    <span class="etape">نستعمل <strong>خاصية 1</strong>: إذا كان مستقيمان عموديين على مستقيم واحد، فإنهما متوازيان.</span>
-    <span class="etape">بما أن (D₁) ⊥ (D₃) و (D₂) ⊥ (D₃)</span>
-    <span class="resultat">إذن (D₁) // (D₂)</span>
+    <span class="etape">الملايير: <strong>8</strong> &nbsp;|&nbsp; الملايين: <strong>456</strong> &nbsp;|&nbsp; الآلاف: <strong>789</strong> &nbsp;|&nbsp; الوحدات: <strong>000</strong></span>
+    <span class="etape">التفكيك حسب الفصول:</span>
+    <span class="etape"><span class="num">8 456 789 000 = 8 × 1 000 000 000 + 456 × 1 000 000 + 789 × 1 000</span></span>
+    <span class="resultat">8 ملايير و456 مليونًا و789 ألفًا</span>
   </div>
 </div>
 
 <hr>
 
-<!-- ============================================ -->
-<h2>4. خصائص مهمة</h2>
 
-<div class="table-wrap">
-<table>
-<thead>
-  <tr>
-    <th>الخاصية</th>
-    <th>الصياغة</th>
-    <th>الرمز</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><strong>الخاصية 1</strong></td>
-    <td>إذا كان مستقيمان عموديين على مستقيم واحد، فإنهما <strong>متوازيان</strong>.</td>
-    <td><span class="sym">(D₁) ⊥ (D₃) و (D₂) ⊥ (D₃) ⟹ (D₁) // (D₂)</span></td>
-  </tr>
-  <tr>
-    <td><strong>الخاصية 2</strong></td>
-    <td>إذا كان مستقيمان متوازيين، فإن كل مستقيم عمودي على أحدهما يكون <strong>عموديًا على الآخر</strong>.</td>
-    <td><span class="sym">(D₁) // (D₂) و (D₃) ⊥ (D₁) ⟹ (D₃) ⊥ (D₂)</span></td>
-  </tr>
-  <tr>
-    <td><strong>الخاصية 3</strong></td>
-    <td>إذا كان مستقيمان متوازيين مع مستقيم ثالث، فإنهما <strong>متوازيان</strong>.</td>
-    <td><span class="sym">(D₁) // (D₃) و (D₂) // (D₃) ⟹ (D₁) // (D₂)</span></td>
-  </tr>
-</tbody>
-</table>
-</div>
-
-<hr>
-
-<!-- ============================================ -->
-<h2>5. طريقة الرسم</h2>
-
-<h3>أ) رسم مستقيم عمودي على مستقيم معطى</h3>
-
-<div class="encadre">
-<ol>
-  <li>نضع ضلع الزاوية القائمة للمثلث القائم على المستقيم المعطى.</li>
-  <li>نضع المسطرة على الضلع الآخر للمثلث.</li>
-  <li>نرسم خطًا على طول ضلع المثلث القائم.</li>
-</ol>
-</div>
-
-<h3>ب) رسم مستقيم موازٍ لمستقيم معطى</h3>
-
-<div class="encadre">
-<ol>
-  <li>نضع أحد ضلعي المثلث على المستقيم المعطى.</li>
-  <li>نضع المسطرة على الضلع الآخر للمثلث.</li>
-  <li>نزلق المثلث على المسطرة حتى النقطة المطلوبة.</li>
-  <li>نرسم المستقيم الجديد.</li>
-</ol>
-</div>
-
-<hr>
-
-<!-- ============================================ -->
-<h2>6. المُوَسِّط (الوسيط)</h2>
-
-<h3>أ) التعريف</h3>
-
-<div class="encadre">
-مُوَسِّط قطعة [AB] هو المستقيم الذي:
-<ul>
-  <li>يمرّ من منتصف [AB].</li>
-  <li>يكون عموديًا على [AB].</li>
-</ul>
-</div>
-
-<h3>ب) الشكل</h3>
-
-<div class="svg-box">
-  <svg width="300" height="220" viewBox="0 0 300 220">
-    <line x1="60" y1="180" x2="240" y2="40" stroke="#1a5276" stroke-width="2.5"/>
-    <line x1="70" y1="30" x2="230" y2="190" stroke="#b30000" stroke-width="2.5"/>
-    <circle cx="150" cy="110" r="5" fill="#16a085"/>
-    <rect x="150" y="90" width="20" height="20" fill="none" stroke="#16a085" stroke-width="2" transform="rotate(-34 150 90)"/>
-    <text x="40" y="195" font-size="14" fill="#1a5276" font-weight="bold">A</text>
-    <text x="245" y="40" font-size="14" fill="#1a5276" font-weight="bold">B</text>
-    <text x="155" y="105" font-size="14" fill="#16a085" font-weight="bold">I</text>
-    <text x="235" y="195" font-size="14" fill="#b30000" font-weight="bold">(d)</text>
-  </svg>
-  <span class="caption">(d) هو مُوَسِّط [AB]</span>
-</div>
-
-<h3>ج) خاصية المُوَسِّط</h3>
-
-<div class="formule">
-  كل نقطة M تنتمي إلى مُوَسِّط [AB] تكون <strong>على نفس المسافة</strong> من A ومن B، أي: <span class="sym">MA = MB</span>.
-</div>
-
-<!-- تمرين 3 -->
-<div class="exo">
-  <div class="enonce">
-    <strong>مثال:</strong> M نقطة على مُوَسِّط القطعة [AB]. إذا كان MA = 7 cm، فما هو MB؟
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape">حسب خاصية المُوَسِّط، كل نقطة عليه تكون على نفس المسافة من طرفي القطعة.</span>
-    <span class="etape">إذن: <span class="sym">MA = MB</span></span>
-    <span class="resultat">MB = 7 cm</span>
-  </div>
-</div>
-
-<hr>
-
-<!-- ============================================ -->
-<h2>7. تمارين تطبيقية</h2>
-
-<div class="exo">
-  <div class="enonce">
-    <strong>التمرين 1:</strong> أكمل باستعمال الرمز المناسب (⊥ أو //):
-    <ol>
-      <li>إذا كان (D₁) ⊥ (D₃) و (D₂) ⊥ (D₃) فإن (D₁) ... (D₂).</li>
-      <li>إذا كان (D₁) // (D₂) و (D₃) ⊥ (D₁) فإن (D₃) ... (D₂).</li>
-      <li>إذا كان (D₁) // (D₃) و (D₂) // (D₃) فإن (D₁) ... (D₂).</li>
-    </ol>
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape"><strong>1)</strong> (D₁) <strong>//</strong> (D₂) → لأن كليهما عموديان على (D₃)</span>
-    <span class="etape"><strong>2)</strong> (D₃) <strong>⊥</strong> (D₂) → لأن العمودي على أحد المتوازيين عمودي على الآخر</span>
-    <span class="etape"><strong>3)</strong> (D₁) <strong>//</strong> (D₂) → لأن كليهما موازيان لـ (D₃)</span>
-    <span class="resultat">نستعمل الخصائص الثلاث</span>
-  </div>
-</div>
-
-<div class="exo">
-  <div class="enonce">
-    <strong>التمرين 2:</strong> ارسم مستقيمًا (d) ثم:
-    <ol>
-      <li>عيّن نقطة A لا تنتمي إلى (d).</li>
-      <li>ارسم من A مستقيمًا (d₁) عموديًا على (d).</li>
-      <li>ارسم من A مستقيمًا (d₂) موازيًا لـ (d).</li>
-      <li>ما هي العلاقة بين (d₁) و (d₂)؟ علّل جوابك.</li>
-    </ol>
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape"><strong>الرسم:</strong> (d₁) ⊥ (d) و (d₂) // (d) وكلاهما يمرّ من A.</span>
-    <span class="etape"><strong>العلاقة:</strong> (d₁) ⊥ (d₂).</span>
-    <span class="etape"><strong>التعليل:</strong> بما أن (d₂) // (d)، فإن العمودي على (d) يكون عموديًا على (d₂) (خاصية 2).</span>
-    <span class="resultat">(d₁) ⊥ (d₂)</span>
-  </div>
-</div>
-
-<div class="exo">
-  <div class="enonce">
-    <strong>التمرين 3:</strong> ارسم قطعة [AB] طولها 8 cm.
-    <ol>
-      <li>ارسم مُوَسِّط القطعة [AB] وسمّه (d).</li>
-      <li>عيّن نقطة M على (d) بحيث MA = 5 cm.</li>
-      <li>تحقّق أن MB = 5 cm. لماذا؟</li>
-    </ol>
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape"><strong>1)</strong> نرسم منتصف [AB] ثم نرسم مستقيمًا عموديًا عليه، هذا هو (d).</span>
-    <span class="etape"><strong>2)</strong> نعيّن M على (d) بحيث MA = 5 cm.</span>
-    <span class="etape"><strong>3)</strong> حسب خاصية المُوَسِّط: كل نقطة على (d) تكون على نفس المسافة من A ومن B.</span>
-    <span class="resultat">MB = 5 cm</span>
-  </div>
-</div>
-
-<div class="exo">
-  <div class="enonce">
-    <strong>التمرين 4:</strong> في الشكل التالي: (D₁) ⊥ (D₂) و (D₂) ⊥ (D₃).
-    <br>ماذا تستنتج بالنسبة لـ (D₁) و (D₃)؟
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape">لدينا (D₁) ⊥ (D₂) و (D₃) ⊥ (D₂).</span>
-    <span class="etape">هذا يعني: مستقيمان عموديان على نفس المستقيم (D₂).</span>
-    <span class="etape">حسب <strong>الخاصية 1</strong>: إذا كان مستقيمان عموديين على مستقيم واحد، فإنهما متوازيان.</span>
-    <span class="resultat">(D₁) // (D₃)</span>
-  </div>
-</div>
-
-<hr>
-
-<!-- ============================================ -->
-<h2>8. ملخّص</h2>
-
-<ul>
-  <li><strong>التعامد:</strong> مستقيمان يتقاطعان ويكوّنان زاوية قائمة. الرمز: <span class="sym">⊥</span>.</li>
-  <li><strong>التوازي:</strong> مستقيمان لا يتقاطعان أبدًا. الرمز: <span class="sym">//</span>.</li>
-  <li><strong>خاصية 1:</strong> عموديان على نفس المستقيم ⟹ متوازيان.</li>
-  <li><strong>خاصية 2:</strong> العمودي على أحد المتوازيين ⟹ عمودي على الآخر.</li>
-  <li><strong>خاصية 3:</strong> موازيان لمستقيم ثالث ⟹ متوازيان.</li>
-  <li><strong>المُوَسِّط:</strong> مستقيم عمودي على قطعة ويمرّ من منتصفها.</li>
-  <li><strong>خاصية المُوَسِّط:</strong> كل نقطة عليه تكون على نفس المسافة من طرفي القطعة.</li>
-</ul>
-
-<div class="conseil">
-💡 <strong>نصيحة:</strong> لترسم بشكل صحيح، استعمل دائمًا <strong>المسطرة + المثلث القائم</strong>، وتأكّد من الزاوية القائمة باستعمال ضلع الزاوية في المثلث!
-</div>
 
 </div>
 

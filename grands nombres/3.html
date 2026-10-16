@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>قياس سعة التخزين الرقمي والأطوال والكتل والمساحات — السادسة ابتدائي</title>
+<title>Immobilisations & Amortissements — 2BAC Économie</title>
+<script>
+  MathJax = { tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }, svg: { fontCache: 'global' } };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html { font-size: 16px; -webkit-text-size-adjust: 100%; }
   body {
-    font-family: "Amiri", "Traditional Arabic", Tahoma, Arial, sans-serif;
-    line-height: 1.8; color: #222; margin: 0; padding: 12px; background: #f0f4f8;
-    word-wrap: break-word; overflow-wrap: break-word; direction: rtl;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Tahoma, Arial, sans-serif;
+    line-height: 1.6; color: #222; margin: 0; padding: 12px; background: #f0f4f8;
+    word-wrap: break-word; overflow-wrap: break-word;
   }
   .container {
     max-width: 900px; margin: 0 auto; background: #fff;
@@ -24,75 +28,66 @@
   }
   h2 {
     color: #1a5276; background: #eaf2f8; padding: 10px 14px;
-    border-right: 5px solid #1a5276; border-radius: 4px;
+    border-left: 5px solid #1a5276; border-radius: 4px;
     margin-top: 26px; font-size: clamp(1rem, 3.8vw, 1.3rem); line-height: 1.3;
   }
   h3 { color: #2874a6; margin-top: 18px; font-size: clamp(0.95rem, 3.4vw, 1.1rem); }
   p, li { font-size: clamp(0.9rem, 3.2vw, 1.05rem); }
   hr { border: none; border-top: 2px dashed #bbb; margin: 22px 0; }
-
   .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 15px 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
   table { border-collapse: collapse; width: 100%; min-width: 320px; background: #fff; font-size: clamp(0.8rem, 3vw, 1rem); }
   th, td { border: 1px solid #ccc; padding: 10px 8px; text-align: center; }
   th { background: #1a5276; color: #fff; font-size: clamp(0.8rem, 2.9vw, 0.95rem); }
   tr:nth-child(even) { background: #f4f8fb; }
-
   .formule {
-    background: #fff8e1; border-right: 4px solid #f39c12; padding: 10px 14px;
-    margin: 12px 0; font-family: "Amiri", "Times New Roman", serif;
-    font-size: clamp(0.95rem, 3.4vw, 1.15rem); text-align: center; border-radius: 4px;
+    background: #fff8e1; border-left: 4px solid #f39c12; padding: 10px 14px;
+    margin: 12px 0; font-size: clamp(0.95rem, 3.4vw, 1.15rem);
+    text-align: center; border-radius: 4px; overflow-x: auto;
   }
   .encadre { background: #e8f8f5; border: 2px solid #16a085; border-radius: 8px; padding: 12px 16px; margin: 15px 0; }
-  .conseil { background: #fef9e7; border-right: 5px solid #f1c40f; padding: 12px 16px; margin: 20px 0; border-radius: 4px; font-style: italic; font-size: clamp(0.85rem, 3.2vw, 1rem); }
-  ul, ol { padding-right: 22px; margin: 8px 0; }
+  .conseil { background: #fef9e7; border-left: 5px solid #f1c40f; padding: 12px 16px; margin: 20px 0; border-radius: 4px; font-style: italic; font-size: clamp(0.85rem, 3.2vw, 1rem); }
+  ul, ol { padding-left: 22px; margin: 8px 0; }
   li { margin: 5px 0; }
   strong { color: #1a5276; }
 
-  /* الأرقام */
-  .num {
-    font-family: "Arial", sans-serif;
-    color: #b30000; font-weight: bold;
-    direction: ltr; unicode-bidi: embed; display: inline-block;
-  }
-
-  /* EXERCICE INTERACTIF */
   .exo {
     background: #f8fbfd; border: 2px solid #d6eaf8; border-radius: 10px;
     padding: 16px 18px; margin: 18px 0;
   }
   .exo .enonce { font-size: clamp(0.9rem, 3.2vw, 1.05rem); margin-bottom: 12px; }
-  .exo .enonce strong { color: #1a5276; }
   .btn-corr {
     background: #16a085; color: #fff; border: none; border-radius: 8px;
     padding: 10px 18px; font-size: clamp(0.85rem, 3.2vw, 1rem);
     font-weight: bold; cursor: pointer; transition: background 0.2s;
     display: inline-flex; align-items: center; gap: 6px;
-    -webkit-appearance: none; appearance: none;
-    font-family: inherit;
   }
   .btn-corr:hover { background: #138d75; }
-  .btn-corr:active { transform: scale(0.97); }
   .btn-corr .arrow { transition: transform 0.2s; display: inline-block; }
-  .btn-corr.open .arrow { transform: rotate(-90deg); }
+  .btn-corr.open .arrow { transform: rotate(90deg); }
 
   .correction {
-    display: none; background: #eafaf1; border-right: 5px solid #27ae60;
+    display: none; background: #eafaf1; border-left: 5px solid #27ae60;
     border-radius: 6px; padding: 14px 16px; margin-top: 12px;
     font-size: clamp(0.88rem, 3.2vw, 1rem); color: #145a32;
     animation: fadeIn 0.3s ease;
   }
   .correction.show { display: block; }
-  .correction strong { color: #0b5345; }
   .correction .etape { display: block; margin: 4px 0; }
   .correction .resultat {
     display: inline-block; background: #27ae60; color: #fff;
     padding: 3px 10px; border-radius: 6px; font-weight: bold;
-    margin-top: 8px; font-family: "Amiri", serif;
+    margin-top: 8px;
   }
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-6px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  .ecriture { background: #fff; border: 2px solid #2874a6; border-radius: 8px; overflow: hidden; margin: 15px 0; }
+  .ecriture table { margin: 0; }
+  .ecriture th { background: #2874a6; }
+  .ecriture td:nth-child(1) { text-align: left; padding-left: 14px; font-weight: bold; color: #1a5276; }
+  .ecriture td:nth-child(2) { text-align: left; padding-left: 14px; }
 
   @media (max-width: 480px) {
     body { padding: 8px; }
@@ -100,7 +95,6 @@
     h1 { font-size: 1.15rem; }
     h2 { padding: 8px 12px; }
     th, td { padding: 6px 4px; font-size: 0.78rem; }
-    .exo { padding: 12px 14px; }
     .btn-corr { padding: 9px 14px; width: 100%; justify-content: center; }
   }
 </style>
@@ -109,425 +103,493 @@
 
 <div class="container">
 
-<h1>قياس سعة التخزين الرقمي والأطوال والكتل والمساحات</h1>
-<p style="text-align:center; color:#555; font-size: 0.95em; margin-top:-10px;">السنة السادسة ابتدائي — وفق المنهاج المغربي الرسمي</p>
+<h1>Immobilisations & Amortissements — 2BAC Économie</h1>
 
 <!-- ============================================ -->
-<h2>1. تذكير: القياس</h2>
+<h2>1. Rappel : Les immobilisations</h2>
 
-<p><strong>القياس</strong> هو تحديد كمية ما باستعمال وحدة مناسبة.</p>
+<p>Une <strong>immobilisation</strong> est un bien durable acquis par l'entreprise et destiné à être utilisé pendant plus d'un exercice comptable.</p>
 
 <div class="encadre">
-<strong>لكل كمية وحدتها الأساسية:</strong>
+<strong>Classification :</strong>
 <ul>
-  <li><strong>الأطوال:</strong> المتر (m).</li>
-  <li><strong>الكتل:</strong> الغرام (g).</li>
-  <li><strong>المساحات:</strong> المتر المربع (m²).</li>
-  <li><strong>سعة التخزين الرقمي:</strong> البايت (Byte).</li>
+  <li><strong>Immobilisations en non-valeurs</strong> (actifs fictifs)</li>
+  <li><strong>Immobilisations incorporelles</strong> (sans substance physique)</li>
+  <li><strong>Immobilisations corporelles</strong> (matériel, terrains, constructions...)</li>
+  <li><strong>Immobilisations financières</strong> (titres, prêts) — non amortissables</li>
 </ul>
 </div>
 
 <hr>
 
 <!-- ============================================ -->
-<h2>2. قياس الأطوال</h2>
+<h2>2. Les Immobilisations en Non-Valeurs</h2>
 
-<h3>أ) الوحدة الأساسية والوحدات الفرعية</h3>
+<h3>a) Définition</h3>
 
-<p>الوحدة الأساسية لقياس الأطوال هي <strong>المتر (m)</strong>. وتستعمل كذلك مضاعفاته وأجزاؤه.</p>
+<p>Ce sont des <strong>charges étalées sur plusieurs exercices</strong>, inscrites à l'actif du bilan. Ce sont des <strong>actifs fictifs</strong> sans valeur de revente.</p>
+
+<h3>b) Exemples et comptes</h3>
 
 <div class="table-wrap">
 <table>
 <thead>
-  <tr>
-    <th>الوحدة</th>
-    <th>الرمز</th>
-    <th>القيمة بالمتر</th>
-  </tr>
+  <tr><th>Type</th><th>Exemples</th><th>Compte</th></tr>
 </thead>
 <tbody>
-  <tr><td>الكيلومتر</td><td>km</td><td><span class="num">1000 m</span></td></tr>
-  <tr><td>الهكتومتر</td><td>hm</td><td><span class="num">100 m</span></td></tr>
-  <tr><td>الديكامتر</td><td>dam</td><td><span class="num">10 m</span></td></tr>
-  <tr><td><strong>المتر</strong></td><td><strong>m</strong></td><td><strong>1 m</strong></td></tr>
-  <tr><td>الدسيمتر</td><td>dm</td><td><span class="num">0.1 m</span></td></tr>
-  <tr><td>السنتيمتر</td><td>cm</td><td><span class="num">0.01 m</span></td></tr>
-  <tr><td>المليمتر</td><td>mm</td><td><span class="num">0.001 m</span></td></tr>
+  <tr><td>Frais préliminaires</td><td>Frais de constitution, prospection, publicité de démarrage</td><td>2111</td></tr>
+  <tr><td>Charges à répartir</td><td>Frais d'émission d'emprunt, frais d'acquisition</td><td>2121</td></tr>
+  <tr><td>Primes de remboursement</td><td>Primes de remboursement des obligations</td><td>2131</td></tr>
 </tbody>
 </table>
 </div>
 
-<h3>ب) جدول التحويلات</h3>
+<h3>c) Amortissement (Règle au Maroc)</h3>
+
+<div class="formule">
+  Amortissement sur une durée <strong>maximale de 5 ans</strong> → taux minimum <strong>20 %</strong> par an (mode linéaire) [citation:24]
+</div>
+
+<h3>d) Écriture comptable (Dotation)</h3>
+
+<div class="ecriture">
+<table>
+  <thead>
+    <tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>61911</td><td>DEA des immobilisations en non-valeurs</td><td>X</td><td>—</td></tr>
+    <tr><td>2811</td><td>Amortissements des frais préliminaires</td><td>—</td><td>X</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>3. Les Immobilisations Incorporelles</h2>
+
+<h3>a) Définition</h3>
+
+<p>Actifs <strong>non monétaires</strong>, <strong>identifiables</strong> et <strong>sans substance physique</strong>.</p>
+
+<h3>b) Exemples et comptes</h3>
 
 <div class="table-wrap">
 <table>
 <thead>
-  <tr>
-    <th>km</th><th>hm</th><th>dam</th><th>m</th><th>dm</th><th>cm</th><th>mm</th>
-  </tr>
+  <tr><th>Immobilisation</th><th>Compte</th><th>Amort. cumulé</th></tr>
 </thead>
 <tbody>
-  <tr>
-    <td>0</td><td>0</td><td>4</td><td>7</td><td>0</td><td>0</td><td>0</td>
-  </tr>
+  <tr><td>Brevets, marques, droits</td><td>2230</td><td>2823</td></tr>
+  <tr><td>Logiciels et sites internet</td><td>2235</td><td>2825</td></tr>
+  <tr><td>Fonds commercial</td><td>2220</td><td>Non amortissable</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>c) Écriture comptable (Dotation)</h3>
+
+<div class="ecriture">
+<table>
+  <thead>
+    <tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>6192</td><td>DEA des immobilisations incorporelles</td><td>X</td><td>—</td></tr>
+    <tr><td>2823</td><td>Amortissements des brevets, marques, droits</td><td>—</td><td>X</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>4. Les Immobilisations Corporelles</h2>
+
+<h3>a) Exemples et comptes</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr><th>Immobilisation</th><th>Compte</th><th>Amort. cumulé</th></tr>
+</thead>
+<tbody>
+  <tr><td>Terrains</td><td>2311</td><td>Non amortissables</td></tr>
+  <tr><td>Constructions</td><td>2321</td><td>2832</td></tr>
+  <tr><td>Installations techniques</td><td>2331</td><td>2833</td></tr>
+  <tr><td>Matériel de transport</td><td>2340</td><td>2834</td></tr>
+  <tr><td>Mobilier de bureau</td><td>2351</td><td>2835</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>b) Écriture comptable (Dotation)</h3>
+
+<div class="ecriture">
+<table>
+  <thead>
+    <tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>6193</td><td>DEA des immobilisations corporelles</td><td>X</td><td>—</td></tr>
+    <tr><td>2834</td><td>Amortissements du matériel de transport</td><td>—</td><td>X</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>5. Amortissement Linéaire (Constant)</h2>
+
+<div class="formule">
+  \[ \text{Annuité} = \text{VE} \times \frac{100}{N} \]
+  <br>
+  <em>VE</em> = Valeur d'entrée HT · <em>N</em> = durée de vie
+</div>
+
+<p>L'amortissement commence le <strong>1er jour du mois d'acquisition</strong> [citation:24]. La 1ère annuité est calculée au prorata des mois restants.</p>
+
+<div class="formule">
+  \[ a_1 = \text{Annuité annuelle} \times \frac{M}{12} \]
+  <br>
+  <em>M</em> = nombre de mois depuis l'acquisition jusqu'au 31/12
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>6. Amortissement Dégressif</h2>
+
+<h3>a) Coefficients (Maroc)</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr><th>Durée de vie</th><th>Coefficient</th></tr>
+</thead>
+<tbody>
+  <tr><td>3 à 4 ans</td><td>1,5</td></tr>
+  <tr><td>5 à 6 ans</td><td>2</td></tr>
+  <tr><td>Plus de 6 ans</td><td>3</td></tr>
 </tbody>
 </table>
 </div>
 
 <div class="formule">
-  <span class="num">47 m = 4.7 dam = 0.47 hm = 0.047 km = 470 dm = 4700 cm = 47000 mm</span>
+  \[ \text{Taux dégressif} = \text{Taux linéaire} \times \text{Coefficient} \]
 </div>
+
+<h3>b) Règle de basculement</h3>
 
 <div class="encadre">
-<strong>ملاحظة:</strong> للتحويل من وحدة إلى وحدة <strong>أصغر</strong>، نضرب في <span class="num">10</span> لكل مرتبة.
-<br>للتحويل إلى وحدة <strong>أكبر</strong>، نقسم على <span class="num">10</span> لكل مرتبة.
+Dès que l'annuité dégressive devient <strong>inférieure</strong> à l'annuité linéaire calculée sur la durée restante, on <strong>bascule en linéaire</strong>.
 </div>
 
-<!-- تمرين 1 -->
+<hr>
+
+<!-- ============================================ -->
+<h2>7. Écriture de Dotation (fin d'exercice)</h2>
+
+<div class="ecriture">
+<table>
+  <thead>
+    <tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>6193</td><td>DEA des immobilisations corporelles</td><td>X</td><td>—</td></tr>
+    <tr><td>2834</td><td>Amortissements du matériel de transport</td><td>—</td><td>X</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- EXO : DOTATION -->
 <div class="exo">
   <div class="enonce">
-    <strong>مثال:</strong> حوّل <span class="num">3 km 18 dam 5 m</span> إلى المتر.
+    <strong>Exemple :</strong> Matériel acquis le 01/04/2022 pour 50 000 DH HT, durée 5 ans. Enregistrer la dotation 2022.
   </div>
   <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
+    <span class="arrow">▶</span> Afficher la correction
   </button>
   <div class="correction">
-    <span class="etape"><strong>3 km</strong> = <span class="num">3000 m</span></span>
-    <span class="etape"><strong>18 dam</strong> = <span class="num">180 m</span></span>
-    <span class="etape"><strong>5 m</strong> = <span class="num">5 m</span></span>
-    <span class="etape">المجموع: <span class="num">3000 + 180 + 5</span></span>
-    <span class="resultat"><span class="num">3 km 18 dam 5 m = 3185 m</span></span>
+    <span class="etape">Annuité annuelle = 50 000 / 5 = 10 000 DH</span>
+    <span class="etape">Dotation 2022 (9 mois) = 10 000 × 9/12 = <strong>7 500 DH</strong></span>
+    <div class="ecriture" style="margin-top:10px;">
+    <table>
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+      <tbody>
+        <tr><td>6193</td><td>DEA des immobilisations corporelles</td><td>7 500</td><td>—</td></tr>
+        <tr><td>2834</td><td>Amortissements du matériel de transport</td><td>—</td><td>7 500</td></tr>
+      </tbody>
+    </table>
+    </div>
   </div>
 </div>
 
 <hr>
 
 <!-- ============================================ -->
-<h2>3. قياس الكتل</h2>
+<h2>8. Écriture de Cession d'Immobilisation</h2>
 
-<h3>أ) الوحدة الأساسية والوحدات الفرعية</h3>
+<h3>a) Principe</h3>
 
-<p>الوحدة الأساسية لقياس الكتل هي <strong>الغرام (g)</strong>.</p>
+<p>La cession d'une immobilisation se décompose en <strong>trois étapes</strong> [citation:34] :</p>
+<ol>
+  <li><strong>Complément d'amortissement</strong> jusqu'à la date de cession (prorata temporis)</li>
+  <li><strong>Sortie de l'immobilisation</strong> : constatation de la VNC en charge</li>
+  <li><strong>Constatation du prix de cession</strong> en produit</li>
+</ol>
 
-<div class="table-wrap">
+<h3>b) Écritures comptables</h3>
+
+<p><strong>Étape 1 : Complément d'amortissement</strong></p>
+<div class="ecriture">
 <table>
-<thead>
-  <tr>
-    <th>الوحدة</th>
-    <th>الرمز</th>
-    <th>القيمة بالغرام</th>
-  </tr>
-</thead>
-<tbody>
-  <tr><td>الطن</td><td>t</td><td><span class="num">1 000 000 g</span></td></tr>
-  <tr><td>القنطار</td><td>q</td><td><span class="num">100 000 g</span></td></tr>
-  <tr><td>الكيلوغرام</td><td>kg</td><td><span class="num">1000 g</span></td></tr>
-  <tr><td>الهكتوغرام</td><td>hg</td><td><span class="num">100 g</span></td></tr>
-  <tr><td>الديكاغرام</td><td>dag</td><td><span class="num">10 g</span></td></tr>
-  <tr><td><strong>الغرام</strong></td><td><strong>g</strong></td><td><strong>1 g</strong></td></tr>
-  <tr><td>الدسيكرام</td><td>dg</td><td><span class="num">0.1 g</span></td></tr>
-  <tr><td>السنتيغرام</td><td>cg</td><td><span class="num">0.01 g</span></td></tr>
-  <tr><td>المليغرام</td><td>mg</td><td><span class="num">0.001 g</span></td></tr>
-</tbody>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>6193</td><td>DEA des immobilisations corporelles</td><td>X</td><td>—</td></tr>
+    <tr><td>28xx</td><td>Amortissements cumulés</td><td>—</td><td>X</td></tr>
+  </tbody>
 </table>
 </div>
 
-<h3>ب) جدول التحويلات</h3>
-
-<div class="table-wrap">
+<p><strong>Étape 2 : Sortie de l'immobilisation</strong></p>
+<div class="ecriture">
 <table>
-<thead>
-  <tr>
-    <th>t</th><th>q</th><th>kg</th><th>hg</th><th>dag</th><th>g</th><th>dg</th><th>cg</th><th>mg</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td></td><td></td><td>7</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-  </tr>
-</tbody>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>28xx</td><td>Amortissements cumulés</td><td>Cumul</td><td>—</td></tr>
+    <tr><td>6513</td><td>VNC des immobilisations corporelles cédées</td><td>VNC</td><td>—</td></tr>
+    <tr><td>23xx</td><td>Immobilisations corporelles</td><td>—</td><td>Valeur brute</td></tr>
+  </tbody>
 </table>
 </div>
 
-<div class="formule">
-  <span class="num">73 kg = 730 hg = 7300 dag = 73000 g = 730000 dg = 7300000 cg = 73000000 mg</span>
+<p><strong>Étape 3 : Constatation du prix de cession</strong></p>
+<div class="ecriture">
+<table>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>3481 / 5141</td><td>Créances sur cessions / Banque</td><td>Prix TTC</td><td>—</td></tr>
+    <tr><td>7513</td><td>Produits des cessions</td><td>—</td><td>Prix HT</td></tr>
+    <tr><td>4455</td><td>État — TVA facturée</td><td>—</td><td>TVA</td></tr>
+  </tbody>
+</table>
 </div>
 
-<!-- تمرين 2 -->
+<!-- EXO : CESSION -->
 <div class="exo">
   <div class="enonce">
-    <strong>مثال:</strong> عبّر عن <span class="num">25 mg</span> بالغرام.
+    <strong>Exemple complet :</strong> Un véhicule acquis le <strong>01/01/N-3</strong> pour <strong>300 000 DH HT</strong>, amorti linéairement sur <strong>5 ans</strong> (taux 20 %).<br>
+    Cédé le <strong>01/07/N</strong> pour <strong>100 000 DH HT</strong> (TVA 20 %).<br>
+    Passer les écritures de cession.
   </div>
   <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
+    <span class="arrow">▶</span> Afficher la correction
   </button>
   <div class="correction">
-    <span class="etape">للتحويل من mg إلى g، نصعد <strong>3 مراتب</strong> (mg → cg → dg → g).</span>
-    <span class="etape">إذن نقسم على <span class="num">1000</span>.</span>
-    <span class="resultat"><span class="num">25 mg = 0.025 g</span></span>
+    <span class="etape"><strong>1. Amortissements cumulés au 31/12/N-1 :</strong> 60 000 × 3 = 180 000 DH</span>
+    <span class="etape"><strong>2. Complément N (6 mois) :</strong> 60 000 × 6/12 = 30 000 DH</span>
+    <span class="etape"><strong>3. Amortissements totaux :</strong> 180 000 + 30 000 = 210 000 DH</span>
+    <span class="etape"><strong>4. VNC :</strong> 300 000 − 210 000 = 90 000 DH</span>
+    <span class="etape"><strong>5. Résultat :</strong> 100 000 − 90 000 = <strong>+10 000 DH (plus-value)</strong></span>
+
+    <p style="margin-top:14px;"><strong>Étape 1 : Complément d'amortissement</strong></p>
+    <div class="ecriture">
+    <table>
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+      <tbody>
+        <tr><td>6193</td><td>DEA des immobilisations corporelles</td><td>30 000</td><td>—</td></tr>
+        <tr><td>2834</td><td>Amortissements du matériel de transport</td><td>—</td><td>30 000</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p><strong>Étape 2 : Sortie de l'immobilisation</strong></p>
+    <div class="ecriture">
+    <table>
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+      <tbody>
+        <tr><td>2834</td><td>Amortissements du matériel de transport</td><td>210 000</td><td>—</td></tr>
+        <tr><td>6513</td><td>VNC des immobilisations corporelles cédées</td><td>90 000</td><td>—</td></tr>
+        <tr><td>2340</td><td>Matériel de transport</td><td>—</td><td>300 000</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p><strong>Étape 3 : Prix de cession</strong></p>
+    <div class="ecriture">
+    <table>
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+      <tbody>
+        <tr><td>5141</td><td>Banque</td><td>120 000</td><td>—</td></tr>
+        <tr><td>7513</td><td>Produits des cessions d'immobilisations</td><td>—</td><td>100 000</td></tr>
+        <tr><td>4455</td><td>État — TVA facturée</td><td>—</td><td>20 000</td></tr>
+      </tbody>
+    </table>
+    </div>
   </div>
 </div>
 
 <hr>
 
 <!-- ============================================ -->
-<h2>4. قياس المساحات</h2>
+<h2>9. Écriture de Sortie (Mise au rebut)</h2>
 
-<h3>أ) الوحدة الأساسية والوحدات الفرعية</></h3>
+<h3>a) Principe</h3>
 
-<p>الوحدة الأساسيةspan لقياس المساحات>
-    < هي <spanstrong>المتر المربع (m² class)</strong>.</p>
+<p>La <strong>mise au rebut</strong> intervient lorsqu'une immobilisation est retirée de l'actif <strong>sans contrepartie financière</strong> (bien hors d'usage, obsolète, détruit) [citation:34].</p>
 
-<div=" class="table-wrap">
-<table>
-<thead>
-  <tr>
-    <th>الوحresultatدة</th>
-   ">< <th>الرمز</th>
-    <th>spanالقيمة بالمتر المربع</ classth>
-  </tr>
-</thead>
-="<tbody>
-  <tr><td>الكيلnumومتر المربع</td><td>km²</td><td><span class="num">1 000 000 m²</span></td></tr>
-  <tr><td>الهكتومتر المربع</td><">3td>hm²</td>< hatd><span class="num">10 000 m² 25</span></td></tr>
-  <tr><td>الديكامتر المربع</td>< atd>dam²</td><td>< =span class="num">100 m²</span ></td></tr>
-  <tr><td><strong>الم32تر المربع</strong></td><td><strong>m²</strong></td><td><strong>1 m²</strong></td></tr>
-  <tr><td>الدسيمتر المربع</td><td>dm²</td><td><span class="num">0.01 m²</span></td></tr>
-  <tr><td>السنتيمتر المربع</td><td>cm²</td><td><span class="num">0.0001 m²</span></td></tr>
-  <tr><td>المليمتر المربع</td><td>mm²</td><td><span class="num">0.000001 m²</span></td></tr>
-</tbody>
-</table>
-</div>
-
-<h3>ب) الوحدات الزراعية</h3>
-
-<div class="table-wrap">
-<table>
-<thead>
-  <tr>
-    <th>الوحدة</th>
-    <th>الرمز</th>
-    <th>القيمة</th>
-  </tr>
-</thead>
-<tbody>
-  <tr><td>الآر</td><td>a</td><td><span class="num">100 m²</span></td></tr>
-  <tr><td>الهكتار</td><td>ha</td><td><span class="num">10 000 m²</span></td></tr>
-</tbody>
-</table>
-</div>
-
-<h3>ج) جدول التحويلات</h3>
-
-<div class="table-wrap">
-<table>
-<thead>
-  <tr>
-    <th>km²</th><th>hm²</th><th>dam²</th><th>m²</th><th>dm²</th><th>cm²</th><th>mm²</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>0</td><td>0</td><td>0</td><td>4</td><td>5</td><td>0</td><td>0</td>
-  </tr>
-</tbody>
-</table>
-</div>
-
-<div class="formule">
-  <span class="num">4.5 m² = 450 dm² = 45 000 cm²</span>
-</div>
-
-<div class="encadre">
-<strong>ملاحظة مهمة:</strong> في المساحات، كل وحدة تساوي <strong>100</strong> من الوحدة التي تليها (وليس 10).
-</div>
-
-<!-- تمرين 3 -->
-<div class="exo">
-  <div class="enonce">
-    <strong>مثال:</strong> حوّل <span class="num">3 ha 25 a</span> إلى المتر المربع.
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape"><strong>3 ha</strong> = <span class="num">3 × 10 000 = 30 000 m²</span></span>
-    <span class="etape"><strong>25 a</strong> = <span class="num">25 × 100 = 2500 m²</span></span>
-    <span class="etape">المجموع: <span class="num">30 000 + 2500</span 500 m²</span></span>
-  </div>
-</div>
-
-<hr>
-
-<!-- ============================================ -->
-<h2>5. قياس سعة التخزين الرقمي</h2>
-
-<h3>أ) الوحدة الأساسية</h3>
-
-<p>وحدة قياس سعة التخزين الرقمي هي <strong>البايت (Byte)</strong>.</p>
-
-<div class="encadre">
-<strong>البايت</strong> = <span class="num">8 بتات (bits)</span>
-<br><em>البت هو أصغر وحدة في المعلوماتية، قيمته 0 أو 1.</em>
-</div>
-
-<h3>ب) مضاعفات البايت</h3>
-
-<div class="table-wrap">
-<table>
-<thead>
-  <tr>
-    <th>الوحدة</th>
-    <th>الرمز</th>
-    <th>القيمة بالبايت</th>
-  </tr>
-</thead>
-<tbody>
-  <tr><td>الكيلوبايت</td><td>KB</td><td><span class="num">1 024 B</span></td></tr>
-  <tr><td>الميغابايت</td><td>MB</td><td><span class="num">1 024 KB = 1 048 576 B</span></td></tr>
-  <tr><td>الجيغابايت</td><td>GB</td><td><span class="num">1 024 MB</span></td></tr>
-  <tr><td>التيرابايت</td><td>TB</td><td><span class="num">1 024 GB</span></td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="formule">
-  <span class="num">1 KB = 1024 B</span><br>
-  <span class="num">1 MB = 1024 KB</span><br>
-  <span class="num">1 GB = 1024 MB</span><br>
-  <span class="num">1 TB = 1024 GB</span>
-</div>
-
-<div class="encadre">
-<strong>ملاحظة:</strong> في المعلوماتية، كل وحدة تساوي <strong>1024</strong> من الوحدة التي تليها (وليس 1000).
-</div>
-
-<h3>ج) أمثلة من الواقع</h3>
-
-<div class="table-wrap">
-<table>
-<thead>
-  <tr><th>الجهاز / الملف</th><th>السعة التقريبية</th></tr>
-</thead>
-<tbody>
-  <tr><td>صورة رقمية</td><td><span class="num">2 MB</span></td></tr>
-  <tr><td>أغنية MP3</td><td><span class="num">5 MB</span></td></tr>
-  <tr><td>قرص CD</td><td><span class="num">700 MB</span></td></tr>
-  <tr><td>قرص DVD</td><td><span class="num">4.7 GB</span></td></tr>
-  <tr><td>مفتاح USB</td><td><span class="num">32 GB</span></td></tr>
-  <tr><td>قرص صلب (Hard Disk)</td><td><span class="num">1 TB</span></td></tr>
-</tbody>
-</table>
-</div>
-
-<!-- تمرين 4 -->
-<div class="exo">
-  <div class="enonce">
-    <strong>مثال:</strong> مفتاح USB سعته <span class="num">16 GB</span>. كم ميغابايت يمكنه تخزينه؟
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape">نعلم أن: <span class="num">1 GB = 1024 MB</span></span>
-    <span class="etape">إذن: <span class="num">16 × 1024 = 16 384</span></span>
-    <span class="resultat"><span class="num">16 GB = 16 384 MB</span></span>
-  </div>
-</div>
-
-<hr>
-
-<!-- ============================================ -->
-<h2>6. تمارين تطبيقية</h2>
-
-<div class="exo">
-  <div class="enonce">
-    <strong>التمرين 1:</strong> حوّل القياسات التالية إلى المتر:
-    <ol>
-      <li><span class="num">0.035 km</span></li>
-      <li><span class="num">53.987 km</span></li>
-      <li><span class="num">3 km 18 dam 5 m</span></li>
-    </ol>
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape"><strong>1)</strong> <span class="num">0.035 km = 35 m</span></span>
-    <span class="etape"><strong>2)</strong> <span class="num">53.987 km = 53 987 m</span></span>
-    <span class="etape"><strong>3)</strong> <span class="num">3 km 18 dam 5 m = 3000 + 180 + 5 = 3185 m</span></span>
-    <span class="resultat">km → m : نضرب في 1000</span>
-  </div>
-</div>
-
-<div class="exo">
-  <div class="enonce">
-    <strong>التمرين 2:</strong> عبّر عن القياسات التالية بالسنتيمتر:
-    <ol>
-      <li><span class="num">8.37 m</span></li>
-      <li><span class="num">67 mm</span></li>
-      <li><span class="num">5.21 km</span></li>
-    </ol>
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape"><strong>1)</strong> <span class="num">8.37 m = 837 cm</span></span>
-    <span class="etape"><strong>2)</strong> <span class="num">67 mm = 6.7 cm</span></span>
-    <span class="etape"><strong>3)</strong> <span class="num">5.21 km = 521 000 cm</span></span>
-    <span class="resultat">m → cm : نضرب في 100</span>
-  </div>
-</div>
-
-<div class="exo">
-  <div class="enonce">
-    <strong>التمرين 3:</strong> قطعة أرض مساحتها <span class="num">2 ha 50 a</span>. عبّر عن مساحتها بالمتر المربع.
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape"><strong>2 ha</strong> = <span class="num">2 × 10 000 = 20 000 m²</span></span>
-    <span class="etape"><strong>50 a</strong> = <span class="num">50 × 100 = 5000 m²</span></span>
-    <span class="etape">المجموع: <span class="num">20 000 + 5000</span></span>
-    <span class="resultat"><span class="num">2 ha 50 a = 25 000 m²</span></span>
-  </div>
-</div>
-
-<div class="exo">
-  <div class="enonce">
-    <strong>التمرين 4:</strong> قرص صلب سعته <span class="num">2 TB</span>. عبّر عن سعته بالجيغابايت.
-  </div>
-  <button class="btn-corr" onclick="toggleCorr(this)">
-    <span class="arrow">▶</span> إظهار التصحيح
-  </button>
-  <div class="correction">
-    <span class="etape">نعلم أن: <span class="num">1 TB = 1024 GB</span></span>
-    <span class="etape">إذن: <span class="num">2 × 1024 = 2048</span></span>
-    <span class="resultat"><span class="num">2 TB = 2048 GB</span></span>
-  </div>
-</div>
-
-<hr>
-
-<!-- ============================================ -->
-<h2>7. ملخّص</h2>
-
-<div class="encadre">
-<strong>جداول التحويلات:</strong>
 <ul>
-  <li><strong>الأطوال:</strong> كل وحدة تساوي <span class="num">10</span> من الوحدة التي تليها. (m → dm → cm → mm)</li>
-  <li><strong>الكتل:</strong> كل وحدة تساوي <span class="num">10</span> من الوحدة التي تليها. (g → dg → cg → mg)</li>
-  <li><strong>المساحات:</strong> كل وحدة تساوي <span class="num">100</span> من الوحدة التي تليها. (m² → dm² → cm²)</li>
-  <li><strong>سعة التخزين:</strong> كل وحدة تساوي <span class="num">1024</span> من الوحدة التي تليها. (GB → MB → KB → B)</li>
+  <li>Si l'immobilisation est <strong>totalement amortie</strong> : simple sortie sans impact sur le résultat</li>
+  <li>Si l'immobilisation <strong>n'est pas totalement amortie</strong> : la VNC résiduelle constitue une <strong>charge exceptionnelle</strong></li>
 </ul>
+
+<h3>b) Écriture comptable</h3>
+
+<div class="ecriture">
+<table>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>28xx</td><td>Amortissements cumulés</td><td>Cumul</td><td>—</td></tr>
+    <tr><td>6513</td><td>VNC des immobilisations corporelles cédées</td><td>VNC</td><td>—</td></tr>
+    <tr><td>23xx</td><td>Immobilisations corporelles</td><td>—</td><td>Valeur brute</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- EXO : MISE AU REBUT -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple 1 :</strong> Un matériel entièrement amorti (valeur brute 30 000 DH, amortissements cumulés 30 000 DH) est mis au rebut.
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">L'immobilisation est totalement amortie → VNC = 0 → simple sortie</span>
+    <div class="ecriture" style="margin-top:10px;">
+    <table>
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+      <tbody>
+        <tr><td>2834</td><td>Amortissements du matériel</td><td>30 000</td><td>—</td></tr>
+        <tr><td>2340</td><td>Matériel</td><td>—</td><td>30 000</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple 2 :</strong> Un matériel (valeur brute 40 000 DH, amortissements cumulés 25 000 DH) est mis au rebut.
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">VNC = 40 000 − 25 000 = <strong>15 000 DH</strong> (charge exceptionnelle)</span>
+    <div class="ecriture" style="margin-top:10px;">
+    <table>
+      <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+      <tbody>
+        <tr><td>2834</td><td>Amortissements du matériel</td><td>25 000</td><td>—</td></tr>
+        <tr><td>6513</td><td>VNC des immobilisations corporelles cédées</td><td>15 000</td><td>—</td></tr>
+        <tr><td>2340</td><td>Matériel</td><td>—</td><td>40 000</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>10. Écriture de Retrait d'Actif</h2>
+
+<h3>a) Principe</h3>
+
+<p>Le <strong>retrait</strong> est similaire à la cession, mais sans prix de vente. C'est une sortie d'actif pour <strong>mise hors service</strong>, destruction, ou don.</p>
+
+<div class="encadre">
+<strong>Différence avec la mise au rebut :</strong> Le retrait peut être <strong>volontaire</strong> (transfert, don), alors que la mise au rebut est liée à l'<strong>obsolescence ou détérioration</strong>.
+</div>
+
+<h3>b) Écriture comptable</h3>
+
+<div class="ecriture">
+<table>
+  <thead><tr><th>Compte</th><th>Libellé</th><th>Débit</th><th>Crédit</th></tr></thead>
+  <tbody>
+    <tr><td>28xx</td><td>Amortissements cumulés</td><td>Cumul</td><td>—</td></tr>
+    <tr><td>6513</td><td>VNC des immobilisations corporelles cédées</td><td>VNC</td><td>—</td></tr>
+    <tr><td>23xx</td><td>Immobilisations corporelles</td><td>—</td><td>Valeur brute</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>11. Régularisation TVA (cession avant 5 ans)</h2>
+
+<div class="encadre">
+<strong>Règle :</strong> La TVA sur immobilisation n'est définitivement récupérable qu'après <strong>5 années fiscales</strong> .
+<ul>
+  <li>En cas de cession avant la fin des 5 ans, il faut <strong>reverser 1/5 de la TVA</strong> par année restante</li>
+</ul>
+</div>
+
+<div class="formule">
+  \[ \text{TVA à reverser} = \text{TVA initiale} \times \frac{\text{années restantes}}{5} \]
+</div>
+
+<!-- EXO : RÉGULARISATION TVA -->
+<div class="exo">
+  <div class="enonce">
+    <strong>Exemple :</strong> Matériel acheté 200 000 DH HT (TVA 20 % = 40 000 DH), cédé après 2 ans et 6 mois.
+  </div>
+  <button class="btn-corr" onclick="toggleCorr(this)">
+    <span class="arrow">▶</span> Afficher la correction
+  </button>
+  <div class="correction">
+    <span class="etape">TVA initiale = 40 000 DH</span>
+    <span class="etape">Durée écoulée = 2 ans et 6 mois → années restantes = 2,5</span>
+    <span class="etape">TVA à reverser = 40 000 × 2,5/5 = <strong>20 000 DH</strong></span>
+    <span class="resultat">Compte 4456 (État, TVA due) au débit lors de la cession</span>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================ -->
+<h2>12. Résumé des Écritures</h2>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr><th>Opération</th><th>Débit</th><th>Crédit</th></tr>
+</thead>
+<tbody>
+  <tr><td><strong>Dotation</strong></td><td>619x (DEA)</td><td>28xx (Amort. cumulé)</td></tr>
+  <tr><td><strong>Sortie (VNC)</strong></td><td>28xx (Amort. cumulé) + 6513 (VNC)</td><td>23xx (Immobilisation)</td></tr>
+  <tr><td><strong>Cession (prix)</strong></td><td>5141 (Banque) / 3481</td><td>7513 (Produit) + 4455 (TVA)</td></tr>
+  <tr><td><strong>Mise au rebut</strong></td><td>28xx + 6513 (si VNC > 0)</td><td>23xx</td></tr>
+  <tr><td><strong>Retrait</strong></td><td>28xx + 6513 (si VNC > 0)</td><td>23xx</td></tr>
+  <tr><td><strong>Régul. TVA</strong></td><td>4456 (TVA due)</td><td>4455 (TVA facturée) / 34551</td></tr>
+</tbody>
+</table>
 </div>
 
 <div class="conseil">
-💡 <strong>نصيحة:</strong> عند التحويل بين الوحدات، تذكّر:
-<br>• <strong>نزولاً</strong> (إلى وحدة أصغر) → <strong>نضرب</strong>
-<br>• <strong>صعوداً</strong> (إلى وحدة أكبر) → <strong>نقسم</strong>
+💡 <strong>Conseils :</strong>
+<ul>
+  <li>Vérifie toujours si la TVA est récupérable (HT) ou non (TTC, ex : voitures de tourisme).</li>
+  <li>Prorata temporis : compte les mois depuis le <strong>1er jour du mois d'acquisition</strong> jusqu'au 31/12.</li>
+  <li>Pour la cession : <strong>3 étapes obligatoires</strong> (complément d'amortissement → sortie → prix).</li>
+  <li>Régularisation TVA si cession < 5 ans : reverser 1/5 par année restante.</li>
+</ul>
 </div>
 
 </div>
@@ -538,11 +600,11 @@ function toggleCorr(btn) {
   if (corr.classList.contains('show')) {
     corr.classList.remove('show');
     btn.classList.remove('open');
-    btn.innerHTML = '<span class="arrow">▶</span> إظهار التصحيح';
+    btn.innerHTML = '<span class="arrow">▶</span> Afficher la correction';
   } else {
     corr.classList.add('show');
     btn.classList.add('open');
-    btn.innerHTML = '<span class="arrow">▶</span> إخفاء التصحيح';
+    btn.innerHTML = '<span class="arrow">▶</span> Masquer la correction';
   }
 }
 </script>

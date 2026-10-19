@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3. معايير القابلية للقسمة</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  body { font-family: "Amiri", "Traditional Arabic", Tahoma, Arial, sans-serif; line-height: 1.8; color: #222; margin: 0; padding: 12px; background: #f0f4f8; word-wrap: break-word; overflow-wrap: break-word; direction: rtl; }
+  .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 22px 20px; border-radius: 14px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+  h2 { color: #1a5276; background: #eaf2f8; padding: 10px 14px; border-right: 5px solid #1a5276; border-radius: 4px; margin-top: 26px; font-size: clamp(1rem, 3.8vw, 1.3rem); line-height: 1.3; }
+  p, li { font-size: clamp(0.9rem, 3.2vw, 1.05rem); }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 15px 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  table { border-collapse: collapse; width: 100%; min-width: 320px; background: #fff; font-size: clamp(0.8rem, 3vw, 1rem); }
+  th, td { border: 1px solid #ccc; padding: 10px 8px; text-align: center; }
+  th { background: #1a5276; color: #fff; font-size: clamp(0.8rem, 2.9vw, 0.95rem); }
+  tr:nth-child(even) { background: #f4f8fb; }
+  strong { color: #1a5276; }
+  .num { font-family: "Arial", sans-serif; color: #b30000; font-weight: bold; direction: ltr; unicode-bidi: embed; display: inline-block; }
+  .exo { background: #f8fbfd; border: 2px solid #d6eaf8; border-radius: 10px; padding: 16px 18px; margin: 18px 0; }
+  .exo .enonce { font-size: clamp(0.9rem, 3.2vw, 1.05rem); margin-bottom: 12px; }
+  .btn-corr { background: #16a085; color: #fff; border: none; border-radius: 8px; padding: 10px 18px; font-size: clamp(0.85rem, 3.2vw, 1rem); font-weight: bold; cursor: pointer; transition: background 0.2s; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; }
+  .btn-corr:hover { background: #138d75; }
+  .btn-corr .arrow { transition: transform 0.2s; display: inline-block; }
+  .btn-corr.open .arrow { transform: rotate(-90deg); }
+  .correction { display: none; background: #eafaf1; border-right: 5px solid #27ae60; border-radius: 6px; padding: 14px 16px; margin-top: 12px; font-size: clamp(0.88rem, 3.2vw, 1rem); color: #145a32; animation: fadeIn 0.3s ease; }
+  .correction.show { display: block; }
+  .correction .etape { display: block; margin: 4px 0; }
+  .correction .resultat { display: inline-block; background: #27ae60; color: #fff; padding: 3px 10px; border-radius: 6px; font-weight: bold; margin-top: 8px; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+  .open-link-container { text-align: center; margin: 25px 0 20px; }
+  .open-link-btn { background: #2874a6; color: #fff; border: none; padding: 12px 20px; font-size: 1em; border-radius: 8px; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15); transition: background 0.2s ease, transform 0.1s ease; max-width: 100%; white-space: normal; line-height: 1.4; font-family: inherit; }
+  .open-link-btn:hover { background: #1a5276; transform: translateY(-1px); }
+  .open-link-btn i { margin-left: 8px; }
+  .footer { text-align: center; margin-top: 30px; font-weight: bold; color: #1a5276; font-size: 1em; }
+  @media (max-width: 480px) { body { padding: 8px; } .container { padding: 16px 14px; border-radius: 10px; } h2 { padding: 8px 12px; } th, td { padding: 6px 4px; font-size: 0.78rem; } .exo { padding: 12px 14px; } .btn-corr { padding: 9px 14px; width: 100%; justify-content: center; } .open-link-btn { padding: 10px 14px; font-size: 0.9em; width: 100%; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h2>3. معايير القابلية للقسمة</h2>
+
+<p><strong>معيار القابلية للقسمة</strong> يسمح بمعرفة إذا كان عدد <strong>مضاعفاً</strong> لعدد آخر بسرعة، دون إجراء القسمة.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>مضاعف لـ...</th><th>المعيار (القاعدة)</th><th>أمثلة</th></tr></thead>
+<tbody>
+  <tr><td><strong>2</strong></td><td>ينتهي بـ <strong>0, 2, 4, 6 أو 8</strong></td><td><span class="num">14, 36, 50</span> ✓ &nbsp;|&nbsp; <span class="num">17, 23</span> ✗</td></tr>
+  <tr><td><strong>3</strong></td><td><strong>مجموع الأرقام</strong> مضاعف لـ 3</td><td><span class="num">123</span> (1+2+3=6) ✓ &nbsp;|&nbsp; <span class="num">145</span> (1+4+5=10) ✗</td></tr>
+  <tr><td><strong>4</strong></td><td>العدد المكوّن من <strong>الرقمين الأخيرين</strong> مضاعف لـ 4</td><td><span class="num">1316</span> (16) ✓ &nbsp;|&nbsp; <span class="num">1230</span> (30) ✗</td></tr>
+  <tr><td><strong>5</strong></td><td>ينتهي بـ <strong>0 أو 5</strong></td><td><span class="num">35, 80</span> ✓ &nbsp;|&nbsp; <span class="num">42, 57</span> ✗</td></tr>
+  <tr><td><strong>9</strong></td><td><strong>مجموع الأرقام</strong> مضاعف لـ 9</td><td><span class="num">234</span> (2+3+4=9) ✓ &nbsp;|&nbsp; <span class="num">128</span> (1+2+8=11) ✗</td></tr>
+  <tr><td><strong>10</strong></td><td>ينتهي بـ <strong>0</strong></td><td><span class="num">40, 120, 500</span> ✓ &nbsp;|&nbsp; <span class="num">45, 132</span> ✗</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="exo">
+  <div class="enonce"><strong>مثال 1:</strong> هل العدد <span class="num">348</span> مضاعف لـ 3؟ لـ 4؟ لـ 9؟</div>
+  <button class="btn-corr" onclick="toggleCorr(this)"><span class="arrow">▶</span> إظهار التصحيح</button>
+  <div class="correction">
+    <span class="etape"><strong>مضاعف لـ 3؟</strong> المجموع = 3 + 4 + 8 = 15 ← 15 مضاعف لـ 3 ✓</span>
+    <span class="etape"><strong>مضاعف لـ 4؟</strong> الرقمان الأخيران = 48 ← 48 ÷ 4 = 12 ✓</span>
+    <span class="etape"><strong>مضاعف لـ 9؟</strong> المجموع = 15 ← 15 ليس مضاعفاً لـ 9 ✗</span>
+    <span class="resultat">348 مضاعف لـ 3 و 4، لكن ليس لـ 9</span>
+  </div>
+</div>
+
+<div class="exo">
+  <div class="enonce"><strong>مثال 2:</strong> هل العدد <span class="num">825</span> مضاعف لـ 5؟ لـ 3؟ لـ 10؟</div>
+  <button class="btn-corr" onclick="toggleCorr(this)"><span class="arrow">▶</span> إظهار التصحيح</button>
+  <div class="correction">
+    <span class="etape"><strong>مضاعف لـ 5؟</strong> ينتهي بـ 5 ✓</span>
+    <span class="etape"><strong>مضاعف لـ 3؟</strong> المجموع = 8 + 2 + 5 = 15 ← مضاعف لـ 3 ✓</span>
+    <span class="etape"><strong>مضاعف لـ 10؟</strong> ينتهي بـ 5 (وليس 0) ✗</span>
+    <span class="resultat">825 مضاعف لـ 5 و 3، لكن ليس لـ 10</span>
+  </div>
+</div>
+
+<p class="footer">نهاية الجزء 3 — بالتوفيق للتلاميذ! 🎓</p>
+
+<div class="open-link-container">
+    <button class="open-link-btn" onclick="openHtmlPage()">
+        <i class="fas fa-window-restore"></i>
+        إذا لم تظهر الصفحة بشكل صحيح: اضغط هنا
+    </button>
+</div>
+
+<script>
+function toggleCorr(btn) {
+  var corr = btn.nextElementSibling;
+  if (corr.classList.contains('show')) {
+    corr.classList.remove('show');
+    btn.classList.remove('open');
+    btn.innerHTML = '<span class="arrow">▶</span> إظهار التصحيح';
+  } else {
+    corr.classList.add('show');
+    btn.classList.add('open');
+    btn.innerHTML = '<span class="arrow">▶</span> إخفاء التصحيح';
+  }
+}
+function openHtmlPage() { window.open(window.location.href, '_blank'); }
+</script>
+
+</div>
+</body>
+</html>

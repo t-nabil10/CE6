@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4. قياس المساحات</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  body { font-family: "Amiri", "Traditional Arabic", Tahoma, Arial, sans-serif; line-height: 1.8; color: #222; margin: 0; padding: 12px; background: #f0f4f8; word-wrap: break-word; overflow-wrap: break-word; direction: rtl; }
+  .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 22px 20px; border-radius: 14px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+  h2 { color: #1a5276; background: #eaf2f8; padding: 10px 14px; border-right: 5px solid #1a5276; border-radius: 4px; margin-top: 26px; font-size: clamp(1rem, 3.8vw, 1.3rem); line-height: 1.3; }
+  h3 { color: #2874a6; margin-top: 18px; font-size: clamp(0.95rem, 3.4vw, 1.1rem); }
+  p, li { font-size: clamp(0.9rem, 3.2vw, 1.05rem); }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 15px 0; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  table { border-collapse: collapse; width: 100%; min-width: 320px; background: #fff; font-size: clamp(0.8rem, 3vw, 1rem); }
+  th, td { border: 1px solid #ccc; padding: 10px 8px; text-align: center; }
+  th { background: #1a5276; color: #fff; font-size: clamp(0.8rem, 2.9vw, 0.95rem); }
+  tr:nth-child(even) { background: #f4f8fb; }
+  .conv-table, .conv-table thead, .conv-table tbody, .conv-table tr, .conv-table th, .conv-table td { direction: ltr !important; unicode-bidi: isolate !important; }
+  .conv-table th, .conv-table td { text-align: center; }
+  .tab2 th, .tab2 td { padding: 8px 4px; font-family: "Arial", sans-serif; letter-spacing: 6px; }
+  .tab2 td.digit { color: #b30000; font-weight: bold; }
+  .tab2 td.empty { color: #bbb; }
+  .formule { background: #fff8e1; border-right: 4px solid #f39c12; padding: 10px 14px; margin: 12px 0; font-family: "Amiri", "Times New Roman", serif; font-size: clamp(0.95rem, 3.4vw, 1.15rem); text-align: center; border-radius: 4px; }
+  .encadre { background: #e8f8f5; border: 2px solid #16a085; border-radius: 8px; padding: 12px 16px; margin: 15px 0; }
+  strong { color: #1a5276; }
+  .num { font-family: "Arial", sans-serif; color: #b30000; font-weight: bold; direction: ltr; unicode-bidi: embed; display: inline-block; }
+  .exo { background: #f8fbfd; border: 2px solid #d6eaf8; border-radius: 10px; padding: 16px 18px; margin: 18px 0; }
+  .exo .enonce { font-size: clamp(0.9rem, 3.2vw, 1.05rem); margin-bottom: 12px; }
+  .btn-corr { background: #16a085; color: #fff; border: none; border-radius: 8px; padding: 10px 18px; font-size: clamp(0.85rem, 3.2vw, 1rem); font-weight: bold; cursor: pointer; transition: background 0.2s; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; }
+  .btn-corr:hover { background: #138d75; }
+  .btn-corr .arrow { transition: transform 0.2s; display: inline-block; }
+  .btn-corr.open .arrow { transform: rotate(-90deg); }
+  .correction { display: none; background: #eafaf1; border-right: 5px solid #27ae60; border-radius: 6px; padding: 14px 16px; margin-top: 12px; font-size: clamp(0.88rem, 3.2vw, 1rem); color: #145a32; animation: fadeIn 0.3s ease; }
+  .correction.show { display: block; }
+  .correction .etape { display: block; margin: 4px 0; }
+  .correction .resultat { display: inline-block; background: #27ae60; color: #fff; padding: 3px 10px; border-radius: 6px; font-weight: bold; margin-top: 8px; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+  .open-link-container { text-align: center; margin: 25px 0 20px; }
+  .open-link-btn { background: #2874a6; color: #fff; border: none; padding: 12px 20px; font-size: 1em; border-radius: 8px; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15); transition: background 0.2s ease, transform 0.1s ease; max-width: 100%; white-space: normal; line-height: 1.4; font-family: inherit; }
+  .open-link-btn:hover { background: #1a5276; transform: translateY(-1px); }
+  .open-link-btn i { margin-left: 8px; }
+  .footer { text-align: center; margin-top: 30px; font-weight: bold; color: #1a5276; font-size: 1em; }
+  @media (max-width: 480px) { body { padding: 8px; } .container { padding: 16px 14px; border-radius: 10px; } h2 { padding: 8px 12px; } th, td { padding: 6px 4px; font-size: 0.78rem; } .exo { padding: 12px 14px; } .btn-corr { padding: 9px 14px; width: 100%; justify-content: center; } .tab2 th, .tab2 td { letter-spacing: 3px; } .open-link-btn { padding: 10px 14px; font-size: 0.9em; width: 100%; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h2>4. قياس المساحات</h2>
+
+<h3>أ) الوحدة الأساسية والوحدات الفرعية</h3>
+<p>الوحدة الأساسية لقياس المساحات هي <strong>المتر المربع (m²)</strong>.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>الوحدة</th><th>الرمز</th><th>القيمة بالمتر المربع</th></tr></thead>
+<tbody>
+  <tr><td>الكيلومتر المربع</td><td>km²</td><td><span class="num">1 000 000 m²</span></td></tr>
+  <tr><td>الهكتومتر المربع</td><td>hm²</td><td><span class="num">10 000 m²</span></td></tr>
+  <tr><td>الديكامتر المربع</td><td>dam²</td><td><span class="num">100 m²</span></td></tr>
+  <tr><td><strong>المتر المربع</strong></td><td><strong>m²</strong></td><td><strong>1 m²</strong></td></tr>
+  <tr><td>الدسيمتر المربع</td><td>dm²</td><td><span class="num">0.01 m²</span></td></tr>
+  <tr><td>السنتيمتر المربع</td><td>cm²</td><td><span class="num">0.0001 m²</span></td></tr>
+  <tr><td>المليمتر المربع</td><td>mm²</td><td><span class="num">0.000001 m²</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>ب) الوحدات الزراعية</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>الوحدة</th><th>الرمز</th><th>القيمة</th></tr></thead>
+<tbody>
+  <tr><td>الآر</td><td>a</td><td><span class="num">100 m²</span></td></tr>
+  <tr><td>الهكتار</td><td>ha</td><td><span class="num">10 000 m²</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>ج) جدول التحويلات</h3>
+<div class="encadre">
+<strong>ملاحظة مهمة:</strong> في المساحات، <strong>كل وحدة تساوي 100 من الوحدة التي تليها</strong>.<br>
+إذن: في جدول التحويلات، <strong>كل وحدة تأخذ خانتين</strong> (وليس خانة واحدة).
+</div>
+
+<div class="table-wrap">
+<table class="conv-table tab2">
+<thead><tr><th>km²</th><th>hm²</th><th>dam²</th><th>m²</th><th>dm²</th><th>cm²</th><th>mm²</th></tr></thead>
+<tbody>
+  <tr>
+    <td class="empty">00</td><td class="empty">00</td><td class="empty">00</td>
+    <td>0<span class="digit">4</span></td><td><span class="digit">5</span>0</td>
+    <td class="empty">00</td><td class="empty">00</td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+<div class="formule">قراءة الجدول: <span class="num">4.5 m² = 4 m² 50 dm² = 450 dm² = 45 000 cm²</span></div>
+
+<h3>د) أمثلة على التحويلات</h3>
+<div class="formule"><span class="num">1 m² = 100 dm² = 10 000 cm² = 1 000 000 mm²</span></div>
+<div class="formule"><span class="num">1 km² = 100 hm² = 10 000 dam² = 1 000 000 m²</span></div>
+<div class="formule"><span class="num">1 ha = 10 000 m² = 100 a</span></div>
+
+<h3>هـ) أمثلة أخرى</h3>
+<div class="formule"><span class="num">7 m² = 700 dm² = 70 000 cm²</span></div>
+<div class="formule"><span class="num">250 dm² = 2.5 m²</span></div>
+<div class="formule"><span class="num">0.5 m² = 50 dm² = 5000 cm²</span></div>
+
+<div class="exo">
+  <div class="enonce"><strong>مثال 1:</strong> حوّل <span class="num">3 ha 25 a</span> إلى المتر المربع.</div>
+  <button class="btn-corr" onclick="toggleCorr(this)"><span class="arrow">▶</span> إظهار التصحيح</button>
+  <div class="correction">
+    <span class="etape"><strong>3 ha</strong> = <span class="num">3 × 10 000 = 30 000 m²</span></span>
+    <span class="etape"><strong>25 a</strong> = <span class="num">25 × 100 = 2500 m²</span></span>
+    <span class="etape">المجموع: <span class="num">30 000 + 2500</span></span>
+    <span class="resultat"><span class="num">3 ha 25 a = 32 500 m²</span></span>
+  </div>
+</div>
+
+<div class="exo">
+  <div class="enonce"><strong>مثال 2:</strong> حوّل <span class="num">4.5 m²</span> إلى الدسيمتر المربع.</div>
+  <button class="btn-corr" onclick="toggleCorr(this)"><span class="arrow">▶</span> إظهار التصحيح</button>
+  <div class="correction">
+    <span class="etape">للتحويل من m² إلى dm²، ننزل <strong>مرتبة واحدة</strong>.</span>
+    <span class="etape">في المساحات، النزول مرتبة = الضرب في <span class="num">100</span>.</span>
+    <span class="etape"><span class="num">4.5 × 100 = 450</span></span>
+    <span class="resultat"><span class="num">4.5 m² = 450 dm²</span></span>
+  </div>
+</div>
+
+<div class="exo">
+  <div class="enonce"><strong>مثال 3:</strong> حوّل <span class="num">25 000 cm²</span> إلى المتر المربع.</div>
+  <button class="btn-corr" onclick="toggleCorr(this)"><span class="arrow">▶</span> إظهار التصحيح</button>
+  <div class="correction">
+    <span class="etape">للتحويل من cm² إلى m²، نصعد <strong>مرتبتين</strong> (cm² → dm² → m²).</span>
+    <span class="etape">في المساحات، الصعود مرتبتين = القسمة على <span class="num">10 000</span>.</span>
+    <span class="etape"><span class="num">25 000 ÷ 10 000 = 2.5</span></span>
+    <span class="resultat"><span class="num">25 000 cm² = 2.5 m²</span></span>
+  </div>
+</div>
+
+<p class="footer">نهاية الجزء 4 — بالتوفيق للتلاميذ! 🎓</p>
+
+<div class="open-link-container">
+    <button class="open-link-btn" onclick="openHtmlPage()">
+        <i class="fas fa-window-restore"></i>
+        إذا لم تظهر الصفحة بشكل صحيح: اضغط هنا
+    </button>
+</div>
+
+<script>
+function toggleCorr(btn) {
+  var corr = btn.nextElementSibling;
+  if (corr.classList.contains('show')) {
+    corr.classList.remove('show');
+    btn.classList.remove('open');
+    btn.innerHTML = '<span class="arrow">▶</span> إظهار التصحيح';
+  } else {
+    corr.classList.add('show');
+    btn.classList.add('open');
+    btn.innerHTML = '<span class="arrow">▶</span> إخفاء التصحيح';
+  }
+}
+function openHtmlPage() { window.open(window.location.href, '_blank'); }
+</script>
+
+</div>
+</body>
+</html>

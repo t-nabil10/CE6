@@ -333,22 +333,35 @@ où :
 </ul>
 </div>
 
+<!-- ✅ SCHÉMA CORRIGÉ : sommet d'une parabole (2 cas) -->
 <div class="schema">
-  <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sommet d'une parabole">
-    <!-- cas a > 0 -->
-    <line x1="20" y1="150" x2="180" y2="150" stroke="#555" stroke-width="1.4"/>
-    <line x1="100" y1="20" x2="100" y2="200" stroke="#555" stroke-width="1.4"/>
-    <path d="M 35 30 Q 100 210 165 30" fill="none" stroke="#1a5276" stroke-width="2.4"/>
-    <circle cx="100" cy="150" r="4" fill="#e74c3c"/>
-    <text x="106" y="145" font-size="10" fill="#e74c3c">S</text>
-    <text x="60" y="215" font-size="11" fill="#1a5276">a &gt; 0 : minimum</text>
-    <!-- cas a < 0 -->
-    <line x1="220" y1="150" x2="380" y2="150" stroke="#555" stroke-width="1.4"/>
-    <line x1="300" y1="20" x2="300" y2="200" stroke="#555" stroke-width="1.4"/>
-    <path d="M 235 200 Q 300 20 365 200" fill="none" stroke="#16a085" stroke-width="2.4"/>
-    <circle cx="300" cy="110" r="4" fill="#e74c3c"/>
-    <text x="306" y="105" font-size="10" fill="#e74c3c">S</text>
-    <text x="260" y="215" font-size="11" fill="#16a085">a &lt; 0 : maximum</text>
+  <svg viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sommet d'une parabole : minimum si a > 0, maximum si a < 0">
+    <!-- ===== CAS a > 0 : minimum ===== -->
+    <!-- repère -->
+    <line x1="30" y1="170" x2="190" y2="170" stroke="#555" stroke-width="1.4"/>
+    <line x1="110" y1="30" x2="110" y2="215" stroke="#555" stroke-width="1.4"/>
+    <text x="185" y="185" font-size="10" fill="#555">x</text>
+    <text x="95" y="42" font-size="10" fill="#555">y</text>
+    <text x="103" y="185" font-size="9" fill="#555">O</text>
+    <!-- parabole y = x² - 4x + 5, sommet (2,1) ; échelle : 1 unité = 25 px -->
+    <!-- Points : (0,5)->(110,45), (1,2)->(135,120), (2,1)->(160,145), (3,2)->(185,120), (4,5)->(210,45) -->
+    <path d="M 60 30 Q 160 190 260 30" fill="none" stroke="#1a5276" stroke-width="2.6"/>
+    <!-- sommet -->
+    <circle cx="160" cy="145" r="4" fill="#e74c3c"/>
+    <text x="166" y="141" font-size="10" fill="#e74c3c">S(2 ; 1)</text>
+    <text x="55" y="225" font-size="11" fill="#1a5276" font-weight="bold">a &gt; 0 : minimum en S</text>
+
+    <!-- ===== CAS a < 0 : maximum ===== -->
+    <line x1="240" y1="170" x2="400" y2="170" stroke="#555" stroke-width="1.4"/>
+    <line x1="320" y1="30" x2="320" y2="215" stroke="#555" stroke-width="1.4"/>
+    <text x="395" y="185" font-size="10" fill="#555">x</text>
+    <text x="305" y="42" font-size="10" fill="#555">y</text>
+    <text x="313" y="185" font-size="9" fill="#555">O</text>
+    <!-- parabole y = -x² + 4x - 3, sommet (2,1) -->
+    <path d="M 270 30 Q 370 190 470 30" fill="none" stroke="#16a085" stroke-width="2.6" transform="translate(-30,0)"/>
+    <circle cx="340" cy="145" r="4" fill="#e74c3c"/>
+    <text x="346" y="141" font-size="10" fill="#e74c3c">S(2 ; 1)</text>
+    <text x="265" y="225" font-size="11" fill="#16a085" font-weight="bold">a &lt; 0 : maximum en S</text>
   </svg>
   <div class="legende">Le sommet \(S(\alpha ; \beta)\) est un minimum si \(a > 0\), un maximum si \(a < 0\).</div>
 </div>
@@ -526,47 +539,96 @@ Si \(-\dfrac{\beta}{a} \geq 0\), alors \(x = \alpha \pm \sqrt{-\dfrac{\beta}{a}}
   <strong>Moyen mnémotechnique :</strong> « \(a\) à l'extérieur, \(-a\) à l'intérieur » (lorsque \(\Delta > 0\)).
 </div>
 
+<!-- ✅ SCHÉMA CORRIGÉ : Δ > 0, deux racines (cas a > 0 et a < 0) -->
 <h3>1) Cas \(\Delta > 0\) (deux racines)</h3>
 
 <div class="schema">
-  <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Signe du trinôme avec deux racines">
-    <line x1="30" y1="100" x2="370" y2="100" stroke="#555" stroke-width="1.6"/>
-    <line x1="140" y1="80" x2="140" y2="120" stroke="#e74c3c" stroke-width="2"/>
-    <line x1="260" y1="80" x2="260" y2="120" stroke="#e74c3c" stroke-width="2"/>
-    <text x="132" y="140" font-size="12" fill="#e74c3c">x₁</text>
-    <text x="252" y="140" font-size="12" fill="#e74c3c">x₂</text>
-    <text x="60" y="90" font-size="12" fill="#1a5276" font-weight="bold">signe de a</text>
-    <text x="165" y="90" font-size="12" fill="#e67e22" font-weight="bold">signe de −a</text>
-    <text x="285" y="90" font-size="12" fill="#1a5276" font-weight="bold">signe de a</text>
-    <path d="M 40 160 Q 140 40 260 40 Q 340 40 370 160" fill="none" stroke="#1a5276" stroke-width="2.4"/>
-    <text x="180" y="185" font-size="11" fill="#1a5276" font-style="italic">cas a &gt; 0</text>
+  <svg viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Signe du trinôme avec deux racines : a > 0 et a < 0">
+    <!-- ===== CAS a > 0 : f(x) = x² - 5x + 6, racines 2 et 3, sommet (2.5, -0.25) ===== -->
+ de    <line x rent1="abilité30 :" y1="</130" x2="190" y2="130" stroke="#555" stroke-width="1.4"/>
+    <line x1="100" y1="20" x2="100" y2="210" stroke="#555" stroke-width="1.4"/>
+    <!-- racines x=2 (130) et x=3 (155) ; échelle 25 px/unité ; sommet (2.5 ; -0.25) = (162.5, 136) -->
+    <line x1="130" y1="115" x2="130" y2="145" stroke="#e74c3c" stroke-width="2"/>
+    <line x1="155" y1="115" x2="155" y2="145" stroke="#e74c3c" stroke-width="2"/>
+    <text x="126" y="160" font-size="10" fill="#e74c3c">2</text>
+    <text x="151" y="160" font-size="10" fill="#e74c3c">3</text>
+    <!-- parabole passe par (1,2)->(125,80), (2,0)->(130,130), (2.5,-0.25)->(162.5,136), (3,0)->(155,130), (4,2)->(180,80) -->
+    <path d="M 55 30 Q 100 155 130 130 Q 145 125 160 130 Q 175 140 205 30" fill="none" stroke="#1a5276" stroke-width="2.6"/>
+    <!-- signes -->
+    <text x="45" y="125" font-size="11" fill="#1a5276" font-weight="bold">+</text>
+    <text x="140" y="175" font-size="11" fill="#e67e22" font-weight="bold">−</text>
+    <text x="180" y="125" font-size="11" fill="#1a5276" font-weight="bold">+</text>
+    <text x="45" y="220" font-size="11" fill="#1a5276">a &gt; 0 : + à l'extérieur, − entre</text>
+
+    <!-- ===== CAS a < 0 : f(x) = -x² + 5x - 6, racines 2 et 3 ===== -->
+    <line x1="240" y1="130" x2="400" y2="130" stroke="#555" stroke-width="1.4"/>
+    <line x1="310" y1="20" x2="310" y2="210" stroke="#555" stroke-width="1.4"/>
+    <line x1="340" y1="115" x2="340" y2="145" stroke="#e74c3c" stroke-width="2"/>
+    <line x1="365" y1="115" x2="365" y2="145" stroke="#e74c3c" stroke-width="2"/>
+    <text x="336" y="160" font-size="10" fill="#e74c3c">2</text>
+    <text x="361" y="160" font-size="10" fill="#e74c3c">3</text>
+    <!-- parabole tournée vers le bas, sommet (2.5, 0.25) = (372.5, 124) -->
+    <path d="M 265 230 Q 310 105 340 130 Q 355 135 370 130 Q 385 120 415 230" fill="none" stroke="#16a085" stroke-width="2.6"/>
+    <!-- signes -->
+    <text x="255" y="125" font-size="11" fill="#16a085" font-weight="bold">−</text>
+    <text x="350" y="100" font-size="11" fill="#e67e22" font-weight="bold">+</text>
+    <text x="390" y="125" font-size="11" fill="#16a085" font-weight="bold">−</text>
+    <text x="255" y="220" font-size="11" fill="#16a085">a &lt; 0 : − à l'extérieur, + entre</text>
   </svg>
-  <div class="legende">Pour \(\Delta > 0\) : signe de \(a\) à l'extérieur des racines, signe opposé entre les racines.</div>
+  <div class="legende">Pour \(\Delta > 0\) : signe de \(a\) à l'extérieur des racines, signe opposé entre les racines (les deux cas \(a>0\) et \(a<0\) sont illustrés).</div>
 </div>
 
+<!-- ✅ SCHÉMA CORRIGÉ : Δ = 0, racine double -->
 <h3>2) Cas \(\Delta = 0\) (racine double)</h3>
 
 <div class="schema">
-  <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Signe du trinôme avec racine double">
-    <line x1="30" y1="80" x2="370" y2="80" stroke="#555" stroke-width="1.6"/>
-    <line x1="200" y1="60" x2="200" y2="100" stroke="#e74c3c" stroke-width="2"/>
-    <text x="192" y="120" font-size="12" fill="#e74c3c">x₀</text>
-    <text x="90" y="70" font-size="12" fill="#1a5276" font-weight="bold">signe de a</text>
-    <text x="260" y="70" font-size="12" fill="#1a5276" font-weight="bold">signe de a</text>
-    <path d="M 40 140 Q 200 20 360 140" fill="none" stroke="#1a5276" stroke-width="2.4"/>
-    <text x="160" y="150" font-size="11" fill="#1a5276" font-style="italic">cas a &gt; 0</text>
+  <svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Signe du trinôme avec racine double : a > 0 et a < 0">
+    <!-- ===== CAS a > 0 : f(x) = (x-1)², racine double 1 ===== -->
+    <line x1="30" y1="110" x2="190" y2="110" stroke="#555" stroke-width="1.4"/>
+    <line x1="110" y1="20" x2="110" y2="180" stroke="#555" stroke-width="1.4"/>
+    <!-- racine en x=1 -> 135 px ; parabole tangente à l'axe en (1,0) -->
+    <line x1="135" y1="100" x2="135" y2="120" stroke="#e74c3c" stroke-width="2"/>
+    <text x="131" y="135" font-size="10" fill="#e74c3c">1</text>
+    <path d="M 45 20 Q 135 140 225 20" fill="none" stroke="#1a5276" stroke-width="2.6"/>
+    <circle cx="135" cy="110" r="3.5" fill="#e74c3c"/>
+    <text x="50" y="105" font-size="11" fill="#1a5276" font-weight="bold">+</text>
+    <text x="140" y="105" font-size="11" fill="#1a5276" font-weight="bold">+</text>
+    <text x="55" y="190" font-size="11" fill="#1a5276">a &gt; 0 : + partout, 0 en x = 1</text>
+
+    <!-- ===== CAS a < 0 : f(x) = -(x-1)² ===== -->
+    <line x1="240" y1="110" x2="400" y2="110" stroke="#555" stroke-width="1.4"/>
+    <line x1="320" y1="20" x2="320" y2="180" stroke="#555" stroke-width="1.4"/>
+    <line x1="345" y1="100" x2="345" y2="120" stroke="#e74c3c" stroke-width="2"/>
+    <text x="341" y="135" font-size="10" fill="#e74c3c">1</text>
+    <path d="M 255 200 Q 345 80 435 200" fill="none" stroke="#16a085" stroke-width="2.6" transform="translate(-15,0)"/>
+    <circle cx="345" cy="110" r="3.5" fill="#e74c3c"/>
+    <text x="260" y="105" font-size="11" fill="#16a085" font-weight="bold">−</text>
+    <text x="350" y="105" font-size="11" fill="#16a085" font-weight="bold">−</text>
+    <text x="265" y="190" font-size="11" fill="#16a085">a &lt; 0 : − partout, 0 en x = 1</text>
   </svg>
   <div class="legende">Pour \(\Delta = 0\) : signe de \(a\) partout sauf en \(x_0\) où \(f(x_0) = 0\).</div>
 </div>
 
+<!-- ✅ SCHÉMA CORRIGÉ : Δ < 0, aucune racine -->
 <h3>3) Cas \(\Delta < 0\) (aucune racine)</h3>
 
 <div class="schema">
-  <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Signe du trinôme sans racine">
-    <line x1="30" y1="80" x2="370" y2="80" stroke="#555" stroke-width="1.6"/>
-    <text x="130" y="70" font-size="12" fill="#1a5276" font-weight="bold">signe de a partout</text>
-    <path d="M 40 60 Q 200 0 360 60" fill="none" stroke="#1a5276" stroke-width="2.4"/>
-    <text x="160" y="150" font-size="11" fill="#1a5276" font-style="italic">cas a &gt; 0</text>
+  <svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Signe du trinôme sans racine : a > 0 et a < 0">
+    <!-- ===== CAS a > 0 : f(x) = x² + x + 1, au-dessus de l'axe ===== -->
+    <line x1="30" y1="120" x2="190" y2="120" stroke="#555" stroke-width="1.4"/>
+    <line x1="110" y1="30" x2="110" y2="180" stroke="#555" stroke-width="1.4"/>
+    <path d="M 40 80 Q 110 0 180 80" fill="none" stroke="#1a5276" stroke-width="2.6"/>
+    <text x="65" y="70" font-size="11" fill="#1a5276" font-weight="bold">+</text>
+    <text x="150" y="70" font-size="11" fill="#1a5276" font-weight="bold">+</text>
+    <text x="55" y="190" font-size="11" fill="#1a5276">a &gt; 0 : + partout (pas de racine)</text>
+
+    <!-- ===== CAS a < 0 : f(x) = -x² - x - 1, en dessous de l'axe ===== -->
+    <line x1="240" y1="120" x2="400" y2="120" stroke="#555" stroke-width="1.4"/>
+    <line x1="320" y1="30" x2="320" y2="180" stroke="#555" stroke-width="1.4"/>
+    <path d="M 250 160 Q 320 240 390 160" fill="none" stroke="#16a085" stroke-width="2.6"/>
+    <text x="275" y="165" font-size="11" fill="#16a085" font-weight="bold">−</text>
+    <text x="360" y="165" font-size="11" fill="#16a085" font-weight="bold">−</text>
+    <text x="265" y="190" font-size="11" fill="#16a085">a &lt; 0 : − partout (pas de racine)</text>
   </svg>
   <div class="legende">Pour \(\Delta < 0\) : signe de \(a\) pour tout \(x \in \mathbb{R}\).</div>
 </div>
@@ -674,7 +736,7 @@ Si \(-\dfrac{\beta}{a} \geq 0\), alors \(x = \alpha \pm \sqrt{-\dfrac{\beta}{a}}
 <ul>
   <li><strong>Fonction de coût quadratique :</strong> \(C(x) = ax^2 + bx + c\).</li>
   <li><strong>Fonction de profit :</strong> \(B(x) = -ax^2 + bx - c\) (trinôme).</li>
-  <li><strong>Seuil de rentabilité :</strong> résoudre \(B(x) = 0\) (racines).</li>
+  <li><strong>Seuilstrong> résoudre \(B(x) = 0\) (racines).</li>
   <li><strong>Optimisation :</strong> le sommet de la parabole donne le maximum ou le minimum (forme canonique).</li>
   <li><strong>Étude de marché :</strong> équilibre offre/demande avec des fonctions quadratiques.</li>
 </ul>
